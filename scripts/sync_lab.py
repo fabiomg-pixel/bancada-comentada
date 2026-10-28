@@ -61,10 +61,21 @@ def sincronizar(arquivo_custom=None, sem_push=False):
     if os.path.exists(EDICAO_FILE):
         with open(EDICAO_FILE, "r", encoding="utf-8") as f:
             dados_edicao = json.load(f)
-            for a in dados_edicao.get("artigos", []):
-                aid = str(a.get("_id") or a.get("id") or a.get("pmid") or "")
-                if aid:
+            # Suporta colecao_artigos (dict ou list) ou artigos
+            arts = dados_edicao.get("colecao_artigos") or dados_edicao.get("artigos") or []
+            if isinstance(arts, dict):
+                for k, a in arts.items():
+                    aid = str(a.get("_id") or a.get("pmid") or k)
                     artigos_map[aid] = a
+                    if a.get("pmid"): artigos_map[str(a["pmid"])] = a
+                    if a.get("doi"): artigos_map[str(a["doi"])] = a
+            elif isinstance(arts, list):
+                for a in arts:
+                    aid = str(a.get("_id") or a.get("id") or a.get("pmid") or "")
+                    if aid:
+                        artigos_map[aid] = a
+                        if a.get("pmid"): artigos_map[str(a["pmid"])] = a
+                        if a.get("doi"): artigos_map[str(a["doi"])] = a
 
     # 3. Mapear itens catalogados e anotações
     catalogo_ids = set()
