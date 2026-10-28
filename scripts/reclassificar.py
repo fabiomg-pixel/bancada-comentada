@@ -202,7 +202,7 @@ for a in articles:
         "pmid": pmid,
         "pmc": a.get("pmc", ""),
         "tipo": "preprint" if "biorxiv" in a.get("fonte_captura", "").lower() or "medrxiv" in a.get("fonte_captura", "").lower() else "artigo",
-        "resumo": abs_txt[:500] + ("..." if len(abs_txt) > 500 else ""),
+        "resumo": abs_txt.strip(),
         "metodo": metodo or "Metodologia experimental descrita no artigo.",
         "minutos": 30 if importancia == "alta" else 15,
         "tema": tema,
