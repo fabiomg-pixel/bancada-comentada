@@ -4,7 +4,10 @@ on:
   schedule:
     # 20:00 UTC = 17:00 Horário de Brasília (Segunda a Sexta)
     - cron: '0 20 * * 1-5'
-  workflow_dispatch: # Permite disparar manualmente pelo GitHub
+  workflow_dispatch: # Permite disparar manualmente pelo botão "Run workflow" no GitHub
+
+permissions:
+  contents: write
 
 jobs:
   executar-rotina:
@@ -14,24 +17,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Instalar Dependências
+      - name: Executar Varredura e Atualização da Edição
         run: |
-          pip install requests urllib3
-
-      - name: Executar Triagem e Atualização da Edição
-        run: |
-          python3 scripts/rotina_diaria_completa.py || true
+          python3 scripts/rotina_diaria_completa.py
 
       - name: Commitar e Publicar no GitHub Pages
         run: |
-          git config --global user.name "GitHub Actions"
+          git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
           git add data/ index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto): atualizacao automatica da edicao diária" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto): edicao diaria da Bancada Comentada [skip ci]" && git push)

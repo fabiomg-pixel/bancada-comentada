@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
 rotina_diaria_completa.py — Pipeline diário autônomo do LUCHM
-1. Sincroniza marcações da equipe (Bancada Comentada -> Second Brain / Logseq)
+Executa de forma 100% autônoma no GitHub Actions ou no Mac local:
+1. Sincroniza marcações (Bancada Comentada -> Second Brain / Logseq) se local
 2. Varre a literatura (PubMed 7 blocos + bioRxiv)
 3. Triagem calibrada com os 26 temas de vigilância do Notion + corte de ruído
-4. Gera relatório Markdown e roteiro do podcast Stork Cast no Google Drive
-5. Atualiza a revista Bancada Comentada e faz push no GitHub Pages
+4. Atualiza a revista Bancada Comentada (data/edicao_atual.json e index.html)
+5. Gera roteiro do podcast Stork Cast se rodando no Mac
 """
 
 import os
@@ -15,8 +16,9 @@ import re
 import subprocess
 from datetime import datetime
 
-SCRATCH_DIR = "/Users/fabiogomes/.gemini/antigravity/scratch"
-REPO_DIR = os.path.join(SCRATCH_DIR, "bancada-comentada")
+REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SCRIPTS_DIR = os.path.join(REPO_DIR, "scripts")
+DATA_DIR = os.path.join(REPO_DIR, "data")
 SECOND_BRAIN_DIR = "/Users/fabiogomes/second-brain"
 DRIVE_PODCAST_DIR = "/Users/fabiogomes/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast"
 
@@ -31,56 +33,58 @@ def executar():
     print("=" * 70)
 
     # ---------------------------------------------------------
-    # PASSO 1: Sincronizar o que a equipe marcou online com o Second Brain
+    # PASSO 1: Sincronizar escolhas com o Second Brain (se local)
     # ---------------------------------------------------------
-    print("\n[Passo 1/5] Sincronizando escolhas da Bancada com o Second Brain (Logseq)...")
-    sync_script = os.path.join(REPO_DIR, "scripts", "sync_lab.py")
-    if os.path.exists(sync_script):
+    sync_script = os.path.join(SCRIPTS_DIR, "sync_lab.py")
+    if os.path.exists(sync_script) and os.path.exists(SECOND_BRAIN_DIR):
+        print("\n[Passo 1/4] Sincronizando escolhas da Bancada com o Second Brain (Logseq)...")
         ok, out, err = run_cmd(f"python3 {sync_script}")
         if ok:
             print("   ✅ Second Brain sincronizado.")
         else:
             print(f"   ⚠️ Aviso na sincronização: {err}")
+    else:
+        print("\n[Passo 1/4] Ambiente em nuvem (ou sem second-brain local): pulando etapa de disco.")
 
     # ---------------------------------------------------------
     # PASSO 2: Varredura de Literatura (PubMed + bioRxiv)
     # ---------------------------------------------------------
-    print("\n[Passo 2/5] Executando varredura da literatura (PubMed + bioRxiv)...")
-    fetch_script = os.path.join(SCRATCH_DIR, "fetch_literature_v6.py")
+    print("\n[Passo 2/4] Executando varredura da literatura (PubMed + bioRxiv)...")
+    fetch_script = os.path.join(SCRIPTS_DIR, "fetch_literature.py")
     if os.path.exists(fetch_script):
-        ok, out, err = run_cmd(f"python3 {fetch_script}", cwd=SCRATCH_DIR)
+        ok, out, err = run_cmd(f"python3 {fetch_script}", cwd=REPO_DIR)
         if ok:
             print(f"   ✅ Captura concluída.")
         else:
             print(f"   ⚠️ Aviso na captura: {err}")
+    else:
+        print(f"   ❌ Script não encontrado: {fetch_script}")
 
     # ---------------------------------------------------------
-    # PASSO 3: Triagem Calibrada (26 temas do Notion + filtros)
+    # PASSO 3: Triagem Calibrada (26 temas do Notion + corte de ruído)
     # ---------------------------------------------------------
-    print("\n[Passo 3/5] Aplicando triagem calibrada com pesos de vigilância do LUCHM...")
-    reclass_script = os.path.join(SCRATCH_DIR, "calibracao", "reclassificar_v6.py")
+    print("\n[Passo 3/4] Aplicando triagem calibrada com pesos de vigilância do LUCHM...")
+    reclass_script = os.path.join(SCRIPTS_DIR, "reclassificar.py")
     if os.path.exists(reclass_script):
-        ok, out, err = run_cmd(f"python3 {reclass_script}", cwd=SCRATCH_DIR)
+        ok, out, err = run_cmd(f"python3 {reclass_script}", cwd=REPO_DIR)
         if ok:
-            print("   ✅ Classificação concluída (Altas selecionadas com foco na bancada).")
+            print("   ✅ Edição atualizada com sucesso.")
         else:
             print(f"   ⚠️ Erro na classificação: {err}")
+    else:
+        print(f"   ❌ Script não encontrado: {reclass_script}")
 
     # ---------------------------------------------------------
-    # PASSO 4: Atualizar Banco da Revista e Gerar Roteiro do Podcast
+    # PASSO 4: Gerar Roteiro do Podcast (se Google Drive local)
     # ---------------------------------------------------------
-    print("\n[Passo 4/5] Atualizando edições e gerando roteiro Stork Cast...")
-    calibrada_json = os.path.join(SCRATCH_DIR, "bancada_ingestao_2026-10-27_calibrada.json")
-    
-    if os.path.exists(calibrada_json):
-        with open(calibrada_json, "r", encoding="utf-8") as f:
+    print("\n[Passo 4/4] Gerando entregáveis adicionais...")
+    edicao_file = os.path.join(DATA_DIR, "edicao_atual.json")
+    if os.path.exists(edicao_file) and os.path.exists(DRIVE_PODCAST_DIR):
+        with open(edicao_file, "r", encoding="utf-8") as f:
             dados = json.load(f)
-        
         artigos = list(dados.get("colecao_artigos", {}).values())
         altas = [a for a in artigos if a.get("importancia") == "alta"]
-        
-        # Gerar roteiro para o Drive se a pasta existir
-        if os.path.exists(DRIVE_PODCAST_DIR) and altas:
+        if altas:
             roteiro_path = os.path.join(DRIVE_PODCAST_DIR, f"roteiro-{hoje}.txt")
             linhas_roteiro = [
                 f"# Stork Cast — {hoje}",
@@ -102,32 +106,8 @@ def executar():
                 rf.write("\n\n".join(linhas_roteiro))
             print(f"   ✅ Roteiro Stork Cast gerado em: {roteiro_path}")
 
-        # Atualizar HTMLs
-        upd_script = "/tmp/update_all_editions.py"
-        if os.path.exists(upd_script):
-            run_cmd(f"python3 {upd_script}")
-            print("   ✅ HTMLs da revista atualizados.")
-
-    # ---------------------------------------------------------
-    # PASSO 5: Publicar no GitHub Pages
-    # ---------------------------------------------------------
-    print("\n[Passo 5/5] Publicando nova edição no GitHub Pages...")
-    run_cmd("git add data/ index.html", cwd=REPO_DIR)
-    ok_commit, out_c, _ = run_cmd(
-        f'git commit -m "chore(diario): edicao calibrada da Bancada Comentada [{hoje}]"',
-        cwd=REPO_DIR
-    )
-    if ok_commit:
-        ok_push, out_p, err_p = run_cmd("git push origin main", cwd=REPO_DIR)
-        if ok_push:
-            print("   ✅ GitHub Pages atualizado com sucesso!")
-        else:
-            print(f"   ⚠️ Aviso no git push: {err_p}")
-    else:
-        print("   (Sem alterações pendentes para publicar)")
-
     print("\n" + "=" * 70)
-    print(f"🏁 ROTINA CONCLUÍDA COM SUCESSO! Site: https://fabiomg-pixel.github.io/bancada-comentada/")
+    print(f"🏁 ROTINA EXECUTADA COM SUCESSO!")
     print("=" * 70)
 
 if __name__ == "__main__":
