@@ -1,7 +1,7 @@
 {
   "data": "2026-10-28",
   "amplo_vetores_count": 40,
-  "total": 131,
+  "total": 144,
   "articles": [
     {
       "pmid": "42936366",
@@ -30,6 +30,51 @@
       "consultas": [
         "vetores_amplo",
         "malaria_vetor"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42950005",
+      "doi": "10.1371/journal.ppat.1014719",
+      "titulo": "Controlled human infection with Plasmodium falciparum-infected mosquito bites elicits antibodies against mosquito salivary protein SG1L3.",
+      "revista": "PLoS pathogens",
+      "ano": "2026",
+      "autores": "Andrade CM, van Daalen RC, Fabra-García A, Grievink S, van Gemert GJ, Teelen K, Hester SS, Stoter R, van de Vegte-Bolmer M, Drakeley C, Tiono AB, Sauerwein RW, Bousema T, Jore MM",
+      "resumo_original": "Human malaria infections begin with the injection of Plasmodium sporozoites via mosquito saliva. Whole sporozoite immunizations have been used as a model to study immune responses to malaria parasites, having culminated in circumsporozoite protein (CSP)-targeting vaccines and monoclonal antibodies (mAbs). However, antibody responses targeting non-CSP antigens on the sporozoite surface remain poorly characterized. Here, we isolated single B cells from a human volunteer immunized by Plasmodium falciparum-infected mosquito bites, who had acquired non-CSP-specific antibodies that recognize sporozoites. We identified two mAbs that recognize the surface of P. falciparum sporozoites, but do not bind to CSP. Using immunoprecipitation followed by mass-spectrometry, we found that the target of these mAbs is not a P. falciparum protein but the mosquito salivary protein SG1L3. We observed that recombinant SG1L3 binds to P. falciparum sporozoites. However, the SG1L3-specific mAbs and SG1L3-specific polyclonal antibodies from this volunteer, as well as polyclonal antibodies raised against recombinant SG1L3 in rabbits, fail to block liver stage infection in vitro, making this an unlikely target for functional antibodies. We observed that inhabitants from an area with intense Anopheles exposure in Burkina Faso can have antibodies against SG1L3, and that antibody titers increase with age. In conclusion, we identified the first human mAbs against a mosquito saliva protein that binds to the surface of sporozoites. Future work should assess whether naturally acquired antibodies against this protein may be used as a serological marker of mosquito exposure.",
+      "consultas": [
+        "vetores_amplo",
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42950004",
+      "doi": "10.1371/journal.pone.0361227",
+      "titulo": "Patterns of insecticide resistance in Aedes aegypti and Aedes albopictus in different cities across Cameroon.",
+      "revista": "PloS one",
+      "ano": "2026",
+      "autores": "Djiappi-Tchamen B, Djapoum Theno C, Nana-Ndjangwo S, Mavridis K, Balaska S, Talipouo A, Joko S, Djamouko-Djonkam L, Bamou R, Mayi AMP, Kamgang B, Awono-Ambéné P, Dadji GAF, Vontas J, Antonio-Nkondjio C",
+      "resumo_original": "The increasing frequency of arboviral diseases' outbreaks in Cameroon necessitates evidence-based vector control. However, the efficacy of chemical control interventions is seriously threatened by the rapid evolution of insecticide resistance in Aedes vector populations. This study investigated the insecticide resistance profiles of Aedes aegypti and Aedes albopictus across ecologically diverse cities in Cameroon. Aedes larvae were collected from April to November 2024 in eight major cities representing diverse ecological landscapes across Cameroon: Yaoundé (Congo-Guinean equatorial forest); Douala and Kribi (coastal areas); Nkongsamba, Bafoussam, Mbouda, and Maroua (highland areas); and Bertoua (sub-tropical/savanna transition zone). World Health Organization (WHO) insecticide susceptibility bioassays were conducted on F1 adults against pyrethroids (0.75% permethrin, 0.05% deltamethrin), carbamates (0.1% propoxur, 0.1% bendiocarb), and organophosphates (0.05% pirimiphos-methyl). Molecular mechanisms potentially driving insecticide resistance were characterized using multiplex TaqMan qPCR to genotype kdr mutations and RT-qPCR to quantify the expression of detoxification genes such as cytochrome P450s, Glutathione S-transferases, and Carboxylesterases. Ae. aegypti displayed widespread resistance to pyrethroids, with mortality as low as 17.4% (permethrin, Kribi). This resistance could possibly be attributed to distinct geographic distribution of target-site mutations, with F1534C ranging from absent in Bafoussam to 95% in Kribi and Bertoua (alongside high frequencies in Yaoundé and Douala), and V1016I peaking at 46.3% in Bertoua while remaining absent in Bafoussam and Maroua. Furthermore, double-mutant homozygous haplotypes (CC-II) reached up to 15%, alongside massive metabolic upregulation, notably a 184.8-fold increase in GSTD4 expression in Bafoussam. In contrast, Ae albopictus populations appeared generally more susceptible across most sites, though localized resistance to permethrin and deltamethrin emerged in Douala and Nkongsamba. Susceptibility to bendiocarb and pirimiphos-methyl was observed across all sites for both species. In contrast, most of these populations were found to be resistant to propoxur. The continued susceptibility of Ae. albopictus in most regions, contrasted with its emerging resistance in urban centers, underscores the need for species-specific and geographically tailored management interventions. Overall, these findings emphasize the urgent need to deploy targeted larviciding approaches in breeding sites and integrate routine resistance monitoring to mitigate the spread of arboviral vectors across Cameroon.",
+      "consultas": [
+        "vetores_amplo",
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42949895",
+      "doi": "10.1371/journal.pone.0359888",
+      "titulo": "Paperclip RNAs bypass clathrin mediated endocytosis in insect and fungal cells.",
+      "revista": "PloS one",
+      "ano": "2026",
+      "autores": "Amanat N, Kernodle BM, Castillo B, Tayler A, Belmonte M, Whyard S",
+      "resumo_original": "Insects and fungi are among the most destructive pests and pathogens affecting agriculture and public health. Although chemical pesticides have long been the primary means of control, their broad‑spectrum activity and widespread use have accelerated resistance in many systems. RNA interference (RNAi) has therefore emerged as a promising species‑specific alternative. RNAi is initiated by double‑stranded RNA (dsRNA), which triggers sequence‑directed degradation of target transcripts. However, RNAi efficiency varies markedly across species, influenced by nuclease activity, dsRNA length, and the cellular uptake route. We previously showed that long dsRNA uptake in Aedes aegypti depends on clathrin‑mediated endocytosis (CME), whereas paperclip RNA (pcRNA), a compact dsRNA structure developed in our laboratory, bypasses CME and enters cells through a distinct pathway. Here, we compared the uptake and RNAi performance of two dsRNA formats, long dsRNA (210-230 bp) and pcRNA (21-23 bp), in three representative species: Aedes aegypti (mosquito), Spodoptera frugiperda (moth), and Sclerotinia sclerotiorum (fungus). To assess cellular uptake of these dsRNAs, we used two CME inhibitors, chlorpromazine (CPZ) and bafilomycin A1 (BafA1), along with fluorescein‑labeled dsRNAs. CME inhibition prevented long dsRNA from entering the cytoplasm and abolished its ability to induce RNAi. In contrast, pcRNAs were readily internalized and produced significant gene knockdowns under both inhibitor treatments. Microscopy further revealed that all three cell types, pretreated with either CPZ or BafA1, prevented long dsRNA from entering the cytoplasm. pcRNA, consistently reached the cytoplasm and showed superior uptake across all species. Together, these findings demonstrate that pcRNA uses an uptake mechanism distinct from long dsRNA, enabling it to circumvent CME-dependent barriers. This unique internalization route likely reflects its compact size and structural configuration and highlights pcRNA as a promising platform for improving RNAi-based pest and pathogen control.",
+      "consultas": [
+        "vetores_amplo",
+        "pragas_lepidopteros"
       ],
       "data_fonte": "2026-10-28",
       "fonte_captura": "PubMed"
@@ -500,6 +545,20 @@
       "fonte_captura": "PubMed"
     },
     {
+      "pmid": "42949658",
+      "doi": "10.1093/jme/tjag170",
+      "titulo": "First record of Culex (Culex) acharistus Root, 1927 (Diptera: Culicidae) in Bolivia: morphological and molecular confirmation across contrasting Andean environments.",
+      "revista": "Journal of medical entomology",
+      "ano": "2026",
+      "autores": "Lardeux F, Boussès P, Quezada C, Berger A, Lardeux R, Aliaga C, Torrez L",
+      "resumo_original": "This study reports the first record of Culex (Culex) acharistus Root, 1927 in Bolivia, based on an integrative approach combining larval morphology and molecular identification using a fragment of the mitochondrial cytochrome c oxidase subunit I (COI) gene. Specimens were collected from 4 localities representing contrasting environmental settings: La Paz (urban environment, approximately 3,600 m a.s.l.), El Alto (urban environment, approximately 4,000 m a.s.l.), Cochabamba (urban and peri-urban environments, approximately 2,600 m a.s.l.), and Licoma, a rural locality in the Yungas region (approximately 1,900 m a.s.l.). Fourth-instar larvae were morphologically examined using diagnostic characters and preserved for molecular analyses. The 6 analyzed specimens shared an identical COI haplotype, showing more than 99% sequence identity with available Cx. acharistus sequences in GenBank. Maximum likelihood phylogenetic analysis placed the Bolivian haplotype within the Cx. acharistus clade. These results provide morphological and molecular evidence for the occurrence of Cx. acharistus in Bolivia, extend its known distribution in South America, and document the species at its highest elevation reported to date, at approximately 4,000 m a.s.l. in El Alto. This study highlights the value of integrating morphological and molecular approaches for reliable identification of Neotropical Culex species.",
+      "consultas": [
+        "vetores_amplo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
       "pmid": "42946829",
       "doi": "10.1093/jme/tjag167",
       "titulo": "Correction: Toward comfortable mosquito-proof clothing: repellent- and insecticide-free fabrics that block bites across three disease-transmitting mosquito genera.",
@@ -528,59 +587,15 @@
       "fonte_captura": "PubMed"
     },
     {
-      "pmid": "42934706",
-      "doi": "10.1186/s13071-026-07562-3",
-      "titulo": "Colonisation and temperature-driven variation in life-history traits of the West Nile virus vector Culex pipiens at its Northern European limit.",
-      "revista": "Parasites & vectors",
+      "pmid": "42949985",
+      "doi": "10.1080/17513758.2026.2749208",
+      "titulo": "Global stability analysis of within-host Zika virus-chikungunya virus co-infection with CTL immune responses.",
+      "revista": "Journal of biological dynamics",
       "ano": "2026",
-      "autores": "Parvy JP, Brass DP, Preston B, Carmichael RM, Kerrigan D, Kirby G, Brown R, White SM, Ferguson HM, Pondeville E",
-      "resumo_original": "Mosquito-borne diseases (MBDs) are increasing worldwide driven by factors such as travel, land-use change, global trade, and climate warming. In Europe, Culex pipiens sensu lato (s.l.)-the primary vector of West Nile and Usutu viruses-is widespread and an increasing public-health concern with recent detection of WNV in English mosquitoes and ongoing climate change underscoring risks in northern regions. However, data on how temperature affects life-history traits of high-latitude populations remain limited, hindering accurate predictions of vectorial capacity.\nWe used field-collected larvae in Scotland to establish a colony of Culex pipiens and performed its molecular characterisation by PCR, including Wolbachia presence. We then assessed the effects of temperature on key life-history traits, including development time, adult longevity, and body size.\nWe successfully established a colony of Culex pipiens pipiens infected with Wolbachia at its northern range limit. We observed that temperature increase speeds up the embryonic, larval and pupal development while reducing the adult longevity and adult size. Interestingly, this northern colony display the longest adult survival ever described for non blood fed Cx. pipiens at all temperature examined.\nOur findings provide critical baseline data for this northern population and offer methodological guidance for establishing Cx. pipiens colonies from field material. These results improve our understanding of thermal sensitivity in Northern Culex mosquitoes and will support future modelling of population dynamics and MBD risk under climate change.",
+      "autores": "Elaiw AM, Alkhudhari ZY, Almohaimeed EA, Hobiny AD",
+      "resumo_original": "We formulate and analyse a mathematical model for the within-host co-infection dynamics of Zika virus (ZIKV) and chikungunya virus (CHIKV), incorporating latently infected cells and cytotoxic T lymphocyte (CTL) immune responses. We establish the nonnegativity and boundedness of solutions. Using the next-generation matrix method, we derive the basic reproduction numbers (RZL) and (RCL) for the ZIKV and CHIKV submodels, respectively, and the overall reproduction number (R0L=max{RZL,RCL}). Invasion reproduction numbers, (RZL,inv) and (RCL,inv), are derived to characterise the ability of either virus to invade an established infection. Global stability of the equilibria is established using Lyapunov functions. We investigate three therapeutic protocols: antiviral treatment blocking viral entry, treatment reducing viral production, and IL-2 therapy enhancing CTL responses. Sensitivity analysis of (RZL) and (RCL) is performed, and numerical simulations support the stability results. Simulations indicate that combined antiviral and immune-based interventions suppress co-infection by reducing viral replication and enhancing immune-mediated clearance.",
       "consultas": [
-        "vetores_amplo"
-      ],
-      "data_fonte": "2026-10-28",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42934756",
-      "doi": "10.1186/s12936-026-06041-5",
-      "titulo": "Harnessing omics to refine taxonomic classification in the malaria vector Anopheles gambiae species complex: a review.",
-      "revista": "Malaria journal",
-      "ano": "2026",
-      "autores": "Milugo TK, Kwi P, Ndiath MO, Assogba BS, Amambua-Ngwa A",
-      "resumo_original": "The malaria vector Anopheles gambiae s.l. (Diptera: Culicidae) is predominant in sub-Saharan Africa, where it plays a crucial role in transmitting malaria parasites to humans. Hitherto considered a single species, advances in cytogenetics and genomics have unveiled members of the complex as separate species. Whilst these species are morphologically indistinguishable, they are genetically distinct exhibiting significant differences in their ecological interactions and behavior. For example, they display considerable variation in their response to vector control measures and capacity to host malaria parasite, contributing differentially to malaria transmission. Consequently, precise taxonomic identification might help guide control programs against them. However, current approaches used in An. gambiae taxonomic systematics differ in accuracy and sensitivity, making it difficult to correctly delimit species boundaries. In this review, we discuss available taxonomic approaches utilized in An. gambiae complex whilst providing a framework for future taxonomic efforts. We also examine the process of naming a new species within the complex and detail the complexities of existing nomenclature approaches, as well as the prospective challenges they present, while advocating for an alternative approach. We conclude by providing a perspective on the use of a robust integrated approach in classifying and naming species of the An. gambiae complex.",
-      "consultas": [
-        "vetores_amplo",
-        "malaria_vetor"
-      ],
-      "data_fonte": "2026-10-28",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42934733",
-      "doi": "10.1186/s40168-026-02477-8",
-      "titulo": "Vertical transmission of mosquito microbiota and its effects on offspring development.",
-      "revista": "Microbiome",
-      "ano": "2026",
-      "autores": "Nichols HL, Brettell LE, Saldaña MA, Hegde S, Heinz E, Vaccaro K, Hughes GL, Coon KL",
-      "resumo_original": "The mosquito's gut microbiota plays a crucial role in determining its capacity to transmit harmful viruses and parasites. Accordingly, manipulating mosquito gut microbiota is a promising avenue for reducing the transmission of mosquito-borne human pathogens. A successful microbial control campaign will require a thorough understanding of how bacteria are transmitted within mosquito populations. In two parallel but complementary studies using the yellow fever mosquito Aedes aegypti as a focal host species, we surveyed the vertical transmission of bacteria from individual mothers to cohorts of offspring maintained in a closed system.\nLaboratory- and field-derived mothers deposited bacteria that support offspring development, and the relative abundances of commonly transmitted taxa correlated with offspring fitness. Maternally transmitted bacteria were detected in both larval and adult offspring, and the relative abundances of specific taxa differed between life stages. Microbiota composition in adult offspring closely resembled that of mothers, despite dramatic shifts in the relative abundance of specific community members during the larval stage. Variability in microbiota composition among offspring was also greater than variability across the population of egg-laying mothers. Eggs that underwent a period of desiccation before hatching produced larval communities dominated by endospore-forming bacteria that were rare in maternal samples.\nOverall, our results demonstrate vertical transmission of mosquito-associated microbiota across generations, including bacterial taxa that could potentially be leveraged for mosquito and mosquito-borne disease control Video Abstract.",
-      "consultas": [
-        "vetores_amplo"
-      ],
-      "data_fonte": "2026-10-28",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42934655",
-      "doi": "10.1186/s12936-026-06067-9",
-      "titulo": "Insecticide resistance intensity in Anopheles gambiae s.l. populations from Nioro and Ndoffane health districts, Senegal.",
-      "revista": "Malaria journal",
-      "ano": "2026",
-      "autores": "Diallo S, Diop M, Faye MB, Diallo M, Touré A, Bodian G, Diagne NS, Tine EG, Diédhiou SM, Niang A, Konaté L, Dia I, Niang EHA",
-      "resumo_original": "Malaria remains a major public health concern in sub-Saharan Africa. In Senegal, the increasing resistance of Anopheles gambiae sensu lato (s.l.) to main public health insecticides threatens the effectiveness of long-lasting insecticide-treated nets (LLINs) and indoor residual spraying (IRS). This study aimed to assess insecticide resistance intensity and to determine the distribution of kdr and Ace-1 resistance mutations in wild An. gambiae s.l. populations from Nioro and Ndoffane districts (Kaolack region).\nAnopheles larvae were collected between September and November 2018 and reared under insectary conditions. Adult females were subjected to World Health Organization (WHO) susceptibility assays using five insecticides: three pyrethroids, one carbamate and one organophosphate. Resistance intensity assays were conducted at 5 × and 10 × diagnostic concentrations. Species within the An. gambiae complex and the East-kdr (1014S), West-kdr (1014F) and Ace-1 (G119S) were identified using Polymerase Chain Reaction (PCR) technique.\nA total of 1830 females An. gambiae s.l. were tested. Widespread resistance to pyrethroids and organophosphates was observed in both districts, while in Ndoffane complete susceptibility to bendiocarb was recorded and in Nioro resistance was observed. Anopheles arabiensis was the predominant species (> 90%), followed by An. gambiae s.s. and An. coluzzii. The frequencies of East-kdr and West-kdr mutations were higher in Ndoffane (40.4% and 30.8%) than in Nioro (10.6% and 13.1%). The Ace-1 (G119S) mutation was detected exclusively in the heterozygous state across all the study populations.\nThe studied vectors exhibit multiple insecticide resistance mechanisms, likely driven by combined selection pressures from agricultural and public health insecticide use. Strengthening entomological surveillance and implementing integrated resistance management strategies are essential to preserve the effectiveness of malaria vector control interventions in Senegal.",
-      "consultas": [
-        "vetores_amplo",
-        "malaria_vetor"
+        "arboviroses"
       ],
       "data_fonte": "2026-10-28",
       "fonte_captura": "PubMed"
@@ -607,6 +622,20 @@
       "ano": "2026",
       "autores": "Das N, Krishnamoorthy P, Junghare KR, Raj AS, Saha P, Pal K, Adhya S, Garg A, Khetan D, Kumar A, Kumar H",
       "resumo_original": "Circular RNAs (circRNAs) have recently been identified as crucial regulators of gene expression in various diseases. Their role in dengue remains unexplored. In this study, circEPSTI1 induction was observed in peripheral blood mononuclear cells and plasma of dengue patients. The induction of circEPSTI1 is interferon-dependent and enhances DENV infection by sponging the expression of miR-942-5p. The antiviral role of miR-942-5p is mediated by bidirectional inhibition through targeting conserved genomic sequences of the DENV genome of different subtypes across NS1, NS3, and NS5 and the host AKT1 signaling pathway. RNA-seq analysis of DENV-infected circEPSTI1 knockdown A549 cells identified SERPINE1 and AKT1 signaling pathways to be dysregulated significantly. circEPSTI1 relieves the inhibition of miR-942-5p over DENV genomic RNA and the host SERPINE1 to activate AKT1 signaling. The activation of AKT1 signaling facilitates cell survival and enhances DENV replication. The expression of SERPINE1 and circEPSTI1 was upregulated in Dengue patients, and pharmaceutical inhibition of SERPINE1 through Tiplaxtinin inhibits the DENV replication by reducing the expression of circEPSTI1. Overall, our result demonstrates the therapeutic potential of Tiplaxtinin by targeting the circEPSTI1-miR-942-5p-SERPINE1-AKT1 axis in dengue treatment.",
+      "consultas": [
+        "arboviroses"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42950018",
+      "doi": "10.1126/scitranslmed.aei5117",
+      "titulo": "Dengue virus controlled human challenge reveals that preexisting immunity shapes viral replication and broadly protective responses.",
+      "revista": "Science translational medicine",
+      "ano": "2026",
+      "autores": "Odio CD, Aogo RA, Firdous S, Voirin C, Blanco-Rivera S, Lowman KE, Asante N, Broderson Y, Konda K, Hasund CM, Martinez-Perez A, Mpingabo PI, Law M, Jarvis C, Callier V, Hunsberger S, Abad Fernandez M, de Silva A, Kattappuram R, Bhushan G, Yek C, Manning J, Durbin AP, Cohen JI, Weiskopf D, Whitehead SS, Katzelnick LC",
+      "resumo_original": "Dengue is the canonical viral disease for which immune history is a determinant of protective versus pathogenic responses and immunogenicity. Yet, because of limitations in animal models and clinical presentation after peak viremia, how preinfection and early immune responses affect dengue outcome is not confirmed. We conducted a phase 1 clinical trial with 45 healthy adults to test whether secondary infection challenge with a heterotypic, full-length, attenuated virus increases viremia and immunogenicity compared with primary and tertiary infection. Viremia was associated with more, but still mild, clinical signs and symptoms, and secondary infection resulted in greater viremia, neutralizing antibodies, and protective T cell responses. However, those whose baseline antibodies most efficiently increased dengue virus replication in an in vitro assay experienced delayed inflammatory and adaptive immune activation, the highest viremia, strong acute immune responses, and waning of potent CD8+ T cells and antibodies. In contrast, higher baseline antibodies against the nonstructural protein 1 of multiple serotypes predicted early interferon and balanced immune activation, viremia control, and development of enduring, potent B and T cells, revealing how vaccines can induce broad, long-lasting protection. Last, individuals with potent and neutralizing antibodies and IFN-γ+ T cells at baseline experienced minimal viral replication. Together, these findings demonstrate that controlled human challenge with dengue virus can delineate coordinated versus dysregulated acute immune responses and their effects on immunogenicity, informing therapeutic and vaccine strategies for dengue and other viral diseases.",
       "consultas": [
         "arboviroses"
       ],
@@ -810,6 +839,34 @@
       "fonte_captura": "PubMed"
     },
     {
+      "pmid": "42934756",
+      "doi": "10.1186/s12936-026-06041-5",
+      "titulo": "Harnessing omics to refine taxonomic classification in the malaria vector Anopheles gambiae species complex: a review.",
+      "revista": "Malaria journal",
+      "ano": "2026",
+      "autores": "Milugo TK, Kwi P, Ndiath MO, Assogba BS, Amambua-Ngwa A",
+      "resumo_original": "The malaria vector Anopheles gambiae s.l. (Diptera: Culicidae) is predominant in sub-Saharan Africa, where it plays a crucial role in transmitting malaria parasites to humans. Hitherto considered a single species, advances in cytogenetics and genomics have unveiled members of the complex as separate species. Whilst these species are morphologically indistinguishable, they are genetically distinct exhibiting significant differences in their ecological interactions and behavior. For example, they display considerable variation in their response to vector control measures and capacity to host malaria parasite, contributing differentially to malaria transmission. Consequently, precise taxonomic identification might help guide control programs against them. However, current approaches used in An. gambiae taxonomic systematics differ in accuracy and sensitivity, making it difficult to correctly delimit species boundaries. In this review, we discuss available taxonomic approaches utilized in An. gambiae complex whilst providing a framework for future taxonomic efforts. We also examine the process of naming a new species within the complex and detail the complexities of existing nomenclature approaches, as well as the prospective challenges they present, while advocating for an alternative approach. We conclude by providing a perspective on the use of a robust integrated approach in classifying and naming species of the An. gambiae complex.",
+      "consultas": [
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42934655",
+      "doi": "10.1186/s12936-026-06067-9",
+      "titulo": "Insecticide resistance intensity in Anopheles gambiae s.l. populations from Nioro and Ndoffane health districts, Senegal.",
+      "revista": "Malaria journal",
+      "ano": "2026",
+      "autores": "Diallo S, Diop M, Faye MB, Diallo M, Touré A, Bodian G, Diagne NS, Tine EG, Diédhiou SM, Niang A, Konaté L, Dia I, Niang EHA",
+      "resumo_original": "Malaria remains a major public health concern in sub-Saharan Africa. In Senegal, the increasing resistance of Anopheles gambiae sensu lato (s.l.) to main public health insecticides threatens the effectiveness of long-lasting insecticide-treated nets (LLINs) and indoor residual spraying (IRS). This study aimed to assess insecticide resistance intensity and to determine the distribution of kdr and Ace-1 resistance mutations in wild An. gambiae s.l. populations from Nioro and Ndoffane districts (Kaolack region).\nAnopheles larvae were collected between September and November 2018 and reared under insectary conditions. Adult females were subjected to World Health Organization (WHO) susceptibility assays using five insecticides: three pyrethroids, one carbamate and one organophosphate. Resistance intensity assays were conducted at 5 × and 10 × diagnostic concentrations. Species within the An. gambiae complex and the East-kdr (1014S), West-kdr (1014F) and Ace-1 (G119S) were identified using Polymerase Chain Reaction (PCR) technique.\nA total of 1830 females An. gambiae s.l. were tested. Widespread resistance to pyrethroids and organophosphates was observed in both districts, while in Ndoffane complete susceptibility to bendiocarb was recorded and in Nioro resistance was observed. Anopheles arabiensis was the predominant species (> 90%), followed by An. gambiae s.s. and An. coluzzii. The frequencies of East-kdr and West-kdr mutations were higher in Ndoffane (40.4% and 30.8%) than in Nioro (10.6% and 13.1%). The Ace-1 (G119S) mutation was detected exclusively in the heterozygous state across all the study populations.\nThe studied vectors exhibit multiple insecticide resistance mechanisms, likely driven by combined selection pressures from agricultural and public health insecticide use. Strengthening entomological surveillance and implementing integrated resistance management strategies are essential to preserve the effectiveness of malaria vector control interventions in Senegal.",
+      "consultas": [
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
       "pmid": "42934639",
       "doi": "10.1186/s12916-026-05104-3",
       "titulo": "Epidemiology of malaria and district-level factors associated with malaria elimination in Sumatra region, Indonesia: a retrospective analysis of surveillance data.",
@@ -859,6 +916,48 @@
       "ano": "2026",
       "autores": "Yadav M, C A NF, Mandal D, Shukla J, Sarkar B, Kumar Mahtha S, Chandramouli A, Prasad A, Kamat SS, Mohanty D, Dutta S, Mahendran KR, Gokhale RS",
       "resumo_original": "Drug resistance in Mycobacterium tuberculosis (Mtb) remains a formidable clinical hurdle, compounded by the fact that the pathways by which antibiotics penetrate its multilayered cell envelope remain incompletely mapped. We identify PPE1 as a voltage-gated outer-membrane porin that mediates the secretion of kupyaphores while also facilitating the uptake of the frontline anti-tubercular drug isoniazid (INH). Genome-wide association analysis of 38,038 clinical isolates links ppe1 mutations with INH resistance, highlighting its clinical relevance. Consistent with this, the Mtb Δppe1 mutant shows increased tolerance to INH, accompanied by markedly reduced intracellular accumulation of INH compared with the wild-type strain. The Δppe1 strain exhibits attenuated infection, impaired growth, and reduced virulence in a murine infection model. Electron microscopy, molecular modeling, and single-channel electrophysiology reveal that PPE1 assembles into an unusual pentameric α-helical channel, distinct from classical β-barrel bacterial porins. Together, our findings identify PPE1 as a key determinant of mycobacterial membrane permeability that coordinates metallophore secretion and also antibiotic influx. This work uncovers a previously unrecognized mechanism governing Mtb physiology, virulence, and drug susceptibility, providing a potential target for therapeutic intervention.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42948590",
+      "doi": "10.1016/j.jgr.2026.101150",
+      "titulo": "Ginsenoside Rd alleviates atherosclerosis by inhibiting adipocyte ferroptosis in perivascular adipose tissues.",
+      "revista": "Journal of ginseng research",
+      "ano": "2026",
+      "autores": "Fu X, Liu C, Hu F, Qin J, Wang T, Li X",
+      "resumo_original": "Ginsenoside Rd (Rd) is an active ingredient in Panax ginseng Meyer and can be absorbed into the adipose tissue. Here, we aimed to investigate the impact of Rd on atherosclerosis (AS) and explore the mechanism.\nWe constructed an AS model by feeding ApoE-/- mice with a standard Western high-fat diet, treated with Rd, and combined RORC and TIGAR adipocyte-specific adeno-associated virus infection. An inflammatory adipocyte model (3T3-L1) was induced by LPS, and a lipid accumulation model in adipocytes was induced by palmitic acid. We investigated the role of the Rd-mediated RORC/TIGAR axis in adipocyte inflammation, oxidative stress, and ferroptosis through lentiviral vectors and the ferroptosis activator erastin. The interactions between RORC and TIGAR were examined. Next, the degree of lipid peroxidation and ferroptosis within perivascular adipose tissues (PVAT) in mice and 3T3-L1 cells was assessed.\nRd improved PVAT dysfunction and alleviated endothelial inflammation in AS mice. Rd targeted and inhibited RORC expression in adipocytes within the PVAT of mice. The transcription factor RORC occupied the TIGAR promoter to repress TIGAR transcription. Reactivation of RORC reversed the therapeutic benefit of Rd on AS, and reactivation of TIGAR also alleviated AS exacerbated by RORC. Rd reached therapeutic benefits by inhibiting RORC expression in adipocytes within PVAT, weakening its inhibitory effect on TIGAR, and further inhibiting adipocyte ferroptosis.\nRd targets RORC to activate TIGAR expression and block adipocyte ferroptosis in PVAT, thereby inhibiting AS.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42950033",
+      "doi": "10.1126/sciadv.aeh8465",
+      "titulo": "Lipid-sensing GPR183-KRAS signaling mediates TH17 autoimmunity and identifies fluvoxamine repurposing in uveitis.",
+      "revista": "Science advances",
+      "ano": "2026",
+      "autores": "Zhang C, Liu X, Xu N, Chen H, Gao Y, Gu C, Shen X, Wu J, Lu X, Zhang P, He Y, Xu Z, Su W",
+      "resumo_original": "Autoimmune uveitis (AU) is a leading cause of irreversible blindness driven by pathogenic T helper 17 (TH17) cell-mediated inflammation, yet current therapies are limited by efficacy and side effects, with immunometabolic mechanisms remaining poorly defined. By integrating single-cell RNA sequencing and multilayered metabolomic profiling in patients with AU and experimental AU models, we identified the lipid-sensing G protein-coupled receptor GPR183 as a key immunometabolic regulator in pathogenic CD4+ T cells. Upon activation, GPR183 modulates intracellular signaling via suppression of cyclic adenosine monophosphate-cAMP-dependent protein kinase activity and promotion of son-of-sevenless-dependent KRAS activation, which in turn elicits copper overload-induced mitochondrial oxidative stress, structural impairment, and metabolic rewiring toward glycolysis, thereby promoting TH17 cell pathogenicity. For clinical translation, virtual screening of Food and Drug Administration-approved drugs coupled with molecular docking and microscale thermophoresis validation identified fluvoxamine (FLV) as a direct GPR183 antagonist. In in vivo and in vitro uveitis and colitis models, FLV attenuated GPR183-KRAS signaling, dampened pathogenic TH17 cell responses, and alleviated tissue inflammation. These findings delineate a unique GPR183-KRAS-mitochondrial damage axis governing TH17-driven autoimmunity and support repurposing FLV as a translatable therapeutic approach for AU and other autoimmune inflammatory disorders.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42949343",
+      "doi": "10.1021/acs.jafc.6c08108",
+      "titulo": "Dietary Fiber Improves High-Fat Diet-Induced Hyperglycemia by Modulating Intestinal ILC3-Mediated Immunity through the SCFA-FFAR2 Pathway.",
+      "revista": "Journal of agricultural and food chemistry",
+      "ano": "2026",
+      "autores": "Mou Y, Long F, Qi C, Huang W, Du Q, Zhang Y, Yu C, Zhou J",
+      "resumo_original": "Dietary fiber intake is associated with improved glycemic control in high-fat diet-induced hyperglycemia, yet the immunological mechanisms linking gut microbiota-derived metabolites to host defense remain poorly defined. Here, we investigated whether dietary fiber ameliorates these metabolic disorders by modulating intestinal group 3 innate lymphoid cells (ILC3s) via short-chain fatty acids (SCFAs) and their receptor FFAR2. In a 12-week fiber-supplemented high-fat diet mouse model, fiber alleviated hyperglycemia, insulin resistance, and intestinal barrier dysfunction. Mechanistically, fiber increased cecal SCFAs (especially propionate), which activated colonic ILC3s in an FFAR2-dependent manner. FFAR2 triggered ERK and STAT3 phosphorylation and directly bound STAT3 to facilitate its phosphorylation, boosting IL-22 transcription. SCFA-activated ILC3s strengthened epithelial barrier integrity via elevated tight-junction proteins. Collectively, our findings demonstrate that dietary fiber restores gut barrier function through the SCFA-FFAR2-ERK/STAT3-IL-22 axis in ILC 3s, highlighting ILC3-expressed FFAR2 as a potential therapeutic target for high-fat diet-related metabolic disorders.",
       "consultas": [
         "imunometabolismo"
       ],
@@ -957,6 +1056,20 @@
       "ano": "2026",
       "autores": "Arjol D, Arroyo-Romero S, García DR, Navarro-Matías E, Navarro-Cáceres A, Suárez-Moreno N, Domínguez-Martín A, Gómez-Marcos MA, Gómez-Sánchez M, Gómez-Sánchez L, BioICOPER Investigators Group",
       "resumo_original": "Background: Long COVID (LC) is associated with persistent cognitive symptoms, frequently described as brain fog, and with inflammatory, immunometabolic, and energetic mechanisms potentially involved in cognitive functioning. Vitamins participate in biological processes relevant to brain function, but the relationship between habitual dietary vitamin intake and cognitive performance in LC remains poorly studied. Objective: To analyze the relationship between dietary vitamin intake and cognitive performance in adults with LC, considering both objective performance and self-reported cognition. Methods: A cross-sectional study was conducted in 304 adults with LC. Vitamin intake from foods and beverages was estimated using the EVIDENT seven-day dietary record, previously compared with a validated food-frequency questionnaire. Objective cognitive performance was assessed using normative scores from the Montreal Cognitive Assessment (MoCA) and the Memory Index Score (MIS), as well as MoCA domains and items. Self-reported cognition was assessed using the 30-item Memory Failures of Everyday Questionnaire (MFE-30) and the cognitive subscale of the Modified Fatigue Impact Scale (MFIS). Primary global associations were examined using multiple linear regression with HC3 robust standard errors, whereas bounded MoCA domains were analyzed using proportional-odds ordinal regression and binary item-level outcomes using logistic regression. Benjamini-Hochberg correction was applied within prespecified families of contrasts. Results: No associations between vitamin intake and global normative cognitive performance remained significant after false discovery rate (FDR) correction. Median MoCA and MIS scores were 24.00 (IQR, 21.00-26.00) and 11.00 (IQR, 9.00-13.00), respectively. Normative MoCA and MIS scores showed medians of -0.32 (IQR, -0.82 to 0.19) and -0.32 (IQR, -0.76 to 0.14), respectively. Most participants (95.1%) met the dietary reference value for vitamin B3. In secondary ordinal analyses, higher vitamin B3 intake was associated with better MoCA language performance in the fully adjusted model (OR per 1 SD = 2.18, 95% CI 1.45-3.27, p < 0.001, q = 0.0116). No associations remained significant after FDR correction for everyday cognitive complaints, cognitive fatigue, or MoCA Memory and MoCA Multiple scores. Conclusions: In adults with LC, the primary analyses did not identify FDR-significant associations between habitual dietary vitamin intake and global normative cognitive performance. The secondary vitamin B3-language association requires independent confirmation and does not establish a cognitive benefit of higher intake or supplementation. These findings require confirmation in longitudinal studies incorporating nutritional biomarkers, information on supplementation, and broader neuropsychological assessment.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42948128",
+      "doi": "10.3389/fimmu.2026.1976931",
+      "titulo": "Immunometabolic reprogramming of macrophages and neutrophils in acute pancreatitis: from metabolic stress to amplification and endogenous braking.",
+      "revista": "Frontiers in immunology",
+      "ano": "2026",
+      "autores": "Ai Y, Zhang L, Wei A, Dong J, Pang T, Zhang Y, Wu K, Yao S",
+      "resumo_original": "Acute pancreatitis (AP) progression involves both the initiating acinar injury and immune responses that sustain or contain subsequent damage. This review integrates evidence on metabolic regulation in macrophages and neutrophils to examine its links to inflammatory effectors, clearance, and tissue protection. Glycolytic regulation can support inflammatory activation, while non-AP neutrophil studies show how substrate allocation supports oxidant production and neutrophil extracellular trap (NET) release. Metabolite signaling also participates in macrophage efferocytosis, repair-associated responses, and tissue antioxidant defense. Contrasting lactate effects in acinar injury and macrophage repair indicate that metabolic changes must be interpreted through their effects on particular cells and functions. We propose an integrated amplification-braking framework that connects metabolically supported inflammatory effectors to continued generation of injury-derived stimuli, and clearance, antioxidant, and repair functions to damage containment. These functions can coexist without receiving equivalent metabolic support, and protective braking is distinct from generalized immunosuppression. Evidence differs across cells and experimental systems; metabolic regulation of inflammatory activation does not by itself establish metabolic control of NET-mediated injury in AP. The framework provides a basis for evaluating whether metabolic interventions can limit damaging activity while preserving protective functions, but it is not a validated clinical model. Pairing metabolic changes with specific cellular functions and subsequent injury is central to testing these relationships.",
       "consultas": [
         "imunometabolismo"
       ],
@@ -1251,6 +1364,48 @@
       "ano": "2027",
       "autores": "Araújo M, Olivetta M, Ronchi P, Oorschot V, Khan A, Tischer C, Shah H, Dey G, Dudin O",
       "resumo_original": "Cellularization is the coordinated division of a multinucleate cell into many cells, a common life cycle transition across eukaryotes. In the best-studied model of this process, Drosophila melanogaster, cellularization requires actin and microtubule networks, as well as membrane vesicle delivery to drive the synchronous invagination of plasma membrane furrows. To identify unifying principles, we investigate cellularization in the ichthyosporean Sphaeroforma arctica, a close relative of animals with a multinucleate life cycle stage. Using live-cell imaging, ultrastructure expansion microscopy, and volume electron microscopy, we define the membrane, microtubule, and actin dynamics that accompany cellularization. Using pharmacological inhibitors and centrifugation, we show that the microtubule network positions nuclei evenly at the cortex, thereby specifying furrow positioning. Disrupting microtubules perturbed nuclear position, furrow spacing, and the efficiency of furrow ingression, leading eventually to cells of variable size and nuclear content. Our findings indicate that the microtubule network sets the spatial framework within which actomyosin and membrane delivery drive cellularization and establish S. arctica as a tractable model for comparative studies of this eukaryotic life cycle strategy.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42950046",
+      "doi": "10.1126/sciadv.aei2661",
+      "titulo": "Presynaptic filopodia form kinapses and promote convective membrane flow to sustain synchronous neurotransmitter release.",
+      "revista": "Science advances",
+      "ano": "2026",
+      "autores": "Jain A, Dong R, Kroll J, Webster JF, Moss J, Bikbaev A, Ultanir SK, Gonzalez-Sulser A, Rosenmund C, Heine M, Liu J, Cousin MA, Ivanova D",
+      "resumo_original": "Synaptic plasticity is the principal mechanism by which neural circuits compute and adapt. Presynaptic plasticity is traditionally regarded as a transient adaptation of the synaptic vesicle fusion and recycling machinery, whereas the role of structural remodeling of synaptic boutons remains unclear. Here, we demonstrate a mechanical coupling between presynaptic structural remodeling and synaptic efficacy. We find that dynamic presynaptic filopodia emerge during active synaptic transmission and deform synaptic boutons while forming transient contacts with postsynaptic structures, which we term neuronal kinapses. Filopodia formation is activity dependent and occurs in intact circuits and human brain. Mechanistically, filopodial growth induces convective in-plane membrane flow toward the filopodium, accelerating release site clearance, a process associated with sustained release probability during repeated synaptic vesicle fusion. As a result, filopodia formation favors an increase in synchronous over asynchronous neurotransmitter release. These results indicate that presynaptic structural remodeling can alter the spatial organization of neurotransmission and, through the membrane flow it generates, modulate its temporal precision.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42949396",
+      "doi": "10.1021/acs.nanolett.6c03909",
+      "titulo": "Pressure Engineering through Silica Nanoconfinement for Melting Point Elevation of Gold Nanoparticles.",
+      "revista": "Nano letters",
+      "ano": "2026",
+      "autores": "Choi CW, Choi JH, Kim GY, Lee IS, Choi SY",
+      "resumo_original": "Au nanoparticles (NPs) are inherently thermally unstable at elevated temperatures because their large surface-to-volume ratio promotes melting, migration, and coalescence. Here, we demonstrate that silica (SiO2) nanoconfinement thermodynamically elevates the melting point (Tm) of Au NPs through confinement-induced compressive pressure. Atomic-resolution in situ heating scanning transmission electron microscopy (STEM) combined with local Fourier crystallinity mapping reveals that bare Au NPs lose crystallinity at 1,000 °C, whereas SiO2-encapsulated Au cores (Au@SiO2) remain crystalline. Accordingly, in situ heating TEM shows bare Au NPs progressively merge while Au@SiO2 remain structurally isolated. Temperature-dependent lattice-parameter measurements reveal significantly suppressed thermal expansion of confined Au cores, corresponding to an estimated compressive stress of 4-5 GPa. Finite-element simulations support this estimate, showing that SiO2 shell shrinkage generates several-GPa core pressure, with thicker shells producing higher pressure and greater Tm elevation. These findings establish nanoconfinement-induced pressure as a general thermomechanical strategy for stabilizing metallic NPs under extreme thermal environments.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42949345",
+      "doi": "10.1021/acs.jafc.6c12935",
+      "titulo": "Dual-Phosphorylated Pumpkin Seed Protein Pickering Emulsions: Structural Evolution, Interfacial Regulation, and Coffee Creamer Application Quality.",
+      "revista": "Journal of agricultural and food chemistry",
+      "ano": "2026",
+      "autores": "Huang J, Wang D, Ruan Z, Xu H, Yang Z, Chen J",
+      "resumo_original": "Pumpkin seed protein (PSP) was modified with sodium tripolyphosphate (STP) and sodium trimetaphosphate (STMP) to improve Pickering emulsions. Phosphorylation increased with STMP content but plateaued at high ratios. Mass spectrometry identified phosphorylated Ser and Thr residues, while 31P NMR indicated multiple phosphorus environments. Modification altered protein conformation and surface charge, reduced particle size, and improved dispersion without major subunit degradation. Although emulsifying activity decreased, emulsion stability increased; mixed-phosphate treatments generally produced finer droplets and better resistance to centrifugal destabilization than single-phosphate treatments. A 4:1 STP/STMP ratio combined small droplet size with favorable wettability and interfacial adsorption, whereas higher STMP content did not consistently improve overall performance. In coffee beverages, increasing emulsion incorporation intensified phase separation and altered color and flavor. At a 1:9 emulsion-to-coffee ratio, phosphorylated PSP emulsion improved perceived body and smoothness while retaining coffee aroma, outperforming commercial creamer in balance and supporting its potential use as a plant-based food.",
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
@@ -1650,6 +1805,20 @@
       "fonte_captura": "PubMed"
     },
     {
+      "pmid": "42948914",
+      "doi": "10.1387/ijdb.29091fg",
+      "titulo": "Ablation of Tnfr1 Gene Impairs Enamel Surface Microhardness and Mineral Composition in Mice.",
+      "revista": "The International journal of developmental biology",
+      "ano": "2026",
+      "autores": "Gonçalves JL, Almeida-Júnior LA, Arnez MFM, Galo R, Queiroz AM, Carvalho FK, Paula-Silva FWG",
+      "resumo_original": "While the immune response is increasingly suspected to play a role in dental enamel defects, the specific pathways involved remain unclear. This study investigated the effects of Tnfrsf1a (TNF receptor superfamily member 1A) gene ablation on amelogenesis and enamel biomineralization. Male Tnfrsf1a knockout (Tnfrsf1a-/-) and wild-type (C57BL/6) mice (n = 6 per group) were evaluated. Lower incisors were analyzed using visual photography, micro-computed tomography (microCT), scanning electron microscopy (SEM), surface microhardness testing, and energy-dispersive X-ray (EDX) spectroscopy. Protein expression of MMP20, RUNX2, and AMBN was assessed via immunohistochemistry, while in situ zymography quantified MMP gelatinolytic activity. Gene expression was analyzed using RT-qPCR. Tnfrsf1a-/- mice exhibited no macroscopic opacities, though incisors displayed a distinct whitish coloration. While microCT and SEM revealed no significant differences in enamel volume, or prism ultrastructure, the enamel of Tnfrsf1a-/- mice showed significantly lower calcium and phosphorus content and reduced surface microhardness. Molecular analysis revealed that the Ambn gene was significantly upregulated during both the secretion and maturation stages in Tnfrsf1a-/- mice compared to wild-type controls. Ablation of Tnfrsf1a results in enamel color change in mice characterized by altered mineral composition, reduced mechanical hardness, and dysregulated Ambn expression. These findings suggest that TNF signaling acts as a critical modulator during amelogenesis and is essential for achieving the final mineral quality of dental enamel.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
       "pmid": "42945240",
       "doi": "10.1073/pnas.2622609123",
       "titulo": "Regulation of miR-219 and its target RalGPS is essential for synaptic plasticity at the Drosophila neuromuscular junction.",
@@ -1671,6 +1840,20 @@
       "ano": "2026",
       "autores": "Malak OA, Gray L, Aly A, Ball RW, Gustin-Murray J, Moujahidine M, Carrasco G, Rosko A, Isacoff EY, Haghighi AP",
       "resumo_original": "Presynaptic homeostatic plasticity (PHP) stabilizes neural circuits by adjusting synaptic strength when faced with disturbances in postsynaptic activity. Despite identification of many genes and mechanisms required for PHP, the underlying trigger mechanisms remain elusive. Loss of GluRIIA, one of five glutamate receptor subunits at the Drosophila neuromuscular junction (NMJ), reduces quantal size and synaptic calcium influx and triggers a sustained PHP. Two common features of genetic manipulations that lead to the activation of this form of PHP are a drop in synaptic calcium influx and a reduction in quantal size; however, it is not clear that either of these features is absolutely necessary for PHP. We have generated a glutamate receptor transgene with mutations in the pore, which can largely restore calcium influx in GluRIIA-/- mutant larvae without affecting quantal size. We find that restoration of calcium influx in GluRIIA-/- mutant larvae blocks PHP without any detectable changes in synaptic structure. Our findings, therefore, indicate that a reduction in synaptic calcium influx is necessary for triggering and/or maintenance of the sustained PHP at the NMJ, a model that may be extendable to the vertebrate NMJ and neuron-neuron synapses.",
+      "consultas": [
+        "neuro_eixo"
+      ],
+      "data_fonte": "2026-10-28",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42949131",
+      "doi": "10.3791/74087",
+      "titulo": "Using High-Performance Liquid Chromatography to Study Alterations in Biogenic Amines in Drosophila Models of Brain Disorders.",
+      "revista": "Journal of visualized experiments : JoVE",
+      "ano": "2026",
+      "autores": "Huston NJ, Berry AL, Sharma PN, Armendariz M, Campusano JM, Tabuloc CA, Zárate RV, Hidalgo S",
+      "resumo_original": "Many neuropsychiatric and neurodegenerative disorders are characterized by disruptions in brain neurotransmitters, including alterations in the levels of the biogenic amines (BAs) dopamine (DA) and serotonin (5-hydroxytryptamine; 5-HT), as well as in their release or reuptake. These neurochemical changes correlate with distinct key behavioral phenotypes, such as locomotor deficits, sleep fragmentation, and altered stress responses, among others. Because the principal BA systems interact, disease models frequently show coordinated shifts across multiple amines rather than isolated changes in a single neurotransmitter. Therefore, accurate, simultaneous quantification of several BAs is essential for interpreting behavioral and genetic findings. Drosophila melanogaster offers a genetically tractable system for modeling such disorders and neurotransmitter changes, but BAs occur in fly brain tissue at very low, nanomolar-to-femtomolar concentrations, and the small size of the Drosophila central nervous system makes their detection technically challenging. This study describes a protocol to detect and quantify DA, 5-HT, and octopamine in fly brains using high-performance liquid chromatography coupled with electrochemical detection (HPLC-ECD). HPLC-ECD was applied to detect changes in brain DA and 5-HT in a fly model of Parkinson's disease based on dopaminergic overexpression of human alpha-synuclein. Applying this protocol to the alpha-synuclein Parkinson's disease model reveals significantly elevated dopamine, but unchanged serotonin, relative to controls, consistent with early compensatory dopaminergic mechanisms. This approach provides a sensitive, low-cost, and readily accessible method for multiplexed BA quantification from limited Drosophila tissue. It also enables systematic screening of genetic modifiers and candidate therapeutics targeting monoaminergic pathways relevant to human brain disorders.",
       "consultas": [
         "neuro_eixo"
       ],
