@@ -48,6 +48,19 @@ def sincronizar(arquivo_custom=None, sem_push=False):
         else:
             print(f"   Aviso ao atualizar git: {err}")
 
+    # Atualizar também o Obsidian Vault (LUCHM_Brain) com a edição atual
+    try:
+        vault_sync_script = "/Users/fabiogomes/.gemini/antigravity/scratch/sync_bancada_to_vault.py"
+        if os.path.exists(vault_sync_script):
+            print("\nSincronizando edição no Obsidian Vault (LUCHM_Brain)...")
+            ok_v, out_v, err_v = run_cmd(f"python3 {vault_sync_script}")
+            if ok_v:
+                print(f"   ✅ Obsidian Vault atualizado: {out_v.splitlines()[-1] if out_v else 'OK'}")
+            else:
+                print(f"   Aviso no sync Obsidian: {err_v}")
+    except Exception as e:
+        print(f"   Aviso sync obsidian: {e}")
+
     caminho_interacoes = arquivo_custom or INTERACOES_FILE
     if not os.path.exists(caminho_interacoes):
         print(f"❌ Arquivo de interações não encontrado: {caminho_interacoes}")
@@ -238,6 +251,19 @@ def sincronizar(arquivo_custom=None, sem_push=False):
                 print(f"   Aviso no git push do second-brain: {err_p}")
         else:
             print("   (Sem novas alterações pendentes no git do second-brain)")
+
+    # 6. Sincronização com o Obsidian Vault (LUCHM_Brain)
+    try:
+        vault_sync_script = "/Users/fabiogomes/.gemini/antigravity/scratch/sync_bancada_to_vault.py"
+        if os.path.exists(vault_sync_script):
+            print("\n6. Sincronizando artigos no Obsidian Vault (LUCHM_Brain)...")
+            ok_v, out_v, err_v = run_cmd(f"python3 {vault_sync_script}")
+            if ok_v:
+                print(f"   ✅ Obsidian Vault atualizado: {out_v.splitlines()[-1] if out_v else 'OK'}")
+            else:
+                print(f"   Aviso no sync Obsidian: {err_v}")
+    except Exception as e:
+        print(f"   Aviso sync obsidian: {e}")
 
     print("\n" + "=" * 60)
     print("✅ SINCRONIZAÇÃO COMPLETA!")

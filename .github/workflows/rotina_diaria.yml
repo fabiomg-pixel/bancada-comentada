@@ -2,8 +2,8 @@ name: Rotina Diária da Bancada Comentada
 
 on:
   schedule:
-    # 20:00 UTC = 17:00 Horário de Brasília (Segunda a Sexta)
-    - cron: '0 20 * * 1-5'
+    # 20:00 UTC = 17:00 Horário de Brasília (Todos os dias, inclusive sábados e domingos)
+    - cron: '0 20 * * *'
   workflow_dispatch: # Permite disparar manualmente pelo botão "Run workflow" no GitHub
 
 permissions:

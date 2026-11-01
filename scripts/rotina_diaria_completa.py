@@ -14,20 +14,45 @@ import sys
 import json
 import re
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRIPTS_DIR = os.path.join(REPO_DIR, "scripts")
 DATA_DIR = os.path.join(REPO_DIR, "data")
-SECOND_BRAIN_DIR = "/Users/fabiogomes/second-brain"
-DRIVE_PODCAST_DIR = "/Users/fabiogomes/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast"
+
+def get_second_brain_dir():
+    candidates = [
+        os.environ.get("SECOND_BRAIN_DIR"),
+        os.path.expanduser("~/second-brain"),
+        os.path.expanduser("~/Documents/second-brain"),
+        "/Users/fabiomendoncagomes/second-brain",
+        "/Users/fabiogomes/second-brain",
+    ]
+    for c in candidates:
+        if c and os.path.exists(c):
+            return c
+    return None
+
+def get_podcast_dir():
+    candidates = [
+        os.environ.get("DRIVE_PODCAST_DIR"),
+        os.path.expanduser("~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast"),
+        os.path.expanduser("~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/My Drive/Laboratório/LUCHM/Claude Code/stork-podcast"),
+        "/Users/fabiomendoncagomes/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast",
+        "/Users/fabiogomes/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast",
+    ]
+    for c in candidates:
+        if c and os.path.exists(c):
+            return c
+    return None
 
 def run_cmd(cmd, cwd=None):
     res = subprocess.run(cmd, shell=True, cwd=cwd, capture_output=True, text=True)
     return res.returncode == 0, res.stdout.strip(), res.stderr.strip()
 
 def executar():
-    hoje = datetime.now().strftime("%Y-%m-%d")
+    fuso_br = timezone(timedelta(hours=-3))
+    hoje = datetime.now(fuso_br).strftime("%Y-%m-%d")
     print("=" * 70)
     print(f"🚀 INICIANDO ROTINA DIÁRIA DO LUCHM — {hoje}")
     print("=" * 70)
@@ -36,8 +61,9 @@ def executar():
     # PASSO 1: Sincronizar escolhas com o Second Brain (se local)
     # ---------------------------------------------------------
     sync_script = os.path.join(SCRIPTS_DIR, "sync_lab.py")
-    if os.path.exists(sync_script) and os.path.exists(SECOND_BRAIN_DIR):
-        print("\n[Passo 1/4] Sincronizando escolhas da Bancada com o Second Brain (Logseq)...")
+    second_brain_dir = get_second_brain_dir()
+    if os.path.exists(sync_script) and second_brain_dir:
+        print(f"\n[Passo 1/4] Sincronizando escolhas da Bancada com o Second Brain em {second_brain_dir}...")
         ok, out, err = run_cmd(f"python3 {sync_script}")
         if ok:
             print("   ✅ Second Brain sincronizado.")

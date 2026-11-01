@@ -8,7 +8,7 @@ import os
 import sys
 import json
 import re
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RAW_FILE = os.path.join(REPO_DIR, "data", "literature_capture_raw.json")
@@ -224,7 +224,8 @@ c_alta = sum(1 for d in reclassified.values() if d["importancia"] == "alta")
 c_media = sum(1 for d in reclassified.values() if d["importancia"] == "media")
 c_baixa = sum(1 for d in reclassified.values() if d["importancia"] == "baixa")
 
-hoje = datetime.now().strftime("%Y-%m-%d")
+fuso_br = timezone(timedelta(hours=-3))
+hoje = datetime.now(fuso_br).strftime("%Y-%m-%d")
 edicao_data = {
     "colecao_artigos": reclassified,
     "radar_edicao_dia": {
@@ -241,7 +242,7 @@ edicao_data = {
         "fonte": "PubMed + bioRxiv (Calibrada)"
     },
     "sistema_radar": {
-        "ultima_varredura": datetime.now().isoformat() + "Z",
+        "ultima_varredura": datetime.now(fuso_br).isoformat(),
         "consultas": ["vetores_amplo", "arboviroses", "malaria_vetor", "imunometabolismo", "polifosfato_ultraestrutura", "neuro_eixo", "pragas_lepidopteros"],
         "novos_hoje": len(reclassified),
         "fonte": "PubMed + bioRxiv (Calibrada)"
@@ -258,6 +259,12 @@ if os.path.exists(INDEX_HTML):
         html = f.read()
     
     colecao_artigos = list(reclassified.values())
+    destaques_pool = [d for d in colecao_artigos if d["importancia"] == "alta"]
+    if not destaques_pool:
+        destaques_pool = sorted([d for d in colecao_artigos if d["importancia"] == "media"], key=lambda x: x.get("score", 0), reverse=True)[:4]
+    
+    lede_txt = f"Destaques selecionados pelo perfil de vigilância do laboratório ({c_alta} essenciais)." if c_alta > 0 else f"Destaques selecionados pelo perfil de vigilância do laboratório ({len(destaques_pool)} em foco no radar de hoje)."
+
     embedded_obj = {
         "artigos": colecao_artigos,
         "pauta": {
@@ -265,10 +272,10 @@ if os.path.exists(INDEX_HTML):
                 "semana": "Semana Corrente",
                 "periodo": hoje,
                 "titulo": "Edição Atual — Literatura Curada LUCHM",
-                "lede": f"Destaques selecionados pelo perfil de vigilância do laboratório ({c_alta} essenciais).",
+                "lede": lede_txt,
                 "destaques": [
                     {"artigo": d["_id"], "chamada": d["titulo"]}
-                    for d in colecao_artigos if d["importancia"] == "alta"
+                    for d in destaques_pool
                 ][:4],
                 "vigiar": [
                     "Bloqueio de transmissão via Pfs25 em Anopheles.",
