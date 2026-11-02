@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Instalar Dependências do Pipeline e Áudio
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg
+          pip install edge-tts
+
       - name: Executar Varredura e Atualização da Edição
         run: |
           python3 scripts/rotina_diaria_completa.py
@@ -31,5 +36,5 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git add data/ index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto): edicao diaria da Bancada Comentada [skip ci]" && git push)
+          git add data/ index.html audio/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto): edicao diaria e audio da Bancada Comentada [skip ci]" && git push)
