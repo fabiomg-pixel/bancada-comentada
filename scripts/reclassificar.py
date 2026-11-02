@@ -25,6 +25,9 @@ with open(RAW_FILE, "r", encoding="utf-8") as f:
     raw_data = json.load(f)
 
 articles = raw_data.get("articles", [])
+if len(articles) < 5:
+    print(f"⚠️ AVISO: Apenas {len(articles)} artigos brutos encontrados em {RAW_FILE}. Abortando reclassificação para preservar acervo anterior.")
+    sys.exit(0)
 
 radar_cultural_data = {}
 if os.path.exists(CULTURAL_FILE):
@@ -260,6 +263,7 @@ if os.path.exists(INDEX_HTML):
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
         html = f.read()
 
+    inicio_semana = (datetime.now(fuso_br) - timedelta(days=6)).strftime("%Y-%m-%d")
     lede_txt = f"Destaques selecionados pelo perfil de vigilância v6 do laboratório ({alta_count} essenciais em pauta)." if alta_count > 0 else f"Destaques selecionados pelo perfil de vigilância v6 ({len(destaques_pool)} trabalhos em foco de relevância direta)."
 
     embedded_obj = {
@@ -268,13 +272,23 @@ if os.path.exists(INDEX_HTML):
         "pauta": {
             "atual": {
                 "semana": "Semana Corrente",
+                "inicio": inicio_semana,
+                "fim": hoje,
                 "periodo": hoje,
                 "titulo": "Edição Atual — Literatura Curada LUCHM (v6)",
                 "lede": lede_txt,
+                "panorama": [
+                    "A varredura calibrada desta semana traz avanços de alto impacto na interface entre neurobiologia e barreiras biológicas, com destaque para a regulação glial de junções oclusivas na barreira hematoencefálica e sinalização neuropeptídica sistêmica via corpo gorduroso.",
+                    "Na biologia do vetor, novos protocolos de dissecção de Aedes e extração de RNA (JoVE), aliados à ultraestrutura por Microscopia Eletrônica de Volume e vias de imunidade antiviral (RNAi), fornecem parâmetros metodológicos diretos para os POPs em andamento no LUCHM."
+                ],
                 "destaques": [
-                    {"artigo": d["_id"], "chamada": d["titulo"]}
+                    {
+                        "artigo": d["_id"],
+                        "chamada": d["titulo"],
+                        "nota": f"Programa: {d.get('programa', '')} · Prioridade: {d.get('prioridade', '').upper()}"
+                    }
                     for d in destaques_pool
-                ][:4],
+                ],
                 "vigiar": [
                     "Barreira hematoencefálica e crosstalk glia-endotélio.",
                     "Eixo neuropeptídico CCHa2 / insulina e reprogramação metabólica no vetor.",

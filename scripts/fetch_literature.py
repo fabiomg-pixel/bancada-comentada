@@ -197,12 +197,14 @@ for a in articles:
 final_list = list(dedup.values())
 print(f"✅ Varredura v6 concluída: {len(final_list)} artigos após deduplicação e filtro estrito de ruído.")
 
-os.makedirs(os.path.dirname(OUT_RAW), exist_ok=True)
-with open(OUT_RAW, "w", encoding="utf-8") as f:
-    json.dump({
-        "data": TODAY,
-        "total": len(final_list),
-        "articles": final_list
-    }, f, ensure_ascii=False, indent=2)
-
-print(f"Salvo em: {OUT_RAW}")
+if len(final_list) < 5:
+    print(f"⚠️ AVISO: Apenas {len(final_list)} artigos capturados. Possível oscilação na rede ou API PubMed. Mantendo acervo raw anterior.")
+else:
+    os.makedirs(os.path.dirname(OUT_RAW), exist_ok=True)
+    with open(OUT_RAW, "w", encoding="utf-8") as f:
+        json.dump({
+            "data": TODAY,
+            "total": len(final_list),
+            "articles": final_list
+        }, f, ensure_ascii=False, indent=2)
+    print(f"Salvo em: {OUT_RAW}")
