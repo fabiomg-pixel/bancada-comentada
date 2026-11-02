@@ -1,0 +1,113 @@
+#!/usr/bin/env python3
+"""
+gerar_radar_cultural.py — Gera a edição mensal do Radar Cultural LUCHM
+Estrutura:
+1. Grande Ensaio / Revisão de Fundo (com diálogo com publicações internacionais e do grupo)
+2. Dois Grandes Pesquisadores de Referência
+3. Dois Grandes Temas em Expansão (fronteiras)
+4. Duas Técnicas Emergentes
+"""
+
+import json
+import os
+from datetime import datetime
+
+REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(REPO_DIR, "data")
+OUT_FILE = os.path.join(DATA_DIR, "radar_cultural.json")
+
+dossie_cultural = {
+    "edicao": "Novembro 2026",
+    "titulo": "Radar Cultural — Edição Mensal de Grandes Ensaios & Fronteiras",
+    "subtitulo": "Panorama Crítico, Pesquisadores de Referência, Temas em Expansão e Técnicas Emergentes",
+    "data_publicacao": "2026-11-02",
+    "ensaio": {
+        "titulo": "A Fisiologia Oculta da Transmissão: Reprogramação Metabólica, Imune Priming e a Barreira Intestinal do Vetor",
+        "subtitulo": "Como o cruzamento entre imunometabolismo, microbiota e epigenética está redefinindo o conceito de competência vetorial — e onde a bancada do LUCHM se posiciona.",
+        "autor_ensaio": "Curadoria Editorial LUCHM / Prof. Fábio Gomes",
+        "tempo_leitura": "12 min de leitura",
+        "artigo_base": {
+            "titulo": "The EF1A2-PABP-E75 axis coordinates metabolic reprogramming and 20E-dependent reproduction in mosquitoes",
+            "autores": "Insect Biochemistry and Molecular Biology (2026)",
+            "doi": "10.1016/j.ibmb.2026.104250",
+            "resumo_analitico": "O artigo demonstra que o repasto sanguíneo deflagra uma cascata de reprogramação transcricional e energética via ecdisona (20E) e o complexo EF1A2-PABP-E75, desviando pools de aminoácidos e lipídios para a ovogênese enquanto reconfigura transitoriamente a homeostase oxidativa e a tolerância imunológica no epitélio intestinal."
+        },
+        "analise_ampla": """Por quase um século, a interação entre mosquitos vetores e patógenos como Plasmodium e arbovírus foi interpretada sob uma ótica estritamente imunocida: o mosquito reconheceria o invasor por receptores de padrões moleculares (PAMPs), ativaria as vias clássicas (Toll, Imd, JAK-STAT) e liberaria efetores líticos como defensinas e cecropinas. Essa visão simplista, contudo, ignorava o custo energético astronômico que o repasto sanguíneo e a digestão de hemo impõem ao vetor.
+
+As publicações mais recentes da literatura internacional convergiram para um novo paradigma: a **competência vetorial não é apenas um estado imunológico, mas um desfecho metabólico**. A digestão do sangue força o intestino médio e o corpo gorduroso a operarem sob estresse oxidativo severo e excesso de lipídios, ativando vias de tolerância ao dano. É exatamente nessa janela fisiológica de reprogramação metabólica que os oocinetos de Plasmodium ou as partículas de DENV/ZIKV navegam entre os enterócitos.
+
+### Diálogo com as Publicações e Histórico do LUCHM
+O laboratório do Prof. Fábio Gomes (LUCHM/IBCCF/UFRJ) vem apontando para essa conexão multifatorial há mais de duas décadas:
+1. **Polifosfatos e Bioenergética Celular:** Os trabalhos pioneiros do grupo sobre polifosfato inorgânico (polyP) e acidocalcisomas em protozoários e células de insetos demonstraram que reservas condensadas de fósforo e cátions são fundamentais não apenas como depósito estático, mas como 'baterias' dinâmicas de energia e moduladores de osmolaridade durante choques ambientais e de infecção.
+2. **O Modelo Murino HFHS e a Dieta do Hospedeiro:** A investigação no LUCHM do repasto sanguíneo derivado de camundongos sob dieta hiperlipídica (HFHS) em modelos de malária experimental (PbA) revelou que a composição do sangue ingerido remodela os níveis de lipídios bioativos e a microbiota do mosquito, alterando a permeabilidade intestinal antes mesmo que o parasito atravesse a lâmina basal.
+3. **Imune Priming e Epigenética:** A linha recente do grupo explorando marcas de histonas e memórias imunes (ontogenéticas e transgeracionais) em *Aedes* e *Anticarsia* reforça que o estado metabólico do inseto na fase larval ou em ciclos gonadotróficos prévios determina a sua reatividade contra desafios posteriores.
+
+### Horizontes e Aplicações na Bancada
+Essa mudança de perspectiva traz desdobramentos imediatos para os POPs do laboratório:
+- **Calibração de Lotes:** A idade dos lotes de mosquitos e a dieta sacarina oferecida no insetário antes do repasto infectivo não são meras variáveis de manutenção, mas determinantes epigenéticos de reprodutibilidade experimental.
+- **Leitura Contínua de Carga:** A substituição de dados binários de infecção (presença/ausência) por gradientes metabólicos e de carga viral (Ct contínuo de RT-qPCR) permite correlacionar o estresse fisiológico individual com a capacidade transmissora real na saliva."""
+    },
+    "grandes_pesquisadores": [
+        {
+            "nome": "Prof. George Dimopoulos, PhD",
+            "instituicao": "W. Harry Feinstone Dept of Molecular Microbiology and Immunology, Bloomberg School of Public Health, Johns Hopkins University",
+            "foto_icone": "🔬",
+            "linhas_centrais": [
+                "Imunidade inata comparada de Anopheles gambiae e Aedes aegypti",
+                "Modulação da competência vetorial pela microbiota intestinal e paratransgênese",
+                "Bactérias geneticamente modificadas (Serratia e Chromobacterium) que bloqueiam o desenvolvimento de Plasmodium e Dengue"
+            ],
+            "contribuicao_recente": "Seu grupo estabeleceu o papel central da via Imd na supressão de Plasmodium falciparum e demonstrou como cepas simbióticas modificadas do microbioma intestinal colonizam o lúmen e secretam efetores que inativam oocinetos sem reduzir o fitness biológico do mosquito.",
+            "conexao_luchm": "Referência direta para os ensaios de competência vetorial do LUCHM com colônias de Anopheles e Aedes, inspirando as abordagens de isolamento e manipulação de simbiontes do trato digestório."
+        },
+        {
+            "nome": "Prof. Roberto Docampo, MD, PhD",
+            "instituicao": "Center for Tropical and Emerging Global Diseases (CTEGD), Department of Cellular Biology, University of Georgia (UGA)",
+            "foto_icone": "🧬",
+            "linhas_centrais": [
+                "Biologia e ultraestrutura de acidocalcisomas em tripanosomatídeos e apicomplexas",
+                "Metabolismo e enzimologia do polifosfato inorgânico (PPK, exopolifosfatses e complexo VTC)",
+                "Homeostase de cálcio intracelular e bombas vacuolares de prótons (V-H+-PPase e V-H+-ATPase)"
+            ],
+            "contribuicao_recente": "Identificação e caracterização funcional do complexo VTC4 e das fosfatases específicas de acidocalcisomas em protozoários, revelando que o turnover de polifosfato é essencial para a osmorregulação, adaptação ao estresse oxidativo e virulência na invasão tecidual.",
+            "conexao_luchm": "Fundamento histórico e teórico das linhas de microscopia eletrônica, citoquímica e bioenergética de polifosfatos desenvolvidas pelo Prof. Fábio Gomes, tanto em parasitos quanto em tecidos de invertebrados e matrizes calcificadas."
+        }
+    ],
+    "temas_expansao": [
+        {
+            "tema": "Priming Imune Transgeracional & Epigenética da Cromatina em Insetos",
+            "icone": "🌱",
+            "por_que_importa": "Demonstra que invertebrados possuem mecanismos de memória imune adaptativa-símile mediados por remodelamento de cromatina (metilação de H3K27, acetilação de H4 e RNAs longos não-codificantes), capazes de persistir por gerações.",
+            "fronteira": "Mapear como a exposição prévia da larva a bactérias ou bioinseticidas (como Bacillus thuringiensis em Anticarsia) altera permanentemente a cromatina no intestino adulto, conferindo tolerância cruzada ou hiper-reatividade.",
+            "gancho_luchm": "Alimenta diretamente o projeto do mini-review da Frontiers in Immunology e a tese de doutorado sobre priming em mosquitos e lepidópteros."
+        },
+        {
+            "tema": "O Eixo Imunometabólico Sangue–Intestino–Cérebro em Vetores",
+            "icone": "🧠",
+            "por_que_importa": "O repasto sanguíneo não apenas alimenta a ovogênese, mas dispara peptídeos enteroendócrinos e sinais neurais (como tachykininas e CCHa2) que comunicam o intestino ao cérebro do mosquito, alterando a locomoção, atração pelo hospedeiro e ciclo vigília-sono.",
+            "fronteira": "Investigar se a infecção por arbovírus (ZIKV, DENV) sequestra esses circuitos neuropeptídicos centrais para hiperativar o comportamento de picada e acelerar a disseminação viral na comunidade.",
+            "gancho_luchm": "Conecta as frentes de neurobiologia de insetos, olfação/fonotaxia e biologia celular do vetor em uma única pergunta mecanística integrada."
+        }
+    ],
+    "tecnicas_emergentes": [
+        {
+            "tecnica": "Microscopia Eletrônica de Volume Correlativa (Cryo-FIB-SEM e SBF-SEM)",
+            "icone": "🔬",
+            "o_que_resolve": "Permite reconstruir em 3D blocos teciduais inteiros (micrômetros cúbicos a milímetros cúbicos) com resolução nanométrica contínua, eliminando a perda de seções e o artefato de reconstrução 2D convencional.",
+            "aplicacao_bancada": "Permite visualizar esporozoítos de Plasmodium interagindo simultaneamente com dezenas de células acinares da glândula salivar de Anopheles, mapeando pontos de fusão de membrana e vesículas secretoras em escala nativa.",
+            "status_no_luchm": "Linha em franca consolidação via cooperação com o CENABIO e plataformas de ultraestrutura multiusuário da UFRJ."
+        },
+        {
+            "tecnica": "Espectrometria de Massa com Imagem Espacial (MALDI-MSI / Desi-MSI)",
+            "icone": "📊",
+            "o_que_resolve": "Mapeia a distribuição bidimensional direta de metabólitos, lipídios bioativos e polifosfatos diretamente sobre fatias criostáticas de tecidos de insetos, sem necessitar de homogeneização ou anticorpos.",
+            "aplicacao_bancada": "Permite visualizar com precisão microscópica onde os lipídios do repasto sanguíneo e os intermediários de polyP se concentram no intestino médio antes e depois da invasão pelo oocineto.",
+            "status_no_luchm": "Oportunidade de expansão analítica em colaboração com os laboratórios de metabolômica e proteômica estrutural."
+        }
+    ]
+}
+
+with open(OUT_FILE, "w", encoding="utf-8") as f:
+    json.dump(dossie_cultural, f, ensure_ascii=False, indent=2)
+
+print(f"✅ Arquivo {OUT_FILE} gerado com sucesso!")

@@ -73,23 +73,35 @@ def executar():
         print("\n[Passo 1/4] Ambiente em nuvem (ou sem second-brain local): pulando etapa de disco.")
 
     # ---------------------------------------------------------
-    # PASSO 2: Varredura de Literatura (PubMed + bioRxiv)
+    # PASSO 2: Varredura de Literatura Calibrada v6 (PubMed + bioRxiv)
     # ---------------------------------------------------------
-    print("\n[Passo 2/4] Executando varredura da literatura (PubMed + bioRxiv)...")
+    print("\n[Passo 2/5] Executando varredura da literatura calibrada v6...")
     fetch_script = os.path.join(SCRIPTS_DIR, "fetch_literature.py")
     if os.path.exists(fetch_script):
         ok, out, err = run_cmd(f"python3 {fetch_script}", cwd=REPO_DIR)
         if ok:
-            print(f"   ✅ Captura concluída.")
+            print(f"   ✅ Captura v6 concluída.")
         else:
             print(f"   ⚠️ Aviso na captura: {err}")
     else:
         print(f"   ❌ Script não encontrado: {fetch_script}")
 
     # ---------------------------------------------------------
-    # PASSO 3: Triagem Calibrada (26 temas do Notion + corte de ruído)
+    # PASSO 3: Radar Cultural (Ensaio & Grandes Temas)
     # ---------------------------------------------------------
-    print("\n[Passo 3/4] Aplicando triagem calibrada com pesos de vigilância do LUCHM...")
+    print("\n[Passo 3/5] Atualizando dossiê do Radar Cultural...")
+    cultural_script = os.path.join(SCRIPTS_DIR, "gerar_radar_cultural.py")
+    if os.path.exists(cultural_script):
+        ok, out, err = run_cmd(f"python3 {cultural_script}", cwd=REPO_DIR)
+        if ok:
+            print("   ✅ Radar Cultural sincronizado.")
+        else:
+            print(f"   ⚠️ Aviso no Radar Cultural: {err}")
+
+    # ---------------------------------------------------------
+    # PASSO 4: Triagem Calibrada (26 temas do Notion + corte de ruído)
+    # ---------------------------------------------------------
+    print("\n[Passo 4/5] Aplicando triagem calibrada com ancoragem em programas LUCHM...")
     reclass_script = os.path.join(SCRIPTS_DIR, "reclassificar.py")
     if os.path.exists(reclass_script):
         ok, out, err = run_cmd(f"python3 {reclass_script}", cwd=REPO_DIR)
@@ -101,17 +113,18 @@ def executar():
         print(f"   ❌ Script não encontrado: {reclass_script}")
 
     # ---------------------------------------------------------
-    # PASSO 4: Gerar Roteiro do Podcast (se Google Drive local)
+    # PASSO 5: Gerar Roteiro do Podcast (se Google Drive local)
     # ---------------------------------------------------------
-    print("\n[Passo 4/4] Gerando entregáveis adicionais...")
+    print("\n[Passo 5/5] Gerando entregáveis adicionais...")
     edicao_file = os.path.join(DATA_DIR, "edicao_atual.json")
-    if os.path.exists(edicao_file) and os.path.exists(DRIVE_PODCAST_DIR):
+    podcast_dir = get_podcast_dir()
+    if os.path.exists(edicao_file) and podcast_dir:
         with open(edicao_file, "r", encoding="utf-8") as f:
             dados = json.load(f)
         artigos = list(dados.get("colecao_artigos", {}).values())
         altas = [a for a in artigos if a.get("importancia") == "alta"]
         if altas:
-            roteiro_path = os.path.join(DRIVE_PODCAST_DIR, f"roteiro-{hoje}.txt")
+            roteiro_path = os.path.join(podcast_dir, f"roteiro-{hoje}.txt")
             linhas_roteiro = [
                 f"# Stork Cast — {hoje}",
                 "A = Luciana | B = Reed\n",
