@@ -113,18 +113,20 @@ def executar():
         print(f"   ❌ Script não encontrado: {reclass_script}")
 
     # ---------------------------------------------------------
-    # PASSO 5: Gerar Áudio Briefing / Podcast Diário (Edge-TTS)
+    # PASSO 5: Gerar Podcast Científico Profundo de Bancada (25-30 min)
     # ---------------------------------------------------------
-    print("\n[Passo 5/5] Gerando síntese em áudio (Briefing Diário / Podcast)...")
-    audio_script = os.path.join(SCRIPTS_DIR, "gerar_audio_briefing.py")
-    if os.path.exists(audio_script):
-        ok, out, err = run_cmd(f"python3 {audio_script}", cwd=REPO_DIR)
+    print("\n[Passo 5/5] Gerando podcast científico profundo de bancada (25-30 min)...")
+    podcast_script = os.path.join(SCRIPTS_DIR, "gerar_podcast_28min.py")
+    if not os.path.exists(podcast_script):
+        podcast_script = os.path.join(SCRIPTS_DIR, "gerar_audio_briefing.py")
+    if os.path.exists(podcast_script):
+        ok, out, err = run_cmd(f"python3 {podcast_script}", cwd=REPO_DIR)
         if ok:
-            print("   ✅ Áudio briefing sintetizado com sucesso.")
+            print("   ✅ Podcast de bancada (25-30 min) sintetizado com sucesso.")
         else:
-            print(f"   ⚠️ Aviso na geração de áudio: {err}")
+            print(f"   ⚠️ Aviso na geração do podcast: {err}")
     else:
-        print(f"   ❌ Script não encontrado: {audio_script}")
+        print(f"   ❌ Script não encontrado: {podcast_script}")
 
     print("\n" + "=" * 70)
     print(f"🏁 ROTINA EXECUTADA COM SUCESSO!")
