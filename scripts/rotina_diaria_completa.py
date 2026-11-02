@@ -113,37 +113,18 @@ def executar():
         print(f"   ❌ Script não encontrado: {reclass_script}")
 
     # ---------------------------------------------------------
-    # PASSO 5: Gerar Roteiro do Podcast (se Google Drive local)
+    # PASSO 5: Gerar Áudio Briefing / Podcast Diário (Edge-TTS)
     # ---------------------------------------------------------
-    print("\n[Passo 5/5] Gerando entregáveis adicionais...")
-    edicao_file = os.path.join(DATA_DIR, "edicao_atual.json")
-    podcast_dir = get_podcast_dir()
-    if os.path.exists(edicao_file) and podcast_dir:
-        with open(edicao_file, "r", encoding="utf-8") as f:
-            dados = json.load(f)
-        artigos = list(dados.get("colecao_artigos", {}).values())
-        altas = [a for a in artigos if a.get("importancia") == "alta"]
-        if altas:
-            roteiro_path = os.path.join(podcast_dir, f"roteiro-{hoje}.txt")
-            linhas_roteiro = [
-                f"# Stork Cast — {hoje}",
-                "A = Luciana | B = Reed\n",
-                f"A: Olá Fábio, bom fim de tarde. Aqui estão os {len(altas)} destaques essenciais da bancada de hoje.",
-            ]
-            for i, a in enumerate(altas[:5]):
-                tit = a.get("titulo")
-                rev = a.get("revista")
-                imp = a.get("implicacao")
-                met = a.get("metodo")
-                linhas_roteiro.append(f"B: Destaque {i+1}: {tit}, publicado na {rev}.")
-                linhas_roteiro.append(f"A: Na nossa bancada, o ponto central é: {imp}")
-                if met:
-                    linhas_roteiro.append(f"B: E no método: {met}")
-            linhas_roteiro.append("A: Esse foi o resumo de hoje. Boa volta para casa e até amanhã no laboratório!")
-            
-            with open(roteiro_path, "w", encoding="utf-8") as rf:
-                rf.write("\n\n".join(linhas_roteiro))
-            print(f"   ✅ Roteiro Stork Cast gerado em: {roteiro_path}")
+    print("\n[Passo 5/5] Gerando síntese em áudio (Briefing Diário / Podcast)...")
+    audio_script = os.path.join(SCRIPTS_DIR, "gerar_audio_briefing.py")
+    if os.path.exists(audio_script):
+        ok, out, err = run_cmd(f"python3 {audio_script}", cwd=REPO_DIR)
+        if ok:
+            print("   ✅ Áudio briefing sintetizado com sucesso.")
+        else:
+            print(f"   ⚠️ Aviso na geração de áudio: {err}")
+    else:
+        print(f"   ❌ Script não encontrado: {audio_script}")
 
     print("\n" + "=" * 70)
     print(f"🏁 ROTINA EXECUTADA COM SUCESSO!")

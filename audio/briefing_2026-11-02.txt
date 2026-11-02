@@ -1,0 +1,33 @@
+# LUCHM Daily Audio Briefing — 02 de Novembro de 2026
+# Voz A: Antonio | Voz B: Francisca
+
+[A] Olá, professor Fábio e equipe do LUCHM! Aqui é o seu briefing científico em áudio de 02 de Novembro de 2026. Na varredura calibrada de hoje, capturamos setenta e cinco publicações no PubMed e bioRxiv. Selecionamos os cinco trabalhos de maior impacto direto para a nossa bancada.
+
+[B] Começamos pela área de Malária Cerebral e Neuroinflamação. O primeiro destaque vem da revista Glia, sobre a arquitetura juncional na barreira hematoencefálica.
+
+[A] O artigo demonstra que a integridade da barreira depende de uma conversa cruzada entre subtipos gliais para estabilizar as junções septadas e oclusivas. Isso se conecta diretamente com a nossa pergunta sobre o colapso endotelial no modelo de camundongos C57BL/6 infectados por Plasmodium berghei ANKA.
+
+[B] Exatamente, Antônio. No método, os autores usaram microscopia confocal de alta resolução combinada com ensaios de permeabilidade com dextrano fluorescente, comprovando que a quebra de sinalização glial precede a perda mecânica das junções celulares.
+
+[A] No segundo destaque, entramos no eixo intestino-cérebro e neuropeptídeos, com um estudo publicado na revista Genes, Brain and Behavior.
+
+[B] Eles identificaram que o neuropeptídeo CCHa2, secretado pelas reservas lipídicas do corpo gorduroso, sinaliza diretamente para células produtoras de insulina no cérebro para regular o sono e a ingestão alimentar.
+
+[A] Para o LUCHM, esse achado é ouro: ajuda a explicar como o estado metabólico do mosquito após o repasto sanguíneo modula o apetite, o repouso e a busca por novos hospedeiros.
+
+[B] E falando em repasto sanguíneo, o terceiro trabalho foi publicado na Insect Biochemistry and Molecular Biology, focando na reprogramação metabólica em Aedes aegypti.
+
+[A] Eles desvendaram o complexo EF1A2, PABP e E75 coordenando o desvio de estoques de aminoácidos e lipídios para a ovogênese, ativado pela ecdisona. Esse mecanismo dialoga diretamente com os nossos ensaios de dieta hiperlipídica HFHS, onde avaliamos a sobrecarga de lipídios e a sobrevida do vetor.
+
+[B] No quarto destaque, temos a imunidade antiviral na PLoS Pathogens, com a dissecação funcional das vias de RNA de interferência e complexo RISC em insetos.
+
+[A] O estudo mapeia a conservação evolutiva dos componentes Dicer-2 e Argonaute-2, servindo de parâmetro de calibração para os nossos protocolos de silenciamento gênico e vigilância antiviral.
+
+[B] E para fechar com chave de ouro, na Microscopia Eletrônica de Volume, o JoVE publicou um protocolo refinado de contrastação em bloco com metais pesados.
+
+[A] Um protocolo prático de ósmio, acetato de uranila e chumbo para Serial Block-Face e FIB-SEM, que resolve artefatos de penetração e entra imediatamente como referência para os nossos procedimentos operacionais padrão no microscópio.
+
+[B] Lembrando que a revista Horizonte Lateral já está no ar com o grande ensaio sobre bioeletricidade, separação de fases e os novos dossiês interativos de fronteira.
+
+[A] Excelente leitura, bom trabalho na bancada e até amanhã com o próximo briefing do LUCHM!
+
