@@ -1,0 +1,1 @@
+gerar_radar_cultural.py
