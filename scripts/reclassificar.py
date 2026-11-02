@@ -40,6 +40,48 @@ hoje = datetime.now(fuso_br).strftime("%Y-%m-%d")
 # Revistas de alto impacto para ponderação
 HIGH_IMPACT = ["nature", "science", "cell", "pnas", "embo", "elife", "immunity", "plos biol", "nucleic acids res", "mol cell", "plos pathog", "trends"]
 
+OPEN_ACCESS_PATTERNS = [
+    r"malaria journal", r"frontiers", r"plos", r"nature communications",
+    r"cell reports", r"medcomm", r"mbio", r"cureus", r"scientific reports",
+    r"bmc", r"elife", r"communications biology", r"biorxiv", r"medrxiv",
+    r"open access", r"jove", r"acta tropica", r"parasites & vectors"
+]
+
+def extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, rev, doi, pmid, pmc, is_oa):
+    frases = [f.strip() for f in re.split(r'\.\s+', abs_txt) if len(f.strip()) > 20]
+    if frases:
+        racional = frases[0] + "."
+        if len(frases) > 1 and not any(k in frases[1].lower() for k in ["we found", "results", "methods", "here we report"]):
+            racional += " " + frases[1] + "."
+    else:
+        racional = f"Investigação voltada a elucidar os mecanismos fundamentais de {tit.lower()}, avaliando suas repercussões na fisiologia do modelo biológico."
+
+    if metodo and not metodo.startswith("Metodologia experimental descrita"):
+        metodologia = metodo
+    else:
+        met_frases = [f for f in frases if any(k in f.lower() for k in ["using", "assay", "model", "microscop", "pcr", "rna-seq", "mice", "mosquito", "cell line", "western blot", "spectrometr"])]
+        metodologia = (met_frases[0] + ".") if met_frases else "Ensaios moleculares, celulares e funcionais detalhados no artigo original."
+
+    res_frases = [f for f in frases if any(k in f.lower() for k in ["found", "showed", "demonstrated", "revealed", "observed", "increased", "decreased", "inhibited", "promoted", "identified"])]
+    if res_frases:
+        resultados = ". ".join(res_frases[:3]) + "."
+    elif len(frases) >= 3:
+        resultados = ". ".join(frases[len(frases)//2 : len(frases)//2 + 2]) + "."
+    else:
+        resultados = "Os autores reportam alterações fenotípicas e mecanismos bioquímicos quantitativos associados à regulação do fenótipo experimental."
+
+    implicacoes = implicacao if implicacao else f"Relevante para a vigilância de bancada do programa '{programa}' do LUCHM."
+    faisca_txt = faisca if faisca else "💡 Avaliar se o mecanismo relatado interage com os alvos de imunometabolismo, ultraestrutura ou sinalização celular investigados no laboratório."
+
+    return {
+        "racional": racional,
+        "metodologia": metodologia,
+        "resultados": resultados,
+        "implicacoes": implicacoes,
+        "ancoragem_luchm": f"Articulado diretamente ao programa '{programa}' do LUCHM.",
+        "faisca_lateral": faisca_txt
+    }
+
 reclassified = {}
 alta_count = 0
 media_count = 0
@@ -197,6 +239,21 @@ for a in articles:
     else:
         baixa_count += 1
 
+    pmc_val = a.get("pmc", "")
+    is_preprint = a.get("fonte_captura") == "preprint" or "biorxiv" in journal.lower() or "medrxiv" in journal.lower()
+    is_oa = bool(pmc_val) or is_preprint or any(re.search(p, journal.lower()) for p in OPEN_ACCESS_PATTERNS)
+
+    if doi:
+        link_orig = f"https://doi.org/{doi}"
+    elif pmc_val:
+        link_orig = f"https://www.ncbi.nlm.nih.gov/pmc/articles/{pmc_val}/"
+    elif is_preprint:
+        link_orig = f"https://doi.org/{doi}" if doi else f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+    else:
+        link_orig = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
+
+    blocos_resumo = extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, journal, doi, pmid, pmc_val, is_oa)
+
     reclassified[pmid] = {
         "_id": pmid,
         "titulo": tit,
@@ -205,8 +262,11 @@ for a in articles:
         "ano": ano,
         "doi": doi,
         "pmid": pmid,
-        "pmc": a.get("pmc", ""),
-        "tipo": "preprint" if a.get("fonte_captura") == "preprint" else "artigo",
+        "pmc": pmc_val,
+        "tipo": "preprint" if is_preprint else "artigo",
+        "acesso_aberto": is_oa,
+        "link_original": link_orig,
+        "resumo_blocos": blocos_resumo,
         "resumo": abs_txt.strip(),
         "metodo": metodo,
         "minutos": 30 if importancia == "alta" else 15,
