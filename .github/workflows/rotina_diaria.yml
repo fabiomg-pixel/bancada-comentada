@@ -29,6 +29,8 @@ jobs:
           pip install edge-tts
 
       - name: Executar Varredura e Atualização da Edição
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python3 scripts/rotina_diaria_completa.py
 

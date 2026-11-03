@@ -99,18 +99,29 @@ def executar():
             print(f"   ⚠️ Aviso no Radar Cultural: {err}")
 
     # ---------------------------------------------------------
-    # PASSO 4: Triagem Calibrada (26 temas do Notion + corte de ruído)
+    # PASSO 4: Triagem Calibrada e Enriquecimento Profundo (Gemini 3.8 Flash)
     # ---------------------------------------------------------
-    print("\n[Passo 4/5] Aplicando triagem calibrada com ancoragem em programas LUCHM...")
+    print("\n[Passo 4/5] Aplicando triagem calibrada e enriquecimento profundo com Gemini 3.8 Flash...")
     reclass_script = os.path.join(SCRIPTS_DIR, "reclassificar.py")
     if os.path.exists(reclass_script):
         ok, out, err = run_cmd(f"python3 {reclass_script}", cwd=REPO_DIR)
         if ok:
-            print("   ✅ Edição atualizada com sucesso.")
+            print("   ✅ Classificação básica concluída.")
         else:
             print(f"   ⚠️ Erro na classificação: {err}")
     else:
         print(f"   ❌ Script não encontrado: {reclass_script}")
+
+    flash_script = os.path.join(SCRIPTS_DIR, "enriquecer_tudo_flash38.py")
+    if os.path.exists(flash_script):
+        print("   🧠 Executando síntese profunda dos 5 blocos com Gemini 3.8 Flash...")
+        ok, out, err = run_cmd(f"python3 {flash_script}", cwd=REPO_DIR)
+        if ok:
+            print("   ✅ Artigos enriquecidos densamente com Gemini 3.8 Flash e embutidos no index.html.")
+        else:
+            print(f"   ⚠️ Erro no enriquecimento Flash 3.8: {err}")
+    else:
+        print(f"   ❌ Script não encontrado: {flash_script}")
 
     # ---------------------------------------------------------
     # PASSO 5: Gerar Podcast Científico Profundo de Bancada (25-30 min)
