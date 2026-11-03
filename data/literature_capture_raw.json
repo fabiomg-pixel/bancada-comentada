@@ -1,7 +1,36 @@
 {
   "data": "2026-11-02",
-  "total": 75,
+  "total": 78,
   "articles": [
+    {
+      "pmid": "42970566",
+      "doi": "10.1371/journal.pntd.0014845",
+      "titulo": "The mosquito-stage transcriptome of the neglected malaria parasite Plasmodium malariae reveals species-specific gene expression signatures and functional adaptations.",
+      "revista": "PLoS neglected tropical diseases",
+      "ano": "2026",
+      "autores": "Ruiz JL, Díaz-Terenti B, Lefèvre T, Yerbanga Yerbanga SR, Otto TD, Gómez-Díaz E",
+      "resumo_original": "To survive and multiply in different host niches, malaria parasites require sets of proteins that are expressed during the life cycle in a timely manner. Plasmodium malariae is a human malaria parasite that is present in most malaria-endemic regions. This species remains enigmatic due to the inability to maintain it in long-term culture, the low parasitemia observed in human infections, and its frequent co-infection with other malaria species.\nWe investigate the transcriptome of P. malariae during transmission in the vector by analyzing RNA-seq data from midgut and salivary gland parasite stages obtained in two experimental mosquito infections with field P. malariae isolates. Our analysis identified 3,699 expressed genes, of which 263 are developmentally regulated and 309 are P. malariae-specific, including genes with unknown functions and without orthologs in other Plasmodium spp. We detected unique expression patterns of the ApiAP2 family of transcription factors, many of which appear to function as master regulators during sporogony. Several members of multigene families, such as PIR, PHIST, and fam-l, were found to be expressed, and new families potentially showing transcriptional heterogeneity were described.\nOur findings indicate that the P. malariae transcriptome is largely conserved; however, a distinct set of expressed genes lacking detectable orthologs may contribute to differences in transmission and virulence. Given the scarcity of genomic and transcriptomic data for this pathogen and considering the global distribution of P. malariae and its potential role in sustaining malaria transmission, this study has direct implications for malaria control and elimination efforts.",
+      "consultas": [
+        "malaria_vetor",
+        "vetores_mecanismo"
+      ],
+      "data_fonte": "2026-11-02",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42970547",
+      "doi": "10.1371/journal.pgph.0007553",
+      "titulo": "Comparing watershed-based spatial units and administrative boundaries for malaria prediction in the Peruvian Amazon.",
+      "revista": "PLOS global public health",
+      "ano": "2026",
+      "autores": "Barja A, Ascencio EJ, Fernandez-Camacho B, Revilla LC, Qquellon J, Carrasco-Escobar G",
+      "resumo_original": "Malaria continues to pose a major public health threat in the Peruvian Amazon, where climate variability influences transmission patterns. This study assessed whether watershed-based spatial units (hydrobasins) outperform traditional administrative boundaries in predicting P. vivax and P. falciparum cases in Loreto, Peru. A retrospective ecological analysis was conducted using village-level geocoded malaria case data from 2009 to 2018, aggregated at the district level and three hydrobasin levels (levels 6, 7, and ANA). Environmental and meteorological variables were derived from satellite data and incorporated into Zero-Inflated Negative Binomial regression and machine learning models (Random Forest, Support Vector Machine, and XGBoost). Model performance was evaluated using Root Mean Squared Error (RMSE) and Akaike Information Criteria (AIC). Among 297,324 malaria cases analyzed (79.48% P. vivax, 20.52% P. falciparum), hydrobasin level 7 consistently showed superior predictive accuracy. For P. falciparum, hydrobasin level 7 consistently produced the lowest prediction errors across modelling approaches. Among machine learning models, XGBoost achieved an RMSE of 15.79 (95% CI: 10.42-21.03), whereas the corresponding ZINB-PCA model achieved an RMSE of 39.19 (95% CI: 17.09-62.24). District- and ANA-based ZINB-PCA models yielded RMSE values of 50.89 (95% CI: 23.65-77.87) and 59.22 (95% CI: 33.26-82.21), respectively. For P. vivax, XGBoost achieved an RMSE of 38.44 (95% CI: 26.90-49.19), whereas the corresponding ZINB-PCA model achieved an RMSE of 63.87 (95% CI: 46.38-80.95). District-, hydrobasin level 6-, and ANA-based ZINB-PCA models produced RMSE values of 102.81 (95% CI: 73.15-131.77), 175.87 (95% CI: 116.08-232.61), and 263.78 (95% CI: 144.98-389.87), respectively. These findings suggest that the choice of spatial unit affects predictive accuracy, with hydrobasin level 7 producing the lowest prediction errors; the associations captured by the models are predictive and are not interpreted as causal effects. Integrating hydrologically defined boundaries into surveillance systems may enhance malaria control strategies in environmentally complex regions.",
+      "consultas": [
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-11-02",
+      "fonte_captura": "PubMed"
+    },
     {
       "pmid": "42963406",
       "doi": "10.1038/s41591-026-04722-x",
@@ -230,6 +259,20 @@
       "fonte_captura": "PubMed"
     },
     {
+      "pmid": "42970597",
+      "doi": "10.1371/journal.pntd.0014715",
+      "titulo": "Development of an infection via sugar meal (IVSM) technique to infect mosquitoes (Diptera: Culicidae) with arthropod-borne viruses.",
+      "revista": "PLoS neglected tropical diseases",
+      "ano": "2026",
+      "autores": "Drahun I, Williams AJM, Barelli LR, Krokovsky L, Hunter FF",
+      "resumo_original": "The global expansion of mosquito vectors is increasing human exposure to arboviruses, highlighting the need for rapid and practical approaches to assess vector competence. Standard artificial laboratory infection methods rely on infectious blood meals or intrathoracic inoculation, both of which can be resource-intensive and limit the capacity to conduct timely experiments, particularly in high-containment facilities. We developed an infection via sugar meal (IVSM) technique to determine whether mosquitoes can acquire and transmit arboviruses by ingesting virus-spiked sucrose. Using IVSM, we tested the vector competence of Aedes albopictus and Culex quinquefasciatus for West Nile virus (WNV), Mayaro virus (MAYV), and Zika virus (ZIKV) following 1-hour or 24-hour exposures. Viral RNA copy numbers were quantified in the body, legs/wings, and saliva at 7 and 10 days post-infection. Both species supported WNV infection and dissemination, with the virus detected in saliva. Aedes albopictus exhibited high MAYV infection and dissemination rates, whereas Cx. quinquefasciatus was largely refractory. ZIKV infection and dissemination were limited in both species and did not progress to saliva. High feeding success, low vector mortality, and reproducible outcomes across trials demonstrate that IVSM is an accessible and practical alternative to blood-based infection models and provides a framework for investigating vector competence under conditions that utilize natural feeding behavior.",
+      "consultas": [
+        "vetores_mecanismo"
+      ],
+      "data_fonte": "2026-11-02",
+      "fonte_captura": "PubMed"
+    },
+    {
       "pmid": "42965320",
       "doi": "10.3791/72811",
       "titulo": "Dissection of Aedes albopictus and Total RNA Extraction from Post-Dissection Tissues.",
@@ -322,6 +365,20 @@
       "ano": "2026",
       "autores": "Wang L, Peng X, Zheng L, Liu Y, Chen L, Li X, Wang Z",
       "resumo_original": "Diabetic bone defects (DBDs) are typified by persistent inflammation, oxidative stress, and microbial infection within the diabetic microenvironment, which collectively hinder osteogenesis and angiogenesis. Herein, we introduce an Immunometabolic-Hyperthermia Therapy (IMHT) strategy based on a dual-functional nanoplatform, namely a polydopamine/itaconate-incorporated agarose/gelatin (PIAG) hydrogel. This system is fabricated by incorporating itaconic acid (ITA) into polydopamine (PDA) nanoparticles through in situ polymerization, followed by encapsulation within a gelatin/agarose matrix. ITA primarily provides immunometabolic regulation, while PDA enables a tunable photothermal response. Upon localized photothermal heating (∼50 °C), the PIAG hydrogel effectively disrupts bacterial biofilms, with photothermal treatment providing the dominant antibacterial effect and ITA offering an additional supportive contribution. Upon mild photothermal activation (∼41 °C), IMHT mitigates excessive reactive oxygen species (ROS) generation, inhibits neutrophil extracellular trap (NET) formation, and reprograms macrophages toward an M2-like reparative phenotype through JAK1/STAT1 pathway inhibition. The resulting pro-regenerative immune milieu enhances fibroblast growth factor-2 (FGF-2) secretion, while heat-induced activation of HSP90 stabilizes FGF-2/FGFR1 signaling, further promoting osteogenic differentiation and endothelial migration. Overall, the spatiotemporally coordinated antibacterial, immunometabolic, and regenerative regulation realized by IMHT offers a comprehensive and effective strategy for the repair of diabetic bone defects.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-02",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42970435",
+      "doi": "10.1016/j.celrep.2026.118229",
+      "titulo": "Exposure to immune stimuli augments alveolar macrophages to acquire neutrophil antimicrobial molecules to prevent bacterial pneumonia.",
+      "revista": "Cell reports",
+      "ano": "2026",
+      "autores": "Sharma A, Heffernan LM, Mayandi V, Tumpa ZH, Pirashanna N, Jois SD, Beavers WN, Abuaita BH",
+      "resumo_original": "The protective adaptation of innate immune defenses against respiratory pathogens has been linked to previous exposure to immune stimuli; however, the underlying mechanisms of these adaptations are not yet fully understood. Here, we show that pre-exposure to a low dose of non-specific immune stimuli or infection protects against subsequent lethal methicillin-resistant Staphylococcus aureus (MRSA) challenge. This enhanced protection concurs with increased alveolar macrophages (AMs) resulting from a self-renewal process in the lungs. Importantly, these AMs are programmed to acquire neutrophil-released antimicrobial enzymes from the extracellular space to clear MRSA, prevent tissue damage, and rapidly restore lung homeostasis. AM function depends on differential gene expression, including expression of the efferocytosis receptor Mer proto-oncogene tyrosine kinase (MerTK) and the anti-apoptotic regulator Bcl-xL. Thus, our data highlight that AMs acquire neutrophil enzymes as an integral component of innate immune adaptation.",
       "consultas": [
         "imunometabolismo"
       ],
@@ -714,20 +771,6 @@
       "ano": "2026",
       "autores": "Long YY, Feng YJ, Mao KN, Song ZG, Liu YC, Chen SY, Zheng CX, Zeng YD, Yin ST, Dai SS, Li H, Liu WH",
       "resumo_original": "Cerebral ischemia-reperfusion injury (CIRI) remains a major barrier to functional recovery after reperfusion therapy for ischemic stroke. Increasing evidence indicates that gut microbiota dysbiosis and metabolic disturbance are closely involved in post-stroke neuroinflammation and secondary brain injury. Xijiao Dihuang Decoction (XDD), a classical traditional Chinese medicine formula, has shown protective effects in cerebrovascular disorders; however, whether its effects against CIRI are associated with coordinated regulation of the gut microbiota and host metabolism remains unclear.\nCirculating XDD-derived components were characterized by ultra-high-performance liquid chromatography-tandem mass spectrometry (UHPLC-MS/MS). Network pharmacology and molecular docking were used to predict potential targets and signaling pathways associated with CIRI. A middle cerebral artery occlusion/reperfusion (MCAO/R) rat model was established, and rats were treated with low-, medium-, or high-dose XDD for 7 days, with edaravone as a positive control. Neurological deficits, cerebral infarct volume, hemorheological parameters, histopathological changes, and serum inflammatory cytokines were assessed. Cecal microbiota composition was analyzed by 16S rDNA sequencing, and cecal metabolic profiles were investigated using untargeted LC-MS metabolomics. Multi-omics integration and Spearman correlation analysis were performed to explore associations between differentially abundant bacterial genera and characteristic metabolites.\nA total of 54 XDD-derived circulating components were identified. Network pharmacology analysis indicated that the putative targets of XDD were mainly enriched in pathways related to inflammation, lipid and energy metabolism, and regulated cell death, with AKT1 and NLRP3 were predicted as potential hub targets. In MCAO/R rats, XDD improved neurological deficits, reduced cerebral infarct volume, alleviated hemorheological abnormalities, and attenuated neuronal injury. XDD also reduced serum IL-6 levels and lowered IL-1β levels mainly at medium and high doses. In addition, XDD partially restored gut microbial diversity and remodeled CIRI-associated microbial dysbiosis. Metabolomics analysis revealed marked metabolic disturbances after MCAO/R, and XDD reversed part of these alterations, particularly those related to lipid metabolism. Integrated analysis further linked specific bacterial genera with lipid mediators and fatty acid-related metabolites, indicating coordinated remodeling of the gut microbiota and host metabolism.\nXDD exerts neuroprotective effects against CIRI through multi-target and multi-pathway actions. Its therapeutic effects may be associated with coordinated regulation of gut microbial homeostasis, metabolic reprogramming, and inflammatory/cell death signaling. These findings provide new evidence supporting the potential application of XDD in ischemic stroke and offer insight into microbiota-related mechanisms underlying its neuroprotective effects.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-02",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42959626",
-      "doi": "10.3389/fimmu.2026.1959419",
-      "titulo": "Research progress of mitophagy and its targeted therapeutic strategies in rheumatoid arthritis.",
-      "revista": "Frontiers in immunology",
-      "ano": "2026",
-      "autores": "Zhang Y, Ge F, Wang X",
-      "resumo_original": "Rheumatoid arthritis (RA) is a chronic, systemic autoimmune inflammatory disease characterized by persistent joint inflammation and progressive bone destruction. In recent years, mitophagy-a selective form of autophagy-has garnered increasing attention. As a critical cellular process, mitophagy specifically removes damaged mitochondria and maintains mitochondrial homeostasis and energy metabolic balance. Accumulating evidence suggests that mitophagy not only regulates cell survival and metabolic reprogramming but also plays a central role in preserving immune homeostasis, modulating immune cell polarization, and suppressing inflammatory signaling. This article reviews the molecular mechanisms of mitophagy and its pivotal role in RA, along with recent advances in mitophagy-targeted therapeutic strategies, aiming to provide novel insights for RA treatment.",
       "consultas": [
         "imunometabolismo"
       ],
