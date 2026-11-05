@@ -1,6 +1,6 @@
 {
   "data": "2026-11-04",
-  "total": 81,
+  "total": 83,
   "articles": [
     {
       "pmid": "42977744",
@@ -187,6 +187,21 @@
       "fonte_captura": "PubMed"
     },
     {
+      "pmid": "42980837",
+      "doi": "10.1007/s00436-026-08745-8",
+      "titulo": "Genome-wide SNP analysis identifies population structure and genetic differentiation in Anopheles stephensi.",
+      "revista": "Parasitology research",
+      "ano": "2026",
+      "autores": "Sumitha MK, Kalimuthu M, Kumar A, Rahi M, Gupta B",
+      "resumo_original": "Anopheles stephensi, a major urban malaria vector in South Asia and the Arabian Peninsula, has recently spread to several African countries, raising significant public health concerns. Understanding its genetic structure is important for tracing invasion pathways; however, population genetic studies have been limited by sparse genome-wide datasets particularly from India, its native range. Here, we sequenced five An. stephensi samples from southern India and integrated them with 33 publicly available genomic datasets from India and Ethiopia to enable a comparison across native and invasive populations. Genome-wide analysis across 38 samples, revealed higher genetic diversity and evidence of broad-scale population differentiation among Indian and Ethiopian samples. Genetic differentiation between regions was moderate (FST = 0.14). A total of 813 SNPs were fixed (FST = 1) between populations, with 586 fixed in Ethiopian samples and 227 in Indian samples. Several fixed SNPs were concentrated in genes involved in sensory perception, ion transport, development, and transcriptional regulation, highlighting candidate genomic regions associated with population-specific differentiation that warrant further investigation. Overall, the results provide evidence of genetic differentiation between native and invasive populations and highlight genomic regions that may contribute to population-specific divergence in An. stephensi.",
+      "consultas": [
+        "malaria_vetor",
+        "neuro_eixo"
+      ],
+      "data_fonte": "2026-11-04",
+      "fonte_captura": "PubMed"
+    },
+    {
       "pmid": "42972566",
       "doi": "10.1186/s13071-026-07582-z",
       "titulo": "Genomic analysis reveals selection pressure and the emergence of molecular insecticide resistance in the malaria vector, Anopheles gambiae, from Western Ethiopia.",
@@ -349,6 +364,34 @@
       "ano": "2027",
       "autores": "Zhao X, Han X, Hu Z, Chen Y, Wang X, Liu Q, Hu X, Zhang Q, Yue J, Ge Y, Ma Y, Li Y, Zhang Z, Li F, Chen W, Zhang Y",
       "resumo_original": "Intervertebral disc degeneration (IVDD) represents a leading cause of chronic low back pain worldwide, imposing considerable public health and socioeconomic burdens. Current clinical interventions remain largely palliative, unable to reverse the progressive pathological cascade. This cascade is driven by a core self-amplifying triad of oxidative stress, chronic inflammation, and nutrient deprivation within the unique avascular, high-load disc niche, and ultimately progresses to end-stage terminal phenotypes such as biomechanical failure and neurovascular ingrowth. Over recent years, biomaterial-based regenerative strategies have evolved from passive structural fillers toward multifunctional platforms capable of active microenvironmental reprogramming. This review provides a systematic, critical synthesis of state-of-the-art advances in the field, organized within a hierarchical framework spanning immunometabolic modulation of the degenerative niche and targeted delivery of cellular and molecular therapeutics with further elaboration of precision-stratified design and whole-disc tissue engineering. We critically appraise evidence maturity across different strategy classes and dissect disc-specific translational barriers, noting that most candidate platforms remain at preclinical validation stages. Building on this analysis, we outline priority research directions and realistic near-term translational milestones to guide rational development of next-generation regenerative platforms toward durable functional disc repair.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-04",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42981406",
+      "doi": "10.1126/sciadv.aeg1718",
+      "titulo": "Engineered synbiotic microspheres enable system-level reprogramming of the gut-immune-vascular axis in chronic inflammatory vascular disease.",
+      "revista": "Science advances",
+      "ano": "2026",
+      "autores": "Shen L, Zhai M, Yang Z, Yu J, Pang Z, Fang Z, Ding X, Xu J, Hu Y, Fang S, Shu G, Yang Y, Lv L, Zhang S, Xu J, Wu J, Chen W, Lu C, Chen M, Ji J",
+      "resumo_original": "Chronic inflammatory vascular diseases are increasingly recognized as systemic disorders sustained by maladaptive cross-organ immunometabolic coupling, yet current therapeutic strategies remain largely lesion-centered and fail to address upstream drivers of disease persistence. Here, we identify the gut-immune-vascular axis as a system-level pathogenic unit that integrates gut microbial dysbiosis, intestinal barrier dysfunction, metabolic imbalance, and vascular immune activation into a self-reinforcing pathological circuit. Through integrated clinical profiling and cross-species validation, we demonstrate that disruption of this axis is characterized by coordinated probiotic depletion, expansion of proinflammatory taxa, translocation of microbial endotoxins, accumulation of microbiota-derived metabolites, and macrophage polarization toward a proinflammatory phenotype along the gut-vascular continuum. To therapeutically target this axis, we engineer enzyme-responsive synbiotic microspheres that codeliver probiotics, a microbial metabolic pathway inhibitor, and a prebiotic within a protective polymeric matrix, enabling site-specific intestinal activation and coordinated microbiota-metabolic modulation. This engineered system restores intestinal barrier integrity, reprograms microbial ecology and metabolite output, suppresses immunometabolic dysfunction, and robustly attenuates pathological vascular remodeling across cellular, murine, and large-animal models, with in-stent restenosis serving as a representative disease context. Collectively, this work establishes axis-oriented immunometabolic reprogramming as a generalizable therapeutic paradigm and highlights engineered synbiotic platforms as scalable tools for system-level intervention in chronic inflammatory diseases.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-04",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42981187",
+      "doi": "10.1016/j.celrep.2026.118263",
+      "titulo": "Temporal shifts in post-asthmatic immune responses define tumor outcomes via strain-specific monocyte reprogramming.",
+      "revista": "Cell reports",
+      "ano": "2026",
+      "autores": "Wang X, Chen C, Wan Y, Dang B, Liu X, Gao Q, Zhang J, Cheng SC",
+      "resumo_original": "Epidemiological evidence linking asthma to lung cancer risk remains contradictory, presenting asthma as either a risk factor or a protective condition. We hypothesize that this heterogeneity stems from the temporal dynamics of inflammatory response and host genetic background. Using ovalbumin (OVA)-induced asthma models, we identify a temporal shift in immune effectors driving post-asthmatic tumorigenesis. During acute airway inflammation, eosinophil infiltration accelerates tumor growth across mouse strains. Following resolution, however, tumorigenic outcomes in recovery diverge along genetic lines. Prior asthma reshapes chromatin landscapes of bone marrow myeloid progenitors, establishing innate immune memory that differentially programs monocytes across strains. In C57BL/6 mice, trained monocytes adopt oxidative phosphorylation (OXPHOS), acquiring a suppressive, tissue-remodeling phenotype that promotes tumor progression. Conversely, BALB/c-trained monocytes utilize glycolysis to maintain a pro-phagocytic state, enabling tumor clearance. These findings delineate a biphasic mechanism wherein temporal shifts in post-asthmatic immune responses define tumor outcomes via strain-specific monocyte metabolic reprogramming.",
       "consultas": [
         "imunometabolismo"
       ],
@@ -790,34 +833,6 @@
       "fonte_captura": "PubMed"
     },
     {
-      "pmid": "42979270",
-      "doi": "10.3389/fimmu.2026.1985821",
-      "titulo": "Beyond the classical Fc receptor: CD64 in phagocytosis and trained immunity.",
-      "revista": "Frontiers in immunology",
-      "ano": "2026",
-      "autores": "Qu Z, Zhang H, Shapiro SD, Xiao G",
-      "resumo_original": "CD64 (FcγRI) is traditionally categorized as the high-affinity receptor for immunoglobulin G (IgG) and as a downstream effector of adaptive humoral responses for myeloid-driven clearance and immune programs. Accumulating evidence in myeloid cell biology, however, highlights a major historical oversight: CD64 also operates as a multimodal innate immunoreceptor capable of antibody-independent pattern recognition receptor (PRR) behavior. Synthesizing over three decades of data, this review spotlights the direct interaction of CD64 with humoral pentraxins and microbial outer membrane structures independent of IgG opsonization. We consolidate the biological mechanisms by which CD64 functions as an opsonin receptor or a direct PRR to drive phagocytosis and immune signaling pathways. Because trained immunity is antibody-independent, we introduce an unaddressed paradigm for how CD64 utilizes its non-classical, primordial PRR identity to guide myeloid cells to establish and maintain innate immune memory. This framework resolves a profound evolutionary and teleological conundrum: why frontline myeloid lineages constitutively express and exponentially upregulate CD64 days before pathogen-specific antibodies are manufactured, leveraging an ancient, non-specific pattern-sensing scaffold. Finally, we conceptualize the multi-tiered regulation of CD64 as a precise, localized translational target and predictive biomarker to safely bypass the potential risks of global metabolic and epigenetic therapies.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-04",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42974318",
-      "doi": "10.3389/fcimb.2026.1921762",
-      "titulo": "Macrophages as orchestrators of gut-organ axis crosstalk: immunometabolic reprogramming and host-directed therapy in sepsis.",
-      "revista": "Frontiers in cellular and infection microbiology",
-      "ano": "2026",
-      "autores": "Zeng W, Zhang Y, Fan L, Xun Y, Jiang Z, Dai F",
-      "resumo_original": "Sepsis is a life-threatening syndrome driven by a dysregulated host response to infection. Among the numerous contributory factors, the gut microbiota and its metabolites are increasingly recognized as potential modulators of systemic inflammation, acting through multiple gut-organ axes. Within this network, macrophages serve as central integrators that transduce microbial signals into organ-specific inflammatory or reparative outcomes. Disease evolution is critically determined by immune-metabolic reprogramming of macrophages. This reprogramming comprises tricarboxylic acid cycle truncation, lipid remodeling, mitochondrial dysfunction, and inflammasome activation. These processes are closely intertwined with NFκB, cGAS-STING, TLR/MyD88, and aryl hydrocarbon receptor signaling. Gut-derived metabolites, particularly short-chain fatty acids and indole derivatives, shape macrophage functions in distal organs. These mechanisms predominantly operate during the acute phase of sepsis, driving early organ injury. In contrast, sepsis survivors often enter a distinct chronic phase, characterized by persistent immune dysregulation. Trained immunity, through metabolic-epigenetic rewiring, may underlie this long-term dysfunction in survivors. Preclinical promise has been demonstrated by host-directed therapies that target macrophage metabolism. Nevertheless, major challenges impede clinical translation. These include inadequate preclinical models, the absence of validated real-time biomarkers for immune-metabolic phenotyping, and marked heterogeneity among patients. This review positions macrophages as actionable sentinels in gut-organ crosstalk during acute sepsis, and further explores their role in chronic sequelae, underscoring the need for biomarker-guided stratification and precision immune-metabolic editing to overcome barriers in both settings.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-04",
-      "fonte_captura": "PubMed"
-    },
-    {
       "pmid": "42965799",
       "doi": "10.1007/978-1-0716-5671-6_14",
       "titulo": "Blocks, Pins, and Heavy Metal: Optimized Sample Preparation for Volume EM of Myelin in Mouse Central Nervous System.",
@@ -825,6 +840,20 @@
       "ano": "2027",
       "autores": "Ruhwedel T, Wrede C, Hegermann J, Steyer AM, Möbius W",
       "resumo_original": "Volume electron microscopy is a widely used technique to image complex tissue architecture at high resolution for 3D reconstruction. Originally developed for brain connectomics, this technology has proven important for other applications as well. Here we describe protocols established in our laboratories for the visualization of myelin in the mouse central nervous system. The main purpose of the protocol is the optimized preparation of small samples such as vibratome slices or optic nerves. We include possible substitutions for toxic chemicals in commonly used protocols. Tannic acid and neodymium acetate turned out suitable for the replacement of thiocarbohydrazide and uranyl acetate.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-04",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42981411",
+      "doi": "10.1126/sciadv.aef6880",
+      "titulo": "On-virion structural dynamics reveal temperature- and receptor-coordinated activation of an alphacoronavirus spike.",
+      "revista": "Science advances",
+      "ano": "2026",
+      "autores": "Liang J, Peng C, Tan R, Song Y, Zhang Z, Yu J, Wang X, Li S",
+      "resumo_original": "Human alphacoronaviruses primarily infect the human upper respiratory tract, yet how temperature and receptor-binding coordinate viral spike (S) protein activation remains unclear. Using cryo-electron tomography and subtomogram averaging, we directly visualized the structural dynamics of S on human coronavirus 229E (HCoV-229E) virions under physiologically relevant temperatures and in the presence of the host receptor human aminopeptidase N (hAPN). We identified two prefusion S2 conformations, compact and loose, that interconvert reversibly by temperature, revealing intrinsic S2 \"breathing\" on virions. Receptor-binding domain (RBD)-up conformations are rare on apo virions but are promoted at 33°C and stabilized upon receptor binding. hAPN can bind bivalently to neighboring S, forming Gemini S-hAPN complexes. Receptor incubation further promotes conversion from prefusion to postfusion S, an effect enhanced at 33°C. Together, our results demonstrate an optimized temperature for the HCoV-229E viral fitness, and establish temperature and receptor binding as synergistic regulators of alphacoronavirus S activation. These findings provide a structural framework for understanding alphacoronavirus infectivity.",
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
