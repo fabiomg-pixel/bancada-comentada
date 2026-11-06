@@ -303,12 +303,27 @@ async def main():
             print(f"   ⚠️ Aviso ao sincronizar no Google Drive: {e}")
         
     txt_path = os.path.join(AUDIO_DIR, f"podcast_comutacao_28min_{hoje}.txt")
+    master_txt = os.path.join(AUDIO_DIR, "briefing_atual.txt")
+    downloads_txt = os.path.expanduser(f"~/Downloads/LUCHM_Podcast_Transcricao_{hoje}.txt")
+
+    conteudo_txt = f"# LUCHM Deep Podcast — {hoje} ({formatar_data_extenso(hoje)})\n"
+    conteudo_txt += f"# Duração calibrada: 25-30 min | Vozes: Antonio (Teoria/Neuro) & Francisca (Métodos/Bancada)\n"
+    conteudo_txt += f"# Total de palavras: {total_palavras} (Otimizado para Eleven Reader / ElevenLabs)\n\n"
+    for loc, txt in falas:
+        loc_nome = "Antônio" if loc == "A" else "Francisca"
+        conteudo_txt += f"{loc_nome}: {txt}\n\n"
+
     with open(txt_path, "w", encoding="utf-8") as tf:
-        tf.write(f"# LUCHM Deep Podcast — {hoje} ({formatar_data_extenso(hoje)})\n")
-        tf.write(f"# Duração calibrada: 25-30 min | Vozes: Antonio (Teoria/Neuro) & Francisca (Métodos/Bancada)\n")
-        tf.write(f"# Total de palavras: {total_palavras}\n\n")
-        for loc, txt in falas:
-            tf.write(f"[{loc}] {txt}\n\n")
+        tf.write(conteudo_txt)
+    with open(master_txt, "w", encoding="utf-8") as tf:
+        tf.write(conteudo_txt)
+
+    try:
+        with open(downloads_txt, "w", encoding="utf-8") as tf:
+            tf.write(conteudo_txt)
+        print(f"   ✅ Transcrição salva em Downloads: {downloads_txt}")
+    except Exception as e:
+        print(f"   ⚠️ Aviso ao salvar transcrição em Downloads: {e}")
             
     # Duração precisa
     cmd_dur = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", master_mp3]

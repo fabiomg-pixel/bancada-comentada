@@ -772,6 +772,75 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
     render();
   }
 
+  async function copiarTranscricaoPodcast(btn, podcastIso) {
+    const rotuloOriginal = btn.innerHTML;
+    btn.textContent = "⏳ Carregando transcrição…";
+    btn.disabled = true;
+
+    try {
+      let txt = "";
+      const urls = [
+        `audio/podcast_comutacao_28min_${podcastIso}.txt?v=${podcastIso}`,
+        `audio/briefing_atual.txt?v=${podcastIso}`
+      ];
+      for (const u of urls) {
+        try {
+          const resp = await fetch(u);
+          if (resp.ok) {
+            txt = await resp.text();
+            if (txt && txt.length > 100) break;
+          }
+        } catch (e) {}
+      }
+
+      if (!txt || txt.length < 100) {
+        const p = S.pauta || {};
+        const arts = S.artigos || [];
+        txt = `Podcast Científico LUCHM — Edição de ${dataExtensa(podcastIso)}\n\n`;
+        arts.filter(a => a.prioridade === 'essencial' || a.prioridade === 'alta').forEach((a, i) => {
+          txt += `Artigo ${i+1}: ${a.titulo}\n${a.autores} · ${a.revista} (${a.ano})\n\n`;
+          if (a.resumo_blocos) {
+            txt += `Racional: ${a.resumo_blocos.racional || a.resumo || ''}\n\n`;
+            txt += `Metodologia: ${a.resumo_blocos.metodologia || a.metodo || ''}\n\n`;
+            txt += `Resultados: ${a.resumo_blocos.resultados || ''}\n\n`;
+            txt += `Na nossa bancada: ${a.resumo_blocos.implicacoes || a.implicacao || ''}\n\n`;
+          }
+        });
+      }
+
+      let limpo = txt
+        .replace(/^#.*\n/gm, "")
+        .replace(/\[A\]/g, "Antônio:")
+        .replace(/\[B\]/g, "Francisca:")
+        .trim();
+
+      await navigator.clipboard.writeText(limpo);
+
+      btn.textContent = "✓ Transcrição Copiada (Eleven Reader)!";
+      btn.style.background = "#e6f4ea";
+      btn.style.borderColor = "#137333";
+      btn.style.color = "#137333";
+      btn.style.fontWeight = "700";
+
+      S.msg = "📋 Transcrição copiada com sucesso! Abra o Eleven Reader e cole para gerar o áudio neural.";
+      render();
+
+      setTimeout(() => {
+        btn.innerHTML = rotuloOriginal;
+        btn.style.background = "";
+        btn.style.borderColor = "";
+        btn.style.color = "";
+        btn.style.fontWeight = "";
+        btn.disabled = false;
+      }, 4000);
+    } catch (err) {
+      console.error("Erro ao copiar transcrição:", err);
+      prompt("Copie o link da transcrição:", window.location.origin + `/audio/podcast_comutacao_28min_${podcastIso}.txt`);
+      btn.innerHTML = rotuloOriginal;
+      btn.disabled = false;
+    }
+  }
+
   /* ---------- ficha de leitura ---------- */
   function abrirFicha(id) {
     const f = fichaDe(id) || {};
@@ -916,8 +985,24 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
                   h("span", { style: "font-size:24px;" }, "🎙️"),
                   h("div", null,
                     h("strong", { style: "font:700 14px var(--f-display); display:block; color:var(--ink);" }, `Podcast de Bancada & Viagem de Carro — ${podcastDataStr}`),
-                    h("span", { class: "mono", style: "font-size:11px; color:var(--muted);" }, "26-28 min de áudio contínuo · Avaliação profunda de área, métodos e modelos PbA, Aedes e Volume EM"))),
-                h("a", { class: "btn-subtle mono", href: audioSrc, download: podcastDownloadName, style: "font-size:11px; padding:4px 8px; text-decoration:none;" }, "⬇ Baixar MP3 (28 min)")),
+                    h("span", { class: "mono", style: "font-size:11px; color:var(--muted);" }, "25-28 min de áudio contínuo · Avaliação profunda de área, métodos e modelos PbA, Aedes e Volume EM"))),
+                h("div", { style: "display:flex; gap:8px; align-items:center; flex-wrap:wrap;" },
+                  h("button", {
+                    class: "btn-subtle mono",
+                    type: "button",
+                    style: "font-size:11px; padding:4px 10px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; background:var(--card); font-weight:600;",
+                    onclick: (e) => copiarTranscricaoPodcast(e.currentTarget, podcastIso),
+                    title: "Copiar transcrição integral para colar no Eleven Reader ou ElevenLabs"
+                  }, "📋 Copiar Transcrição (Eleven Reader)"),
+                  h("a", {
+                    class: "btn-subtle mono",
+                    href: `audio/podcast_comutacao_28min_${podcastIso}.txt?v=${podcastIso}`,
+                    target: "_blank",
+                    rel: "noopener",
+                    style: "font-size:11px; padding:4px 8px; text-decoration:none;",
+                    title: "Ver arquivo de texto da transcrição"
+                  }, "📄 Ver Texto"),
+                  h("a", { class: "btn-subtle mono", href: audioSrc, download: podcastDownloadName, style: "font-size:11px; padding:4px 8px; text-decoration:none;" }, "⬇ Baixar MP3 (25 min)"))),
               h("audio", { controls: true, preload: "metadata", style: "width:100%; height:36px; margin-top:2px;" },
                 h("source", { src: audioSrc, type: "audio/mpeg" }),
                 "Seu navegador não suporta o player de áudio.")
