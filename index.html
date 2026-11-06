@@ -59,9 +59,9 @@
   --f-body: "Newsreader", Georgia, "Times New Roman", serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   --fs-xs: 12px; --fs-s: 14px; --fs-m: 17px; --fs-lede: 20px; --fs-l: 23px;
-  --fs-xl: clamp(30px, 4.6vw, 50px); --fs-d3: clamp(38px, 6vw, 78px); --fs-d1: clamp(58px, 13vw, 168px);
-  --sp-1: 6px; --sp-2: 12px; --sp-3: 20px; --sp-4: 34px;
-  --bw: 1.5px; --bw-rule: 3px; --pill: 999px; --maxw: 1180px;
+  --fs-xl: clamp(22px, 3.2vw, 36px); --fs-d3: clamp(22px, 3.4vw, 38px); --fs-d1: clamp(26px, 3.8vw, 44px);
+  --sp-1: 6px; --sp-2: 12px; --sp-3: 18px; --sp-4: 26px;
+  --bw: 1.5px; --bw-rule: 2px; --pill: 999px; --maxw: 1280px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -121,39 +121,47 @@ p { margin: 0; }
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .mono { font: 500 var(--fs-xs)/1.4 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; }
 
-/* Masthead */
-.mast { padding-block: var(--sp-4) var(--sp-2); border-bottom: var(--bw-rule) solid var(--ink); }
-.mast-top { display: flex; justify-content: space-between; gap: var(--sp-2); flex-wrap: wrap; color: var(--muted); }
-.mast h1 { font: 900 var(--fs-d1)/.8 var(--f-display); font-stretch: 62%; letter-spacing: -.02em; text-transform: lowercase; margin-top: var(--sp-1); }
+/* Masthead: compacto, refinado e com alto aproveitamento de tela */
+.mast { padding-block: 10px 8px; border-bottom: 2px solid var(--ink); background: var(--paper); }
+.mast-inner { display: flex; justify-content: space-between; align-items: center; gap: 12px 20px; flex-wrap: wrap; }
+.mast-brand-col { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mast-topline { font: 600 10px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+.mast-topline .sep { color: var(--rule); }
+.mast-heading-group { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.mast h1 { font: 900 clamp(22px, 3.2vw, 34px)/1.05 var(--f-display); font-stretch: 70%; letter-spacing: -.03em; text-transform: lowercase; margin: 0; color: var(--ink); }
 .mast h1 i { font-style: normal; color: var(--sinal); }
-.mast-sub { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-2); }
-.mast-sub p { max-width: 50ch; font-style: italic; color: var(--muted); }
-.quem { display: flex; gap: var(--sp-1); align-items: center; color: var(--muted); }
+.mast-desc { font: italic 13px/1.3 var(--f-body); color: var(--muted); margin: 0; max-width: 50ch; }
+.mast-actions-col { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mast-meta-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ed-badge { font: 600 10.5px var(--f-mono); text-transform: uppercase; letter-spacing: .04em; background: var(--card); border: 1px solid var(--rule); padding: 3px 8px; border-radius: 3px; color: var(--ink); white-space: nowrap; }
+.quem { font: 500 11px var(--f-mono); color: var(--muted); white-space: nowrap; }
 
-/* Abas */
+/* Abas de navegação: mais elegantes, não quebram nem cortam rótulos */
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
-.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); }
-.nav .wrap { display: flex; gap: var(--sp-1) 20px; overflow-x: auto; padding-block: 9px 0; scrollbar-width: none; }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--rule); box-shadow: 0 1px 3px rgba(0, 0, 0, .03); }
+.nav .wrap { display: flex; gap: 4px; overflow-x: auto; padding-block: 5px 6px; scrollbar-width: none; }
 .nav .wrap::-webkit-scrollbar { display: none; }
-.aba { all: unset; cursor: pointer; flex: none; font: 900 24px/1 var(--f-display); font-stretch: 62%; text-transform: lowercase;
-  padding: 4px 0 8px; color: var(--muted); border-bottom: 4px solid transparent; display: inline-flex; gap: 6px; align-items: center; }
-.aba[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--t); }
-.aba:hover { color: var(--ink); }
-.aba:focus-visible { outline: 2px solid var(--sinal); outline-offset: 2px; }
-.aba .n { font: 500 11px var(--f-mono); color: var(--muted); }
+.aba { all: unset; cursor: pointer; flex: none; font: 750 clamp(12px, 1.2vw, 13.5px)/1 var(--f-display); font-stretch: 75%; text-transform: uppercase; letter-spacing: .04em; padding: 6px 11px; border-radius: 4px; color: var(--muted); border-bottom: 2px solid transparent; display: inline-flex; gap: 6px; align-items: center; transition: all .12s ease; }
+.aba:hover { color: var(--ink); background: rgba(0, 0, 0, .04); }
+.aba[aria-selected="true"] { color: var(--ink); background: var(--card); border-bottom: 2px solid var(--t); font-weight: 850; box-shadow: 0 1px 2px rgba(0, 0, 0, .06); }
+.aba:focus-visible { outline: 2px solid var(--sinal); outline-offset: 1px; }
+.aba .n { font: 700 10px var(--f-mono); background: var(--rule); color: var(--ink); padding: 1px 5px; border-radius: 10px; line-height: 1.2; }
+.aba[aria-selected="true"] .n { background: var(--t); color: var(--paper); }
 
-/* Cabeça de aba */
-.cabeca { padding-block: var(--sp-4) var(--sp-3); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--sp-3) clamp(24px, 4vw, 52px); align-items: start; }
-.kick { color: var(--t); }
-.cabeca h2 { font: 900 var(--fs-d3)/.9 var(--f-display); font-stretch: 62%; letter-spacing: -.01em; text-wrap: balance; margin: var(--sp-2) 0; }
-.cabeca .lede { font-size: var(--fs-lede); line-height: 1.5; max-width: 38em; }
-.placar { display: grid; gap: var(--sp-1); border-top: var(--bw-rule) solid var(--ink); padding-top: var(--sp-2); }
-.placar div { display: flex; justify-content: space-between; gap: var(--sp-2); border-bottom: 1px solid var(--rule); padding-bottom: 5px; font-size: var(--fs-s); }
-.placar b { font: 900 20px/1 var(--f-display); font-stretch: 62%; font-variant-numeric: tabular-nums; color: var(--t); }
+/* Cabeça de aba e placar compacto */
+.cabeca { padding-block: 12px 10px; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr); gap: 12px clamp(16px, 3vw, 36px); align-items: center; border-bottom: 1px dashed var(--rule); margin-bottom: var(--sp-2); }
+.kick { color: var(--t); font: 700 10.5px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; }
+.cabeca h2 { font: 850 clamp(19px, 2.4vw, 27px)/1.15 var(--f-display); font-stretch: 75%; letter-spacing: -.015em; text-wrap: balance; margin: 3px 0 5px; color: var(--ink); }
+.cabeca .lede { font-size: 14px; line-height: 1.45; max-width: 52ch; color: var(--muted); }
+.placar { display: flex; flex-wrap: wrap; gap: 6px; background: var(--card); border: 1px solid var(--rule); border-radius: 4px; padding: 7px 10px; align-items: center; }
+.placar p { width: 100%; font: 700 10px/1.2 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 2px; }
+.placar div { flex: 1 1 calc(50% - 6px); min-width: 90px; display: flex; align-items: baseline; justify-content: space-between; gap: 6px; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: 4px 7px; }
+.placar span { font: 500 10px/1.2 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
+.placar b { font: 850 16px/1 var(--f-display); font-stretch: 75%; font-variant-numeric: tabular-nums; color: var(--t); }
 
 /* Pauta */
-.pauta { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(22px, 4vw, 48px); padding-bottom: var(--sp-4); align-items: start; }
-.panorama p { margin-bottom: .9em; font-size: var(--fs-lede); line-height: 1.55; max-width: 36em; }
+.pauta { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(16px, 3vw, 32px); padding-bottom: var(--sp-3); align-items: start; }
+.panorama p { margin-bottom: .6em; font-size: 14.5px; line-height: 1.5; max-width: 65ch; }
 .lado { display: grid; gap: var(--sp-3); min-width: 0; }
 .caixa { background: var(--card); border: 1px solid var(--rule); border-left: var(--bw-rule) solid var(--t); padding: var(--sp-2) var(--sp-3) var(--sp-3); }
 .caixa h4 { font: 500 var(--fs-xs) var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--t); margin-bottom: var(--sp-2); }
@@ -507,7 +515,10 @@ footer { border-top: var(--bw-rule) solid var(--ink); margin-top: var(--sp-4); p
 footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
 
 @media (max-width: 860px) {
+  .mast-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .mast-actions-col { width: 100%; justify-content: space-between; }
   .cabeca, .pauta { grid-template-columns: minmax(0, 1fr); }
+  .placar div { flex: 1 1 calc(50% - 6px); }
   .sessao { grid-template-columns: minmax(0, 1fr); }
   .sessao .data { display: flex; gap: var(--sp-2); align-items: baseline; }
   .sessao .data small { margin: 0; }
@@ -516,26 +527,34 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
 </style>
 
 <header class="mast">
-  <div class="wrap">
-    <div class="mast-top mono"><span>PlasmoVet · IBCCF/UFRJ · o que a bancada precisa ler</span><span id="edline">Edição em carregamento</span></div>
-    <h1>bancada comentada<i>.</i></h1>
-    <div class="mast-sub">
-      <p>Artigos e seminários da semana reunidos por tema, cada um com o método que dá para copiar e o que ele muda nos nossos experimentos.</p>
-      
-<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; width:100%; margin-top:6px;">
-  <p class="quem mono" id="quem" style="margin:0;">Carregando sua conta…</p>
-  <div class="sync-btn-group">
-    <button id="btn-user-switch" class="btn-sync" type="button" title="Alternar usuário do laboratório">
-      <span>👤</span> <span id="label-user">Prof. Fábio</span>
-    </button>
-    <button id="btn-sync-open" class="btn-sync highlight" type="button" title="Sincronizar escolhas e comentários com o Lab">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-      <span>Sincronizar</span>
-      <span class="sync-badge" id="badge-sync-count" style="display:none;">0</span>
-    </button>
-  </div>
-</div>
-
+  <div class="wrap mast-inner">
+    <div class="mast-brand-col">
+      <div class="mast-topline mono">
+        <span>PlasmoVet · IBCCF / UFRJ</span>
+        <span class="sep">/</span>
+        <span>LUCHM</span>
+      </div>
+      <div class="mast-heading-group">
+        <h1>bancada comentada<i>.</i></h1>
+        <p class="mast-desc">O que a bancada precisa ler · métodos, modelos e vigilância da semana.</p>
+      </div>
+    </div>
+    
+    <div class="mast-actions-col">
+      <div class="mast-meta-row">
+        <span class="ed-badge mono" id="edline">Edição em carregamento</span>
+        <p class="quem mono" id="quem" style="margin:0;">Carregando sua conta…</p>
+      </div>
+      <div class="sync-btn-group">
+        <button id="btn-user-switch" class="btn-sync" type="button" title="Alternar usuário do laboratório">
+          <span>👤</span> <span id="label-user">Prof. Fábio</span>
+        </button>
+        <button id="btn-sync-open" class="btn-sync highlight" type="button" title="Sincronizar escolhas e comentários com o Lab">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <span>Sincronizar</span>
+          <span class="sync-badge" id="badge-sync-count" style="display:none;">0</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>
