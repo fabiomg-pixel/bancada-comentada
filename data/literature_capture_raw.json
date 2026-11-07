@@ -1,6 +1,6 @@
 {
-  "data": "2026-11-06",
-  "total": 120,
+  "data": "2026-11-07",
+  "total": 119,
   "articles": [
     {
       "pmid": "42992273",
@@ -13,7 +13,35 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994599",
+      "doi": "10.1016/j.tmaid.2026.103037",
+      "titulo": "Malaria in Europe. Imported Cases, Odyssean Malaria, Atypical Transmission Routes, and the Risk of Reintroduction of Local Transmission - A Narrative Review.",
+      "revista": "Travel medicine and infectious disease",
+      "ano": "2026",
+      "autores": "Wziątek K, Fiegler-Rudol J, Lau K, Kasperczyk J",
+      "resumo_original": "In 2015, the WHO European Region became the first region in the world to report zero cases of indigenous malaria transmission, marking a major milestone in regional efforts to interrupt malaria transmission. Nevertheless, malaria remains clinically relevant due to imported infections and rarer, atypical transmission routes. This narrative review assessed the current epidemiological situation of malaria in Europe following the elimination of endemic transmission, focusing on imported cases, Odyssean malaria (including airport, luggage (baggage) and odometer malaria), atypical transmission routes, and the risk of re-establishment of local transmission. A literature search was conducted in PubMed, Google Scholar, Scopus, and Embase, prioritising publications from 2016 to 2026, with justified exceptions for key historical and methodological studies, in accordance with SANRA criteria. The search was performed in August 2026. Imported cases remain predominant, particularly among travellers visiting friends and relatives (VFR). A total of 145 cases of Odyssean malaria have been documented across nine European countries, with an independent review reporting 13.24% mortality, potentially associated with delayed diagnosis. Transfusion-transmitted and congenital malaria remain rare but clinically important. Sporadic autochthonous transmission, including outbreaks in Greece, demonstrates that re-establishment of local transmission remains possible, although large-scale transmission is currently unlikely. These findings highlight the need to maintain malaria preparedness in Europe despite the absence of sustained endemic transmission. Continued diagnostic vigilance, integrated entomological and epidemiological surveillance, and monitoring of climate-related changes in Europe's receptivity remain essential.",
+      "consultas": [
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42993973",
+      "doi": "10.4269/ajtmh.26-0557",
+      "titulo": "Underappreciated Transmission of Plasmodium malariae and Plasmodium ovale: A Potential Barrier to Malaria Elimination in Bangladesh.",
+      "revista": "The American journal of tropical medicine and hygiene",
+      "ano": "2026",
+      "autores": "Billah SMM, Trina AT, Zamil MF, Hasan A, Islam MM, Hossain MS, Alam MS",
+      "resumo_original": "Plasmodium malariae (P. malariae) and Plasmodium ovale (P. ovale) spp. are underappreciated contributors to residual malaria transmission, especially in near-elimination settings. They remain absent from routine surveillance in Bangladesh, where field diagnosis relies on Plasmodium falciparum (P. falciparum)/Plasmodium vivax (P. vivax)-specific rapid diagnostic tests (RDTs) and microscopy. Cases escaping detection by ongoing malaria surveillance in Bandarban, Bangladesh, were investigated in the present study. Blood samples collected in 2025 from febrile patients that tested negative for P. falciparum/P. vivax via RDT underwent microscopic examination and molecular testing. Genomic DNA was screened using a SYBR-Green-based real-time quantitative polymerase chain reaction (qPCR) test targeting the 18S ribosomal RNA (rRNA) gene. Plasmodium ovale-positive cases were confirmed via a probe-based qPCR assay, with P. ovale curtisi and P. ovale wallikeri identified using a validated assay targeting small subunit rRNA and Po-ldh genes. Archived laboratory records (2014-2024) were reviewed to identify previously detected P. malariae infections. In 2025, five P. ovale spp. (four P. ovale curtisi and one P. ovale wallikeri) and three P. malariae cases were detected in Alikadam Subdistrict, Bandarban. All cases were RDT-negative despite microscopically detectable parasitemia (mean 4,536 parasites/µL for P. ovale and 6,053 parasites/µL for P. malariae). Field microscopy was used to correctly diagnose only one P. ovale case, with the remaining four being misclassified as P. vivax or mixed P. malariae/P. vivax infections. Analysis of archived data revealed 25 additional qPCR-confirmed P. malariae infections. Cases were detected across multiple ethnic communities, predominantly among adult males in forest-adjacent settlements. Integrating pan-species molecular diagnostics into routine surveillance, along with species-specific case reporting, is essential to effectively detect, monitor, and eliminate these underappreciated malaria species.",
+      "consultas": [
+        "malaria_vetor"
+      ],
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -27,7 +55,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -41,7 +69,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -55,7 +83,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -70,7 +98,7 @@
         "malaria_vetor",
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -84,7 +112,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -98,7 +126,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -112,7 +140,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -126,7 +154,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -140,7 +168,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -155,36 +183,7 @@
         "malaria_vetor",
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42970566",
-      "doi": "10.1371/journal.pntd.0014845",
-      "titulo": "The mosquito-stage transcriptome of the neglected malaria parasite Plasmodium malariae reveals species-specific gene expression signatures and functional adaptations.",
-      "revista": "PLoS neglected tropical diseases",
-      "ano": "2026",
-      "autores": "Ruiz JL, Díaz-Terenti B, Lefèvre T, Yerbanga SR, Otto TD, Gómez-Díaz E",
-      "resumo_original": "To survive and multiply in different host niches, malaria parasites require sets of proteins that are expressed during the life cycle in a timely manner. Plasmodium malariae is a human malaria parasite that is present in most malaria-endemic regions. This species remains enigmatic due to the inability to maintain it in long-term culture, the low parasitemia observed in human infections, and its frequent co-infection with other malaria species.\nWe investigate the transcriptome of P. malariae during transmission in the vector by analyzing RNA-seq data from midgut and salivary gland parasite stages obtained in two experimental mosquito infections with field P. malariae isolates. Our analysis identified 3,699 expressed genes, of which 263 are developmentally regulated and 309 are P. malariae-specific, including genes with unknown functions and without orthologs in other Plasmodium spp. We detected unique expression patterns of the ApiAP2 family of transcription factors, many of which appear to function as master regulators during sporogony. Several members of multigene families, such as pir, phist, and fam-l, were found to be expressed, and new families potentially showing transcriptional heterogeneity were described.\nOur findings indicate that the P. malariae transcriptome is largely conserved; however, a distinct set of expressed genes lacking detectable orthologs may contribute to differences in transmission and virulence. Given the scarcity of genomic and transcriptomic data for this pathogen and considering the global distribution of P. malariae and its potential role in sustaining malaria transmission, this study has direct implications for malaria control and elimination efforts.",
-      "consultas": [
-        "malaria_vetor",
-        "vetores_mecanismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42970547",
-      "doi": "10.1371/journal.pgph.0007553",
-      "titulo": "Comparing watershed-based spatial units and administrative boundaries for malaria prediction in the Peruvian Amazon.",
-      "revista": "PLOS global public health",
-      "ano": "2026",
-      "autores": "Barja A, Ascencio EJ, Fernandez-Camacho B, Revilla LC, Qquellon J, Carrasco-Escobar G",
-      "resumo_original": "Malaria continues to pose a major public health threat in the Peruvian Amazon, where climate variability influences transmission patterns. This study assessed whether watershed-based spatial units (hydrobasins) outperform traditional administrative boundaries in predicting P. vivax and P. falciparum cases in Loreto, Peru. A retrospective ecological analysis was conducted using village-level geocoded malaria case data from 2009 to 2018, aggregated at the district level and three hydrobasin levels (levels 6, 7, and ANA). Environmental and meteorological variables were derived from satellite data and incorporated into Zero-Inflated Negative Binomial regression and machine learning models (Random Forest, Support Vector Machine, and XGBoost). Model performance was evaluated using Root Mean Squared Error (RMSE) and Akaike Information Criteria (AIC). Among 297,324 malaria cases analyzed (79.48% P. vivax, 20.52% P. falciparum), hydrobasin level 7 consistently showed superior predictive accuracy. For P. falciparum, hydrobasin level 7 consistently produced the lowest prediction errors across modelling approaches. Among machine learning models, XGBoost achieved an RMSE of 15.79 (95% CI: 10.42-21.03), whereas the corresponding ZINB-PCA model achieved an RMSE of 39.19 (95% CI: 17.09-62.24). District- and ANA-based ZINB-PCA models yielded RMSE values of 50.89 (95% CI: 23.65-77.87) and 59.22 (95% CI: 33.26-82.21), respectively. For P. vivax, XGBoost achieved an RMSE of 38.44 (95% CI: 26.90-49.19), whereas the corresponding ZINB-PCA model achieved an RMSE of 63.87 (95% CI: 46.38-80.95). District-, hydrobasin level 6-, and ANA-based ZINB-PCA models produced RMSE values of 102.81 (95% CI: 73.15-131.77), 175.87 (95% CI: 116.08-232.61), and 263.78 (95% CI: 144.98-389.87), respectively. These findings suggest that the choice of spatial unit affects predictive accuracy, with hydrobasin level 7 producing the lowest prediction errors; the associations captured by the models are predictive and are not interpreted as causal effects. Integrating hydrologically defined boundaries into surveillance systems may enhance malaria control strategies in environmentally complex regions.",
-      "consultas": [
-        "malaria_vetor"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -198,7 +197,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -212,7 +211,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -226,7 +225,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -240,7 +239,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -254,7 +253,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -268,7 +267,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -282,7 +281,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -296,7 +295,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -310,7 +309,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -324,7 +323,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -338,7 +337,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -352,7 +351,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -366,7 +365,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -380,7 +379,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -394,7 +393,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -408,7 +407,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -422,7 +421,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -437,7 +436,7 @@
         "malaria_vetor",
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -451,7 +450,7 @@
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -466,35 +465,49 @@
         "malaria_vetor",
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
-      "pmid": "42967979",
-      "doi": "10.1186/s12879-026-13888-1",
-      "titulo": "Malaria and Chikungunya outbreak in Marsabit County, Kenya, May 2023: a descriptive study.",
-      "revista": "BMC infectious diseases",
+      "pmid": "42979071",
+      "doi": "10.1016/j.nmni.2025.101694",
+      "titulo": "The role of fuzzy logic in malaria transmission.",
+      "revista": "New microbes and new infections",
       "ano": "2026",
-      "autores": "Kanyina E, Okunga E, Langat D",
-      "resumo_original": "Acute febrile illnesses are common causes of seeking health care in Sub-Sahara Africa especially among the under-five years. Understanding their causative pathogen is critical for optimal patient management. We characterized a febrile illness outbreak in Marsabit County to determine the magnitude of an outbreak, describe the epidemiology and clinical characteristics of the outbreak and conduct Risk Communication and Community Engagement (RCCE).\nA retrospective review of laboratory registers and patients' clinical notes was done at Kargi Health Centre, Korr Health Centre and Laisamis Sub-county Hospital. A case of febrile illness was any person living in or has travelled to Laisamis Sub-county presenting with fever ≥ 380 C or headache at the health facility or in the community from 1st May to 24th May 2023. Cases of febrile illness were interviewed using a structured questionnaire to collect clinical and epidemiologic information. Approximately 4-5 ml of blood was collected from cases of febrile illness for laboratory differential diagnosis. Risk Communication and Community Engagement activities were conducted included interpersonal communication, focused manyatta group discussions and sensitization of community health promoters.\nA total of 184 febrile cases were line listed. Eighteen cases of Chikungunya and 12 cases of malaria were confirmed from the 72-blood specimen analysed during the investigation period. Of the 12 samples that tested positives for malaria, 11 were P. falciparum and one P. vivax. Of the 72 blood specimen analysed, three had dual infection. One mortality was reported, involving a case co-infected with Malaria P. falciparum and Chikungunya. Thirteen Manyattas were visited where interpersonal communication was conducted as well as focused group discussion among manyatta residents and manyatta leaders. Two hundred Community Health Volunteers were sensitized on mosquito-borne diseases prevention and control in Laisamis Town. There was low knowledge on causes of febrile illness especially malaria.\nThe outbreak was driven by two infections; Chikungunya virus infection and Malaria infection. Sustained surveillance, vector control programs and awareness promotion are needed for early detection and control of possible mosquito-borne outbreaks.",
+      "autores": "Gellow GT, Suthar DL",
+      "resumo_original": "Fuzzy logic is typically used to create fuzzy rules that are simple enough for people to understand, and it has been utilized in numerous industries where uncertainty is important. One outstanding example of ambiguity and uncertainty is medical diagnosis. We employ fuzzy logic, which builds a logic as the foundation for inference rules using the entire real number range between zero and one. Three things set it apart: it makes use of linguistic variables; it represents relationships between variables using conditional statements; and for complex relations, it employs fuzzy algorithms.",
       "consultas": [
         "malaria_vetor"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
-      "pmid": "42968153",
-      "doi": "10.1186/s12936-026-06062-0",
-      "titulo": "Clinical presentation of severe malaria in children who received the RTS,S/AS01E malaria vaccine, seasonal malaria chemoprevention or the combination of both interventions in Burkina Faso and Mali.",
-      "revista": "Malaria journal",
+      "pmid": "42994118",
+      "doi": "10.1016/j.vaccine.2026.129269",
+      "titulo": "A modified vaccinia Ankara (MVA) virus vectored Zika vaccine that generates neutralising antibodies and potent T cell responses in type I interferon deficient mice.",
+      "revista": "Vaccine",
       "ano": "2026",
-      "autores": "Issiaka D, Zongo I, Sidibe Y, Compaoré YD, Yerbanga RS, Kaya M, Zoungrana C, Zerbo RO, Dicko OM, Kone Y, Tapily A, Traore S, Sanogo K, Diarra M, Barry A, Mahamar A, Haro A, Thera I, Ali MS, Snell P, Grant J, Kuepfer I, Lee CK, Ockenhouse CF, Ofori-Anyinam O, Milligan P, Sagara I, Tinto H, Ouedraogo JB, Chandramohan D, Greenwood B, Dicko A",
-      "resumo_original": "Severe Plasmodium falciparum malaria is a leading cause of death in sub-Saharan Africa, with most deaths occurring in children younger than five years of age. The RTS,S/AS01E (RTS,S) malaria vaccine delivered seasonally with Seasonal Malaria Chemoprevention (SMC) led to a two-third reduction in severe malaria and malaria deaths compared with either intervention given alone. The aim of this study was to assess and compare the clinical phenotype distribution among severe malaria admissions by intervention groups and country.\nWe conducted a secondary ad-hoc analysis of hospital admissions in children aged 5 to 17 months of age when enrolled in the RTS,S + SMC trial in April 2017 in Houndé, Burkina Faso, and Bougouni, Mali, and who were followed until they reached five years of age.\nAmong the 5,920 children enrolled in Burkina Faso and Mali, 337 serious adverse events were reported during the trial with 222 (65.9%) in Burkina Faso and 115 (34.1%) in Mali, and 48.1% (162/337) due to severe malaria. The mean age of children with severe malaria was 2.9 years; 79.0% (128/162) of the cases occurred in children aged 3 years or less and 21.0% (34/162) in those aged 4 to 5 years. The most common presentation was severe anemia reported in 50% (81/162) of children, followed by repeated convulsions 25.3%, (41/162), prostration 11.1%, (18/162), hyperparasitaemia 8.0%, (13/162) and cerebral malaria 6.2%, (10/162). The proportion of children with the severe malaria anemia phenotype was higher among severe malaria cases in the SMC alone arm 62.1%, (36/58) compared to those in the SMC + RTS,S arm 37.1%, (13/35), p = 0.048. There was no significant difference in the proportion of other clinical presentations between the study arms. Most severe malaria cases, 85.8% (139/162) occurred during the transmission season (July to December).\nSevere anemia was the most common presentation of severe malaria in study children and its proportion among severe malaria cases was highest in the SMC alone arm. Children aged 3 years or less were the most affected and almost all the severe malaria cases occurred between July and December. Trial registration ClinicalTrials.gov, NCT04319380.",
+      "autores": "Subramaniam KS, Platt G, Austin J, Buttigieg K, Bish J, Coombes N, Hall Y, Goodwin L, Moore SC, Charlton S, Hardwick H, Solomon T, Sutter G, Carroll M, Blanchard TJ, French N, Turtle L",
+      "resumo_original": "To date, no vaccine has been approved against Zika virus (ZIKV). Any such vaccine must be safe to use during pregnancy and needs to consider immune interactions from prior flavivirus exposure given these viruses co-circulate and share the same mosquito vector. To address these issues, we have developed a vaccine using a modified vaccinia Ankara (MVA) virus. Here, we describe the development of this MVA vectored Zika vaccine that encodes structural proteins, premembrane and envelope, and non-structural (NS) proteins, NS3 and NS5 (MVA-ZIKA-B). A two-dose vaccination regimen with MVA-ZIKA-B resulted in significant serum neutralising activity and induced polyfunctional T cell responses that protected in a mouse model of Zika, rendering virus undetectable across multiple tissues after virus challenge. Vaccine-associated protection was also characterised by high IgG antibodies against the ZIKV envelope and potent interferon-gamma (IFNγ)-positive T cell responses when stimulated ex vivo with ZIKV peptides. Further stability studies showed that the vaccine antigens were stably expressed, and the vaccine progressed to GMP manufacturing. A phase I human trial with MVA-ZIKA-B is ongoing.",
       "consultas": [
-        "malaria_vetor"
+        "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42993969",
+      "doi": "10.4269/ajtmh.26-0267",
+      "titulo": "Toward More Reliable Dengue Early Warning: Bridging the Gap Between Theory and Practice.",
+      "revista": "The American journal of tropical medicine and hygiene",
+      "ano": "2026",
+      "autores": "Narayanasamy S, Sivagnaname Y, Krishnamurthy D",
+      "resumo_original": "Dengue continues to expand globally, increasing pressure on health systems across tropical and subtropical regions. Despite advances in surveillance, data availability, and predictive modeling, early warning often remains insufficiently linked to timely public health action. The challenge, therefore, is not prediction alone but translating heterogeneous surveillance information into actionable intelligence. Key determinants, including climate, human mobility, adult female mosquito abundance, vector infection, asymptomatic infection, and population immunity, vary in feasibility, spatial and temporal resolution, and early-warning value. Climate indicators provide important context but may lack local specificity, and symptomatic case surveillance is constrained by underascertainment and reporting delays. Human mobility can improve spatial risk assessment and, in selected settings, forecasting, whereas adult mosquito surveillance provides complementary information on local vector abundance. The authors of the present study propose an Operationally Prioritized Early Warning (OPEW) framework that integrates sentinel surveillance, scale-aware interpretation of complementary signals, feasibility-based prioritization, event-triggered intensification, and explicit links between surveillance thresholds and predefined actions. The OPEW framework is not a validated prediction model but a testable operational framework that prioritizes information according to epidemiological relevance, timeliness, feasibility, and decision value. Prospective evaluation should assess predictive performance, actionable lead time, resource requirements, and public health outcomes against existing approaches.",
+      "consultas": [
+        "vetores_mecanismo"
+      ],
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -508,7 +521,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -522,21 +535,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42970597",
-      "doi": "10.1371/journal.pntd.0014715",
-      "titulo": "Development of an infection via sugar meal (IVSM) technique to infect mosquitoes (Diptera: Culicidae) with arthropod-borne viruses.",
-      "revista": "PLoS neglected tropical diseases",
-      "ano": "2026",
-      "autores": "Drahun I, Williams AJM, Barelli LR, Krokovsky L, Hunter FF",
-      "resumo_original": "The global expansion of mosquito vectors is increasing human exposure to arboviruses, highlighting the need for rapid and practical approaches to assess vector competence. Standard artificial laboratory infection methods rely on infectious blood meals or intrathoracic inoculation, both of which can be resource-intensive and limit the capacity to conduct timely experiments, particularly in high-containment facilities. We developed an infection via sugar meal (IVSM) technique to determine whether mosquitoes can acquire and transmit arboviruses by ingesting virus-spiked sucrose. Using IVSM, we tested the vector competence of Aedes albopictus and Culex quinquefasciatus for West Nile virus (WNV), Mayaro virus (MAYV), and Zika virus (ZIKV) following 1-hour or 24-hour exposures. Viral RNA copy numbers were quantified in the body, legs/wings, and saliva at 7 and 10 days post-infection. Both species supported WNV infection and dissemination, with the virus detected in saliva. Aedes albopictus exhibited high MAYV infection and dissemination rates, whereas Cx. quinquefasciatus was largely refractory. ZIKV infection and dissemination were limited in both species and did not progress to saliva. High feeding success, low vector mortality, and reproducible outcomes across trials demonstrate that IVSM is an accessible and practical alternative to blood-based infection models and provides a framework for investigating vector competence under conditions that utilize natural feeding behavior.",
-      "consultas": [
-        "vetores_mecanismo"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -550,7 +549,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -564,7 +563,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -578,7 +577,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -592,7 +591,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -606,21 +605,7 @@
       "consultas": [
         "vetores_mecanismo"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42968019",
-      "doi": "10.1186/s12889-026-28892-y",
-      "titulo": "Association between the december 2020 mass long-lasting insecticidal net distribution campaign and reported malaria incidence in Kinshasa, Democratic Republic of the Congo: an interrupted time-series analysis of routine surveillance data.",
-      "revista": "BMC public health",
-      "ano": "2026",
-      "autores": "Mbuku N, Mandja BA, Muntenge G, Nsabatien V, Lukanu P, Wanet S, Mpongo T, Matela B, Zanga J, Gonzalez JP, Luhata C, Matulonga B, Mvuama N",
-      "resumo_original": "Long-lasting insecticidal nets (LLINs) remain a cornerstone of malaria vector control in sub-Saharan Africa. Although mass LLIN distribution campaigns substantially increase household ownership and access, their population-level effect on malaria incidence may vary over time. We assessed the association between the December 2020 mass LLIN distribution campaign and malaria incidence in Kinshasa, Democratic Republic of the Congo (DRC), from 2018 to 2023.\nWe conducted an ecological interrupted time-series (ITS) study using monthly routine malaria surveillance data from Kinshasa between January 2018 and December 2023. Negative binomial regression models were fitted with population included as a logarithmic offset. The primary segmented ITS model included three explicit ITS terms: calendar time, a binary intervention indicator, and post-intervention time. Seasonality was controlled for using a binary seasonal indicator and Fourier harmonic terms. Sensitivity analyses were conducted using January 2021 and February as alternative intervention start dates and by applying heteroskedasticity and autocorrelation-consistent (HAC/Newey-West) standard errors. Residual temporal autocorrelation was assessed using autocorrelation function (ACF) and partial autocorrelation function (PACF) plots and formal Ljung-Box tests.\nIn a simple pre/post model, the post-distribution period was associated with higher malaria incidence than the pre-distribution period (incidence rate ratio [IRR] = 1.23, 95% confidence interval [CI]: 1.07-1.41; p = 0.003). After adjustment for harmonic seasonal terms, this association remained significant (IRR = 1.16, 95% CI: 1.03-1.32; p = 0.013). In the primary segmented ITS model, the post-intervention period was associated with a higher incidence level (IRR = 1.18, 95% CI: 1.07-1.31; p = 0.001), while post-intervention time was associated with a modest but significant monthly increase in incidence (IRR = 1.01, 95% CI: 1.01-1.02; p < 0.001). Sensitivity analyses using January 2021 and February 2021 as alternative intervention dates, as well as HAC/Newey-West standard errors, yielded highly consistent findings. Significant residual autocorrelation remained present across model specifications.\nThis ecological ITS analysis did not demonstrate a sustained decline in reported malaria incidence following the December 2020 LLIN distribution campaign in Kinshasa. Findings were robust across alternative intervention dates and autocorrelation-consistent sensitivity analyses but should be interpreted cautiously because of residual autocorrelation, potential reporting changes, the absence of a control group, and the ecological nature of the study.",
-      "consultas": [
-        "vetores_mecanismo"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -634,7 +619,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -648,7 +633,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -662,7 +647,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -676,7 +661,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -690,7 +675,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -704,7 +689,105 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42995019",
+      "doi": "10.1016/j.cpet.2026.09.022",
+      "titulo": "Valuable Role of 18F-Fluorodeoxyglucose-PET/computed Tomography in Therapeutic Decision-Making of Infectious and Inflammatory Disorders.",
+      "revista": "PET clinics",
+      "ano": "2026",
+      "autores": "Kumar SA, Goyal H, Halanaik D",
+      "resumo_original": "18F-FDG (18F-Fluorodeoxyglucose)-PET/computed tomography (CT) has emerged as a pivotal molecular imaging modality that extends beyond diagnosis to influence therapeutic decision-making in infectious and inflammatory diseases. By detecting increased glucose metabolism in activated inflammatory cells, it enables whole-body visualization of active disease before structural abnormalities become apparent on conventional imaging. Quantitative parameters support reproducible longitudinal monitoring. Its incorporation into international guidelines highlights its growing role in precision-guided management. Emerging technologies, including digital and long axial field-of-view PET/CT, artificial intelligence, radiomics, PET/MR imaging, and pathogen-specific or immune cell-specific tracers, may further enhance diagnostic accuracy and personalized treatment.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994869",
+      "doi": "10.1097/MD.0000000000051463",
+      "titulo": "Nucleotide metabolism and cervical cancer: A comprehensive study of molecular subtypes and therapeutic targets.",
+      "revista": "Medicine",
+      "ano": "2026",
+      "autores": "Li F, Bao C, Liu Y, Liu B, Zhai F",
+      "resumo_original": "Cervical cancer (CC) is among the most prevalent malignancies in women worldwide. Tumor progression involves profound metabolic reprogramming, in which nucleotide metabolism sustains deoxyribonucleic acid/ribonucleic acid synthesis and proliferation; however, its role in CC remains unclear. Transcriptomic and clinical data of CC patients were obtained from The Cancer Genome Atlas. Nonnegative matrix factorization classified patients into molecular subtypes based on nucleotide metabolism-related genes and compared their survival, immune infiltration, somatic mutations, and drug sensitivity. Mfuzz soft clustering identified subtype-associated expression patterns. Gene set variation analysis scoring, differential expression analysis, and Gene Ontology/Kyoto Encyclopedia of Genes and Genomes enrichment of differentially expressed genes were then performed. Prognostic models were constructed using multiple machine learning algorithms, and the model with the highest concordance index (C-index) was selected. Patients were stratified into high- and low-risk groups and assessed using multivariate Cox regression, Kaplan-Meier, and time-dependent receiver operating characteristic analyses. Immune checkpoint inhibitor response was predicted using the tumor immune dysfunction and exclusion algorithm, and molecular docking was performed between core genes and candidate compounds. Nonnegative matrix factorization revealed 5 subtypes with distinct outcomes: cluster 2 showed the worst prognosis, whereas clusters 3 and 4 had favorable survival. TTN, KMT2C, HUWE1, and PIK3CA were frequently mutated across subtypes. B cells, regulatory T cells, CD8+ T cells, and M2 macrophages were enriched in clusters 3 and 4. VX-680, CIL70, and BRD-K01737880 exhibited significantly lower IC50 values in the poor-prognosis group. Seven key genes (SERPINE1, CAV1, SOD2, SLC16A1, XDH, CYP27B1, and NAGS) were identified by Mfuzz clustering. Forty-two differentially expressed genes between the high- and low-score groups were predominantly enriched in xenobiotic response, nutrient sensing, small-molecule catabolism, inflammatory response, tumor necrosis factor signaling, apoptosis, and hypoxia. The generalized boosted regression model achieved the highest C-index, with 1-, 3-, and 5-year area under the curves of 0.62, 0.67, and 0.61, indicating modest discrimination. Tumor immune dysfunction and exclusion analysis indicated reduced immune checkpoint inhibitor responsiveness in the high-risk group. Molecular docking predicted favorable binding between core genes and candidate compounds, providing hypotheses for experimental validation. This study delineates the associations of nucleotide metabolism-related genes with molecular classification and prognosis in CC and identifies potential biomarkers, candidate therapeutic agents, and a prognostic model providing complementary assessment value.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994744",
+      "doi": "10.1016/j.critrevonc.2026.105691",
+      "titulo": "Spatial metabolic heterogeneity and immunometabolic plasticity in bone metastasis and therapeutic resistance.",
+      "revista": "Critical reviews in oncology/hematology",
+      "ano": "2026",
+      "autores": "Zhang S, Yang B, Xiao G",
+      "resumo_original": "Bone metastases contain spatially distinct tumour, bone, stromal and immune compartments whose interactions evolve during treatment. These interactions can sustain resistant disease, but pathway presence alone does not establish a therapeutic dependency. This critical narrative review organises evidence around four dimensions of lesion state: resource availability, directional metabolic exchange, cellular state and treatment-induced selection. We focus on solid tumours, particularly breast, prostate and lung cancers, and distinguish human lesion observations from experimental causality. Osteoclast-derived glutamine, macrophage iron supply and collagen-derived hydroxyproline illustrate experimentally supported survival circuits whose quantitative contribution in patients remains unresolved. Direct human metabolic measurements are limited, although hyperpolarised carbon-13 imaging has demonstrated feasibility in selected prostate cancer bone metastases. Lesion-level pharmacodynamics is defined by an identified lesion, sampling interval, assay and expected proximal response, with drug exposure, target engagement and clinical benefit assessed separately. Tissue assays, tracer imaging and structural or diffusion imaging provide complementary information; none currently resolves all proposed intercellular exchanges in deep skeletal lesions. A four-item translational checklist requires candidate dependencies to be present in progressing disease, necessary under the relevant treatment pressure, inadequately compensated and measurable within the lesion. Progress requires assay-specific control of ischaemia and decalcification, functional testing in models relevant to human disease and prospective evaluation of mechanism-matched combinations.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994705",
+      "doi": "10.1016/j.freeradbiomed.2026.11.011",
+      "titulo": "Mitochondrial-derived peptide humanin alleviates AKI-to-CKD transition by inhibiting TRIM28-mediated ubiquitination of Suclg1.",
+      "revista": "Free radical biology & medicine",
+      "ano": "2026",
+      "autores": "Lu X, Chen Q, Gao Y, Tao S, Qiu J, Huang L, Jiang G, Zhang N, Chen M, Guo Y, Zhang L",
+      "resumo_original": "Acute kidney injury (AKI) resulting from ischemia-reperfusion injury (IRI) may subsequently progress to chronic kidney disease (CKD) and eventually end-stage renal disease (ESRD). Humanin, a mitochondria-derived peptide, has been implicated in various physiological and pathological processes and exhibits cytoprotective effects against inflammation, apoptosis, and oxidative stress. Nevertheless, its role in the AKI-to-CKD transition remains poorly understood. This study showed that renal humanin expression was downregulated in a murine IRI model and this reduction was significantly correlated with renal function decline and kidney fibrosis progression. Exogenous supplementation of S14G-humanin (HN) was found to protect against kidney fibrosis induced by IRI. Mechanistically, HN attenuated kidney fibrosis by stabilizing succinate-CoA ligase subunit alpha (Suclg1) by inhibiting tripartite motif-containing protein 28 (TRIM28)-mediated ubiquitination of Suclg1. Inhibition of Suclg1 abolished the renoprotective effects of HN, underscoring the critical role of Suclg1 in the AKI-to-CKD transition. Moreover, HN-mediated upregulation of Suclg1 reduced superoxide dismutase 2 (SOD2) succinylation, linking metabolic reprogramming to mitochondrial dysfunction and fibrotic progression. Collectively, these findings reveal a critical role of humanin in mitigating kidney fibrosis and identify Suclg1 as a promising therapeutic target in the AKI-to-CKD transition.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994575",
+      "doi": "10.1016/j.jep.2026.122598",
+      "titulo": "Integrative Multi-Omics Reveals Differential Mechanisms of Four TCM Formulations in Treating Insomnia via Syndrome-Compound-Metabolite Association Networks.",
+      "revista": "Journal of ethnopharmacology",
+      "ano": "2026",
+      "autores": "Sun P, Yan S, Li S, Zhou Y, Liu Z, Cai J, Zhang J, Tang Y, Li C, Zhang C",
+      "resumo_original": "Guipi Pills (GPW), Wuling Capsule (WLC), Bailemian Capsule (BLMC), and Zaoren Anshen Capsule (ZRASC) are representative traditional Chinese medicine formulations for treating insomnia based on different syndromes of Heart-Spleen Deficiency, Heart-Kidney Disharmony, Liver Qi Stagnation with Yin Deficiency, and Heart Blood Deficiency, respectively. However, their molecular mechanisms remain unclear.\nTo elucidate the \"same disease, different treatment\" mechanisms of these four formulations against sleep deprivation-induced insomnia through an integrated multi-omics and network pharmacology strategy.\nChemical constituents were characterized by UHPLC-Orbitrap-MS/MS. A meta-analysis evaluated clinical differences and syndrome consistency. Subsequently, A mouse model of sleep deprivation was established; behavioral tests and HE/Nissl staining were performed. On this basis, fecal 16S rRNA gene sequencing, serum metabolomics, and hypothalamic transcriptomics were integrated to construct a microbiota-metabolite network. Furthermore, network pharmacology and molecular docking predicted component-target interactions. Finally, key protein expression was validated by western blot.\nUHPLC-Orbitrap-MS/MS identified 87, 56, 163, and 128 compounds from GPW, WLC, BLMC, and ZRASC, respectively. Meta-analysis (62 RCTs, 6,045 patients) showed WLC and BLMC reduced PSQI scores alone or in combination; ZRASC benefited only in combination, and GPW combination benefit was borderline. Syndrome-efficacy interactions were inconsistent. In mice, all formulations alleviated neuronal damage despite heterogeneous behavioral improvements. All four formulations suppressed Alistipes and commonly reversed 39 serum metabolites enriched in glutathione metabolism and pentose phosphate pathway. Each formulation showed syndrome-related metabolic regulation. Hypothalamic transcriptomics revealed commonly downregulated genes (S100a9, Gbp5, Fpr1, Tnfsf8) and distinct patterns: lipid metabolism-immune suppression (GPW), transcriptional-metabolic inhibition (WLC), prolactin signaling (BLMC), and PPAR-driven energy repair (ZRASC). In an exploratory analysis, the number of microbiota-metabolite association pairs increased from WLC (158) to GPW (393), BLMC (836), and ZRASC (1,243); this gradient is hypothesis-generating and warrants independent validation.Network pharmacology and molecular docking predicted potential formulation-specific and common inflammatory pathway targets. Finally, western blot showed all formulations downregulated iNOS and COX2; all except WLC upregulated SLC7A11, GPX4, FTH, and Bcl2 (P < 0.05).\nIn this study, these four formulations showed heterogeneous, syndrome-associated patterns across microbiota remodeling, metabolic reprogramming, anti-inflammation, and anti-ferroptosis, which may help generate hypotheses regarding the \"same disease, different treatment\" principle. The findings provide a mechanistic basis for clinical application and a methodological reference for TCM modernization.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994540",
+      "doi": "10.1016/j.phrs.2026.109737",
+      "titulo": "Targeting the FKBP5-ceramide axis driven mitochondrial reprogramming in cardiac macrophages attenuates post-infarct cardiac injury.",
+      "revista": "Pharmacological research",
+      "ano": "2026",
+      "autores": "Li Z, Yang X, Xu S, Zhao A, Zheng B, Sheng N, Zhang J",
+      "resumo_original": "Plasma ceramide levels are elevated in cardiovascular disease and predict recurrent adverse events and mortality after myocardial infarction (MI). However, mechanisms driving post-MI ceramide accumulation and pharmacologically actionable targets to counteract ceramide-driven myocardial damage are still lacking. Here, we identify FK506-binding protein 5 (FKBP5) as a druggable immunometabolic regulator of ceramide metabolism in cardiac macrophages, linking FKBP5 suppression to interrupted pathological crosstalk among sphingolipid remodeling, mitochondrial impairment and post-MI inflammatory injury. Using murine MI models and FKBP5-deficient cells, we examined FKBP5 inhibition or deficiency reduced infarct size and fibrosis, improved cardiac function, and protected against adverse remodeling. Mechanistically, FKBP5 was associated with the sphingomyelin phosphodiesterase 3 (Smpd3) promoter region and contributed to the regulation of its transcriptional activity after MI, thereby promoting ceramide accumulation. Specifically, FKBP5-mediated ceramide 24:1 (Cer24:1) upregulation impaired mitochondrial redox homeostasis by disrupting electron transport chain integrity, thereby reinforcing M1 polarization and exacerbating myocardial injury. Elevated Cer24:1 directly bound the mitochondrial TU translation elongation factor (TUFM), disrupting electron transport chain integrity and mitochondrial respiration, providing a defined link between ceramide species and mitochondrial dysfunction. Notably, in vivo treatment with Cer24:1 attenuated the cardioprotective effects of FKBP5 inhibition after MI. Collectively, we describe a previously unrecognized FKBP5-Smpd3-Cer24:1-TUFM signaling axis in cardiac macrophages. FKBP5-governed ceramide metabolism drives macrophage immunometabolic reprogramming, marking FKBP5 as a promising pharmacological target for ischemic heart disease. Our findings support the role of the FKBP5-ceramide axis in mediating post-infarct myocardial dysfunction and highlight pharmacological FKBP5 inhibition as a therapeutic strategy against post-MI cardiac injury.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994074",
+      "doi": "10.1016/j.ebiom.2026.106541",
+      "titulo": "Biomimetic mycobacterial dual spatiotemporal targeting induces trained immunity for tuberculosis photothermal immunotherapy and relapse prevention.",
+      "revista": "EBioMedicine",
+      "ano": "2026",
+      "autores": "Wang W, Li X, Pan M, Wen S, Zhang Q, Fan Z, Yan D, Wang D, Liao Y",
+      "resumo_original": "Tuberculosis (TB) treatment remains hindered by three intertwined challenges, drug delivery barriers, immune evasion, and high relapse rates. Despite advances in nanocarriers and immunomodulation, an integrated platform that achieves precise targeting, potent sterilisation, immune remodelling, and durable protection is still lacking.\nA biomimetic DNA tetrahedral phototherapy system (TDN + AIE@MM) was constructed using Mycobacterium marinum membrane modification to mimic trained immunity and enable dual spatiotemporal targeting of granulomas and lymph nodes. Through natural membrane ligand recognition, the system delivered payloads to immunosuppressive granulomas and antigen-retarded lymph nodes. Upon NIR-II irradiation, the AIE agent generated local hyperthermia to kill intracellular Mycobacterium tuberculosis and released antigens to activate adaptive and long-term memory immune responses.\nTDN + AIE@MM exhibited uniform size, good stability, and preserved membrane proteins. In vitro, it showed superior targeting to H37Ra and macrophages over unmodified controls. Under 808 nm laser irradiation, it achieved >99% killing of extra- and intracellular H37Ra, induced M1 polarisation with pro-inflammatory cytokines (IFN-γ, IL-1β, IL-6, and TNF-α), and enhanced T-cell proliferation and antigen-specific responses. In vivo, it achieved spatiotemporal dual-targeting to granulomas and lymph nodes, increased CD80+/CD86+ antigen-presenting cells and CD4+ T-cell activation, and reduced lung bacterial load. For immune memory, TRM (CD8+CD69+CD103+) reached 21.8% on day 42, approximately two-fold higher than rifampicin (Rif). In a rechallenge relapse model, the 84-day relapse rate was 16.7% versus 66.7% for Rif, with higher memory B cells and TEM, confirming durable protection.\nThese findings show that TDN + AIE@MM integrates physical sterilisation, immunosuppression reversal, and durable immune memory via dual spatiotemporal targeting, effectively addressing the three core challenges in TB therapy, namely delivery barriers, immune evasion, and relapse risk, and offering a promising strategy for immunotherapy and relapse prevention.\nPrevention and Control of Emerging and Major Infectious Diseases-National Science and Technology Major Project, the Project Department for Supporting the Research and Innovation Capabilities of Young Teachers in Universities-Pilot Program for Provincial Coordination, the National Natural Science Foundation of China, the Yunnan Provincial Department of Science and Technology-Kunming Medical University Special Projects, the Shenzhen University 2035 Program for Excellent Research, and the Scientific Research Fund of the Yunnan Provincial Department of Education.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -718,7 +801,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -732,7 +815,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -746,7 +829,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -760,7 +843,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -774,7 +857,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -788,7 +871,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -802,7 +885,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -816,7 +899,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -830,7 +913,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -844,7 +927,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -858,7 +941,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -872,7 +955,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -886,7 +969,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -900,7 +983,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -914,7 +997,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -928,7 +1011,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -942,7 +1025,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -956,7 +1039,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -970,7 +1053,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -984,7 +1067,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -998,105 +1081,7 @@
       "consultas": [
         "imunometabolismo"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42981990",
-      "doi": "10.1016/j.ecoenv.2026.121017",
-      "titulo": "Urinary oxidative DEHP metabolites and advanced cardiovascular-kidney-metabolic syndrome: Evidence from NHANES and mechanistic insights into MECPP-related macrophage inflammatory-glycolytic activation.",
-      "revista": "Ecotoxicology and environmental safety",
-      "ano": "2026",
-      "autores": "Liang L, Su S, Niu Q, Rao K, Zhang Y, Chen N, Wang L, Chen Y, Yao P",
-      "resumo_original": "Phthalates are ubiquitous environmental contaminants, yet their relevance to advanced cardiovascular-kidney-metabolic (CKM) syndrome remains unclear. We examined the associations between urinary phthalate metabolites and advanced CKM syndrome, and explored the potential mechanisms linking di(2-ethylhexyl) phthalate (DEHP)-related exposure to macrophage inflammatory-glycolytic activation.\nWe analyzed 4236 adults from seven cycles (2005-2018) of the National Health and Nutrition Examination Survey (NHANES). A total of ten urinary phthalate metabolites were quantified, and advanced CKM syndrome was defined as CKM stages 3-4 using an NHANES-adapted American Heart Association framework. Survey-weighted logistic regression, restricted cubic splines, and weighted quantile sum (WQS) regression were used to assess single-metabolite, dose-response, and mixture associations. Mono(2-ethyl-5-carboxypentyl) phthalate (MECPP) was further evaluated using network toxicology, molecular docking, Mendelian randomization, single-cell RNA sequencing, and macrophage reverse transcription quantitative polymerase chain reaction (RT-qPCR).\nAmong 4236 participants, 648 had advanced CKM syndrome. In fully adjusted models, oxidative DEHP metabolites were positively associated with advanced CKM syndrome. Compared with the lowest quartile, the highest quartile was associated with higher odds for mono(2-ethyl-5-oxohexyl) phthalate (MEOHP; odds ratio [OR], 1.64; 95% confidence interval [CI], 1.12-2.42), mono(2-ethyl-5-hydroxyhexyl) phthalate (MEHHP; OR, 1.60; 95% CI, 1.05-2.42), and MECPP (OR, 1.84; 95% CI, 1.26-2.68), with significant trends. Restricted cubic spline analyses suggested non-linear associations. WQS regression indicated a positive mixture association, with MECPP receiving the highest weight. Network toxicology identified 33 overlapping genes enriched in pathways related to the renin-angiotensin system, insulin resistance, peroxisome proliferator-activated receptor signaling, and diabetic cardiomyopathy. Among the candidate hub genes, tumor necrosis factor (TNF) and peroxisome proliferator-activated receptor gamma (PPARG) were further examined using molecular docking and Mendelian randomization. Single-cell analyses of public mouse heart and kidney datasets localized Tnf mainly to macrophages and Pparg to cardiac endothelial cells and renal monocytes. In RAW 264.7 macrophages, MECPP potentiated palmitic acid-induced expression of inflammatory and glycolysis-related genes.\nUrinary oxidative DEHP metabolites, particularly MECPP, were positively associated with advanced CKM syndrome in US adults. These findings support MECPP as a potential biomarker of DEHP-related exposure and generate mechanistic hypotheses involving macrophage-centered inflammatory and glycolytic transcriptional activation. Prospective and experimental studies are warranted to clarify causality and to determine whether DEHP-related exposure contributes to the development and progression of CKM syndrome.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42981187",
-      "doi": "10.1016/j.celrep.2026.118263",
-      "titulo": "Temporal shifts in post-asthmatic immune responses define tumor outcomes via strain-specific monocyte reprogramming.",
-      "revista": "Cell reports",
-      "ano": "2026",
-      "autores": "Wang X, Chen C, Wan Y, Dang B, Liu X, Gao Q, Zhang J, Cheng SC",
-      "resumo_original": "Epidemiological evidence linking asthma to lung cancer risk remains contradictory, presenting asthma as either a risk factor or a protective condition. We hypothesize that this heterogeneity stems from the temporal dynamics of inflammatory response and host genetic background. Using ovalbumin (OVA)-induced asthma models, we identify a temporal shift in immune effectors driving post-asthmatic tumorigenesis. During acute airway inflammation, eosinophil infiltration accelerates tumor growth across mouse strains. Following resolution, however, tumorigenic outcomes in recovery diverge along genetic lines. Prior asthma reshapes chromatin landscapes of bone marrow myeloid progenitors, establishing innate immune memory that differentially programs monocytes across strains. In C57BL/6 mice, trained monocytes adopt oxidative phosphorylation (OXPHOS), acquiring a suppressive, tissue-remodeling phenotype that promotes tumor progression. Conversely, BALB/c-trained monocytes utilize glycolysis to maintain a pro-phagocytic state, enabling tumor clearance. These findings delineate a biphasic mechanism wherein temporal shifts in post-asthmatic immune responses define tumor outcomes via strain-specific monocyte metabolic reprogramming.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42979823",
-      "doi": "10.1080/08820139.2026.2757132",
-      "titulo": "FSTL1 and NLRP3 Inflammasome Activation in Lupus Nephritis: A Mesenchyme-to-Macrophage Hypothesis.",
-      "revista": "Immunological investigations",
-      "ano": "2026",
-      "autores": "Li Y, Qiu H, Gao X, Li N",
-      "resumo_original": "Lupus nephritis (LN) is a major cause of morbidity in systemic lupus erythematosus (SLE), and current therapies often fail to prevent end-stage renal disease. Follistatin-like protein 1 (FSTL1), a mesenchymal/stromal-derived glycoprotein, is implicated in renal inflammation.\nTo synthesize evidence for a proposed FSTL1-driven NLRP3 inflammasome axis in LN and to identify gaps relevant to biomarker development and targeted therapy.\nWe examine the hypothesis that stromal/tubular FSTL1 is internalized by macrophages and activates NLRP3 via dual signals: mitochondrial ATP production (activation) and transcriptional upregulation of Nlrp3/pro-caspase-1 (priming), with resulting IL-1β amplifying tubulointerstitial inflammation and fibrosis. We assess evidence that FSTL1 is elevated in SLE sera, whereas direct LN kidney evidence is limited to one Chinese-language immunohistochemical study and NLRP3 colocalization has not been demonstrated in biopsy-proven LN; CKD and UUO models suggest FSTL1 may be present in LN kidney but this remains untested. We also discuss post-translational modifications, extracellular vesicle shuttling, and immunometabolism as unexplored determinants of context-dependent FSTL1 behavior.\nThe proposed mesenchyme/stroma-to-macrophage axis may offer new opportunities for LN biomarkers and targeted therapy, but current evidence is largely indirect and should be interpreted as a mechanistic framework requiring rigorous translational validation.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42987700",
-      "doi": "10.1016/j.biomaterials.2026.124735",
-      "titulo": "Mitochondria-protective polysaccharide augments burn wound repair through immunometabolic reprogramming.",
-      "revista": "Biomaterials",
-      "ano": "2026",
-      "autores": "Zhong G, Liang Q, Pu J, Zhai X, Hu Z, Wu H, Xu N, Hu C, Luo Y, Liu Y, Zhao J, Sun P, Wang Y, Chen F, Luo G, Yu Y, Zhong C",
-      "resumo_original": "Effective wound healing requires coordinated extracellular matrix (ECM) deposition, immune regulation, and metabolic adaptation-processes governed by fibroblast mitochondria. Conventional burn therapies fail to address the mitochondrial dysfunction that impedes tissue regeneration. Here, we show that colanic acid (CA), a microbial-derived exopolysaccharide, acts as a mitochondrial-protecting biomaterial that accelerates burn repair by restoring immuno-metabolic crosstalk. In a murine deep second-degree burn model, CA enhanced wound closure 3.1-fold over controls, reduced reactive oxidative species by 54%, and increased mature collagen deposition by 193%. Mechanistically, CA undergoes intracellular internalization with the assistance of the membrane receptor TLR4 and maintains mitochondrial integrity, evidenced by restored cristae ultrastructure, a 1.4-fold increase in oxidative phosphorylation flux, and a 1.5-fold elevation in ATP production-effects abolished upon silencing the mitochondrial regulator Thap11. Bulk RNA-seq indicated that CA reshaped the wound immune landscape by driving macrophage recruitment and M2 polarization via mitochondrial metabolic reprogramming. By synchronizing mitochondrial rescue with immune-guided ECM remodeling, CA outperformed hyaluronic acid dressings in wound closure and extracellular matrix remodeling.The preliminary translational proof-of-concept of CA was confirmed in a Bama minipig model of deep second-degree burn wound, where it enhanced re-epithelialization, angiogenesis, and tissue perfusion. Together, these findings suggest that CA is a multifunctional polysaccharide with mitochondrial protective effects capable of addressing the multifaceted pathology of burn wounds across species.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42977746",
-      "doi": "10.1038/s41467-026-78812-2",
-      "titulo": "Hepatocyte IRE1α-XBP1s axis prevents pro-metastatic niche formation through metabolic rewiring of inflammatory monocytes.",
-      "revista": "Nature communications",
-      "ano": "2026",
-      "autores": "Zhang H, Liang P, Yang W, Chen X, Fu Y, Chen C, Yin Z, Li X, Pei X, Lei JH, Chu X, Zhao ZB, Hu H, Chen M, Pan H, Lian ZX, Ding X, Halberg N, Ramm GA, Hou J",
-      "resumo_original": "Inositol-requiring enzyme 1α (IRE1α) and the downstream spliced form of X-Box Binding Protein 1 (XBP1s) have been identified as tumor promotors. However, how IRE1α-XBP1s signaling affects tumor progression in a non-cell autonomous manner remains unclear. Here we show that the hepatocyte IRE1α-XBP1s axis unexpectedly inhibits liver metastasis by confining local metainflammation. Genetic ablation of IRE1α or XBP1 in mouse hepatocytes exacerbates liver metastasis due to the accumulation of inflammatory monocytes (IMs). Mechanistically, a non-canonical Forkhead box O1 (FoxO1)-glutamine synthetase (GS) pathway endows the IRE1α- or XBP1-null hepatocytes with the metabolic activity to secrete glutamine, which is necessary and sufficient for IM fitness. Reintroduction of hepatocyte XBP1s or blockade of glutamine metabolism effectively reduces IMs and mitigates disease progression. Importantly, clinical patient survival with liver metastases positively correlates with hepatocyte XBP1s expression. Our study defines a paradigm of hepatocyte-IM interaction that can be leveraged to treat liver metastasis.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42977568",
-      "doi": "10.1002/advs.78586",
-      "titulo": "Lactylation of HSC70 Impairs Chaperone-Mediated Autophagy to Promote Pyrin Inflammasome-Dependent PANoptosis in Macrophages During Sepsis.",
-      "revista": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
-      "ano": "2026",
-      "autores": "Chen Y, Zhang Y, Wang P, Ma J, Zhao X, Li Y, Deng Z, Meng X, Zhu J, Yao L, Li J",
-      "resumo_original": "Sepsis-related cytokine storm is associated with poor prognosis in septic patients. IFNγ/LPS can synergistically trigger a sepsis-associated proinflammatory cytokine storm and induce macrophage death in the form of PANoptosis. The ensuing release of proinflammatory cytokines further amplifies macrophage death, leading to subsequent multiple organ damage. Concurrently, the IFNγ/LPS induced inflammatory cascade also downregulates chaperone-mediated autophagy (CMA) activity, and this dysregulation further exacerbates the inflammatory response in macrophages and in vivo. Thus, a positive feedback loop between dysfunctional CMA and the inflammatory cascade is established. Enhancing CMA activation reduces macrophage death and organ damage, whereas inhibiting CMA exacerbates macrophage PANoptosis and organ injury. Mechanistically, impaired CMA leads to accumulation of the transcription factor CUX1, which subsequently upregulates Pyrin expression and promotes Pyrin-mediated PANoptosome assembly, thereby driving macrophage PANoptosis. In addition to the cytokine storm, the lacylation at lysine 561 (K561) of HSC70, a core component of the CMA machinery, is associated with reduced CMA activity. Blocking lactylation can similarly attenuate macrophage death and multiple organ injury in sepsis. Taken together, this \"Kla-CMA-CUX1/Pyrin-PANoptosis\" signaling axis, linking metabolic reprogramming to immune dysregulation in sepsis, suggests that targeting key nodes of this axis may represent a promising therapeutic strategy to reduce sepsis-associated mortality.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42977100",
-      "doi": "10.1016/j.bbcan.2026.189742",
-      "titulo": "Glioblastoma-associated microglia/macrophages (GAMs): Advances in knowledge and implications for glioblastoma (GBM) therapy.",
-      "revista": "Biochimica et biophysica acta. Reviews on cancer",
-      "ano": "2026",
-      "autores": "Singh S, Mishra R",
-      "resumo_original": "Glioblastoma (GBM) is an exceptionally aggressive, therapy-resistant central nervous system malignancy. Within the tumour microenvironment, glioblastoma-associated microglia and macrophages (GAMs) constitute a highly heterogeneous population whose functional states profoundly influence disease progression, tissue architecture, immune evasion, and treatment response. In this review, we propose a conceptual framework in which distinct GAM phenotypes emerge from the integrated influence of vascular, tumoural, metabolic, biomechanical, neural, and immune inputs, together with glyco-immune interactions, extracellular vesicles, and epigenetic regulation. As GAMs process these cues, they actively remodel their surrounding ecosystem, sustaining a protumourigenic niche. We critically evaluate emerging therapeutic interventions-including those targeting GAM abundance, immunometabolism, mechanotransduction, and intercellular communication-as well as advanced platforms such as engineered myeloid systems, phytomedicines, targeted delivery vehicles, and gut-brain axis-based strategies. Furthermore, we address key translational bottlenecks, including extreme GAM plasticity, spatial heterogeneity, limitations of preclinical models, barriers to central nervous system delivery, and a lack of predictive biomarkers. We argue that the therapeutically relevant target is not the GAM population in isolation, but rather the diverse niche-GAM functional units and the cumulative signalling networks that sustain them. Ultimately, achieving durable clinical efficacy will require biomarker-guided, spatially informed combination regimens that selectively disrupt maladaptive myeloid states while preserving physiological microglial homeostasis.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1110,7 +1095,77 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994664",
+      "doi": "10.1016/j.ijbiomac.2026.155176",
+      "titulo": "Cryo-EM structure of a near-planar 13-mer ring formed by recombinant human parainfluenza virus type 2 nucleoprotein.",
+      "revista": "International journal of biological macromolecules",
+      "ano": "2026",
+      "autores": "Matić Z, Sarim KM, Degtjarik O, Vujaklija D, Kazazić S",
+      "resumo_original": "Human parainfluenza virus type 2 (HPIV2) is an orthorubulavirus respiratory pathogen whose genome is encapsidated by the viral nucleoprotein (N), for which high-resolution experimental structural information has been lacking. Here, we report a cryo-electron microscopy structure of recombinant HPIV2 N assembled with co-purified RNA in a closed, near-planar 13-protomer ring, reconstructed with C13 symmetry at a nominal, sampling-limited resolution of 2.91 Å. Tilted cryo-EM data collection was used to mitigate strong preferred orientation, and C13-symmetric refinement of 430,693 particles yielded this reconstruction. An independent C1 reconstruction supported the closed ring-like architecture without imposed rotational symmetry. The structure contains a conserved RNA-binding groove. Because the recombinant protein co-purified with heterogeneous host-derived RNA and the groove-associated density was not sequence-resolved, a template-derived poly-uridine strand was positioned as a conservative representation of a plausible RNA path and six-nucleotide-per-protomer register rather than as a native RNA assignment. Contact-map and ILV/LIV hydrophobic-cluster analyses identified recurrent intra-protomer and inter-protomer packing features, including N-arm-to-neighbouring-core and C-terminal-side contacts. In single 300 ns RNA-bound and RNA-free molecular-dynamics trajectories, the overall ring architecture and compactness were maintained, while local flexibility differences were observed near the RNA-binding groove. Comparative structural analysis places the recombinant HPIV2 N 13-mer observed here among near-planar paramyxovirus N assemblies, alongside PIV5 and the near-planar mumps N form, and distinguishes it from more strongly pitched nucleocapsid assemblies. These results define the oligomeric architecture of recombinant HPIV2 N and provide a structural reference for RNA binding, inter-protomer organisation and future structure-guided engineering of the scaffold.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994429",
+      "doi": "10.1016/j.molcel.2026.10.018",
+      "titulo": "Nuclear TRiC states captured in situ.",
+      "revista": "Molecular cell",
+      "ano": "2026",
+      "autores": "Xing H, Rosenkranz RRE, Yokoyama N, Obarska-Kosinska A, Böhm S, Hammerschmid D, Kreysing JP, Lusic M, Langer JD, Liu F, Beck M",
+      "resumo_original": "The chaperonin T-complex protein ring complex (TRiC) is an essential protein-folding machine in eukaryotic cells. Although its cytosolic role in folding newly synthesized proteins is well established, nuclear TRiC remains less well described. Here, we combined cryo-electron tomography (cryo-ET), cross-linking and affinity purification mass spectrometry with AlphaFold3 (AF3)-based structural modeling to examine nuclear TRiC in human cells. We detected intermediates of the TRiC duty cycle in the nucleus and identified several nuclear proteins that bind to TRiC. The respective AF3 models suggest interaction surfaces at the inside of the TRiC chamber. Our findings point toward compartment-specific roles of TRiC and a potential function in maintaining nuclear proteostasis. By data-mining very large datasets, our study establishes that rather low-abundant events can be analyzed by cryo-ET. It thus paves the way toward broader applications.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994424",
+      "doi": "10.1016/j.str.2026.10.005",
+      "titulo": "Dynamic ring rearrangements underlie transport by MCE proteins.",
+      "revista": "Structure (London, England : 1993)",
+      "ano": "2026",
+      "autores": "Ratkevičiūtė G, Cooper BF, Iceta-Tena M, Gragera M, Caulton SG, Wotherspoon P, Lovering AL, Sorzano CÓS, Carazo JM, Knowles TJ",
+      "resumo_original": "Mammalian cell entry (MCE) proteins mediate hydrophobic substrate transport between bacterial membranes, yet the dynamics underlying substrate translocation remain poorly understood. Here, we present the structural characterization of B. bacteriovorus Bd1152, revealing a rare two-MCE-ring architecture. Integrating X-ray crystallography, cryo-electron microscopy and continuous flexibility analysis, we uncover pronounced shearing and twisting motions between its MCE rings. Analysis of E. coli PqiB reveals that this conformational plasticity extends across distinct MCE architectures, with coordinated inter-ring rearrangements coupled to constriction and dilation of the central transport channel. These dynamics support a peristaltic model for substrate translocation through MCE proteins. Furthermore, a conserved loss-of-function PqiB mutant adopts a collapsed channel conformation, disrupting formation of a continuous transport conduit. Together, our findings establish inter-ring conformational plasticity as a conserved feature of MCE proteins and reveal how coordinated MCE-domain and pore rearrangements may facilitate lipid transport across the bacterial periplasm.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994423",
+      "doi": "10.1016/j.str.2026.10.006",
+      "titulo": "A simplified high-pressure freezing workflow in Autogrids.",
+      "revista": "Structure (London, England : 1993)",
+      "ano": "2026",
+      "autores": "Weber MS, Epprecht T, Bousquet C, Xu J, Weiss GL",
+      "resumo_original": "Cryo-electron tomography (cryo-ET) enables structural analysis of biological samples in near-native states, yet vitrification of thick and complex specimens remains challenging. High-pressure freezing (HPF) can vitrify up to ∼200 μm thick specimens, but its seamless integration into cryo-electron microscopy (cryo-EM) workflows is hindered by planchettes that are not optimized for EM grids, resulting in extensive handling, reliance on user experience, and frequent grid damage. Here, we present a streamlined HPF workflow based on newly designed planchettes that directly accommodate clipped EM Autogrids. Interchangeable lids control sample thickness and support vitrification of diverse specimens, including single-celled eukaryotes and tissue biopsies, while minimizing post-freezing handling. We demonstrate that these planchettes enable reliable preservation of cellular ultrastructure and macromolecular integrity, as assessed by cryo-ET and subtomogram averaging. This resource provides a practical solution for integrating HPF into modern cryo-ET pipelines, expanding access to structurally complex specimens and supporting future clinical applications.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-07",
+      "fonte_captura": "PubMed"
+    },
+    {
+      "pmid": "42994287",
+      "doi": "10.1016/j.cbpa.2026.102812",
+      "titulo": "Orthogonal tandem catalysis in terpene biosynthesis.",
+      "revista": "Current opinion in chemical biology",
+      "ano": "2026",
+      "autores": "Christianson DW",
+      "resumo_original": "If sequential reactions in a multistep reaction sequence can be catalyzed in one-pot fashion, synthetic efficiency typically improves. This phenomenon is described as orthogonal tandem catalysis and extends from chemical to biochemical reactions: \"one pot\" in the organic chemistry laboratory is analogous to \"one compartment\" in the cell. Covalent linkage of tandem catalysts can further enhance synthetic or biosynthetic efficiency through proximity, which is a form of substrate channeling. In recent years, bifunctional terpene cyclases have been discovered that contain two distinct catalytic domains, including class I-class II terpene cyclases, several class II terpene cyclase-phosphatases, and more than 1000 prenyltransferase-class I/II terpene cyclases. Structural analyses of these systems using X-ray crystallography and cryo-electron microscopy provide a framework for understanding orthogonal tandem catalysis and substrate channeling in the enzymology of natural product biosynthesis.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1124,7 +1179,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1138,7 +1193,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1152,7 +1207,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1166,7 +1221,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1180,7 +1235,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1194,7 +1249,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1208,7 +1263,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1222,7 +1277,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1236,7 +1291,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1250,7 +1305,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1264,7 +1319,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1278,7 +1333,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1292,7 +1347,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1306,7 +1361,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1320,21 +1375,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42969843",
-      "doi": "10.1002/anie.7096194",
-      "titulo": "3D Electron Diffraction Reveals Counterion Coordination in Co-Existing Polymorphs of Ag29 Nanocluster.",
-      "revista": "Angewandte Chemie (International ed. in English)",
-      "ano": "2026",
-      "autores": "Nagar H, Gurung K, Kučeráková M, Som A, Palatinus L, Pradeep T",
-      "resumo_original": "We unravel the complete structural architecture of the polymorphic Na3[Ag29(BDT)12(TPP)4] nanocluster (NC) using three-dimensional electron diffraction (3D ED) of microscopic crystals. By drop-casting nanocluster solution directly onto microscopy grids, we achieve in situ crystallization of nanometer-sized polymorphs and independently resolve co-existing cubic and trigonal phases crystal-by-crystal from a single grid square. Using difference electrostatic potential (DESP) maps derived from empirical 3D ED data, we pinpoint the specific lattice locations of the elusive Na+ counterions and observe distinct coordination environments across the two polymorphs. In the densely packed, solvent-free cubic phase, Na+ binds exclusively to thermodynamically favored pockets formed by one core-anchored and two staple sulfur atoms. Conversely, within the open, solvated trigonal lattice, Na+ occupies both these core-anchored sites and alternative positions coordinated entirely by three sulfur atoms of an outer Ag3S3 staple motif. These findings establish 3D ED as a powerful tool for resolving nanoscale polymorphic mixtures and demonstrate how macroscopic crystal packing influences local ionic interactions, providing key structural insights for the design of cluster-based assemblies.",
-      "consultas": [
-        "polifosfato_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1348,21 +1389,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42968263",
-      "doi": "10.1111/jmi.70194",
-      "titulo": "An evaluation framework for sparse 4D (3D + time) imaging reconstruction via bootstrapped cross-validation.",
-      "revista": "Journal of microscopy",
-      "ano": "2026",
-      "autores": "Zhang Y, Yao Z, Hu Z, Ritschel T, Villanueva-Perez P",
-      "resumo_original": "Four-dimensional (4D; 3D + time) microscopic imaging has emerged as a powerful technique for investigating dynamic phenomena in complex systems, enabling direct visualisation of structural evolution in space and time. However, when pushing the limits of spatiotemporal resolution, most time-resolved imaging techniques yield inherently sparse 4D datasets. While deep learning-based reconstruction methods have shown promise in reconstructing 4D from sparse spatiotemporal measurements, a practical approach for evaluating their performance in the absence of a 4D reference has, to the best of our knowledge, been lacking. Here, we present a bootstrapped cross-validation framework that estimates reconstruction performance by quantifying correlations between reconstructions generated from independently sampled subsets of the acquired data, as inspired by the 3D validation strategy in cryo-electron microscopy, where reconstructions from split datasets are compared to assess resolutions. This enables both qualitative and quantitative assessment in the absence of ground truth. We investigate two representative scenarios with sparse and ultra-sparse X-ray datasets and validate this approach using 4D-ONIX, a 4D deep-learning reconstruction method, on simulated water droplet collision experiments. The proposed approach provides a reference-free framework for performance estimation and support for better-informed experimental strategies across a wide range of ultrafast imaging applications.",
-      "consultas": [
-        "polifosfato_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1376,7 +1403,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1390,7 +1417,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1404,7 +1431,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1418,7 +1445,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1432,7 +1459,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1446,7 +1473,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1460,21 +1487,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42967961",
-      "doi": "10.1007/s00253-026-13992-x",
-      "titulo": "Key factors for growth and phosphate uptake by Acinetobacter tjernbergiae.",
-      "revista": "Applied microbiology and biotechnology",
-      "ano": "2026",
-      "autores": "Brück J, Täuber S, Ackermann L, Schittkowski H, Neubauer P, Junne S",
-      "resumo_original": "Phosphorus-containing fertilisers are essential for global food production but depend on finite phosphate rock reserves. Recovery of phosphorus from waste streams, such as those in wastewater treatment plants, will be required to follow future regulations. Certain Acinetobacter spp. can accumulate 24-30% (w w-1) of phosphate intracellularly, making them promising candidates for microbial phosphorus recovery. However, previous studies have reported insufficient biomass formation to enable rapid phosphate uptake. Therefore, this work investigated key factors of biomass generation and phosphate uptake of Acinetobacter tjernbergiae in an empirical study. Increasing iron concentration by 1 mg L-1 enhanced growth six-fold in shake flask cultivations. A maximum biomass concentration of 12 ± 0.7 g L-1 was achievable during 14 h of bioreactor cultivation. The maximum volumetric phosphate uptake rate (rS,P) reached 280.2 ± 40.8 mg (L h)-1, the highest value reported so far for Acinetobacter spp., while specific rates of up to 41.0 ± 1.1 mg (g h)-1 were achieved. It was further shown that A. tjernbergiae exhibits both polyphosphate accumulation and the overplus phenomenon. Moreover, phosphate uptake was strongly correlated with carbon uptake, while carbon absence resulted in phosphate release.",
-      "consultas": [
-        "polifosfato_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1488,35 +1501,7 @@
       "consultas": [
         "polifosfato_ultraestrutura"
       ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42969196",
-      "doi": "10.1002/glia.70256",
-      "titulo": "A Glial Interplay Regulates Junctional Architecture at the Blood-Brain Barrier of Drosophila.",
-      "revista": "Glia",
-      "ano": "2027",
-      "autores": "Contreras EG, Naffin E, Collins-Ramírez M, Surina NV, Rothermel M, Salazar-Tirado J, Schirmeier S, Klämbt C",
-      "resumo_original": "Neurons require a tightly controlled ion and metabolite homeostasis, which is maintained by an effective blood-brain barrier (BBB). Since the integrity of the BBB is essential for brain function, its maintenance during development represents a significant challenge. The Drosophila BBB is formed by two glial layers. Subperineurial glia (SPG) establish pleated septate junctions (pSJs) to generate the primary diffusion barrier. Abutting the SPG lies the mitotically active perineurial glia (PG). Only a small number of PG cells are specified during embryogenesis. The FGF8-like signal Pyramus presented by the SPG subsequently triggers proliferation of the PG, which ultimately covers the entire nervous system. To investigate the role of PG in the development and physiology of the BBB, we genetically ablated them. In these animals, glucose influx into SPG is unchanged following acute glucose perfusion. However, adult PG-ablated flies show increased sensitivity to glucose-only diet, indicating that while baseline carbohydrate transport can be maintained in the absence of most PG, the system fails under metabolic stress. SPG morphology and pSJ organization are largely preserved during larval stages upon PG ablation. In contrast, in PG-ablated pupae, moody expression is impaired in SPG and pSJs progressively split, producing ectopic junctional strands. Together, these results reveal the necessity of PG for the maturation and function of SPG, as well as the mutual interdependence between the two BBB glial layers.",
-      "consultas": [
-        "neuro_eixo"
-      ],
-      "data_fonte": "2026-11-06",
-      "fonte_captura": "PubMed"
-    },
-    {
-      "pmid": "42968310",
-      "doi": "10.1111/gbb.70070",
-      "titulo": "The Fat-Body Secreted Neuropeptide CCHa2 Signals Insulin-Producing Cells in the Brain to Promote Sleep.",
-      "revista": "Genes, brain, and behavior",
-      "ano": "2026",
-      "autores": "Biglari S, Gong S, Wang MC, Payne CA, Kauffman MR, DiAngelo JR, Keene A",
-      "resumo_original": "Sleep is a fundamental behavior regulated by diverse environmental and physiological cues. While the central mechanisms underlying sleep regulation have been investigated in detail, far less is known about how nutrient signals from the periphery are communicated to the brain to modulate sleep. Here, we perform a targeted RNAi screen of genes enriched in the fat body and regulated by feeding state to identify genes that function in the fat body to regulate sleep in Drosophila. This analysis found that fat body-specific knockdown of CCHa2 significantly reduced sleep duration and sleep depth in fed flies, phenocopying sleep in starved flies. CCHa2-deficient flies exhibited reduced glycogen stores and diminished feeding drive. Analysis of single-cell transcriptomic atlases confirms that the CCHa2 receptor (CCHa2-R) is selectively expressed in insulin-producing cells (IPCs) of the fly brain. We find that knockdown of CCHa2-R in IPCs recapitulates the sleep loss phenotype of CCHa2 mutants, supporting a role in adipose-brain signaling. Further screening of genes identified in single cell atlases as being enriched in IPCs led to the identification of numerous genes that function in IPCs to regulate sleep, including modulators of wnt and insulin signaling. Together, these findings identify a fat body-IPC axis that is a critical modulator of sleep duration and intensity.",
-      "consultas": [
-        "neuro_eixo"
-      ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1530,7 +1515,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1544,7 +1529,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1558,7 +1543,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1572,7 +1557,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1586,7 +1571,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1600,7 +1585,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1614,7 +1599,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1628,7 +1613,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1642,7 +1627,7 @@
       "consultas": [
         "neuro_eixo"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1656,7 +1641,7 @@
       "consultas": [
         "lepidopteros_bt"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1670,7 +1655,7 @@
       "consultas": [
         "lepidopteros_bt"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     },
     {
@@ -1684,7 +1669,7 @@
       "consultas": [
         "lepidopteros_bt"
       ],
-      "data_fonte": "2026-11-06",
+      "data_fonte": "2026-11-07",
       "fonte_captura": "PubMed"
     }
   ]
