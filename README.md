@@ -9,8 +9,10 @@ Site publicado via GitHub Pages:
 
 ## 🎯 Como Funciona
 
+> **Revista oficial e espelho (desde 09/11/2026).** A revista oficial do grupo é a do claude.ai, alimentada pela rotina *Resumo da Literatura Científica v6*. Esta página é o **espelho** dela: não faz captura própria. Em dias úteis, a tarefa agendada *Espelho da Bancada no GitHub* grava o depósito do dia em `data/captura_v6/AAAA-MM-DD.json`; o push dispara a rotina deste repositório, que importa esses artigos (`scripts/importar_v6.py`), faz o enriquecimento em 5 blocos e gera o podcast. `scripts/fetch_literature.py` fica no repositório só como histórico e não roda.
+
 1. **Varredura e Ingestão Diária:**  
-   A rotina de inteligência do laboratório (*Resumo da Literatura Científica v6*) varre o PubMed e bioRxiv em 5 eixos temáticos:
+   A rotina de inteligência do laboratório (*Resumo da Literatura Científica v6*) varre o PubMed e bioRxiv em 5 eixos temáticos e deposita na revista do claude.ai; o espelho recebe o mesmo depósito:
    * 🧠 **Cérebro** (patogênese, malária cerebral, neuroimunologia)
    * 🦟 **Vetor** (Aedes, Anopheles, competência vetorial)
    * 🛡️ **Hospedeiro** (resposta imune, autofagia, inflamação)
@@ -41,6 +43,8 @@ Site publicado via GitHub Pages:
 ## 🚀 Estrutura do Repositório
 
 * `index.html`: A revista digital completa e interativa (executada no GitHub Pages).
+* `data/captura_v6/`: Depósito diário da v6 vindo da revista do claude.ai — a única entrada de literatura do espelho.
+* `scripts/importar_v6.py`: Lê o depósito mais recente e monta `data/literature_capture_raw.json`.
 * `data/interacoes.json`: Marcações sincronizadas da equipe (catálogo, sinais, anotações).
 * `data/edicao_atual.json`: Cópia de referência dos metadados completos dos artigos em circulação.
 * `scripts/sync_lab.py`: Ponte de automação com o laboratório e o Second Brain.
