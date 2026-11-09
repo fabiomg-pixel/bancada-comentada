@@ -150,8 +150,28 @@ dossie_fronteira = {
             "id": "contactoma-vetor",
             "tema": "Contactoma de Organelas & Homeostase de Hemo no Inseto",
             "icone": "🔬",
+            "o_que_e": "Como os sítios de contato membrana-membrana desviam a toxicidade do hemo livre no intestino de mosquitos hematófagos durante o repasto sanguíneo.",
             "pergunta_provocativa": "Como os sítios de contato membrana-membrana desviam a toxicidade do hemo livre no intestino de mosquitos hematófagos?",
             "contexto": "Durante a digestão da hemoglobina, a concentração de hemo livre no intestino médio atinge níveis milimolares letais. Sabíamos que os mosquitos contam com agregação de hemo em hemozoína e proteção por antioxidantes.\n\nContudo, a física dos sítios de contato de membranas (MCS) revela que o trânsito intracelular de lipídios e metabólitos oxidáveis é protegido por canais fechados entre o retículo endoplasmático e as organelas de estoque. Mapear o contactoma intestinal em resposta ao repasto normal vs dieta hiperlipídica/hiperglicêmica (HFHS) abre uma frente experimental completamente nova para o LUCHM.",
+            "historia": "Durante a digestão da hemoglobina, a concentração de hemo livre no intestino médio atinge níveis milimolares letais. Sabíamos que os mosquitos contam com agregação de hemo em hemozoína e proteção por antioxidantes.\n\nContudo, a física dos sítios de contato de membranas (MCS) revela que o trânsito intracelular de lipídios e metabólitos oxidáveis é protegido por canais fechados entre o retículo endoplasmático e as organelas de estoque. Mapear o contactoma intestinal em resposta ao repasto normal vs dieta hiperlipídica/hiperglicêmica (HFHS) abre uma frente experimental completamente nova para o LUCHM.",
+            "intersecao_luchm": "Nos nossos experimentos de FIB-SEM e microscopia eletrônica de transmissão no CENABIO/LUCHM, podemos medir quantitativamente a frequência e extensão das junções retículo-mitocôndria e retículo-gota lipídica em Aedes aegypti alimentados com sangue controle vs sangue HFHS.",
+            "conexao_bancada": "Nos nossos experimentos de FIB-SEM e microscopia eletrônica de transmissão no CENABIO/LUCHM, podemos medir quantitativamente a frequência e extensão das junções retículo-mitocôndria e retículo-gota lipídica em Aedes aegypti alimentados com sangue controle vs sangue HFHS.",
+            "papers_marco": [
+                {
+                    "titulo": "Coming together to define membrane contact sites",
+                    "revista": "Nature Communications",
+                    "ano": "2019",
+                    "doi": "10.1038/s41467-019-09253-3",
+                    "pmid": "30894536"
+                },
+                {
+                    "titulo": "Pex3 promotes formation of peroxisome-peroxisome and peroxisome-lipid droplet contact sites",
+                    "revista": "Scientific Reports",
+                    "ano": "2025",
+                    "doi": "10.1038/s41598-025-07934-2",
+                    "pmid": "40628847"
+                }
+            ],
             "artigos_chave": [
                 {
                     "titulo": "Coming together to define membrane contact sites",
@@ -168,14 +188,38 @@ dossie_fronteira = {
                     "pmid": "40628847"
                 }
             ],
-            "conexao_bancada": "Nos nossos experimentos de FIB-SEM e microscopia eletrônica de transmissão no CENABIO/LUCHM, podemos medir quantitativamente a frequência e extensão das junções retículo-mitocôndria e retículo-gota lipídica em Aedes aegypti alimentados com sangue controle vs sangue HFHS."
+            "pontos_aprofundamento": [
+                "Qual a densidade de junções de membrana retículo-mitocôndria (MAMs) observada por FIB-SEM no epitélio intestinal antes e 24h após o repasto sanguíneo?",
+                "A sobrecarga de hemo livre induz proliferação compensatória de sítios de contato para transferência de lipídios?",
+                "Camundongos alimentados com dieta hiperlipídica fornecem um sangue que altera a morfologia do contactoma no mosquito?"
+            ]
         },
         {
             "id": "bioeletricidade-barreiras",
             "tema": "Bioeletricidade de Epitélios & Permissividade de Barreira",
             "icone": "⚡",
+            "o_que_e": "Como os gradientes elétricos trans-epiteliais e potenciais de membrana mantêm a ancoragem das junções oclusivas antes de danos estruturais.",
             "pergunta_provocativa": "A permeabilidade da barreira hematoencefálica e da membrana peritrófica é controlada por campos bioelétricos antes de alterações estruturais?",
             "contexto": "O rompimento de junções oclusivas (claudina-5, occludina) tem sido estudado sob a ótica proteica e transcricional. No entanto, pesquisas bioelétricas comprovam que o potencial elétrico trans-epitelial mantém as moléculas de adesão sob tensão mecânica contínua.\n\nQuando ocorre estresse oxidativo ou agressão por citocinas, a despolarização iônica precoce relaxa a força de ancoragem das claudinas, permitindo a passagem de fluidos e patógenos antes de qualquer degradação proteolítica visível.",
+            "historia": "O rompimento de junções oclusivas (claudina-5, occludina) tem sido estudado sob a ótica proteica e transcricional. No entanto, pesquisas bioelétricas comprovam que o potencial elétrico trans-epitelial mantém as moléculas de adesão sob tensão mecânica contínua.\n\nQuando ocorre estresse oxidativo ou agressão por citocinas, a despolarização iônica precoce relaxa a força de ancoragem das claudinas, permitindo a passagem de fluidos e patógenos antes de qualquer degradação proteolítica visível.",
+            "intersecao_luchm": "Abre a oportunidade para testarmos compostos farmaco-elétricos (bloqueadores ou abridores de canais de potássio dependentes de voltagem) em fatias cerebrais de camundongos PbA e em intestinos dissecados de mosquitos para verificar se a manutenção do gradiente elétrico impede a ruptura da barreira.",
+            "conexao_bancada": "Abre a oportunidade para testarmos compostos farmaco-elétricos (bloqueadores ou abridores de canais de potássio dependentes de voltagem) em fatias cerebrais de camundongos PbA e em intestinos dissecados de mosquitos para verificar se a manutenção do gradiente elétrico impede a ruptura da barreira.",
+            "papers_marco": [
+                {
+                    "titulo": "Bioelectric signaling: Reprogrammable circuits underlying embryogenesis, regeneration, and cancer",
+                    "revista": "Cell",
+                    "ano": "2021",
+                    "doi": "10.1016/j.cell.2021.02.034",
+                    "pmid": "33826908"
+                },
+                {
+                    "titulo": "Bioelectric modulation of macrophage polarization",
+                    "revista": "Scientific Reports",
+                    "ano": "2016",
+                    "doi": "10.1038/srep21044",
+                    "pmid": "26869018"
+                }
+            ],
             "artigos_chave": [
                 {
                     "titulo": "Bioelectric signaling: Reprogrammable circuits underlying embryogenesis, regeneration, and cancer",
@@ -192,7 +236,11 @@ dossie_fronteira = {
                     "pmid": "26869018"
                 }
             ],
-            "conexao_bancada": "Abre a oportunidade para testarmos compostos farmaco-elétricos (bloqueadores ou abridores de canais de potássio dependentes de voltagem) em fatias cerebrais de camundongos PbA e em intestinos dissecados de mosquitos para verificar se a manutenção do gradiente elétrico impede a ruptura da barreira."
+            "pontos_aprofundamento": [
+                "A despolarização do endotélio microvascular antecede o colapso das junções de claudina-5 no 4º dia pós-infecção por PbA?",
+                "Drogas ionotrópicas já aprovadas para uso clínico podem sustentar o potencial trans-endotelial e prevenir o edema vasogênico?",
+                "Qual o impacto do gradiente bioelétrico na adesão e invasão de oocinetos de Plasmodium no epitélio do mosquito?"
+            ]
         }
     ],
     "tecnicas_emergentes": [
