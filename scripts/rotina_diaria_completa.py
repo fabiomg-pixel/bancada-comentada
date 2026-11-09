@@ -3,7 +3,9 @@
 rotina_diaria_completa.py — Pipeline diário autônomo do LUCHM
 Executa de forma 100% autônoma no GitHub Actions ou no Mac local:
 1. Sincroniza marcações (Bancada Comentada -> Second Brain / Logseq) se local
-2. Varre a literatura (PubMed 7 blocos + bioRxiv)
+2. Importa o depósito do dia da revista do claude.ai (data/captura_v6/, escrito pela
+   tarefa "Espelho da Bancada no GitHub"). Desde 09/11/2026 este repositório é espelho
+   e não varre PubMed nem bioRxiv por conta própria (decisão do Fábio, D8).
 3. Triagem calibrada com os 26 temas de vigilância do Notion + corte de ruído
 4. Atualiza a revista Bancada Comentada (data/edicao_atual.json e index.html)
 5. Gera roteiro do podcast Stork Cast se rodando no Mac
@@ -73,18 +75,18 @@ def executar():
         print("\n[Passo 1/4] Ambiente em nuvem (ou sem second-brain local): pulando etapa de disco.")
 
     # ---------------------------------------------------------
-    # PASSO 2: Varredura de Literatura Calibrada v6 (PubMed + bioRxiv)
+    # PASSO 2: Importar o depósito da v6 (espelho, sem captura própria)
     # ---------------------------------------------------------
-    print("\n[Passo 2/5] Executando varredura da literatura calibrada v6...")
-    fetch_script = os.path.join(SCRIPTS_DIR, "fetch_literature.py")
-    if os.path.exists(fetch_script):
-        ok, out, err = run_cmd(f"python3 {fetch_script}", cwd=REPO_DIR)
-        if ok:
-            print(f"   ✅ Captura v6 concluída.")
-        else:
-            print(f"   ⚠️ Aviso na captura: {err}")
-    else:
-        print(f"   ❌ Script não encontrado: {fetch_script}")
+    print("\n[Passo 2/5] Importando o depósito do dia da revista do claude.ai (data/captura_v6/)...")
+    import_script = os.path.join(SCRIPTS_DIR, "importar_v6.py")
+    res = subprocess.run(["python3", import_script], cwd=REPO_DIR, capture_output=True, text=True)
+    print("   " + (res.stdout.strip() or res.stderr.strip()).replace("\n", "\n   "))
+    if res.returncode == 10:
+        print("\n🛑 Nada novo da v6 desde a última edição: a edição e o podcast ficam como estão.")
+        return
+    if res.returncode != 0:
+        print("\n❌ Falha ao importar o depósito da v6: a edição e o podcast ficam como estão.")
+        sys.exit(1)
 
     # ---------------------------------------------------------
     # PASSO 3: Radar Cultural (Ensaio & Grandes Temas)

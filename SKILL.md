@@ -27,18 +27,23 @@ Estas regras têm precedência absoluta em qualquer geração, edição ou manut
    - `4. 💡 Implicação Direta para a Bancada LUCHM`: Conexão direta e específica com os 7 programas de pesquisa do laboratório.
    - `5. ⚡ Faísca Lateral & Hipótese de Trabalho`: Hipótese provocativa e testável na bancada ou no biotério.
 
-4. **Sincronismo Rigoroso (Screening + Podcast Sempre Juntos)**:
+4. **Espelho sem captura própria (desde 09/11/2026, decisão do Fábio)**:
+   - A revista oficial é a do claude.ai, alimentada pela rotina *Resumo da Literatura Científica v6*. Este repositório é o espelho: a única entrada de literatura é `data/captura_v6/AAAA-MM-DD.json`, gravado pela tarefa *Espelho da Bancada no GitHub*, e lido por `scripts/importar_v6.py`.
+   - É proibido reativar `scripts/fetch_literature.py`, `fetch_literature_v6.py` ou qualquer outra varredura de PubMed, bioRxiv ou Stork aqui. A regra existe para que a mesma literatura não seja capturada duas vezes.
+   - O enriquecimento em 5 blocos e o podcast continuam sendo deste repositório, sobre os artigos que a v6 depositou.
+
+5. **Sincronismo Rigoroso (Screening + Podcast Sempre Juntos)**:
    - Nunca atualizar o screening diário sem atualizar simultaneamente o podcast.
    - O episódio de áudio DEVE cobrir os artigos reais do dia extraídos de `data/edicao_atual.json`. Roteiros estáticos ou congelados são proibidos.
 
-5. **Duração do Podcast Calibrada para a Viagem de Carro (25 a 30 Minutos)**:
+6. **Duração do Podcast Calibrada para a Viagem de Carro (25 a 30 Minutos)**:
    - O diálogo deve conter entre **3.500 e 3.850 palavras** distribuídas em ~50 intervenções balanceadas entre Antônio e Francisca.
    - Na cadência neural (~140 palavras/minuto), a duração final deve situar-se estritamente entre **25 e 28 minutos**, correspondendo exatamente ao trajeto de comutação do Prof. Fábio Gomes.
 
-6. **Isolamento de Cache de Áudio**:
+7. **Isolamento de Cache de Áudio**:
    - O diretório temporário de síntese de voz deve ser particionado por dia (`/tmp/luchm_podcast_{hoje}`), prevenindo que resíduos de cache de dias anteriores impeçam a síntese dos novos áudios.
 
-7. **Compatibilidade Nativa com Eleven Reader**:
+8. **Compatibilidade Nativa com Eleven Reader**:
    - O player na web DEVE disponibilizar o botão **"📋 Copiar Transcrição (Eleven Reader)"**, permitindo copiar todo o diálogo com um clique no formato limpo de interlocutores (`Antônio: ...` e `Francisca: ...`) para geração de áudio no Eleven Reader ou ElevenLabs.
 
 ---
@@ -105,7 +110,7 @@ Mensalmente, a revista integra a aba e dossiê **Horizonte Lateral** governada p
 
 ## 5. Fluxo Operacional de Execução Diária
 
-A rotina é disparada autonomamente via GitHub Actions (`rotina_diaria.yml`) ou localmente via linha de comando:
+A rotina é disparada autonomamente via GitHub Actions (`rotina_diaria.yml`) quando a tarefa *Espelho da Bancada no GitHub* grava o depósito do dia em `data/captura_v6/` (dias úteis, por volta das 18h45), ou localmente via linha de comando:
 
 ```bash
 cd /Users/fabiogomes/.gemini/antigravity/scratch/bancada-comentada
@@ -116,8 +121,8 @@ python3 scripts/rotina_diaria_completa.py
 
 ### Se for necessário rodar etapas de forma isolada:
 ```bash
-# 1. Captura calibrada v6 da literatura recente
-python3 scripts/fetch_literature.py
+# 1. Importar o depósito mais recente da v6 (data/captura_v6/); não há captura própria
+python3 scripts/importar_v6.py
 
 # 2. Triagem e classificação de prioridades
 python3 scripts/reclassificar.py
