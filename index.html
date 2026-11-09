@@ -440,10 +440,16 @@ dialog.ed.leitor::backdrop { background: rgba(18, 20, 24, .65); backdrop-filter:
 .ficha .muda { margin: 8px 0; line-height: 1.55; }
 .ficha .linha { margin: 6px 0; line-height: 1.5; }
 .ficha .faisca { margin: 8px 0; line-height: 1.55; }
-.bloco-card.ancora-luchm { border-left-color: #137333; background: #f7fbf8; }
-.bloco-card.ancora-luchm .bloco-card-tit { color: #137333; }
-.bloco-card.faisca-box { border-left-color: #b06000; background: #fffdf8; }
-.bloco-card.faisca-box .bloco-card-tit { color: #b06000; }
+.bloco-card.ancora-luchm { border-left-color: var(--ok); background: rgba(46, 107, 69, 0.08); }
+.bloco-card.ancora-luchm .bloco-card-tit { color: var(--ok); }
+.bloco-card.faisca-box { border-left-color: var(--atencao); background: rgba(138, 90, 30, 0.08); }
+.bloco-card.faisca-box .bloco-card-tit { color: var(--atencao); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .bloco-card.ancora-luchm { background: rgba(127, 191, 154, 0.12); }
+  :root:not([data-theme="light"]) .bloco-card.faisca-box { background: rgba(217, 168, 100, 0.12); }
+}
+:root[data-theme="dark"] .bloco-card.ancora-luchm { background: rgba(127, 191, 154, 0.12); }
+:root[data-theme="dark"] .bloco-card.faisca-box { background: rgba(217, 168, 100, 0.12); }
 .bloco-rodape-original { background: var(--paper); border: 1px dashed var(--rule); padding: 12px 16px; margin-top: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
 .lt-topo { position: sticky; top: 0; z-index: 2; background: var(--paper); border-bottom: var(--bw-rule) solid var(--t);
   padding: var(--sp-2) clamp(12px, 3vw, 24px); display: grid; gap: var(--sp-1); }
@@ -524,6 +530,120 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
   .sessao .data small { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* Dock de Áudio Persistente (v2) - Toca ininterruptamente em segundo plano e ao navegar nas abas */
+body { padding-bottom: 78px; }
+.persistent-audio-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--paper);
+  border-top: 2px solid var(--t);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, .09);
+  padding: 8px 16px max(8px, env(safe-area-inset-bottom, 0px));
+}
+.audio-dock-progress-wrap {
+  width: 100%;
+  height: 5px;
+  background: var(--rule);
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  right: 0;
+}
+.audio-dock-progress-bar {
+  height: 100%;
+  background: var(--sinal);
+  width: 0%;
+  transition: width 0.12s linear;
+}
+.audio-dock-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.audio-dock-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.audio-dock-icon {
+  font-size: 24px;
+  flex: none;
+}
+.audio-dock-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.audio-dock-text strong {
+  font: 750 13.5px/1.2 var(--f-display);
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: clamp(180px, 32vw, 360px);
+}
+.audio-dock-text span {
+  font: 500 10px/1.2 var(--f-mono);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.audio-dock-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-dock-play {
+  font: 750 12px var(--f-mono);
+  text-transform: uppercase;
+  background: var(--t);
+  color: var(--paper);
+  border: 1px solid var(--t);
+  border-radius: 4px;
+  padding: 6px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.12s ease;
+}
+.btn-dock-play:hover {
+  filter: brightness(1.12);
+}
+.btn-dock-skip, .btn-dock-speed {
+  font: 600 11px var(--f-mono);
+  background: var(--card);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  border-radius: 4px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+.btn-dock-skip:hover, .btn-dock-speed:hover {
+  background: var(--paper);
+  border-color: var(--ink);
+}
+.dock-time {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 84px;
+  text-align: center;
+}
+@media (max-width: 720px) {
+  .audio-dock-inner { gap: 8px; }
+  .audio-dock-text strong { max-width: 140px; font-size: 12px; }
+  .btn-dock-play { padding: 5px 10px; font-size: 11px; }
+  .dock-time { display: none; }
+}
 </style>
 
 <header class="mast">
@@ -660,6 +780,32 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
   </div>
 </footer>
 
+<!-- Dock de Áudio Persistente (v2) - Toca sem interrupção mesmo navegando nas abas -->
+<div id="persistent-player" class="persistent-audio-dock">
+  <div class="audio-dock-progress-wrap" id="audio-progress-wrap" onclick="seekAudioFromBar(event)" title="Clique para avançar ou voltar">
+    <div id="audio-dock-progress-bar" class="audio-dock-progress-bar"></div>
+  </div>
+  <div class="wrap audio-dock-inner">
+    <div class="audio-dock-info">
+      <span class="audio-dock-icon">🎙️</span>
+      <div class="audio-dock-text">
+        <strong id="dock-title">Stork Cast — Edição de Hoje (25 min)</strong>
+        <span class="mono" id="dock-sub">Antônio & Francisca · LUCHM/IBCCF/UFRJ</span>
+      </div>
+    </div>
+    <div class="audio-dock-controls">
+      <audio id="global-podcast-audio" preload="metadata" src="audio/briefing_atual.mp3"></audio>
+      <button type="button" class="btn-dock-skip mono" onclick="skipAudio(-15)" title="Voltar 15 segundos">⏪ 15s</button>
+      <button type="button" id="btn-dock-play" class="btn-dock-play" onclick="toggleAudioPlay()">▶ Tocar</button>
+      <button type="button" class="btn-dock-skip mono" onclick="skipAudio(15)" title="Avançar 15 segundos">15s ⏩</button>
+      <span id="dock-time" class="mono dock-time">00:00 / 24:55</span>
+      <button type="button" id="btn-dock-speed" class="btn-dock-speed mono" onclick="cycleSpeed(this)" title="Alterar velocidade de reprodução">1.0x</button>
+      <button type="button" class="btn-subtle mono" onclick="copiarTranscricaoPodcast(this)" style="font-size:11px; padding:4px 9px; font-weight:600;" title="Copiar transcrição para o Eleven Reader">📋 Copiar Transcrição</button>
+      <a id="dock-download" class="btn-subtle mono" href="audio/briefing_atual.mp3" download="LUCHM_Podcast_Comutacao.mp3" style="font-size:11px; padding:4px 8px; text-decoration:none;">⬇ MP3</a>
+    </div>
+  </div>
+</div>
+
 <script>
 (() => {
   const TEMAS = {
@@ -791,9 +937,124 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
     render();
   }
 
+  /* ---------- Player de Áudio Persistente (v2) ---------- */
+  function getAudioEl() {
+    return document.getElementById("global-podcast-audio");
+  }
+  function toggleAudioPlay() {
+    const a = getAudioEl();
+    if (!a) return;
+    setupPersistentAudioListeners();
+    const btnDock = document.getElementById("btn-dock-play");
+    const btnPauta = document.getElementById("btn-pauta-play");
+    if (a.paused) {
+      a.play().then(() => {
+        if (btnDock) btnDock.innerHTML = "⏸ Pausar";
+        if (btnPauta) btnPauta.innerHTML = "⏸ Pausar Podcast";
+        if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "playing";
+      }).catch(err => console.error("Erro ao reproduzir áudio:", err));
+    } else {
+      a.pause();
+      if (btnDock) btnDock.innerHTML = "▶ Tocar";
+      if (btnPauta) btnPauta.innerHTML = "▶ Ouvir Podcast (25 min no Player Contínuo)";
+      if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "paused";
+    }
+  }
+  window.toggleAudioPlay = toggleAudioPlay;
+
+  function skipAudio(segundos) {
+    const a = getAudioEl();
+    if (!a) return;
+    const target = (a.currentTime || 0) + segundos;
+    a.currentTime = Math.max(0, Math.min(a.duration || 1500, target));
+  }
+  window.skipAudio = skipAudio;
+
+  function cycleSpeed(btn) {
+    const a = getAudioEl();
+    if (!a) return;
+    const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
+    const curr = a.playbackRate || 1.0;
+    const nextIdx = (speeds.indexOf(curr) + 1) % speeds.length;
+    const next = speeds[nextIdx >= 0 ? nextIdx : 0];
+    a.playbackRate = next;
+    if (btn) btn.textContent = `${next.toFixed(next % 1 === 0 ? 1 : 2)}x`;
+  }
+  window.cycleSpeed = cycleSpeed;
+
+  function seekAudioFromBar(e) {
+    const a = getAudioEl();
+    if (!a || !a.duration) return;
+    const bar = document.getElementById("audio-progress-wrap");
+    if (!bar) return;
+    const rect = bar.getBoundingClientRect();
+    const pos = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    a.currentTime = pos * a.duration;
+  }
+  window.seekAudioFromBar = seekAudioFromBar;
+
+  function formatSec(sec) {
+    if (isNaN(sec) || sec < 0) return "00:00";
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  }
+
+  function setupPersistentAudioListeners() {
+    const a = getAudioEl();
+    if (!a || a._hasListeners) return;
+    a._hasListeners = true;
+    const bar = document.getElementById("audio-dock-progress-bar");
+    const timeEl = document.getElementById("dock-time");
+    const btnDock = document.getElementById("btn-dock-play");
+    const btnPauta = document.getElementById("btn-pauta-play");
+
+    a.addEventListener("timeupdate", () => {
+      if (a.duration) {
+        const pct = (a.currentTime / a.duration) * 100;
+        if (bar) bar.style.width = `${pct}%`;
+        if (timeEl) timeEl.textContent = `${formatSec(a.currentTime)} / ${formatSec(a.duration)}`;
+      }
+    });
+    a.addEventListener("play", () => {
+      if (btnDock) btnDock.innerHTML = "⏸ Pausar";
+      if (btnPauta) btnPauta.innerHTML = "⏸ Pausar Podcast";
+      if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "playing";
+    });
+    a.addEventListener("pause", () => {
+      if (btnDock) btnDock.innerHTML = "▶ Tocar";
+      if (btnPauta) btnPauta.innerHTML = "▶ Ouvir Podcast (25 min no Player Contínuo)";
+      if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "paused";
+    });
+    a.addEventListener("ended", () => {
+      if (btnDock) btnDock.innerHTML = "▶ Tocar";
+      if (btnPauta) btnPauta.innerHTML = "▶ Ouvir Podcast (25 min no Player Contínuo)";
+      if (bar) bar.style.width = "0%";
+      if ("mediaSession" in navigator) navigator.mediaSession.playbackState = "none";
+    });
+
+    if ("mediaSession" in navigator) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: "Stork Cast — LUCHM",
+          artist: "Antônio & Francisca · LUCHM/IBCCF/UFRJ",
+          album: "Bancada Comentada",
+          artwork: [
+            { src: "icon.png", sizes: "512x512", type: "image/png" }
+          ]
+        });
+        navigator.mediaSession.setActionHandler("play", () => toggleAudioPlay());
+        navigator.mediaSession.setActionHandler("pause", () => toggleAudioPlay());
+        navigator.mediaSession.setActionHandler("seekbackward", () => skipAudio(-15));
+        navigator.mediaSession.setActionHandler("seekforward", () => skipAudio(15));
+      } catch(e) {}
+    }
+  }
+
   async function copiarTranscricaoPodcast(btn, podcastIso) {
+    podcastIso = podcastIso || (S.pauta && (S.pauta.periodo || S.pauta.fim)) || diaAtual();
     const rotuloOriginal = btn.innerHTML;
-    btn.textContent = "⏳ Carregando transcrição…";
+    btn.textContent = "⏳ Copiando…";
     btn.disabled = true;
 
     try {
@@ -835,23 +1096,21 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
 
       await navigator.clipboard.writeText(limpo);
 
-      btn.textContent = "✓ Transcrição Copiada (Eleven Reader)!";
-      btn.style.background = "#e6f4ea";
-      btn.style.borderColor = "#137333";
-      btn.style.color = "#137333";
+      btn.textContent = "✓ Copiado (Eleven Reader)!";
+      btn.style.background = "var(--ok)";
+      btn.style.color = "var(--paper)";
       btn.style.fontWeight = "700";
 
-      S.msg = "📋 Transcrição copiada com sucesso! Abra o Eleven Reader e cole para gerar o áudio neural.";
+      S.msg = "📋 Transcrição copiada! Cole no Eleven Reader para gerar o áudio neural ultra-realista.";
       render();
 
       setTimeout(() => {
         btn.innerHTML = rotuloOriginal;
         btn.style.background = "";
-        btn.style.borderColor = "";
         btn.style.color = "";
         btn.style.fontWeight = "";
         btn.disabled = false;
-      }, 4000);
+      }, 3500);
     } catch (err) {
       console.error("Erro ao copiar transcrição:", err);
       prompt("Copie o link da transcrição:", window.location.origin + `/audio/podcast_comutacao_28min_${podcastIso}.txt`);
@@ -859,6 +1118,7 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
       btn.disabled = false;
     }
   }
+  window.copiarTranscricaoPodcast = copiarTranscricaoPodcast;
 
   /* ---------- ficha de leitura ---------- */
   function abrirFicha(id) {
@@ -1022,9 +1282,15 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
                     title: "Ver arquivo de texto da transcrição"
                   }, "📄 Ver Texto"),
                   h("a", { class: "btn-subtle mono", href: audioSrc, download: podcastDownloadName, style: "font-size:11px; padding:4px 8px; text-decoration:none;" }, "⬇ Baixar MP3 (25 min)"))),
-              h("audio", { controls: true, preload: "metadata", style: "width:100%; height:36px; margin-top:2px;" },
-                h("source", { src: audioSrc, type: "audio/mpeg" }),
-                "Seu navegador não suporta o player de áudio.")
+              h("div", { style: "display:flex; align-items:center; gap:12px; margin-top:4px; flex-wrap:wrap;" },
+                h("button", {
+                  id: "btn-pauta-play",
+                  type: "button",
+                  class: "btn-dock-play",
+                  style: "font-size:12px; padding:7px 16px; cursor:pointer;",
+                  onclick: () => toggleAudioPlay()
+                }, "▶ Ouvir Podcast (25 min no Player Contínuo)"),
+                h("span", { class: "mono", style: "font-size:11px; color:var(--muted);" }, "O áudio continua tocando mesmo se você navegar por outras abas ou ler artigos."))
             ];
           })()),
         destaques.length ? h("div", { class: "secao" },
@@ -2562,6 +2828,10 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
               target = data.sistema?.[parts[1]];
             } else if (parts[0] === "sinais") {
               target = data.sinais?.[parts[1]] || { itens: {} };
+              try {
+                const s = localStorage.getItem(`bancada_sinais_${parts[1]}`) || localStorage.getItem("bancada_sinais_fabio");
+                if (s) target = { itens: JSON.parse(s) };
+              } catch(e) {}
             } else if (parts[0] === "catalogo") {
               target = (data.catalogo || []).find(c => c._id === parts[1]) || { itens: {} };
             } else if (parts[0] === "anotacoes") {
@@ -2570,6 +2840,13 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
               target = (data.clube || []).find(s => s._id === parts[1]);
             } else if (parts[0] === "artigos") {
               target = (data.artigos || []).find(a => (a._id || a.id) === parts[1]);
+            } else if (parts[0] === "data" && parts[1] === "users" && parts[3] === "leitura") {
+              const uid = parts[2];
+              try {
+                const raw = localStorage.getItem(`bancada_leitura_${uid}`) || localStorage.getItem(`bancada_leitura_fabio-luchm`);
+                if (raw) target = JSON.parse(raw);
+              } catch(e) {}
+              if (!target) target = (data.leitura && data.leitura[uid]) || { marcas: {}, fichas: {} };
             }
             callback({
               exists: !!target,
@@ -2582,7 +2859,10 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
             if (parts[0] === "sinais") {
               data.sinais = data.sinais || {};
               data.sinais[parts[1]] = val;
-              try { localStorage.setItem("bancada_sinais_fabio", JSON.stringify(val)); } catch(e) {}
+              try {
+                localStorage.setItem(`bancada_sinais_${parts[1]}`, JSON.stringify(val.itens || val));
+                localStorage.setItem("bancada_sinais_fabio", JSON.stringify(val.itens || val));
+              } catch(e) {}
             } else if (parts[0] === "catalogo") {
               let cat = (data.catalogo = data.catalogo || []);
               let idx = cat.findIndex(c => c._id === parts[1]);
@@ -2595,6 +2875,14 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
               if (idx >= 0) ans[idx] = { _id: parts[1], ...val };
               else ans.push({ _id: parts[1], ...val });
               try { localStorage.setItem("bancada_anotacoes_fabio", JSON.stringify(val)); } catch(e) {}
+            } else if (parts[0] === "data" && parts[1] === "users" && parts[3] === "leitura") {
+              const uid = parts[2];
+              data.leitura = data.leitura || {};
+              data.leitura[uid] = val;
+              try {
+                localStorage.setItem(`bancada_leitura_${uid}`, JSON.stringify(val));
+                localStorage.setItem(`bancada_leitura_fabio-luchm`, JSON.stringify(val));
+              } catch(e) {}
             }
             return true;
           },
@@ -2691,6 +2979,7 @@ footer p { max-width: 86ch; margin-bottom: var(--sp-1); }
       }, () => {});
     }
     render();
+    setupPersistentAudioListeners();
   })();
 })();
 </script>

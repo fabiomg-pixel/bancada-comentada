@@ -358,16 +358,30 @@ async def sintetizar_dialogo(falas, temp_dir):
     return segment_files
 
 def concatenar_master(segment_files, out_path, temp_dir):
+    # Gerar micro-silêncio natural para transição entre turnos (350ms)
+    silence_file = os.path.join(temp_dir, "silence_turn.mp3")
+    try:
+        subprocess.run([
+            "ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
+            "-t", "0.35", "-q:a", "9", "-acodec", "libmp3lame", silence_file
+        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        silence_file = None
+
     concat_list = os.path.join(temp_dir, "concat.txt")
     with open(concat_list, "w", encoding="utf-8") as f:
-        for sf in segment_files:
+        for idx, sf in enumerate(segment_files):
             f.write(f"file '{sf}'\n")
+            if silence_file and os.path.exists(silence_file) and idx < len(segment_files) - 1:
+                f.write(f"file '{silence_file}'\n")
 
-    print(f"\n🎧 Gerando master MP3 em alta fidelidade com ffmpeg...")
+    print(f"\n🎧 Gerando master MP3 em alta fidelidade e normalização broadcast com ffmpeg...")
+    # 128 kbps mono a 44.1 kHz produz clareza de estúdio perfeita para podcast de fala e reduz o arquivo de ~38MB para ~25MB
     cmd = [
         "ffmpeg", "-y", "-f", "concat", "-safe", "0",
         "-i", concat_list,
-        "-c:a", "libmp3lame", "-b:a", "192k",
+        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+        "-c:a", "libmp3lame", "-b:a", "128k", "-ar", "44100", "-ac", "1",
         out_path
     ]
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
