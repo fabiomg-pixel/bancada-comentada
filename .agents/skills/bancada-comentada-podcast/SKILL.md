@@ -27,7 +27,7 @@ Estas regras têm precedência absoluta em qualquer geração, edição ou manut
    - `4. 💡 Implicação Direta para a Bancada LUCHM`: Conexão direta e específica com os 7 programas de pesquisa do laboratório.
    - `5. ⚡ Faísca Lateral & Hipótese de Trabalho`: Hipótese provocativa e testável na bancada ou no biotério.
 
-4. **Espelho sem captura própria (desde 09/11/2026, decisão do Fábio)**:
+4. **Espelho sem Captura Própria (desde 09/11/2026, decisão do Fábio)**:
    - A revista oficial é a do claude.ai, alimentada pela rotina *Resumo da Literatura Científica v6*. Este repositório é o espelho: a única entrada de literatura é `data/captura_v6/AAAA-MM-DD.json`, gravado pela tarefa *Espelho da Bancada no GitHub*, e lido por `scripts/importar_v6.py`.
    - É proibido reativar `scripts/fetch_literature.py`, `fetch_literature_v6.py` ou qualquer outra varredura de PubMed, bioRxiv ou Stork aqui. A regra existe para que a mesma literatura não seja capturada duas vezes.
    - O enriquecimento em 5 blocos e o podcast continuam sendo deste repositório, sobre os artigos que a v6 depositou.
@@ -36,15 +36,23 @@ Estas regras têm precedência absoluta em qualquer geração, edição ou manut
    - Nunca atualizar o screening diário sem atualizar simultaneamente o podcast.
    - O episódio de áudio DEVE cobrir os artigos reais do dia extraídos de `data/edicao_atual.json`. Roteiros estáticos ou congelados são proibidos.
 
-6. **Duração do Podcast Calibrada para a Viagem de Carro (25 a 30 Minutos)**:
+6. **Eleven Reader como Fluxo Principal de Áudio Neural**:
+   - Devido a cortes e transições abruptas de cadência entre interlocutores no edge-tts local, o **Eleven Reader** é o canal oficial de síntese de alta fidelidade emocional.
+   - A transcrição gerada pelo script deve ser limpa, no formato estrito de diálogo (`Antônio:` e `Francisca:`), pronta para ser colada com um clique via botão de hero no topo da pauta.
+
+7. **Duração do Podcast Calibrada para a Viagem de Carro (25 a 30 Minutos)**:
    - O diálogo deve conter entre **3.500 e 3.850 palavras** distribuídas em ~50 intervenções balanceadas entre Antônio e Francisca.
    - Na cadência neural (~140 palavras/minuto), a duração final deve situar-se estritamente entre **25 e 28 minutos**, correspondendo exatamente ao trajeto de comutação do Prof. Fábio Gomes.
 
-7. **Isolamento de Cache de Áudio**:
-   - O diretório temporário de síntese de voz deve ser particionado por dia (`/tmp/luchm_podcast_{hoje}`), prevenindo que resíduos de cache de dias anteriores impeçam a síntese dos novos áudios.
+8. **Dossiê de Conexões Transversais Adjacente ao Áudio**:
+   - As conexões analíticas e cruzamentos mecanicistas formulados no podcast NÃO podem ficar restritos ao áudio.
+   - A interface web DEVE exibir um bloco adjacente ao player (`.audio-sintese-dupla`), contendo o dossiê com os 4 eixos analíticos de bancada (BHE & Morte Endotelial; Vetor & Repasto Sanguíneo; Neuroimunologia & Arrest de CD8+; Biofísica & AFM-IR em nanoescala).
 
-8. **Compatibilidade Nativa com Eleven Reader**:
-   - O player na web DEVE disponibilizar o botão **"📋 Copiar Transcrição (Eleven Reader)"**, permitindo copiar todo o diálogo com um clique no formato limpo de interlocutores (`Antônio: ...` e `Francisca: ...`) para geração de áudio no Eleven Reader ou ElevenLabs.
+9. **Layout em Duas Colunas para 'O Que Ler Antes da Reunião'**:
+   - A seção de destaques prioritários da pauta deve renderizar estritamente em **duas colunas balanceadas** (`.fichas-duas-colunas` com `grid-template-columns: repeat(2, minmax(0, 1fr))`) em telas desktop (>860px), aproveitando plenamente a largura útil da tela e eliminando vazios laterais.
+
+10. **Isolamento de Cache de Áudio**:
+   - O diretório temporário de síntese de voz deve ser particionado por dia (`/tmp/luchm_podcast_{hoje}`), prevenindo que resíduos de cache de dias anteriores impeçam a síntese dos novos áudios.
 
 ---
 
@@ -110,7 +118,7 @@ Mensalmente, a revista integra a aba e dossiê **Horizonte Lateral** governada p
 
 ## 5. Fluxo Operacional de Execução Diária
 
-A rotina é disparada autonomamente via GitHub Actions (`rotina_diaria.yml`) quando a tarefa *Espelho da Bancada no GitHub* grava o depósito do dia em `data/captura_v6/` (dias úteis, por volta das 18h45), ou localmente via linha de comando:
+A rotina é disparada autonomamente via GitHub Actions (`rotina_diaria.yml`) ou localmente via linha de comando:
 
 ```bash
 cd /Users/fabiogomes/.gemini/antigravity/scratch/bancada-comentada
@@ -121,8 +129,8 @@ python3 scripts/rotina_diaria_completa.py
 
 ### Se for necessário rodar etapas de forma isolada:
 ```bash
-# 1. Importar o depósito mais recente da v6 (data/captura_v6/); não há captura própria
-python3 scripts/importar_v6.py
+# 1. Captura calibrada v6 da literatura recente
+python3 scripts/fetch_literature.py
 
 # 2. Triagem e classificação de prioridades
 python3 scripts/reclassificar.py
@@ -144,15 +152,22 @@ git push origin main
 ## 6. Governança da Interface Web (`index.html`)
 
 O arquivo `index.html` deve manter rigorosamente:
-1. **Player de Áudio no Topo da Pauta**:
-   - Título dinâmico: `Podcast de Bancada & Viagem de Carro — {dataExtensa(podcastIso)}`.
-   - Botão `[📋 Copiar Transcrição (Eleven Reader)]`: Aciona `copiarTranscricaoPodcast(btn, podcastIso)` que lê `audio/briefing_atual.txt`, formata o diálogo de forma limpa e grava na área de transferência com feedback visual de 4 segundos.
-   - Botão `[📄 Ver Texto]`: Abre o arquivo `.txt` da transcrição em nova aba.
-   - Botão `[⬇ Baixar MP3 (25 min)]`: Baixa o arquivo MP3 com nome padronizado.
-   - Tag `<audio>` com controle de cache na URL (`audio/briefing_atual.mp3?v={podcastIso}`).
-2. **Leitor Modal de Fichas (`abrirLeitor`)**:
+1. **Grid Dupla: Áudio & Dossiê de Conexões Transversais Lado a Lado (`.audio-sintese-dupla`)**:
+   - **Coluna 1 (Áudio & Eleven Reader)**:
+     - Título dinâmico: `Podcast de Bancada & Stork Cast — {dataExtensa(podcastIso)}`.
+     - Cartão informativo destacando o **Eleven Reader** como o gerador prioritário para voz neural ultra-realista sem cortes.
+     - Botão `[📋 Copiar Transcrição (Eleven Reader)]`: Aciona `copiarTranscricaoPodcast(btn, podcastIso)` que limpa cabeçalhos e formata os interlocutores (`Antônio:` / `Francisca:`) prontos para o Eleven Reader com feedback visual.
+     - Links de apoio: `[📄 Abrir Roteiro TXT]` e `[⬇ Baixar MP3 (25 min)]`.
+     - Botão de reprodução instantânea com player persistente dockado na barra inferior do navegador (`toggleAudioPlay()`).
+   - **Coluna 2 (Conexões de Bancada & Síntese Transversal)**:
+     - Bloco `.sintese-transversal-box` com borda temática destacada.
+     - Lista dos 4 eixos analíticos transversais gerados pelo screening e podcast, conectando evidências publicadas na semana aos experimentos concretos do LUCHM (RIPK1 vs Wnt7a; Hemopexina no vetor; Eixo IL-15C/IL-10Rα; AFM-IR e Contactoma).
+2. **Layout em Duas Colunas para 'O Que Ler Antes da Reunião'**:
+   - Container de destaques com a classe `.fichas.fichas-duas-colunas`.
+   - Grid balanceada de 2 colunas no desktop (`grid-template-columns: repeat(2, minmax(0, 1fr)) !important;`) com colapso suave para 1 coluna no mobile (<860px).
+3. **Leitor Modal de Fichas (`abrirLeitor`)**:
    - Exibição estruturada dos 5 blocos de análise.
    - Links diretos com selo de Acesso Aberto (PMC / bioRxiv) ou Assinatura (DOI/PubMed).
    - Botão para consultar Gemini 3.8 Flash e salvar notas para o caderno de laboratório (LabELN).
-3. **Aba Horizonte Lateral**:
-   - Renderização dos cards com selos temáticos (Ensaio, Pesquisador, Tema, Técnica), abrindo o diálogo modal de dossiê completo.
+4. **Aba Horizonte Lateral**:
+   - Renderização dos cards com selos temáticos (Ensaio, Pesquisador, Tema, Técnica), abrindo o diálogo modal de dossiê completo sem campos em branco.

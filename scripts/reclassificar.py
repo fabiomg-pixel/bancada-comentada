@@ -341,6 +341,28 @@ if os.path.exists(INDEX_HTML):
                     "A varredura calibrada desta semana traz avanços de alto impacto na interface entre neurobiologia e barreiras biológicas, com destaque para a regulação glial de junções oclusivas na barreira hematoencefálica e sinalização neuropeptídica sistêmica via corpo gorduroso.",
                     "Na biologia do vetor, novos protocolos de dissecção de Aedes e extração de RNA (JoVE), aliados à ultraestrutura por Microscopia Eletrônica de Volume e vias de imunidade antiviral (RNAi), fornecem parâmetros metodológicos diretos para os POPs em andamento no LUCHM."
                 ],
+                "conexoes_transversais": [
+                    {
+                        "titulo": "1. Morte Endotelial & BHE: RIPK1 vs Sinalização Wnt7a",
+                        "evidencia": "RIPK1 governa o colapso microvascular induzido por CD8+ (Science Advances, PMID 42993832), enquanto a integridade independe de Wnt7a astrocitário (bioRxiv, PMID 42995941).",
+                        "conexao_bancada": "No modelo PbA/C57BL/6 do LUCHM: testar inibidores de necroptose (Necrostatin-1s/Nec-1) para avaliar preservação da barreira hematoencefálica e extravasamento de Evans Blue."
+                    },
+                    {
+                        "titulo": "2. Bioquímica do Vetor: Sequestro de Hemopexina no Inseto",
+                        "evidencia": "Dípteros hematófagos capturam hemopexina plasmática de mamíferos para blindagem do epitélio contra estresse oxidativo e toxicidade por hemo livre (iScience, PMID 42996130).",
+                        "conexao_bancada": "Em Aedes aegypti sob dieta HFHS (alta glicose/lipídios): avaliar se o esgotamento de hemopexina exacerba peroxidação da membrana peritrófica e altera competência vetorial."
+                    },
+                    {
+                        "titulo": "3. Neuroimunologia: Eixo IL-15C / IL-10Rα Endotelial",
+                        "evidencia": "O complexo IL-15 induz IL-10 protetora que age especificamente sobre IL-10Rα no endotélio microvascular (J Immunol, PMID 42995426), inibindo ICAM-1 e impedindo o arrest de linfócitos CD8+.",
+                        "conexao_bancada": "Monitorar a densidade de ICAM-1 e VCAM-1 em vasos corticais por imunofluorescência e verificar adesão de células T nos cérebros de camundongos PbA tratados."
+                    },
+                    {
+                        "titulo": "4. Biofísica & Fronteira: Contactoma e Espectroscopia AFM-IR",
+                        "evidencia": "Sítios de contato inter-organela (MCS) e condensados densos de polifosfato protegem organelas de estresse oxidativo e peroxidação lipídica (Nat Commun, PMID 30894536; ACS Nano, PMID 40350657).",
+                        "conexao_bancada": "No CENABIO/UFRJ: mapear espécies lipídicas e anéis de polifosfato em esporozoítos e intestino por AFM-IR em nanoescala (15 nm) sem fixação por ósmio."
+                    }
+                ],
                 "destaques": [
                     {
                         "artigo": d["_id"],
