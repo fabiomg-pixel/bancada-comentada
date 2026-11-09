@@ -228,8 +228,8 @@ for a in articles:
         score = 40
         tema = "vetor" if has_culex or has_aedes else "metodos"
         programa = "Vigilância Bibliográfica Geral"
-        metodo = "Metodologia descrita na publicação original."
-        implicacao = "Trabalho de contexto biológico complementar."
+        metodo = "Delineamento experimental e protocolo bioquímico/celular reportado no periódico original."
+        implicacao = "Trabalho metodológico ou biológico correlato para contextualização experimental no LUCHM."
         faisca = ""
 
     if importancia == "alta":
