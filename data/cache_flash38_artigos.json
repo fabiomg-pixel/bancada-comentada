@@ -1021,5 +1021,101 @@
     "faisca_lateral": "💡 Silenciar via RNAi por alimentação (dsRNA específico) os ortólogos intestinais de CYP450 em larvas de Anticarsia gemmatalis alimentadas com folhas de leguminosas induzidas por fitopatógenos, mensurando por ICP-MS e fluorimetria se a inibição da detoxificação sinergiza a letalidade de doses sublevais de Cry1Ac.",
     "racional_bloco": "A despeito da ampla caracterização dos citocromos P450 na biossíntese de fitohormônios e fitoalexinas em plantas-modelo, a base genômica estrutural e a dinâmica evolutiva do CYPome em leguminosas de grande porte econômico, como Pisum sativum, permaneciam fragmentadas e pouco correlacionadas com respostas imunes efetivas. Existia uma contradição mecanicista quanto a quais famílias específicas de monooxigenases atuam de forma redundante no desenvolvimento versus aquelas estritamente cooptadas para a reprogramação metabólica contra o oomiceto necrotrófico Aphanomyces euteiches. Os autores formularam a hipótese de que a expansão recente de clãs específicos de CYP em ervilha gerou candidatos funcionais regulados temporalmente na raiz que se co-segregam com locos quantitativos de resistência (QTLs) via vias fitoalexínicas ligadas a isoflavonoides sintases.",
     "resultados_bloco": "Foram caracterizados 210 genes PsP450 funcionais (gerando 241 isoformas proteicas), catalogados em 45 famílias distribuídas por 10 clãs filogenéticos principais, revelando eventos de duplicação tandem responsáveis por expansões pe-específicas. As análises de RNA-Seq temporal em raízes infectadas demonstraram um grupo restrito de PsP450s robustamente induzidos (log2FC variando de 3,5 a mais de 8,0) após a inoculação por A. euteiches, com conservação inter-cultivar. De forma crítica, a integração com mapeamento fino de QTLs identificou genes de citocromo P450 fisicamente ancorados em intervalos de resistência fenotípica que exibiram estrita co-expressão com genes de isoflavona sintase (PsIFS), implicando diretamente a biossíntese de derivados flavonoídicos como mecanismo primário de contenção fúngica e proteção celular na raiz."
+  },
+  "43008729": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "A chaperona PfHsp90 de Plasmodium falciparum é um alvo antimalárico validado, mas faltava mapear quais complexos moleculares dependem diretamente de sua atividade nos estágios sanguíneo e hepático.",
+    "metodo_bancada": "Proteômica quantitativa no estágio sanguíneo sob dois inibidores químicos distintos de Hsp90 (geldanamicina e XL888), co-imunoprecipitação (Co-IP) de clientes e ensaios de síntese nascente de DNA em fases eritrocítica e hepática.",
+    "resultados": "Identificadas 131 proteínas depletadas por ambos os inibidores (40% co-imunoprecipitadas com PfHsp90), com forte enriquecimento em replicação de DNA; inibir PfHsp90 reduziu conteúdo de DNA, bloqueou síntese nascente e gerou sinergismo com inibidores de replicação.",
+    "implicacao_luchm": "Abre estratégia sinérgica para bloquear proliferação de Plasmodium combinando moduladores de proteostase (PfHsp90) e estresse replicativo em modelos celulares e murinos do LUCHM.",
+    "faisca_lateral": "💡 Testar se a inibição subletal de Hsp90 potencializa danos oxidativos ao DNA parasitário induzidos por hemo livre e estresse redox eritrocitário."
+  },
+  "43015880": {
+    "programa_luchm": "Repasto Sanguíneo HFHS & Metabolismo do Vetor",
+    "racional": "O microbioma do intestino médio de Aedes aegypti governa desenvolvimento, ovogênese e competência vetorial, mas o excesso de DNA eucariótico do hospedeiro satura bibliotecas metagenômicas.",
+    "metodo_bancada": "Comparação sistemática de três protocolos de extração em pools de intestinos médios de Aedes aegypti — DNeasy Blood & Tissue com/sem filtração em 5 μm e QIAamp Microbiome (lise diferencial + depleção enzimática de DNA do hospedeiro) — com qPCR, perfil taxonômico SSU rRNA e reconstrução de MAGs.",
+    "resultados": "O kit QIAamp Microbiome alcançou o maior enriquecimento bacteriano e reconstrução de MAGs preservando >85% dos táxons (com maior recuperação de Gammaproteobacteria sem perda de diversidade global), enquanto os métodos DNeasy recuperaram maior amplitude de filos raros e NTUs exclusivas.",
+    "implicacao_luchm": "Define o protocolo padrão para o LUCHM caracterizar o impacto da dieta HFHS na microbiota comensal intestinal de Aedes aegypti sem mascaramento por DNA do mosquito.",
+    "faisca_lateral": "💡 Combinar depleção diferencial (Microbiome kit) com extração total em fêmeas pós-repasto HFHS para capturar alterações em Enterococcus e Gammaproteobacteria produtoras de metabólitos."
+  },
+  "43015796": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "Em regiões endêmicas africanas, Anopheles funestus frequentemente substitui An. gambiae s.l. durante a estação seca, sustentando a transmissão residual de Plasmodium falciparum.",
+    "metodo_bancada": "Coleta de 6.932 anofelinos em dois distritos do Senegal central por captura em isca humana (HLC) e borrifação intradomiciliar (PSC), identificação por chave dicotômica + PCR específica de grupo e ELISA para proteína circunsporozoíta (CSP) e fonte de repasto sanguíneo.",
+    "resultados": "Anopheles funestus s.s. correspondeu a 73,7% (5.108/6.932) da fauna coletada, com taxa de esporozoítos de 0,3% e taxa de inoculação entomológica (EIR) de 0,008 a 0,038 picadas infectantes por pessoa/noite, sustentando a transmissão contínua.",
+    "implicacao_luchm": "Reforça parâmetros reais de competência vetorial e densidade intradomiciliar em estudos comparativos de anofelinos e transmissão residual.",
+    "faisca_lateral": "💡 Comparar curvas de sobrevivência pós-repasto e suscetibilidade a Plasmodium entre linhagens mantidas no insetário sob sazonalidade nutricional simulada."
+  },
+  "43013819": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "Com 282 milhões de casos e 610 mil óbitos por malária estimados em 2024, urge integrar novas ferramentas profiláticas diante de restrições financeiras e resistência vetorial.",
+    "metodo_bancada": "Revisão crítica translacional no NEJM avaliando ensaios clínicos e estratégias de campo para redes impregnadas de nova geração, quimioprevenção sazonal e injetável de longa ação, anticorpos monoclonais e vacinas RTS,S/AS01 e R21/Matrix-M além de intervenções bloqueadoras de transmissão.",
+    "resultados": "Combinações integradas combinando bloqueio pré-eritrocítico (vacinas/mAbs), controle vetorial de nova geração e fármacos bloqueadores de transmissão aceleram a trajetória rumo à eliminação quando ancoradas em vigilância genômica local.",
+    "implicacao_luchm": "Contextualiza onde alvos experimentais do LUCHM (bloqueio da transmissão no vetor e proteção endotelial na malária grave) se encaixam no pipeline global pós-R21.",
+    "faisca_lateral": "💡 Mapear como anticorpos bloqueadores de transmissão interagem com a fisiologia do intestino médio e proteínas peritróficas do vetor."
+  },
+  "43015982": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Surtos massivos do vírus Oropouche (OROV) reemergente na América Latina em 2023–2025 e soropositividade em aves no Brasil levantaram a questão sobre modelos aviários como amplificadores.",
+    "metodo_bancada": "Ensaios de permissividade e replicação viral em fibroblastos embrionários de galinha (CEF) e explantes ex vivo de fígado, coração e pulmão desafiados com cepas sul-americanas de OROV, incluindo o novo reassortante circulante.",
+    "resultados": "Fibroblastos e explantes teciduais específicos exibiram permissividade heterogênea e seletiva às cepas sul-americanas e ao reassortante de OROV, estabelecendo um modelo aviário ex vivo reprodutível.",
+    "implicacao_luchm": "Alinha-se diretamente ao braço de arboviroses emergentes e resposta imune inata antiviral para Oropouche e Culicoides/culicídeos no LUCHM.",
+    "faisca_lateral": "💡 Avaliar paralelamente vias de RNAi (Dicer-2/AGO2) e resposta antiviral ao OROV reassortante em células e vetores de laboratório."
+  },
+  "43015033": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Zonas fronteiriças de alto fluxo migratório atuam como corredores de introdução e expansão geográfica de Aedes aegypti, Aedes albopictus e arboviroses.",
+    "metodo_bancada": "Levantamento entomológico com armadilhas BG-Pro, CDC light traps, aspiradores Prokopack e inspeção domiciliar de criadouros em áreas transfronteiriças (Mutukula e Namanga), analisado por regressão binomial e de Poisson.",
+    "resultados": "Dos 6.952 mosquitos capturados (84,7% Culex quinquefasciatus, 10,0% Aedes aegypti e 5,3% Anopheles gambiae s.l.), Aedes aegypti e An. funestus s.l. concentraram-se estatisticamente (p < 0,0001) dentro do raio de 400 m da fronteira, incluindo detecção invasiva de Ae. albopictus.",
+    "implicacao_luchm": "Subsídio epidemiológico espacial para delimitação de zonas tampão entomológicas acima dos 400 m em vigilância de Aedes e Anopheles.",
+    "faisca_lateral": "💡 Cruzar índices larvários elevados e pressão antropofílica de borda urbana com perfis de competência vetorial para arbovírus em Ae. aegypti e Ae. albopictus."
+  },
+  "43017112": {
+    "programa_luchm": "Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro",
+    "racional": "Mesmo dentro de estoques geneticamente homogêneos de dípteros, existe ampla variação individual na sensibilidade olfatória a odores alimentares.",
+    "metodo_bancada": "Classificação comportamental sequencial em armadilhas olfatórias de Drosophila isogênica seguida de transcriptômica comparativa (RNA-seq), quantificação de triacilgliceróis e ensaios de jejum/realimentação.",
+    "resultados": "Moscas hipersensíveis ao odor apresentaram reservas reduzidas de triacilgliceróis, maior suscetibilidade ao jejum e expressão elevada do receptor neuropeptídico sNPF-R; a alimentação reverteu o fenótipo de atração olfatória.",
+    "implicacao_luchm": "Conecta diretamente estoques lipídicos (triacilgliceróis em gotículas lipídicas) e sinalização neuropeptídica tipo sNPF/CCHa2 ao comportamento alimentar pós-dieta em insetos.",
+    "faisca_lateral": "💡 Investigar se fêmeas de Aedes alimentadas com dieta HFHS apresentam dessensibilização prolongada de busca hospedeira mediada por sNPF-R e acúmulo de TAG."
+  },
+  "43007258": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "A co-circulação de Zika (ZIKV) e Dengue (DENV) e sua reatividade cruzada antigênica geram risco de amplificação dependente de anticorpos (ADE) em vacinas convencionais.",
+    "metodo_bancada": "Construção e teste pré-clínico de vacina de mRNA biespecífica (bis-mZDV) combinando módulo B (domínio EDIII de ZIKV fusionado ao componente C3d auto-adjuvante) e módulo T com epítopos conservados de CD8+ ZIKV/DENV em camundongos imunodeficientes.",
+    "resultados": "A formulação bis-mZDV elevou em até 8 vezes os títulos neutralizantes frente a mRNA EDIII isolado, induziu CD8+ de reação cruzada sem respostas B promotoras de ADE e protegeu contra desafios letais por ZIKV e DENV.",
+    "implicacao_luchm": "Referência imunológica crítica para modular respostas protetoras contra DENV e ZIKV no contexto de ensaios pré-clínicos e modelos de infecção.",
+    "faisca_lateral": "💡 Avaliar se a saliva de Aedes aegypti modulada por dieta HFHS altera a cinética inicial de neutralização cutânea em desafios de ZIKV/DENV."
+  },
+  "43014236": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Macrodomínios virais (ADP-ribosilhidrolases em nsP3) são conservados e essenciais para replicação de alfavírus artritogênicos como Chikungunya e Mayaro.",
+    "metodo_bancada": "Revisão estrutural, bioquímica e de química medicinal mapeando o sítio ativo de ligação de ADP-ribose (sub-sítios de adenina, fosfato, ribose e oxiânion) e inibidores de SARS-CoV-2 e vírus Chikungunya.",
+    "resultados": "Define o corredor químico farmacologicamente explorável para macrodomínios de alfavírus, revelando o gargalo de permeabilidade-potência imposto pela polaridade exigida no sub-sítio de oxiânion.",
+    "implicacao_luchm": "Aponta alvos químicos conservados de replicação (ADP-ribosilhidrolase de nsP3) aplicáveis à triagem antiviral de Chikungunya e Mayaro no IBCCF.",
+    "faisca_lateral": "💡 Avaliar expressão e atividade de macrodomínios de alfavírus durante o estresse por NAD+/ADP-ribosilação em células epiteliais e de inseto."
+  },
+  "43005096": {
+    "programa_luchm": "Imunometabolismo & Reprogramação Celular",
+    "racional": "A deficiência de G6PD limita a única fonte de NADPH em hemácias maduras, mas a perda eritrocitária sob estresse oxidativo envolve mecanismos além de lise osmótica passiva.",
+    "metodo_bancada": "Síntese bioquímica e mecanística do eixo G6PD–NADPH–glutationa–GPX4 na detoxificação de peróxidos lipídicos e ativação de morte regulada tipo ferroptose/necroptose em eritrócitos.",
+    "resultados": "Estabelece G6PD/NADPH como checkpoint metabólico redox que direciona o eritrócito da sobrevivência para morte celular regulada por peroxidação lipídica e remoção esplênica antes da hemólise maciça.",
+    "implicacao_luchm": "Dialoga diretamente com a vulnerabilidade à ferroptose endotelial/eritrocitária desencadeada por hemo livre na malária por PbA no LUCHM.",
+    "faisca_lateral": "💡 Medir marcadores de peroxidação lipídica (C11-BODIPY) e atividade GPX4 em hemácias parasitadas por PbA sob estresse oxidativo sistêmico."
+  },
+  "43005892": {
+    "programa_luchm": "Imunometabolismo & Reprogramação Celular",
+    "racional": "Gotículas lipídicas (LDs) expostas ou secretadas por hepatócitos lesionados na MASH atuam como sinalizadores imunometabólicos para macrófagos teciduais.",
+    "metodo_bancada": "Análise comparativa das vias de reconhecimento, captação e resposta inflamatória de macrófagos via receptor MS4A7 (ativação de inflamassoma NLRP3) versus TREM2 frente a gotículas lipídicas extracelulares.",
+    "resultados": "Distingue a internalização mecânica de LDs dos efeitos imunes a jusante: TREM2 apoia a atenuação inflamatória com redução de MS4A7, dissociando esse sinal da eferocitose de corpos apoptóticos.",
+    "implicacao_luchm": "Oferece paralelos mecanísticos diretos para a dinâmica de gotículas lipídicas (BODIPY/Nile Red) como plataformas inflamatórias no LUCHM (dieta HFHS em vetores e modelo hepático).",
+    "faisca_lateral": "💡 Investigar se gotículas lipídicas liberadas no epitélio intestinal pós-repasto HFHS modulam fagocitose e sinalização de hemócitos em Aedes aegypti."
+  },
+  "43015102": {
+    "programa_luchm": "Malária Cerebral & Neuroinflamação",
+    "racional": "Sinapses elétricas (junções comunicantes neuronais) foram historicamente subestimadas frente às químicas, mas ferramentas modernas revelam alta diversidade molecular e plasticidade.",
+    "metodo_bancada": "Revisão neurobiológica integrando proteômica de conexinas/inexinas, imageamento funcional e ferramentas optofisiológicas para sinapses elétricas e acoplamento neurovascular.",
+    "resultados": "Redefine as sinapses elétricas como estruturas dinamicamente reguladas que modulam sincronização elétrica, permeabilidade iônica intercelular e plasticidade de circuitos.",
+    "implicacao_luchm": "Converge fortemente com o eixo de bioeletricidade de barreiras epiteliais e endoteliais destacado no Horizonte Lateral deste mês.",
+    "faisca_lateral": "💡 Avaliar papel de junções comunicantes (conexinas endoteliais/astrocitárias) na propagação da despolarização e quebra da BHE no modelo PbA."
   }
 }

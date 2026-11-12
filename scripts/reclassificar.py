@@ -47,31 +47,50 @@ OPEN_ACCESS_PATTERNS = [
     r"open access", r"jove", r"acta tropica", r"parasites & vectors"
 ]
 
-def extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, rev, doi, pmid, pmc, is_oa):
-    frases = [f.strip() for f in re.split(r'\.\s+', abs_txt) if len(f.strip()) > 20]
-    if frases:
-        racional = frases[0] + "."
-        if len(frases) > 1 and not any(k in frases[1].lower() for k in ["we found", "results", "methods", "here we report"]):
-            racional += " " + frases[1] + "."
-    else:
-        racional = f"Investigação voltada a elucidar os mecanismos fundamentais de {tit.lower()}, avaliando suas repercussões na fisiologia do modelo biológico."
+def extrair_metodo_do_resumo(abs_txt):
+    """Extrai frases metodológicas reais presentes no abstract sem fabricar técnicas."""
+    frases = [f.strip() for f in re.split(r'(?<=[.!?])\s+', abs_txt) if len(f.strip()) > 25]
+    kw_met = [
+        "using", "performed", "measured", "microscop", "intravital", "translatom",
+        "imaging", "flow cytometry", "mass spectrometry", "proteomic", "transcriptom",
+        "rna-seq", "single-cell", "knockout", "inhibition", "inhibitor", "aav",
+        "simulation", "molecular dynamics", "coarse-grained", "genotyp", "pcr",
+        "assay", "model", "treated", "infected with", "mice", "mosquito"
+    ]
+    met_frases = [f for f in frases if any(k in f.lower() for k in kw_met)]
+    if met_frases:
+        return " ".join(met_frases[:2])
+    return "Delineamento experimental descrito no trabalho original (aguardando síntese analítica completa)."
 
-    if metodo and not metodo.startswith("Metodologia experimental descrita"):
+
+def extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, rev, doi, pmid, pmc, is_oa, racional_override="", resultados_override=""):
+    frases = [f.strip() for f in re.split(r'(?<=[.!?])\s+', abs_txt) if len(f.strip()) > 20]
+    if racional_override:
+        racional = racional_override
+    elif frases:
+        racional = frases[0]
+        if len(frases) > 1 and not any(k in frases[1].lower() for k in ["we found", "results", "here we show", "here, we"]):
+            racional += " " + frases[1]
+    else:
+        racional = f"Investigação voltada a elucidar os mecanismos fundamentais de {tit}, avaliando suas repercussões na fisiologia do modelo biológico."
+
+    if metodo and not metodo.startswith("Delineamento experimental descrito"):
         metodologia = metodo
     else:
-        met_frases = [f for f in frases if any(k in f.lower() for k in ["using", "assay", "model", "microscop", "pcr", "rna-seq", "mice", "mosquito", "cell line", "western blot", "spectrometr"])]
-        metodologia = (met_frases[0] + ".") if met_frases else "Ensaios moleculares, celulares e funcionais detalhados no artigo original."
+        metodologia = extrair_metodo_do_resumo(abs_txt)
 
-    res_frases = [f for f in frases if any(k in f.lower() for k in ["found", "showed", "demonstrated", "revealed", "observed", "increased", "decreased", "inhibited", "promoted", "identified"])]
-    if res_frases:
-        resultados = ". ".join(res_frases[:3]) + "."
+    res_frases = [f for f in frases if any(k in f.lower() for k in ["found", "showed", "show that", "demonstrated", "revealed", "observed", "increased", "decreased", "inhibited", "promoted", "identified", "prolonged", "reduced"])]
+    if resultados_override:
+        resultados = resultados_override
+    elif res_frases:
+        resultados = " ".join(res_frases[:3])
     elif len(frases) >= 3:
-        resultados = ". ".join(frases[len(frases)//2 : len(frases)//2 + 2]) + "."
+        resultados = " ".join(frases[len(frases)//2 : len(frases)//2 + 2])
     else:
-        resultados = "Os autores reportam alterações fenotípicas e mecanismos bioquímicos quantitativos associados à regulação do fenótipo experimental."
+        resultados = "Os autores reportam alterações fenotípicas e mecanismos quantitativos associados ao modelo experimental."
 
     implicacoes = implicacao if implicacao else f"Relevante para a vigilância de bancada do programa '{programa}' do LUCHM."
-    faisca_txt = faisca if faisca else "💡 Avaliar se o mecanismo relatado interage com os alvos de imunometabolismo, ultraestrutura ou sinalização celular investigados no laboratório."
+    faisca_txt = faisca if faisca else "💡 Avaliar se os alvos moleculares ou protocolos do trabalho podem ser incorporados aos ensaios ativos do laboratório."
 
     return {
         "racional": racional,
@@ -81,6 +100,16 @@ def extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, re
         "ancoragem_luchm": f"Articulado diretamente ao programa '{programa}' do LUCHM.",
         "faisca_lateral": faisca_txt
     }
+
+# Carregar cache de enriquecimento prévio, se existir
+CACHE_FILE = os.path.join(REPO_DIR, "data", "cache_flash38_artigos.json")
+cache_enriquecido = {}
+if os.path.exists(CACHE_FILE):
+    try:
+        with open(CACHE_FILE, "r", encoding="utf-8") as f:
+            cache_enriquecido = json.load(f)
+    except Exception:
+        cache_enriquecido = {}
 
 reclassified = {}
 alta_count = 0
@@ -96,141 +125,168 @@ for a in articles:
     autores = a.get("autores", "Autores não informados")
     ano = str(a.get("ano", datetime.now().year))
     doi = a.get("doi", "")
-    
-    is_high_impact = any(j in journal.lower() for j in HIGH_IMPACT)
-    
-    # Flags específicas de conteúdo
+
+    # Flags específicas de conteúdo (com proteção contra falsos positivos)
     has_aedes = "aedes" in txt
     has_anopheles = "anopheles" in txt
-    has_culex = "culex" in txt or "culicidae" in txt or "mosquito" in txt
+    has_culex = "culex" in txt or "culicidae" in txt or "mosquito" in txt or "sand fl" in txt or "dipteran" in txt
     has_mosquito = has_aedes or has_anopheles or has_culex
     has_plasmodium = "plasmodium" in txt or "malaria" in txt
-    has_brain = any(w in txt for w in ["cerebral", "blood-brain barrier", "neuroinflammation", "brain", "neuropathology", "glia", "synaptic"])
-    has_polyphosphate = "polyphosphate" in txt or "acidocalcisome" in txt or "phosphate" in txt
-    has_volume_em = any(w in txt for w in ["volume electron microscopy", "fib-sem", "sbf-sem", "cryo-em", "cryo-et", "tomography"])
-    has_neuropeptide = any(w in txt for w in ["neuropeptide", "ccha2", "insulin", "tachykinin", "leucokinin", "sensory", "circadian"])
-    has_rnai = "rnai" in txt or "dsrna" in txt or "small rna" in txt or "crispr" in txt
-    has_metabolic = any(w in txt for w in ["metabolic reprogramming", "metabolism", "lipid", "diet", "20e", "ecydsone", "ef1a2"])
-    
+    has_arbovirus = any(w in txt for w in ["dengue", "zika", "chikungunya", "oropouche", "mayaro", "alphavirus", "orthoflavivirus", "arbovir"])
+    is_neurodegen_review = any(w in txt for w in ["huntington", "alzheimer", "parkinson", "insomnia", "traditional chinese medicine"])
+    is_offtopic_noise = (
+        any(w in txt for w in [
+            "water electrolyzer", "proton exchange membrane", "cyanobacterial bloom",
+            "soil-plant", "banana peel", "silver nanoparticles", "preoperative opioid",
+            "arthroplasty", "social needs", "cardiomyopathy", "mycoplasma pneumoniae"
+        ])
+        and not (has_plasmodium or has_mosquito or has_arbovirus)
+    )
+    has_hemopexin_vector = ("hemopexin" in txt or "heme toxicity" in txt or "heme scavenging" in txt) and (has_mosquito or has_plasmodium)
+    has_polyphosphate = any(w in txt for w in ["polyphosphate", "acidocalcisome", "exopolyphosphatase", "polyphosphate kinase", "polyp "]) and "organophosphate" not in txt and not is_offtopic_noise
+    has_volume_em = any(w in txt for w in ["volume electron microscopy", "fib-sem", "sbf-sem", "serial block face", "cryo-et"]) and not is_offtopic_noise
+    has_neuropeptide = any(w in txt for w in ["ccha2", "neuropeptide", "leucokinin", "allatostatin"]) and (has_mosquito or "insect" in txt or "drosophila" in txt)
+    has_rnai = ("rnai" in txt or "dsrna" in txt or "dicer-2" in txt or "argonaute-2" in txt) and (has_mosquito or "insect" in txt or "lepidoptera" in txt)
+    has_metabolic = any(w in txt for w in ["immunometabol", "lipid droplet", "iron-regulatory", "ferroptosis", "20e", "ecdysone", "hfhs", "glucose-6-phosphate dehydrogenase"]) and (has_plasmodium or has_mosquito or has_arbovirus or "macrophage" in txt or "redox" in txt) and not is_offtopic_noise
+
     importancia = "baixa"
     prioridade = "contexto"
-    score = 45
+    score = 40
     tema = "metodos"
     programa = "Vigilância Geral de Métodos"
-    metodo = "Metodologia experimental descrita no artigo original."
+    metodo = extrair_metodo_do_resumo(abs_txt)
     implicacao = ""
     faisca = ""
-    
-    # 1. Regras de Alta Relevância (Ancoradas nos Programas do LUCHM)
-    if "blood-brain barrier" in txt and ("glia" in txt or "junction" in txt):
+
+    # 1. Regras de Alta Relevância (Ancoradas nos Programas Reais do LUCHM)
+    if is_offtopic_noise or is_neurodegen_review:
+        importancia = "baixa"
+        prioridade = "contexto"
+        score = 35
+        tema = "metodos"
+        programa = "Vigilância Bibliográfica Geral"
+        implicacao = "Artigo fora do núcleo experimental de vetores/parasitologia; mantido apenas no arquivo de contexto."
+
+    elif has_hemopexin_vector:
         importancia = "alta"
         prioridade = "essencial"
-        score = 110
-        tema = "cerebro"
-        programa = "Malária Cerebral & Neuroinflamação"
-        metodo = "Microscopia confocal de alta resolução, ensaios de permeabilidade com dextrano fluorescente e dissecção de cérebro de modelo genético de Drosophila com marcação de junções oclusivas em células da glia."
-        implicacao = "Demonstra que a integridade da barreira hematoencefálica depende de crosstalk entre subtipos gliais para estabilização de junções septadas/oclusivas, fornecendo alvos de comparação direta com o colapso da barreira endotelial no modelo PbA/C57BL/6 do LUCHM."
-        faisca = "💡 Testar se mediadores inflamatórios secretados por eritrócitos infectados rompem a comunicação entre astrócitos e endotélio murino via as mesmas vias homólogas conservadas de sinalização de septos observadas em invertebrados."
-    
-    elif ("ccha2" in txt or "neuropeptide" in txt) and ("insulin" in txt or "fat-body" in txt or "brain" in txt):
-        importancia = "alta"
-        prioridade = "essencial"
-        score = 108
-        tema = "vetor"
-        programa = "Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro"
-        metodo = "Imuno-histoquímica de cérebro de inseto, dosagem de neuropeptídeos por LC-MS/MS e silenciamento gênico por RNAi de receptores de insulina e peptídeo CCHa2 no corpo gorduroso."
-        implicacao = "Identifica a via de comunicação hormonal entre reservas lipídicas do corpo gorduroso e células produtoras de insulina no SNC, relevante para entender como o estado nutricional do mosquito após o repasto sanguíneo altera a olfação e a busca por hospedeiros."
-        faisca = "💡 Mapear se fêmeas de Aedes e Anopheles infectadas por vírus ou Plasmodium reprogramam a liberação de CCHa2 pelo corpo gorduroso para sustentar o hiper-comportamento locomotor e a atração auditiva/olfativa."
-        
-    elif has_rnai and ("antiviral" in txt or "dipteran" in txt or "pathogen" in txt):
-        importancia = "alta"
-        prioridade = "essencial"
-        score = 105
-        tema = "vetor"
-        programa = "Imunidade de Vetores & RNAi"
-        metodo = "Sequenciamento de pequenos RNAs (sRNA-seq), ensaios de infecção viral in vivo com cepas modelo e silenciamento de componentes do complexo RISC (Dicer-2 e Argonaute-2) em dípteros e hemípteros."
-        implicacao = "Esclarece a conservação evolutiva e as divergências na via de siRNA exógeno entre ordens de insetos, servindo de controle positivo para os ensaios de competência vetorial e interferência de RNA no LUCHM."
-        faisca = "💡 Comparar a cinética de biogênese de vsiRNAs contra arbovírus em Aedes com a eficiência de processamento de dsRNA contra genes essenciais em Anticarsia gemmatalis."
-        
-    elif ("ef1a2" in txt or "20e" in txt) and has_mosquito:
-        importancia = "alta"
-        prioridade = "essencial"
-        score = 102
+        score = 115
         tema = "vetor"
         programa = "Repasto Sanguíneo HFHS & Metabolismo do Vetor"
-        metodo = "Bioensaios com infusão de hormônio 20-hidroxiecdisona (20E), Western blot para fator de elongação EF1A2, transcriptômica e contagem de folículos ovarianos pós-alimentação sanguínea."
-        implicacao = "Decifra a rede molecular que acopla a digestão de proteínas do sangue à ativação metabólica do ovário, ligando diretamente o metabolismo lipídico à capacidade de maturação de ovos nas colônias do insetário."
-        faisca = "💡 Avaliar se a suplementação de ácidos graxos livres ou sangue de camundongos obesos acelera precocemente o eixo EF1A2-PABP-E75 no epitélio intestinal do mosquito."
+        implicacao = "Demonstra como proteínas séricas do hospedeiro neutralizam toxicidade do hemo no vetor; dialoga diretamente com a vulnerabilidade intestinal de Aedes aegypti sob dieta HFHS."
+        faisca = "💡 Avaliar integridade e níveis de hemopexina na hemolinfa de Aedes aegypti após repasto com sangue de camundongos controle versus dieta HFHS."
 
-    elif "volume em" in txt or "serial block face" in txt or "fib-sem" in txt:
-        importancia = "alta"
-        prioridade = "essencial"
-        score = 100
-        tema = "metodos"
-        programa = "Microscopia Eletrônica de Volume & Bioimagem"
-        metodo = "Protocolo otimizado de impregnação por metais pesados (tetróxido de ósmio reduzido, ácido tânico e acetato de uranila), inclusão em resina epóxi condutora e corte seriado automatizado com feixe de elétrons retroespalhados (SBF-SEM)."
-        implicacao = "Fornece parâmetros de contraste e fixação tecidual transferíveis para o imageamento tridimensional de nervos periféricos e glândula salivar de mosquitos infectados no CENABIO/LUCHM."
-        faisca = "💡 Adotar o protocolo de contraste reduzido para preservar a ultraestrutura de microtúbulos e vesículas de transporte em esporozoítos de Plasmodium interagindo com a lâmina basal."
-
-    elif "cerebral malaria" in txt:
-        importancia = "alta"
-        prioridade = "essencial"
-        score = 95
+    elif ("cerebral malaria" in txt or (has_plasmodium and "blood-brain barrier" in txt)):
+        is_mech = any(w in txt for w in ["ripk1", "wnt7a", "il-10", "il-15", "cd8", "tph1", "serotonin", "endothelial", "astrocyte", "mice", "murine", "pb a", "pba"])
+        importancia = "alta" if is_mech else "media"
+        prioridade = "essencial" if is_mech else "contexto"
+        score = 112 if is_mech else 78
         tema = "cerebro"
         programa = "Malária Cerebral & Neuroinflamação"
-        metodo = "Ressonância magnética cerebral, dosagem de citocinas inflamatórias plasmáticas e confirmação molecular de infecção por PCR em tempo real e gota espessa."
-        implicacao = "Reforça as manifestações neurológicas e o acometimento da microcirculação cerebral na malária, servindo de correlação clínica para o modelo experimental de malária cerebral em C57BL/6J infectados com PbA."
-        faisca = "💡 Investigar se o padrão de microtrombos e edema vasogênico observado na clínica reproduz o fenótipo de ferroptose endotelial sob teste na bancada do laboratório."
+        implicacao = "Incide diretamente sobre os mecanismos celulares de lesão ou proteção endotelial na barreira hematoencefálica durante a malária cerebral, comparável ao modelo PbA/C57BL/6J do LUCHM."
+        faisca = "💡 Cruzar os alvos endoteliais e imunes identificados com os marcadores de disfunção microvascular (claudina-5, extravasamento de Evans Blue) nos dias 4–6 pós-infecção."
 
-    elif "dissection" in txt and "aedes" in txt:
-        importancia = "media"
-        prioridade = "contexto"
-        score = 85
+    elif has_plasmodium and any(w in txt for w in ["hsp90", "dna replication", "elimination", "preventing malaria", "sporozoite", "liver-stage", "vacuole", "pvm", "ap2-l", "obm", "phase-gradient", "maps-fc", "pfs47", "vector competence"]):
+        is_core = any(w in txt for w in ["hsp90", "dna replication", "sporozoite", "liver-stage", "ap2-l", "pvm", "preventing malaria"])
+        importancia = "alta" if is_core else "media"
+        prioridade = "essencial" if importancia == "alta" else "contexto"
+        score = 104 if "hsp90" in txt or "ap2-l" in txt or "sporozoite" in txt else (94 if is_core else 84)
+        tema = "ciclo"
+        programa = "Biologia Celular de Plasmodium & Bloqueio de Transmissão"
+        implicacao = "Traz alvos moleculares essenciais da replicação, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM."
+        faisca = "💡 Avaliar se os alvos de chaperona/replicação ou marcadores de superfície podem ser integrados aos ensaios de desenvolvimento e triagem parasitária do grupo."
+
+    elif has_mosquito and any(w in txt for w in ["midgut", "microbiome", "bacterial", "funestus", "residual malaria", "peritrophic", "oviposition", "dietary", "blood meal", "vector competence"]):
+        is_core_vec = any(w in txt for w in ["midgut", "microbiome", "funestus", "peritrophic", "vector competence"])
+        importancia = "alta" if is_core_vec else "media"
+        prioridade = "essencial" if is_core_vec else "contexto"
+        score = 101 if "midgut" in txt or "microbiome" in txt else (96 if is_core_vec else 82)
+        tema = "vetor"
+        programa = "Repasto Sanguíneo HFHS & Metabolismo do Vetor" if ("dietary" in txt or "blood" in txt or "midgut" in txt) else "Imunidade de Vetores & RNAi"
+        implicacao = "Conecta ecologia de intestino médio de mosquitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM."
+        faisca = "💡 Testar impacto do protocolo de enriquecimento bacteriano/ecologia intestinal sobre colonização por microbiota sob dieta HFHS."
+
+    elif has_arbovirus:
+        is_mech_arbo = any(w in txt for w in ["oropouche", "macrodomain", "druggability", "bispecific", "permissiveness", "alphavirus", "antiviral"])
+        importancia = "alta" if "oropouche" in txt else "media"
+        prioridade = "essencial" if importancia == "alta" else "contexto"
+        score = 92 if importancia == "alta" else 84
+        tema = "vetor"
+        programa = "Imunidade de Vetores & RNAi"
+        implicacao = "Relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya) e resposta imune/antiviral em vetores e hospedeiros."
+        faisca = "💡 Avaliar alvos conservados (e.g. macrodomínios virais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório."
+
+    elif has_neuropeptide:
+        importancia = "alta"
+        prioridade = "essencial"
+        score = 98
+        tema = "vetor"
+        programa = "Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro"
+        implicacao = "Mapeia eixos neuroendócrinos entre estado nutricional e sinalização sistêmica no inseto, relevantes para o comportamento pós-repasto no insetário."
+        faisca = "💡 Verificar modulação do eixo neuropeptídico em fêmeas de Aedes após dieta rica em lipídios e glicose (HFHS)."
+
+    elif has_rnai and (has_mosquito or "antiviral" in txt or "pathogen" in txt):
+        importancia = "alta"
+        prioridade = "essencial"
+        score = 97
+        tema = "vetor"
+        programa = "Imunidade de Vetores & RNAi"
+        implicacao = "Esclarece mecanismos de interferência por RNA e resposta antiviral em vetores, subsidiando ensaios de competência vetorial e silenciamento gênico no LUCHM."
+        faisca = "💡 Comparar eficiência de processamento de dsRNA entre ensaios antivirais em Aedes e bioensaios de controle de pragas."
+
+    elif has_volume_em:
+        importancia = "alta"
+        prioridade = "essencial"
+        score = 96
         tema = "metodos"
-        programa = "Biologia Celular de Vetores & Métodos de Bancada"
-        metodo = "Protocolo cirúrgico de microdissecção de intestino médio, glândulas salivares e corpo gorduroso de fêmeas adultas, seguido de lise rápida e isolamento de RNA íntegro (RIN > 7)."
-        implicacao = "Validação metodológica direta para os POPs de extração de RNA de tecidos específicos no laboratório, padronizando os procedimentos dos alunos de iniciação científica e pós-graduação."
-        faisca = "💡 Padronizar o tempo limite de dissecção para menos de 3 minutos por mosquito para evitar artefatos de degradação de transcritos de meia-vida ultracurta."
+        programa = "Microscopia Eletrônica de Volume & Bioimagem"
+        implicacao = "Traz avanços de preparação, contraste e reconstrução 3D diretamente aplicáveis aos fluxos de FIB-SEM e SBF-SEM no CENABIO/UFRJ."
+        faisca = "💡 Testar ajustes de impregnação em bloco ou resolução isotrópica em amostras de intestino de mosquito e estágios de Plasmodium."
 
-    elif has_polyphosphate or "phosphate uptake" in txt:
-        importancia = "media"
-        prioridade = "contexto"
-        score = 80
+    elif has_polyphosphate:
+        importancia = "alta" if ("compaction" in txt or "acidocalcisome" in txt or "plasmodium" in txt or "trypanosoma" in txt) else "media"
+        prioridade = "essencial" if importancia == "alta" else "contexto"
+        score = 96 if importancia == "alta" else 80
         tema = "metodos"
         programa = "Polifosfato Inorgânico & Acidocalcisomas"
-        metodo = "Cinética de captação de 32P-ortofosfato, quantificação fluorimétrica de polyP com DAPI (fluorescência a 550 nm) e análise de expressão de bombas vacuolares."
-        implicacao = "Mapeia as condições físico-químicas e cinéticas ótimas para síntese e consumo de cadeias longas de polifosfato, parâmetro relevante para os estudos de sinalização bioenergética no LUCHM."
-        faisca = "💡 Testar se a disponibilidade de fosfato inorgânico no meio de cultura de formas sanguíneas ou na solução sacarina dos mosquitos modula os níveis basais de polyP nas organelas ácidas."
+        implicacao = "Investiga interações biofísicas e estruturais de cadeias de polifosfato inorgânico (polyP), dialogando com a linha histórica de acidocalcisomos e homeostase iônica do LUCHM."
+        faisca = "💡 Avaliar se condensados ou interações eletrostáticas dependentes de polyP participam da organização macromolecular sob estresse osmótico em protozoários."
 
-    elif has_plasmodium:
+    elif has_plasmodium or has_mosquito:
         importancia = "media"
         prioridade = "contexto"
-        score = 75
-        tema = "ciclo"
-        programa = "Biologia Celular de Plasmodium"
-        metodo = "Sequenciamento genômico de terceira geração (PacBio/Nanopore) e genotipagem de marcadores de virulência e transmissão."
-        implicacao = "Mapeamento genômico e transcriptômico de cepas de Plasmodium com resolução de variantes estruturais, subsidiando o monitoramento de estabilidade das cepas laboratoriais do LUCHM."
-        faisca = "💡 Vigiar sítios de recombinação homóloga e duplicações gênicas que possam interferir na infectividade dos esporozoítos nas passagens in vivo do laboratório."
+        score = 74
+        tema = "ciclo" if has_plasmodium else "vetor"
+        programa = "Biologia Celular de Plasmodium & Bloqueio de Transmissão" if has_plasmodium else "Imunidade de Vetores & RNAi"
+        implicacao = "Amplia o repertório epidemiológico, genotípico ou ecológico de referência para os programas de malária e vetores do LUCHM."
 
-    elif has_metabolic:
+    elif has_metabolic or "extracellular vesicle" in txt or "electrical synapse" in txt or "microglial immunometabol" in txt:
         importancia = "media"
         prioridade = "contexto"
-        score = 70
-        tema = "hospedeiro"
-        programa = "Imunometabolismo & Reprogramação Celular"
-        metodo = "Citometria de fluxo multiparamétrica, análise de fluxo metabólico (Seahorse) e quantificação de intermediários da glicólise e ciclo de Krebs."
-        implicacao = "Descreve os pontos de checagem metabólicos que governam a polarização entre estados pró-inflamatórios e de resolução em macrófagos, conectando-se aos ensaios de imunidade inata do grupo."
-        faisca = "💡 Transpor os marcadores de reprogramação da via das pentoses fosfato para avaliar a resposta de hemócitos de inseto sob sobrecarga glicídica."
+        score = 72
+        tema = "cerebro" if ("microglial" in txt or "electrical synapse" in txt or "brain" in txt) else ("metodos" if "extracellular vesicle" in txt else "hospedeiro")
+        programa = "Malária Cerebral & Neuroinflamação" if tema == "cerebro" else ("Microscopia Eletrônica de Volume & Bioimagem" if tema == "metodos" else "Imunometabolismo & Reprogramação Celular")
+        implicacao = "Traz parâmetros celulares de gotículas lipídicas, homeostase redox, sinalização bioelétrica ou vesículas extracelulares relevantes para comparações transversais no LUCHM."
 
     else:
         importancia = "baixa"
         prioridade = "contexto"
         score = 40
-        tema = "vetor" if has_culex or has_aedes else "metodos"
+        tema = "cerebro" if "blood-brain barrier" in txt else "metodos"
         programa = "Vigilância Bibliográfica Geral"
-        metodo = "Delineamento experimental e protocolo bioquímico/celular reportado no periódico original."
-        implicacao = "Trabalho metodológico ou biológico correlato para contextualização experimental no LUCHM."
-        faisca = ""
+        implicacao = "Artigo de contexto periférico mantido no radar para eventuais cruzamentos metodológicos."
+
+    # Sobrescrever com análise densa em cache (se existir para este PMID)
+    cached = cache_enriquecido.get(pmid)
+    racional_cached = ""
+    resultados_cached = ""
+    if cached and len(cached.get("metodo_bancada", "")) > 120:
+        programa = cached.get("programa_luchm") or programa
+        metodo = cached.get("metodo_bancada") or metodo
+        implicacao = cached.get("implicacao_luchm") or implicacao
+        faisca = cached.get("faisca_lateral") or faisca
+        racional_cached = cached.get("racional", "")
+        resultados_cached = cached.get("resultados", "")
 
     if importancia == "alta":
         alta_count += 1
@@ -252,7 +308,10 @@ for a in articles:
     else:
         link_orig = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
 
-    blocos_resumo = extrair_resumo_blocos(tit, abs_txt, metodo, implicacao, faisca, programa, journal, doi, pmid, pmc_val, is_oa)
+    blocos_resumo = extrair_resumo_blocos(
+        tit, abs_txt, metodo, implicacao, faisca, programa, journal, doi, pmid, pmc_val, is_oa,
+        racional_override=racional_cached, resultados_override=resultados_cached
+    )
 
     reclassified[pmid] = {
         "_id": pmid,
@@ -285,16 +344,149 @@ for a in articles:
         "entrou_em": hoje
     }
 
+def _rev_curta(rev):
+    return (rev or "").split(":")[0].strip() or "PubMed"
+
+
+def construir_conexoes_transversais(colecao, cultural):
+    """Sintetiza até 4 eixos transversais dinâmicos a partir dos artigos reais desta edição."""
+    eixos = []
+    por_tema = {
+        "cerebro": [a for a in colecao if a.get("tema") == "cerebro" and a.get("importancia") in ("alta", "media")],
+        "vetor": [a for a in colecao if a.get("tema") == "vetor" and a.get("importancia") in ("alta", "media")],
+        "ciclo_met": [a for a in colecao if a.get("tema") in ("ciclo", "metodos", "hospedeiro") and a.get("importancia") in ("alta", "media")],
+    }
+
+    if por_tema["cerebro"]:
+        grp = por_tema["cerebro"][:2]
+        nomes = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp)
+        eixos.append({
+            "titulo": "1. Malária Cerebral & Barreira Endotelial",
+            "evidencia": f"Em {nomes}: {grp[0].get('titulo')} — convergência mecanística sobre lesão microvascular e regulação imune na BHE.",
+            "conexao_bancada": grp[0].get("implicacao") or "Avaliar integridade vascular e alvos endoteliais no modelo PbA/C57BL/6J do LUCHM.",
+            "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp]
+        })
+
+    if len(por_tema["cerebro"]) >= 4:
+        grp2 = por_tema["cerebro"][2:4]
+        nomes2 = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp2)
+        eixos.append({
+            "titulo": "2. Modulação Vascular & Imunorregulação da BHE",
+            "evidencia": f"Em {nomes2}: {grp2[0].get('titulo')} combinado a eixos de serotonina/citocinas endoteliais.",
+            "conexao_bancada": grp2[0].get("implicacao") or "Cruzar marcadores de adesão de CD8+ e permeabilidade vascular nos dias 4–6 pós-infecção.",
+            "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp2]
+        })
+
+    if por_tema["vetor"]:
+        grp = por_tema["vetor"][:2]
+        nomes = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp)
+        eixos.append({
+            "titulo": f"{len(eixos)+1}. Fisiologia do Vetor & Repasto Sanguíneo",
+            "evidencia": f"Em {nomes}: {grp[0].get('titulo')}.",
+            "conexao_bancada": grp[0].get("implicacao") or "Cruzar estresse oxidativo intestinal e competência vetorial no insetário (dieta HFHS).",
+            "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp]
+        })
+
+    if por_tema["ciclo_met"] or cultural:
+        grp = por_tema["ciclo_met"][:2]
+        ensaio = (cultural or {}).get("ensaio", {})
+        hor_lbl = "AFM-IR & Bioeletricidade (Horizonte Lateral)" if ensaio else ""
+        if grp:
+            nomes = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp)
+            ev = f"Em {nomes}: {grp[0].get('titulo')}."
+            if ensaio.get("titulo"):
+                ev += f" Articulado ao dossiê Horizonte Lateral ({ensaio['titulo'].split(':')[0]})."
+            eixos.append({
+                "titulo": f"{len(eixos)+1}. Biofísica, Biologia Celular & Horizonte Lateral",
+                "evidencia": ev,
+                "conexao_bancada": grp[0].get("implicacao") or "Integrar alvos celulares, homeostase redox/lipídica e métodos emergentes do CENABIO.",
+                "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp],
+                "horizonte_lateral": hor_lbl
+            })
+
+    if not eixos and colecao:
+        # Garante 4 eixos cruzados mesmo em lotes majoritariamente de média prioridade
+        cand = [a for a in colecao if a.get("importancia") in ("alta", "media")][:8]
+        for idx_b in range(0, min(len(cand), 8), 2):
+            grp = cand[idx_b:idx_b+2]
+            nomes = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp)
+            eixos.append({
+                "titulo": f"{len(eixos)+1}. {grp[0].get('programa', 'Eixo LUCHM')}",
+                "evidencia": f"Em {nomes}: {grp[0].get('titulo')}.",
+                "conexao_bancada": grp[0].get("implicacao") or "Avaliar convergência experimental com os modelos ativos do LUCHM.",
+                "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp]
+            })
+
+    if len(eixos) < 4:
+        cand_extra = [a for a in colecao if a.get("importancia") in ("alta", "media")]
+        usados = {r["id"] for ex in eixos for r in ex.get("artigos_ref", [])}
+        extras = [a for a in cand_extra if a["_id"] not in usados]
+        while len(eixos) < 4 and extras:
+            grp = extras[:2]
+            extras = extras[2:]
+            nomes = " & ".join(f"{_rev_curta(a.get('revista'))} ({a['_id']})" for a in grp)
+            eixos.append({
+                "titulo": f"{len(eixos)+1}. {grp[0].get('programa', 'Convergência LUCHM')}",
+                "evidencia": f"Em {nomes}: {grp[0].get('titulo')}.",
+                "conexao_bancada": grp[0].get("implicacao") or "Cruzar parâmetros celulares e experimentais com as linhas ativas do grupo.",
+                "artigos_ref": [{"id": a["_id"], "rotulo": f"{_rev_curta(a.get('revista'))} · {a['_id']}"} for a in grp]
+            })
+
+    return eixos[:4]
+
+
+data_edicao = str(raw_data.get("data") or hoje)
 colecao_artigos = sorted(list(reclassified.values()), key=lambda x: x["score"], reverse=True)
-destaques_pool = [d for d in colecao_artigos if d["importancia"] == "alta"]
-if not destaques_pool:
-    destaques_pool = [d for d in colecao_artigos if d["importancia"] == "media"][:4]
+destaques_pool = [d for d in colecao_artigos if d["importancia"] == "alta"][:8]
+if len(destaques_pool) < 6:
+    ids_dest = {d["_id"] for d in destaques_pool}
+    extras_med = [d for d in colecao_artigos if d["importancia"] == "media" and d["_id"] not in ids_dest]
+    destaques_pool.extend(extras_med[:max(0, 6 - len(destaques_pool))])
+
+conexoes_geradas = construir_conexoes_transversais(colecao_artigos, radar_cultural_data)
+inicio_semana = (datetime.now(fuso_br) - timedelta(days=6)).strftime("%Y-%m-%d")
+lede_txt = f"Destaques selecionados pelo perfil de vigilância v6 do laboratório ({alta_count} essenciais em pauta)." if alta_count > 0 else f"Destaques selecionados pelo perfil de vigilância v6 ({len(destaques_pool)} trabalhos em foco de relevância direta)."
+
+top_progs = []
+for d in destaques_pool:
+    p_nome = d.get("programa", "")
+    if p_nome and p_nome not in top_progs:
+        top_progs.append(p_nome)
+resumo_dest_1 = "; ".join(f"{d.get('titulo', '').rstrip('.')} ({_rev_curta(d.get('revista'))}, PMID {d['_id']})" for d in destaques_pool[:3])
+resumo_dest_2 = "; ".join(f"{d.get('titulo', '').rstrip('.')} ({_rev_curta(d.get('revista'))}, PMID {d['_id']})" for d in destaques_pool[3:6])
+
+pauta_atual = {
+    "semana": "Semana Corrente",
+    "inicio": inicio_semana,
+    "fim": data_edicao,
+    "periodo": data_edicao,
+    "titulo": "Edição Atual — Literatura Curada LUCHM (v6)",
+    "lede": lede_txt,
+    "panorama": [
+        f"A triagem calibrada desta edição ({len(colecao_artigos)} artigos processados em {data_edicao}) prioriza frentes em {', '.join(top_progs[:3]) or 'Malária, Vetores e Bioimagem'}, com destaque para: {resumo_dest_1}.",
+        f"Em segundo plano estratégico para cruzamento de bancada, sobressaem ainda: {resumo_dest_2 or 'achados complementares de imunometabolismo, homeostase redox e ecologia vetorial'}."
+    ],
+    "conexoes_transversais": conexoes_geradas,
+    "destaques": [
+        {
+            "artigo": d["_id"],
+            "chamada": d["titulo"],
+            "nota": f"Programa: {d.get('programa', '')} · Prioridade: {d.get('prioridade', '').upper()}"
+        }
+        for d in destaques_pool
+    ],
+    "vigiar": [
+        f"{_rev_curta(d.get('revista'))} ({d['_id']}): {d.get('programa', '')} — {d.get('titulo', '')[:90]}"
+        for d in destaques_pool[:3]
+    ]
+}
 
 edicao_data = {
     "colecao_artigos": {d["_id"]: d for d in colecao_artigos},
     "radar_cultural": radar_cultural_data,
+    "pauta": {"atual": pauta_atual},
     "radar_edicao_dia": {
-        "data": hoje,
+        "data": data_edicao,
         "total": len(colecao_artigos),
         "novos": len(colecao_artigos),
         "ja_vistos": 0,
@@ -323,60 +515,11 @@ if os.path.exists(INDEX_HTML):
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
         html = f.read()
 
-    inicio_semana = (datetime.now(fuso_br) - timedelta(days=6)).strftime("%Y-%m-%d")
-    lede_txt = f"Destaques selecionados pelo perfil de vigilância v6 do laboratório ({alta_count} essenciais em pauta)." if alta_count > 0 else f"Destaques selecionados pelo perfil de vigilância v6 ({len(destaques_pool)} trabalhos em foco de relevância direta)."
-
     embedded_obj = {
         "artigos": colecao_artigos,
         "radar_cultural": radar_cultural_data,
         "pauta": {
-            "atual": {
-                "semana": "Semana Corrente",
-                "inicio": inicio_semana,
-                "fim": hoje,
-                "periodo": hoje,
-                "titulo": "Edição Atual — Literatura Curada LUCHM (v6)",
-                "lede": lede_txt,
-                "panorama": [
-                    "A varredura calibrada desta semana traz avanços de alto impacto na interface entre neurobiologia e barreiras biológicas, com destaque para a regulação glial de junções oclusivas na barreira hematoencefálica e sinalização neuropeptídica sistêmica via corpo gorduroso.",
-                    "Na biologia do vetor, novos protocolos de dissecção de Aedes e extração de RNA (JoVE), aliados à ultraestrutura por Microscopia Eletrônica de Volume e vias de imunidade antiviral (RNAi), fornecem parâmetros metodológicos diretos para os POPs em andamento no LUCHM."
-                ],
-                "conexoes_transversais": [
-                    {
-                        "titulo": "1. Morte Endotelial & BHE: RIPK1 vs Sinalização Wnt7a",
-                        "evidencia": "RIPK1 governa o colapso microvascular induzido por CD8+ (Science Advances, PMID 42993832), enquanto a integridade independe de Wnt7a astrocitário (bioRxiv, PMID 42995941).",
-                        "conexao_bancada": "No modelo PbA/C57BL/6 do LUCHM: testar inibidores de necroptose (Necrostatin-1s/Nec-1) para avaliar preservação da barreira hematoencefálica e extravasamento de Evans Blue."
-                    },
-                    {
-                        "titulo": "2. Bioquímica do Vetor: Sequestro de Hemopexina no Inseto",
-                        "evidencia": "Dípteros hematófagos capturam hemopexina plasmática de mamíferos para blindagem do epitélio contra estresse oxidativo e toxicidade por hemo livre (iScience, PMID 42996130).",
-                        "conexao_bancada": "Em Aedes aegypti sob dieta HFHS (alta glicose/lipídios): avaliar se o esgotamento de hemopexina exacerba peroxidação da membrana peritrófica e altera competência vetorial."
-                    },
-                    {
-                        "titulo": "3. Neuroimunologia: Eixo IL-15C / IL-10Rα Endotelial",
-                        "evidencia": "O complexo IL-15 induz IL-10 protetora que age especificamente sobre IL-10Rα no endotélio microvascular (J Immunol, PMID 42995426), inibindo ICAM-1 e impedindo o arrest de linfócitos CD8+.",
-                        "conexao_bancada": "Monitorar a densidade de ICAM-1 e VCAM-1 em vasos corticais por imunofluorescência e verificar adesão de células T nos cérebros de camundongos PbA tratados."
-                    },
-                    {
-                        "titulo": "4. Biofísica & Fronteira: Contactoma e Espectroscopia AFM-IR",
-                        "evidencia": "Sítios de contato inter-organela (MCS) e condensados densos de polifosfato protegem organelas de estresse oxidativo e peroxidação lipídica (Nat Commun, PMID 30894536; ACS Nano, PMID 40350657).",
-                        "conexao_bancada": "No CENABIO/UFRJ: mapear espécies lipídicas e anéis de polifosfato em esporozoítos e intestino por AFM-IR em nanoescala (15 nm) sem fixação por ósmio."
-                    }
-                ],
-                "destaques": [
-                    {
-                        "artigo": d["_id"],
-                        "chamada": d["titulo"],
-                        "nota": f"Programa: {d.get('programa', '')} · Prioridade: {d.get('prioridade', '').upper()}"
-                    }
-                    for d in destaques_pool
-                ],
-                "vigiar": [
-                    "Barreira hematoencefálica e crosstalk glia-endotélio.",
-                    "Eixo neuropeptídico CCHa2 / insulina e reprogramação metabólica no vetor.",
-                    "Preparação de amostras para Microscopia Eletrônica de Volume (Volume EM)."
-                ]
-            }
+            "atual": pauta_atual
         },
         "clube": [],
         "radar": [edicao_data["radar_edicao_dia"]],
@@ -400,22 +543,23 @@ if os.path.exists(INDEX_HTML):
         ],
         "catalogo": [],
         "anotacoes": [],
-        "sistema": {
-            "radar": edicao_data["sistema_radar"],
-            "painel": {
-                "atualizado": datetime.now(fuso_br).isoformat(),
-                "fonte": "Antigravity Lab Management (v6)"
-            }
+            "sistema": {
+                "radar": edicao_data["sistema_radar"],
+                "painel": {
+                    "atualizado": datetime.now(fuso_br).isoformat(),
+                    "fonte": "Antigravity Lab Management (v6)"
+                }
+            },
+            "edicao": edicao_data["radar_edicao_dia"]
         }
-    }
 
     embedded_str = json.dumps(embedded_obj, ensure_ascii=False)
     start_str = "const __EMBEDDED_DATA__ = {"
     idx = html.find(start_str)
     if idx != -1:
-        end_idx = html.find("};\n\n", idx)
+        end_idx = html.find("};\n", idx)
         if end_idx != -1:
-            html = html[:idx] + f"const __EMBEDDED_DATA__ = {embedded_str};\n\n" + html[end_idx+4:]
+            html = html[:idx] + f"const __EMBEDDED_DATA__ = {embedded_str};\n" + html[end_idx+2:]
             with open(INDEX_HTML, "w", encoding="utf-8") as f:
                 f.write(html)
             print(f"✅ Atualizado {INDEX_HTML} com a nova edição v6 ({len(html)} bytes)")
