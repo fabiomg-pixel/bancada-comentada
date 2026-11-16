@@ -104,12 +104,19 @@ def eh_texto_ingles(txt):
     return marcadores_en >= 3 and marcadores_en > marcadores_pt
 
 def eh_artigo_fora_de_escopo(artigo):
-    txt = f"{artigo.get('titulo', '')} {artigo.get('resumo', '')[:500]}".lower()
+    tit = (artigo.get('titulo') or '').lower()
+    if re.match(r'^\s*(retraction|retracted|erratum|corrigendum)\b', tit) or "retraction notice" in tit:
+        return True
+    txt = f"{tit} {(artigo.get('resumo') or '')[:500]}".lower()
     ruidos = [
         "huntington", "insomnia", "insônia", "traditional chinese medicine",
         "alzheimer", "parkinson", "glioblastoma", "prostate cancer", "breast cancer",
         "water electrolyzer", "proton exchange membrane", "cyanobacterial",
         "soil-plant", "opioid", "arthroplasty", "numb paradox",
+        "mullins-sekerka", "barite mineralization", "mineralization at gas-liquid",
+        "salinity acclimation", "testicular aging", "anthocyanins",
+        "bovine mastitis", "bariatric surgery", "colorectal cancer",
+        "intervertebral disc", "nanofibrous yarns", "solitary bees and wasps",
     ]
     if any(r in txt for r in ruidos) and not any(k in txt for k in ["plasmodium", "malaria", "anopheles", "aedes", "mosquito", "polyphosphate"]):
         return True
@@ -408,18 +415,22 @@ def _blocos_seguros(art):
     return rac, met, res, imp, faisca
 
 
-def _construir_bloco_artigo(art, abertura_fala_a, gancho_b):
+def _construir_bloco_artigo(art, abertura_fala_a, gancho_b, inclui_faisca=True):
     tit = (art.get("titulo") or "Estudo selecionado da edição").strip()
     cit = resumir_revista_pmid(art)
     ano = art.get("ano") or "2026"
     rac, met, res, imp, faisca = _blocos_seguros(art)
     prog = art.get("programa") or "bancada do LUCHM"
 
+    fala_imp = f"Na bancada do LUCHM, {min_ini(imp)}"
+    if inclui_faisca and faisca:
+        fala_imp += f" Como desdobramento experimental imediato: {min_ini(faisca)}"
+
     return [
         ("A", f"{abertura_fala_a} O trabalho saiu na {cit}, em {ano}, com o título '{tit}'. Na partida conceitual, {min_ini(rac)}"),
-        ("B", f"{gancho_b} Em termos estritos de método e arquitetura experimental, os autores executaram o seguinte: {min_ini(met)}"),
-        ("A", f"E qual é o peso objetivo do resultado para quem interpreta a biologia do sistema? {res} Perceba como isso desloca a nossa leitura sobre os determinantes mecanísticos de {min_ini(prog)}."),
-        ("B", f"Exatamente, Antônio! Trazendo para a realidade prática da nossa bancada e das teses do grupo: {min_ini(imp)} Como desdobramento experimental imediato, vale registrar a seguinte faísca de trabalho: {min_ini(faisca)}"),
+        ("B", f"{gancho_b} No desenho experimental, os autores fizeram o seguinte: {min_ini(met)}"),
+        ("A", f"E qual o peso objetivo dos achados para {min_ini(prog)}? {res}"),
+        ("B", fala_imp),
     ]
 
 
@@ -454,11 +465,11 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
         prog = (a.get("programa") or "").lower()
         blob = f"{a.get('titulo', '')} {prog}".lower()
 
-        if tema in ("ciclo", "hospedeiro") or any(k in blob for k in ["plasmodium", "malaria", "anopheles funestus", "g6pd", "lipid droplet"]):
+        if tema in ("ciclo", "hospedeiro") or any(k in blob for k in ["plasmodium", "malaria", "pantothenate", "cholesterol", "anopheles funestus", "rodent malaria", "g6pd", "lipid droplet"]):
             if len(grupo_plasmodium) < 3:
                 grupo_plasmodium.append(a)
                 usados.add(aid)
-        elif tema == "vetor" and any(k in blob for k in ["microbiome", "mosquito", "vector", "oropouche", "odor", "neuropeptide", "aedes", "culex"]):
+        elif tema == "vetor" and any(k in blob for k in ["microbiome", "mosquito", "hemocyte", "vector", "oropouche", "odor", "neuropeptide", "p2 neurons", "zika", "ndel1", "orthoflavivirus", "aedes", "culex"]):
             if len(grupo_vetores) < 4:
                 grupo_vetores.append(a)
                 usados.add(aid)
@@ -512,6 +523,15 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
     def _ganchos_adaptativos(art, idx):
         tl = f"{art.get('titulo', '')} {art.get('programa', '')}".lower()
         regras = [
+            (["pantothenate", "pantazine"], "Nosso estudo âncora de bloqueio de transmissão ataca uma assimetria metabólica crítica entre o estágio sanguíneo e o ciclo de Plasmodium no mosquito.", "Fábio e Antônio, vale reparar como esse ensaio testa separadamente crescimento sanguíneo in vitro e bloqueio de oocistos e esporozoítos in vivo."),
+            (["cholesterol gradient", "pfncr1"], "Na biologia celular do parasito intraeritrocítico, este trabalho traz um modelo integrativo sofisticado sobre assimetria de colesterol e mecânica de membrana.", "Para a nossa tradição no IBCCF em organização de membranas e vacúolo parasitóforo, a distinção entre diluição por fosfolipídios e transporte ativo é cirúrgica."),
+            (["rodent malaria", "grammomys"], "Fechando o eixo de biologia evolutiva do parasito, um estudo de campo raro investiga os reservatórios silvestres originais da malária de roedores.", "Isso dialoga diretamente com a forma como interpretamos os limites e as forças do nosso modelo PbA em camundongos C57BL/6J."),
+            (["insecticide resistance", "cameroon", "albimanus"], "Na frente de entomologia de campo, examinamos como coexistência de múltiplos vetores e mutações de resistência sustentam a transmissão residual.", "Do ponto de vista de quem acompanha competência vetorial e biologia metabólica de insetos, os marcadores enzimáticos mapeados aqui chamam muito atenção."),
+            (["hemocyte", "stabilized hemocytes"], "Abrimos o bloco vetorial com um salto técnico muito esperado para a imunidade de insetos: um protocolo de estabilização de hemócitos compatível com scRNA-seq e armazenamento.", "No insetário do LUCHM, poder estabilizar hemócitos perfundidos de Aedes ou Anopheles e guardar por até quatro semanas resolve um gargalo logístico enorme!"),
+            (["p2 neurons", "post-mating"], "Na interface neurobiologia e comportamento alimentar em insetos, avaliamos um estudo limpo com GAL4/UAS sobre circuitos candidatos à reprogramação pós-acasalamento.", "Mesmo com resultado negativo para os neurônios P2 na resposta ao Sex Peptide, o controle neurogenético é um modelo para nossas perguntas sobre neuropeptídeos pós-repasto."),
+            (["ndel1", "zika"], "Saltando para neurovirologia e arboviroses, este trabalho compara diretamente linhagem brasileira de ZIKV contra africana e Dengue sobre a enzima neuronal Ndel1.", "A dissociação precoce entre ativação inflamatória geral e falência catalítica específica da cepa brasileira dá pistas experimentais muito fortes."),
+            (["orthoflavivirus receptors", "ldlr"], "Em evolução e entrada viral, esta revisão consolida a família de receptores de LDL como porta de entrada funcional de ortoflavivírus.", "Pensando no nosso programa de dieta hiperlipídica HFHS e lipoproteínas em Aedes aegypti, receptores da família LDL na entrada viral criam uma ponte imediata!"),
+            (["polyphosphate", "exopolyphosphatase", "ppx1", "ppk1", "acidocalcisom"], "Entramos agora no território histórico do nosso grupo: sinalização e metabolismo de polifosfato inorgânico (polyP) governando lipídios de superfície e virulência.", "Antônio e Fábio, ver o polyP via PPX1 ativar RegX3, derrubar c-di-GMP e reorganizar lipídios de parede renova toda a leitura bioquímica que trazemos dos acidocalcisomos."),
             (["hsp90", "chaperon"], "Nosso estudo âncora de biologia celular do parasito enfrenta diretamente um gargalo mecanístico clássico da quimioterapia antimalárica.", "Fábio e Antônio, vale olhar com lupa como esse desenho evita inferências indiretas."),
             (["funestus", "residual malaria"], "Logo na sequência, o foco vira para a ecologia de campo e o comportamento vetorial que sustentam a transmissão mesmo sob intervenções intensivas.", "Do ponto de vista de quem desenha ensaios de campo e insetário, o desenho amostral merece atenção especial."),
             (["elimination", "preventing malaria"], "Ampliando essa janela de eliminação, o próximo trabalho coloca o ônus global atual em perspectiva clínica e translacional rigorosa.", "O contraste com abordagens isoladas de controle salta aos olhos nessa análise translacional."),
@@ -519,11 +539,12 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
             (["g6pd", "redox"], "Fechando a ponte bioquímica com a homeostase do hospedeiro, examinamos um checkpoint metabólico e redox clássico na proteção eritrocitária.", "Para os projetos do LUCHM em estresse oxidativo e ferroptose, os marcadores moleculares aqui são ouro puro."),
             (["microbiome", "bacterial enrichment"], "O próximo estudo ataca um problema técnico silencioso que compromete grande parte da literatura de microbioma intestinal de mosquitos.", "Esse cuidado pré-analítico faz toda a diferença antes de mandar pools de intestino médio para sequenciamento no laboratório."),
             (["odor", "neuropeptide"], "Em seguida, entramos na fisiologia neurocomportamental que explica por que insetos da mesma linhagem exibem apetite olfatório tão heterogêneo.", "Olha como a sinalização peptídica dialoga com o estado nutricional e as reservas de triacilgliceróis do díptero!"),
-            (["borderland", "spatial distribution", "vector abundance"], "Já o trabalho seguinte traz um retrato quantitativo de vigilância entomológica em corredor de alto fluxo populacional.", "Esse mapeamento espacial e sazonado conversa diretamente com a nossa vigilância de competência vetorial."),
+            (["borderland", "spatial distribution", "vector abundance", "remote sensing"], "Já o trabalho seguinte traz um retrato quantitativo de vigilância entomológica espacial e predição de abundância de vetores.", "Esse mapeamento espacial conversa diretamente com a nossa vigilância de competência vetorial e ecologia urbana de Aedes."),
             (["oropouche"], "Este artigo lança luz sobre a reemergência do vírus Oropouche na América Latina e o potencial de hospedeiros vertebrados alternativos.", "Para quem acompanha a expansão recente de arboviroses emergentes, os modelos celulares testados dão pistas concretas."),
-            (["bispecific", "mrna vaccine", "dengue", "zika"], "Aqui temos um avanço engenhoso de engenharia vacinal pensado especificamente para resolver o problema crítico de amplificação dependente de anticorpos.", "Superar a reatividade cruzada não neutralizante entre Dengue e Zika é uma prioridade clínica e translacional direta."),
+            (["bispecific", "mrna vaccine"], "Aqui temos um avanço engenhoso de engenharia vacinal pensado especificamente para resolver o problema crítico de amplificação dependente de anticorpos.", "Superar a reatividade cruzada não neutralizante entre Dengue e Zika é uma prioridade clínica e translacional direta."),
             (["macrodomain", "alphavirus"], "O próximo destaque vem de farmacologia estrutural e mira um domínio enzimático altamente conservado entre alfavírus artritogênicos e neurotrópicos.", "Repare no rigor estrutural ao mapear bolsões catalíticos compartilhados entre patógenos relevantes para a saúde pública."),
             (["electrical synapse", "connexin"], "Fechamos as análises individuais com um artigo de neurociência celular sobre diversidade ultraestrutural e funcional de sinapses elétricas.", "Para quem estuda junções comunicantes, barreira neurovascular e acoplamento bioelétrico tecidual, os ganhos metodológicos saltam da tela."),
+            (["graphene", "lab-on-chip"], "Por fim, no plano de bioengenharia diagnóstica, surge uma plataforma multiplex em grafeno para identificar cinco espécies de Plasmodium sem PCR.", "A sensibilidade attomolar diretamente em amostras mínimas chama atenção como referência instrumental."),
         ]
         for chaves, ga, gb in regras:
             if any(k in tl for k in chaves):
@@ -534,23 +555,54 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
             f"Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em {min_ini(prog_art)}."
         )
 
-    # ATO 2: MALÁRIA, VETORES ANOFELINOS & HOMEOSTASE REDOX/LIPÍDICA
-    falas.append(("B", "Abrimos o primeiro bloco analítico mergulhando na interface entre biologia celular do Plasmodium, persistência vetorial na transmissão residual da malária e controle metabólico-redox do hospedeiro mamífero."))
-    for i, art in enumerate(grupo_plasmodium):
-        ga, gb = _ganchos_adaptativos(art, i)
-        falas.extend(_construir_bloco_artigo(art, ga, gb))
+    def _montar_com_cota(gp, gv, gt, incl_faisca=True):
+        seq = list(falas_abertura)
 
-    # ATO 3: VETORES, MICROBIOMA INTESTINAL, NEUROPEPTÍDEOS & ARBOVIROSES
-    falas.append(("A", "No terceiro ato, cruzamos para a frente de entomologia molecular, simbiose intestinal, fisiologia neuroendócrina e arboviroses emergentes — onde o insetário de Aedes e as colaborações de virologia encontram terreno fértil."))
-    for i, art in enumerate(grupo_vetores):
-        ga, gb = _ganchos_adaptativos(art, i)
-        falas.extend(_construir_bloco_artigo(art, ga, gb))
+        seq.append(("B", "Abrimos o primeiro bloco analítico mergulhando na interface entre biologia celular e metabólica do Plasmodium, mecanismos de bloqueio de transmissão e determinantes de campo dos parasitos."))
+        for i, art in enumerate(gp):
+            ga, gb = _ganchos_adaptativos(art, i)
+            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
 
-    # ATO 4: VACINAS BIESPECÍFICAS, MACRODOMÍNIOS VIRAIS, SINAPSES & SÍNTESE TRANSVERSAL
-    falas.append(("B", "Chegamos ao quarto ato com os estudos de alta densidade tecnológica e conceitual que conectam imunoprofilaxia de arboviroses, druggability estrutural, homeostase redox e plasticidade sináptica, amarrando tudo nos eixos transversais da edição."))
-    for i, art in enumerate(grupo_translacional):
-        ga, gb = _ganchos_adaptativos(art, i)
-        falas.extend(_construir_bloco_artigo(art, ga, gb))
+        seq.append(("A", "No terceiro ato, cruzamos para a frente de entomologia molecular, resposta imune de vetores, neurobiologia do comportamento pós-repasto e arboviroses — onde o insetário de Aedes e Anopheles encontra aplicações imediatas."))
+        for i, art in enumerate(gv):
+            ga, gb = _ganchos_adaptativos(art, i)
+            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
+
+        seq.append(("B", "Chegamos ao quarto ato reunindo os estudos complementares de alta densidade mecanística — passando por polifosfato inorgânico, biologia química e metodologias emergentes — e amarrando tudo nos eixos transversais da edição."))
+        for i, art in enumerate(gt):
+            ga, gb = _ganchos_adaptativos(art, i)
+            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
+
+        return seq
+
+    falas_abertura = list(falas)
+    # Seleciona o maior conjunto de artigos que mantém a fala total <= 3.770 palavras
+    opcoes_cota = [
+        (3, 4, 2, True),
+        (3, 3, 2, True),
+        (3, 3, 2, False),
+        (3, 2, 2, True),
+        (3, 2, 2, False),
+        (2, 2, 2, True),
+        (2, 2, 2, False),
+        (2, 2, 1, False),
+    ]
+    falas = _montar_com_cota(grupo_plasmodium[:3], grupo_vetores[:3], grupo_translacional[:2], incl_faisca=True)
+    # Mede overhead fixo (Ato 1 já em falas_abertura; síntese + Ato 5 + Ato 6 + Ato 7 ~ 950 palavras)
+    overhead_estimado = 980
+    for c_p, c_v, c_t, inc_f in opcoes_cota:
+        cand_seq = _montar_com_cota(
+            grupo_plasmodium[:c_p],
+            grupo_vetores[:c_v],
+            grupo_translacional[:c_t],
+            incl_faisca=inc_f,
+        )
+        n_w = sum(len(t.split()) for _, t in cand_seq)
+        if n_w + overhead_estimado <= 3770:
+            falas = cand_seq
+            break
+    else:
+        falas = cand_seq
 
     if con_resumos:
         falas.append(("A", f"Antes de entrarmos no Horizonte Lateral, vale consolidar o que os quatro cartões de conexões transversais da página da Pauta mostram quando colocamos esses estudos em diálogo: {' '.join(con_resumos[:2])}"))

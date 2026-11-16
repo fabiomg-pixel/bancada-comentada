@@ -133,21 +133,31 @@ for a in articles:
     has_mosquito = has_aedes or has_anopheles or has_culex
     has_plasmodium = "plasmodium" in txt or "malaria" in txt
     has_arbovirus = any(w in txt for w in ["dengue", "zika", "chikungunya", "oropouche", "mayaro", "alphavirus", "orthoflavivirus", "arbovir"])
+    is_retraction = bool(re.match(r'^\s*(retraction|retracted|erratum|corrigendum)\b', tit.lower())) or "retraction notice" in txt
     is_neurodegen_review = any(w in txt for w in ["huntington", "alzheimer", "parkinson", "insomnia", "traditional chinese medicine"])
     is_offtopic_noise = (
         any(w in txt for w in [
             "water electrolyzer", "proton exchange membrane", "cyanobacterial bloom",
             "soil-plant", "banana peel", "silver nanoparticles", "preoperative opioid",
-            "arthroplasty", "social needs", "cardiomyopathy", "mycoplasma pneumoniae"
+            "arthroplasty", "social needs", "cardiomyopathy", "mycoplasma pneumoniae",
+            "mullins-sekerka", "barite mineralization", "mineralization at gas-liquid",
+            "salinity acclimation", "fish physiol", "testicular aging", "anthocyanins",
+            "bovine mastitis", "bariatric surgery", "colorectal cancer",
+            "intervertebral disc", "skeletal muscle of critically ill",
+            "nanofibrous yarns", "electrospinning", "solitary bees and wasps",
         ])
         and not (has_plasmodium or has_mosquito or has_arbovirus)
     )
     has_hemopexin_vector = ("hemopexin" in txt or "heme toxicity" in txt or "heme scavenging" in txt) and (has_mosquito or has_plasmodium)
-    has_polyphosphate = any(w in txt for w in ["polyphosphate", "acidocalcisome", "exopolyphosphatase", "polyphosphate kinase", "polyp "]) and "organophosphate" not in txt and not is_offtopic_noise
-    has_volume_em = any(w in txt for w in ["volume electron microscopy", "fib-sem", "sbf-sem", "serial block face", "cryo-et"]) and not is_offtopic_noise
+    has_polyphosphate = any(w in txt for w in ["polyphosphate", "acidocalcisome", "exopolyphosphatase", "polyphosphate kinase", "polyp ", "ppx1", "ppk1", "ppk2"]) and "organophosphate" not in txt and not is_offtopic_noise and not is_retraction
+    has_volume_em = any(w in txt for w in ["volume electron microscopy", "fib-sem", "sbf-sem", "serial block face", "cryo-et"]) and not is_offtopic_noise and not is_retraction and not any(x in txt for x in ["gas bubbles", "barite", "electrolyzer", "mineralization"])
     has_neuropeptide = any(w in txt for w in ["ccha2", "neuropeptide", "leucokinin", "allatostatin"]) and (has_mosquito or "insect" in txt or "drosophila" in txt)
-    has_rnai = ("rnai" in txt or "dsrna" in txt or "dicer-2" in txt or "argonaute-2" in txt) and (has_mosquito or "insect" in txt or "lepidoptera" in txt)
-    has_metabolic = any(w in txt for w in ["immunometabol", "lipid droplet", "iron-regulatory", "ferroptosis", "20e", "ecdysone", "hfhs", "glucose-6-phosphate dehydrogenase"]) and (has_plasmodium or has_mosquito or has_arbovirus or "macrophage" in txt or "redox" in txt) and not is_offtopic_noise
+    has_rnai = ("rnai" in txt or "dsrna" in txt or "dicer-2" in txt or "argonaute-2" in txt) and (has_mosquito or "insect" in txt or "lepidoptera" in txt or "spodoptera" in txt)
+    has_metabolic = (
+        any(w in txt for w in ["immunometabol", "lipid droplet", "iron-regulatory", "ferroptosis", "20e", "ecdysone", "hfhs", "glucose-6-phosphate dehydrogenase"])
+        and (has_plasmodium or has_mosquito or has_arbovirus or "macrophage" in txt or "erythrocyte" in txt or "hepatocyte" in txt)
+        and not is_offtopic_noise and not is_retraction
+    )
 
     importancia = "baixa"
     prioridade = "contexto"
@@ -159,13 +169,13 @@ for a in articles:
     faisca = ""
 
     # 1. Regras de Alta Relevância (Ancoradas nos Programas Reais do LUCHM)
-    if is_offtopic_noise or is_neurodegen_review:
+    if is_retraction or is_offtopic_noise or is_neurodegen_review:
         importancia = "baixa"
         prioridade = "contexto"
-        score = 35
+        score = 10 if is_retraction else 35
         tema = "metodos"
-        programa = "Vigilância Bibliográfica Geral"
-        implicacao = "Artigo fora do núcleo experimental de vetores/parasitologia; mantido apenas no arquivo de contexto."
+        programa = "Aviso Editorial / Retratação" if is_retraction else "Vigilância Bibliográfica Geral"
+        implicacao = "Aviso editorial / retratação excluído da curadoria ativa." if is_retraction else "Artigo fora do núcleo experimental de vetores/parasitologia; mantido apenas no arquivo de contexto."
 
     elif has_hemopexin_vector:
         importancia = "alta"
@@ -186,35 +196,35 @@ for a in articles:
         implicacao = "Incide diretamente sobre os mecanismos celulares de lesão ou proteção endotelial na barreira hematoencefálica durante a malária cerebral, comparável ao modelo PbA/C57BL/6J do LUCHM."
         faisca = "💡 Cruzar os alvos endoteliais e imunes identificados com os marcadores de disfunção microvascular (claudina-5, extravasamento de Evans Blue) nos dias 4–6 pós-infecção."
 
-    elif has_plasmodium and any(w in txt for w in ["hsp90", "dna replication", "elimination", "preventing malaria", "sporozoite", "liver-stage", "vacuole", "pvm", "ap2-l", "obm", "phase-gradient", "maps-fc", "pfs47", "vector competence"]):
-        is_core = any(w in txt for w in ["hsp90", "dna replication", "sporozoite", "liver-stage", "ap2-l", "pvm", "preventing malaria"])
+    elif has_plasmodium and any(w in txt for w in ["hsp90", "dna replication", "elimination", "preventing malaria", "sporozoite", "liver-stage", "vacuole", "pvm", "ap2-l", "obm", "phase-gradient", "maps-fc", "pfs47", "vector competence", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria", "grammomys", "pvcsp", "graphene"]):
+        is_core = any(w in txt for w in ["hsp90", "dna replication", "sporozoite", "liver-stage", "ap2-l", "pvm", "preventing malaria", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria"])
         importancia = "alta" if is_core else "media"
         prioridade = "essencial" if importancia == "alta" else "contexto"
-        score = 104 if "hsp90" in txt or "ap2-l" in txt or "sporozoite" in txt else (94 if is_core else 84)
+        score = 104 if any(w in txt for w in ["hsp90", "ap2-l", "sporozoite", "pantothenate", "pantazine"]) else (98 if "cholesterol" in txt or "pfncr1" in txt else (94 if is_core else 84))
         tema = "ciclo"
         programa = "Biologia Celular de Plasmodium & Bloqueio de Transmissão"
-        implicacao = "Traz alvos moleculares essenciais da replicação, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM."
-        faisca = "💡 Avaliar se os alvos de chaperona/replicação ou marcadores de superfície podem ser integrados aos ensaios de desenvolvimento e triagem parasitária do grupo."
+        implicacao = "Traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM."
+        faisca = "💡 Avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo."
 
-    elif has_mosquito and any(w in txt for w in ["midgut", "microbiome", "bacterial", "funestus", "residual malaria", "peritrophic", "oviposition", "dietary", "blood meal", "vector competence"]):
-        is_core_vec = any(w in txt for w in ["midgut", "microbiome", "funestus", "peritrophic", "vector competence"])
+    elif has_mosquito and any(w in txt for w in ["midgut", "microbiome", "bacterial", "funestus", "residual malaria", "peritrophic", "oviposition", "dietary", "blood meal", "vector competence", "hemocyte", "insecticide resistance", "microsatellite"]):
+        is_core_vec = any(w in txt for w in ["midgut", "microbiome", "funestus", "peritrophic", "vector competence", "hemocyte", "insecticide resistance"])
         importancia = "alta" if is_core_vec else "media"
         prioridade = "essencial" if is_core_vec else "contexto"
-        score = 101 if "midgut" in txt or "microbiome" in txt else (96 if is_core_vec else 82)
+        score = 101 if any(w in txt for w in ["midgut", "microbiome", "hemocyte"]) else (96 if is_core_vec else 84)
         tema = "vetor"
         programa = "Repasto Sanguíneo HFHS & Metabolismo do Vetor" if ("dietary" in txt or "blood" in txt or "midgut" in txt) else "Imunidade de Vetores & RNAi"
-        implicacao = "Conecta ecologia de intestino médio de mosquitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM."
-        faisca = "💡 Testar impacto do protocolo de enriquecimento bacteriano/ecologia intestinal sobre colonização por microbiota sob dieta HFHS."
+        implicacao = "Conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM."
+        faisca = "💡 Testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS."
 
     elif has_arbovirus:
-        is_mech_arbo = any(w in txt for w in ["oropouche", "macrodomain", "druggability", "bispecific", "permissiveness", "alphavirus", "antiviral"])
-        importancia = "alta" if "oropouche" in txt else "media"
+        is_mech_arbo = any(w in txt for w in ["oropouche", "macrodomain", "druggability", "bispecific", "permissiveness", "alphavirus", "antiviral", "ndel1", "ldlr", "low-density lipoprotein"])
+        importancia = "alta" if ("oropouche" in txt or "ndel1" in txt) else "media"
         prioridade = "essencial" if importancia == "alta" else "contexto"
-        score = 92 if importancia == "alta" else 84
+        score = 93 if importancia == "alta" else 84
         tema = "vetor"
         programa = "Imunidade de Vetores & RNAi"
         implicacao = "Relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya) e resposta imune/antiviral em vetores e hospedeiros."
-        faisca = "💡 Avaliar alvos conservados (e.g. macrodomínios virais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório."
+        faisca = "💡 Avaliar alvos conservados (receptores LDL, proteases neuronais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório."
 
     elif has_neuropeptide:
         importancia = "alta"
@@ -244,9 +254,10 @@ for a in articles:
         faisca = "💡 Testar ajustes de impregnação em bloco ou resolução isotrópica em amostras de intestino de mosquito e estágios de Plasmodium."
 
     elif has_polyphosphate:
-        importancia = "alta" if ("compaction" in txt or "acidocalcisome" in txt or "plasmodium" in txt or "trypanosoma" in txt) else "media"
+        is_polyp_core = any(w in txt for w in ["compaction", "acidocalcisome", "plasmodium", "trypanosoma", "exopolyphosphatase", "ppx1"])
+        importancia = "alta" if is_polyp_core else "media"
         prioridade = "essencial" if importancia == "alta" else "contexto"
-        score = 96 if importancia == "alta" else 80
+        score = 92 if importancia == "alta" else 80
         tema = "metodos"
         programa = "Polifosfato Inorgânico & Acidocalcisomas"
         implicacao = "Investiga interações biofísicas e estruturais de cadeias de polifosfato inorgânico (polyP), dialogando com a linha histórica de acidocalcisomos e homeostase iônica do LUCHM."

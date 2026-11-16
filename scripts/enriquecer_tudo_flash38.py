@@ -12,8 +12,13 @@ import json
 import ssl
 import time
 import re
+import threading
 import urllib.request
+import urllib.error
 from concurrent.futures import ThreadPoolExecutor, as_completed
+
+QUOTA_LOCK = threading.Lock()
+QUOTA_EXHAUSTED = False
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EDICAO_FILE = os.path.join(REPO_DIR, "data", "edicao_atual.json")
@@ -73,6 +78,11 @@ def salvar_cache(cache):
         json.dump(cache, f, ensure_ascii=False, indent=2)
 
 def analisar_com_gemini(aid, titulo, abstract, revista, ano, programa_sugerido):
+    global QUOTA_EXHAUSTED
+    with QUOTA_LOCK:
+        if QUOTA_EXHAUSTED or not API_KEY:
+            return None
+
     prompt = f"""Você é o avaliador científico sênior do Laboratório de Ultraestrutura Celular Hertha Meyer (LUCHM/IBCCF/UFRJ), chefiado pelo Prof. Fábio Mendonça Gomes.
 
 Analise o artigo científico abaixo e elabore uma síntese aprofundada, técnica, densa e com terminologia rigorosa de bancada.
@@ -118,6 +128,17 @@ Gere APENAS um objeto JSON com as seguintes chaves exatas:
                 res_data = json.loads(resp.read().decode())
                 cand = res_data["candidates"][0]["content"]["parts"][0]["text"]
                 return json.loads(cand)
+        except urllib.error.HTTPError as e:
+            if e.code in (402, 403):
+                with QUOTA_LOCK:
+                    if not QUOTA_EXHAUSTED:
+                        print(f"[{aid}] Quota/autorização Gemini indisponível (HTTP {e.code}); preservando cache e blocos existentes.")
+                    QUOTA_EXHAUSTED = True
+                return None
+            time.sleep(1.5 * (attempt + 1))
+            if attempt == 2:
+                print(f"[{aid}] Erro final Gemini 3.8 Flash: {e}")
+                return None
         except Exception as e:
             time.sleep(1.5 * (attempt + 1))
             if attempt == 2:
@@ -126,6 +147,8 @@ Gere APENAS um objeto JSON com as seguintes chaves exatas:
 
 def processar_artigo(aid, a, cache):
     tit = a.get("titulo", "").strip()
+    if re.match(r'^\s*(retraction|retracted|erratum|corrigendum)\b', tit.lower()):
+        return None
     abs_txt = (a.get("resumo") or "").strip()
     rev = a.get("revista", "").strip()
     ano = a.get("ano", "2026")
@@ -142,24 +165,24 @@ def processar_artigo(aid, a, cache):
     else:
         orig_url = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/"
 
-    # Verificar se já está no cache com profundidade alta
+    # Verificar se já está no cache com análise válida
     cached = cache.get(aid)
-    if cached and len(cached.get("metodo_bancada", "")) > 250:
+    if cached and len(cached.get("metodo_bancada", "")) > 120:
         analise = cached
     else:
-        print(f"Consultando Gemini 3.8 Flash para: [{aid}] {tit[:50]}...")
         analise = analisar_com_gemini(aid, tit, abs_txt, rev, ano, prog)
         if analise:
             cache[aid] = analise
         else:
             return None
 
+    rb_existente = a.get("resumo_blocos") or {}
     prog_final = analise.get("programa_luchm") or prog
     met = analise.get("metodo_bancada") or a.get("metodo", "")
     imp = analise.get("implicacao_luchm") or a.get("implicacao", "")
     faisca = analise.get("faisca_lateral") or a.get("faisca_lateral", "")
-    rac = analise.get("racional_bloco") or abs_txt
-    res = analise.get("resultados_bloco") or "Principais resultados e cascatas moleculares reportados pelos autores."
+    rac = analise.get("racional_bloco") or analise.get("racional") or rb_existente.get("racional") or abs_txt
+    res = analise.get("resultados_bloco") or analise.get("resultados") or rb_existente.get("resultados") or "Principais resultados e cascatas moleculares reportados pelos autores."
 
     a["programa"] = prog_final
     a["metodo"] = met
