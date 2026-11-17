@@ -1,20 +1,20 @@
-# Podcast Científico LUCHM (Stork Cast) — Edição de 16 de Novembro de 2026
+# Podcast Científico LUCHM (Stork Cast) — Edição de 17 de Novembro de 2026
 # Apresentadores: Antônio (Visão Teórica/Neuro) & Francisca (Bancada/Métodos/CENABIO)
-# Duração estimada: 22.8 minutos (3193 palavras)
+# Duração estimada: 19.8 minutos (2769 palavras)
 
-Antônio: Olá, professor Fábio! Seja muito bem-vindo a mais uma edição integral do podcast científico de bancada do LUCHM, preparado especialmente para a sua viagem de carro com base estrita na curadoria de 16 de Novembro de 2026. Ajuste o volume do carro, deixe as demandas administrativas em pausa por alguns instantes e acompanhe os próximos minutos de debate metodológico profundo no ritmo dos nossos seminários no Instituto de Biofísica Carlos Chagas Filho da UFRJ.
+Antônio: Olá, professor Fábio! Seja muito bem-vindo a mais uma edição integral do podcast científico de bancada do LUCHM, preparado especialmente para a sua viagem de carro com base estrita na curadoria de 17 de Novembro de 2026. Ajuste o volume do carro, deixe as demandas administrativas em pausa por alguns instantes e acompanhe os próximos minutos de debate metodológico profundo no ritmo dos nossos seminários no Instituto de Biofísica Carlos Chagas Filho da UFRJ.
 
 Francisca: Boa tarde, Fábio, e um cumprimento especial a toda a equipe do laboratório distribuída entre o biotério de camundongos, o insetário de dípteros e as bancadas de biologia celular e bioimagem no CENABIO. Aqui na Bancada Comentada o nosso compromisso é absoluto: zero manchetes soltas e zero extrapolações inventadas. Nós vamos dissecar os modelos experimentais, os controles bioquímicos, as plataformas estatísticas, as limitações reais de cada desenho e a tradução imediata para o que muda amanhã na rotina dos nossos alunos.
 
-Antônio: Exatamente, Francisca. Na varredura estruturada desta edição, avaliamos e curamos 83 publicações recentes oriundas da captura automática do PubMed e de servidores de preprints. Após aplicar a malha de exclusão de ruído fora de escopo e recalibrar a pontuação por aderência temática ao LUCHM, fechamos a pauta com 10 estudos de prioridade alta que formam o núcleo duro da discussão de hoje, além de 39 trabalhos de importância média para acompanhamento seletivo e 34 registros complementares de contexto.
+Antônio: Exatamente, Francisca. Na varredura estruturada desta edição, avaliamos e curamos 29 publicações recentes oriundas da captura automática do PubMed e de servidores de preprints. Após aplicar a malha de exclusão de ruído fora de escopo e recalibrar a pontuação por aderência temática ao LUCHM, fechamos a pauta com 1 estudos de prioridade alta que formam o núcleo duro da discussão de hoje, além de 13 trabalhos de importância média para acompanhamento seletivo e 15 registros complementares de contexto.
 
-Francisca: E o conjunto de periódicos desta rodada mostra uma amplitude metodológica rara, reunindo artigos publicados em Insect Mol Biol, J Insect Physiol, Genes Cells, J Vector Borne Dis e Vector Borne Zoonotic Dis. Logo acima do botão de transcrição na página da Pauta, já deixamos organizados os quatro eixos transversais que costuram esta edição: 1. Fisiologia do Vetor & Repasto Sanguíneo, 2. Biofísica, Biologia Celular & Horizonte Lateral, 3. Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro e 4. Imunidade de Vetores & RNAi. Vamos percorrer cada um desses blocos sem pressa e com o pé firmemente apoiado na bancada.
+Francisca: E o conjunto de periódicos desta rodada mostra uma amplitude metodológica rara, reunindo artigos publicados em RSC advances, Infection, Emerging microbes & infections, Microbiology and immunology e Frontiers in cellular and infection microbiology. Logo acima do botão de transcrição na página da Pauta, já deixamos organizados os quatro eixos transversais que costuram esta edição: 1. Malária Cerebral & Barreira Endotelial, 2. Fisiologia do Vetor & Repasto Sanguíneo, 3. Biofísica, Biologia Celular & Horizonte Lateral e 4. Imunidade de Vetores & RNAi. Vamos percorrer cada um desses blocos sem pressa e com o pé firmemente apoiado na bancada.
 
 Antônio: Antes do fechamento prático com as três frentes acionáveis para a reunião de amanhã, vamos também abrir a janela mensal do Horizonte Lateral para testar nossas hipóteses contra ideias fora da caixinha da parasitologia convencional. Vamos então direto ao primeiro grande bloco de hoje.
 
 Francisca: Abrimos o primeiro bloco analítico mergulhando na interface entre biologia celular e metabólica do Plasmodium, mecanismos de bloqueio de transmissão e determinantes de campo dos parasitos.
 
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Biologia Celular de Plasmodium & Bloqueio de Transmissão. O trabalho saiu na bioRxiv (preprint) (PMID 10.64898/2026.11.13.763891), em 2026, com o título 'Parasite-induced ER-PVM contacts promote CERT-dependent ceramide delivery to the apicomplexan vacuole'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Biologia Celular de Plasmodium & Bloqueio de Transmissão.
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Biologia Celular de Plasmodium & Bloqueio de Transmissão. O trabalho saiu na Frontiers in cellular and infection microbiology (PMID 43041397), em 2026, com o título 'Molecular surveillance of drug resistance markers inisolates from Ghana.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Biologia Celular de Plasmodium & Bloqueio de Transmissão.
 
 Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em biologia Celular de Plasmodium & Bloqueio de Transmissão. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Biologia Celular de Plasmodium & Bloqueio de Transmissão.
 
@@ -22,15 +22,41 @@ Antônio: E qual o peso objetivo dos achados para biologia Celular de Plasmodium
 
 Francisca: Na bancada do LUCHM, traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM. Como desdobramento experimental imediato: avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo.
 
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Biologia Celular de Plasmodium & Bloqueio de Transmissão. O trabalho saiu na Commun Earth Environ (PMID 43031714), em 2026, com o título 'Urbanization development characteristics coincide with elevated Anopheles stephensi habitat suitability.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Biologia Celular de Plasmodium & Bloqueio de Transmissão.
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Malária Cerebral & Neuroinflamação. O trabalho saiu na Tropical medicine and health (PMID 43040445), em 2026, com o título 'Survival following 14% Plasmodium falciparum hyperparasitaemia: cerebral malaria and anaemic heart failure in a Nigerian toddler.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Malária Cerebral & Neuroinflamação.
 
-Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em biologia Celular de Plasmodium & Bloqueio de Transmissão. No desenho experimental, os autores fizeram o seguinte: delineamento experimental descrito no trabalho original (aguardando síntese analítica completa).
+Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em malária Cerebral & Neuroinflamação. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Malária Cerebral & Neuroinflamação.
 
-Antônio: E qual o peso objetivo dos achados para biologia Celular de Plasmodium & Bloqueio de Transmissão? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
+Antônio: E qual o peso objetivo dos achados para malária Cerebral & Neuroinflamação? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
 
-Francisca: Na bancada do LUCHM, traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM. Como desdobramento experimental imediato: avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo.
+Francisca: Na bancada do LUCHM, incide diretamente sobre os mecanismos celulares de lesão ou proteção endotelial na barreira hematoencefálica durante a malária cerebral, comparável ao modelo PbA/C57BL/6J do LUCHM. Como desdobramento experimental imediato: cruzar os alvos endoteliais e imunes identificados com os marcadores de disfunção microvascular (claudina-5, extravasamento de Evans Blue) nos dias 4–6 pós-infecção.
 
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunidade de Vetores & RNAi. O trabalho saiu na Sci Rep (PMID 43024391), em 2026, com o título 'Evidence of co-circulation and co-exposure to arboviruses and malaria in a longitudinal cohort in Kenya from 2019 to 2022.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunometabolismo & Reprogramação Celular. O trabalho saiu na Metabologia (PMID 43036379), em 2026, com o título 'Immunometabolic alterations in young adults with obesity are accompanied by divergent monocyte and muscle mitochondrial bioenergetic profiles.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunometabolismo & Reprogramação Celular.
+
+Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em imunometabolismo & Reprogramação Celular. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunometabolismo & Reprogramação Celular.
+
+Antônio: E qual o peso objetivo dos achados para imunometabolismo & Reprogramação Celular? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
+
+Francisca: Na bancada do LUCHM, traz parâmetros celulares de gotículas lipídicas, homeostase redox, sinalização bioelétrica ou vesículas extracelulares relevantes para comparações transversais no LUCHM. Como desdobramento experimental imediato: avaliar se os alvos moleculares ou protocolos do trabalho podem ser incorporados aos ensaios ativos do laboratório.
+
+Antônio: No terceiro ato, cruzamos para a frente de entomologia molecular, resposta imune de vetores, neurobiologia do comportamento pós-repasto e arboviroses — onde o insetário de Aedes e Anopheles encontra aplicações imediatas.
+
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunidade de Vetores & RNAi. O trabalho saiu na Trends in parasitology (PMID 43039802), em 2026, com o título 'Life-history trade-offs: the constraints underlying mosquito-borne pathogen transmission.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
+
+Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em imunidade de Vetores & RNAi. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunidade de Vetores & RNAi.
+
+Antônio: E qual o peso objetivo dos achados para imunidade de Vetores & RNAi? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
+
+Francisca: Na bancada do LUCHM, amplia o repertório epidemiológico, genotípico ou ecológico de referência para os programas de malária e vetores do LUCHM. Como desdobramento experimental imediato: avaliar se os alvos moleculares ou protocolos do trabalho podem ser incorporados aos ensaios ativos do laboratório.
+
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunidade de Vetores & RNAi. O trabalho saiu na PloS one (PMID 43038261), em 2026, com o título 'Intelligent classification of medically and veterinary important mosquito vectors using self-distillation-enhanced supervised learning.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
+
+Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em imunidade de Vetores & RNAi. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunidade de Vetores & RNAi.
+
+Antônio: E qual o peso objetivo dos achados para imunidade de Vetores & RNAi? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
+
+Francisca: Na bancada do LUCHM, amplia o repertório epidemiológico, genotípico ou ecológico de referência para os programas de malária e vetores do LUCHM. Como desdobramento experimental imediato: avaliar se os alvos moleculares ou protocolos do trabalho podem ser incorporados aos ensaios ativos do laboratório.
+
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunidade de Vetores & RNAi. O trabalho saiu na Infection (PMID 43037875), em 2026, com o título 'Molecular screening of arboviruses in asymptomatic blood donors from Northern Brazil.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
 
 Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em imunidade de Vetores & RNAi. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunidade de Vetores & RNAi.
 
@@ -38,57 +64,15 @@ Antônio: E qual o peso objetivo dos achados para imunidade de Vetores & RNAi? O
 
 Francisca: Na bancada do LUCHM, relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya) e resposta imune/antiviral em vetores e hospedeiros. Como desdobramento experimental imediato: avaliar alvos conservados (receptores LDL, proteases neuronais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório.
 
-Antônio: No terceiro ato, cruzamos para a frente de entomologia molecular, resposta imune de vetores, neurobiologia do comportamento pós-repasto e arboviroses — onde o insetário de Aedes e Anopheles encontra aplicações imediatas.
-
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Repasto Sanguíneo HFHS & Metabolismo do Vetor. O trabalho saiu na Insect Mol Biol (PMID 43036147), em 2026, com o título 'Temperature-dependent bloodmeal retention is associated with altered midgut ROS homeostasis in Aedes aegypti.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Repasto Sanguíneo HFHS & Metabolismo do Vetor.
-
-Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em repasto Sanguíneo HFHS & Metabolismo do Vetor. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Repasto Sanguíneo HFHS & Metabolismo do Vetor.
-
-Antônio: E qual o peso objetivo dos achados para repasto Sanguíneo HFHS & Metabolismo do Vetor? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
-
-Francisca: Na bancada do LUCHM, conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM. Como desdobramento experimental imediato: testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS.
-
-Antônio: Em seguida, entramos na fisiologia neurocomportamental que explica por que insetos da mesma linhagem exibem apetite olfatório tão heterogêneo. O trabalho saiu na J Insect Physiol (PMID 43033865), em 2026, com o título 'Photoperiodic responses persist in DH-like neuropeptide gene mutants of the band-legged ground cricket, Dianemobius nigrofasciatus.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro.
-
-Francisca: Olha como a sinalização peptídica dialoga com o estado nutricional e as reservas de triacilgliceróis do díptero! No desenho experimental, os autores fizeram o seguinte: delineamento experimental descrito no trabalho original (aguardando síntese analítica completa).
-
-Antônio: E qual o peso objetivo dos achados para neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
-
-Francisca: Na bancada do LUCHM, mapeia eixos neuroendócrinos entre estado nutricional e sinalização sistêmica no inseto, relevantes para o comportamento pós-repasto no insetário. Como desdobramento experimental imediato: verificar modulação do eixo neuropeptídico em fêmeas de Aedes após dieta rica em lipídios e glicose (HFHS).
-
-Antônio: Em seguida, entramos na fisiologia neurocomportamental que explica por que insetos da mesma linhagem exibem apetite olfatório tão heterogêneo. O trabalho saiu na Genes Cells (PMID 43025879), em 2026, com o título 'Neuropeptide T2A-GAL4 Knock-Ins Illustrate Practical Considerations for Interpreting GAL4 Reporter Patterns in Drosophila.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro.
-
-Francisca: Olha como a sinalização peptídica dialoga com o estado nutricional e as reservas de triacilgliceróis do díptero! No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro.
-
-Antônio: E qual o peso objetivo dos achados para neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
-
-Francisca: Na bancada do LUCHM, mapeia eixos neuroendócrinos entre estado nutricional e sinalização sistêmica no inseto, relevantes para o comportamento pós-repasto no insetário. Como desdobramento experimental imediato: verificar modulação do eixo neuropeptídico em fêmeas de Aedes após dieta rica em lipídios e glicose (HFHS).
-
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Repasto Sanguíneo HFHS & Metabolismo do Vetor. O trabalho saiu na J Vector Borne Dis (PMID 43037379), em 2026, com o título 'Evolutionary Events Underlying Vector Competence and Epidemiological Variation in Hematophagous Diptera with Special Reference to Sand Flies and Mosquitoes.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Repasto Sanguíneo HFHS & Metabolismo do Vetor.
-
-Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em repasto Sanguíneo HFHS & Metabolismo do Vetor. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Repasto Sanguíneo HFHS & Metabolismo do Vetor.
-
-Antônio: E qual o peso objetivo dos achados para repasto Sanguíneo HFHS & Metabolismo do Vetor? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
-
-Francisca: Na bancada do LUCHM, conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM. Como desdobramento experimental imediato: testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS.
-
 Francisca: Chegamos ao quarto ato reunindo os estudos complementares de alta densidade mecanística — passando por polifosfato inorgânico, biologia química e metodologias emergentes — e amarrando tudo nos eixos transversais da edição.
 
-Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Imunidade de Vetores & RNAi. O trabalho saiu na Vector Borne Zoonotic Dis (PMID 43037222), em 2026, com o título 'Identification of Arboviruses and Other Viral Signatures Using Entomo-Virological Surveillance in the Santa Marta District, Colombia.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
+Antônio: O próximo artigo em destaque dialoga diretamente com a linha de Microscopia Eletrônica de Volume & Bioimagem. O trabalho saiu na RSC advances (PMID 43042031), em 2026, com o título 'Three-dimensional FIB-SEM analysis of the pore network of meso-/macroporous TiO-supported Pt catalysts and its relation to methylcyclohexane dehydrogenation kinetics.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Microscopia Eletrônica de Volume & Bioimagem.
 
-Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em imunidade de Vetores & RNAi. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunidade de Vetores & RNAi.
+Francisca: Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em microscopia Eletrônica de Volume & Bioimagem. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Microscopia Eletrônica de Volume & Bioimagem.
 
-Antônio: E qual o peso objetivo dos achados para imunidade de Vetores & RNAi? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
+Antônio: E qual o peso objetivo dos achados para microscopia Eletrônica de Volume & Bioimagem? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
 
-Francisca: Na bancada do LUCHM, conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM. Como desdobramento experimental imediato: testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS.
-
-Antônio: Na frente de entomologia de campo, examinamos como coexistência de múltiplos vetores e mutações de resistência sustentam a transmissão residual. O trabalho saiu na Genome Biol Evol (PMID 43026029), em 2026, com o título 'Integrated population genomics and phenotypic analyses reveal geographic structure and signatures of recent positive-selection underlying insecticide resistance in Anopheles arabiensis from The Gambia, West Africa.'. Na partida conceitual, estudo dedicado a esclarecer mecanismos centrais ligados ao eixo Imunidade de Vetores & RNAi.
-
-Francisca: Do ponto de vista de quem acompanha competência vetorial e biologia metabólica de insetos, os marcadores enzimáticos mapeados aqui chamam muito atenção. No desenho experimental, os autores fizeram o seguinte: delineamento experimental e analítico conduzido dentro da frente de Imunidade de Vetores & RNAi.
-
-Antônio: E qual o peso objetivo dos achados para imunidade de Vetores & RNAi? Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.
-
-Francisca: Na bancada do LUCHM, conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM. Como desdobramento experimental imediato: testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS.
+Francisca: Na bancada do LUCHM, traz avanços de preparação, contraste e reconstrução 3D diretamente aplicáveis aos fluxos de FIB-SEM e SBF-SEM no CENABIO/UFRJ. Como desdobramento experimental imediato: testar ajustes de impregnação em bloco ou resolução isotrópica em amostras de intestino de mosquito e estágios de Plasmodium.
 
 Antônio: Chegamos ao nosso bloco cultural e interdisciplinar de meio de viagem: a leitura comentada do Horizonte Lateral. Aqui o exercício deliberado é sair das palavras-chave confortáveis da parasitologia e perguntar o que a biofísica de membranas, a biologia de organelas e novas espectroscopias enxergam nos pontos cegos da nossa área.
 
@@ -104,11 +88,11 @@ Francisca: E no plano instrumental de fronteira, o dossiê aponta duas técnicas
 
 Antônio: Entrando na reta final do percurso, vamos sintetizar toda essa massa crítica em três ações objetivas, auditáveis e ancoradas estritamente nos estudos reais da edição de hoje para levar para a reunião de bancada:
 
-Francisca: Frente prática número 1, ancorada no trabalho 'Parasite-induced ER-PVM contacts promote CERT-dependent ceramide delivery to the apicomplexan vacuole' da bioRxiv (preprint) (PMID 10.64898/2026.11.13.763891): Avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo. Lembrete central de integração para a equipe: traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM.
+Francisca: Frente prática número 1, ancorada no trabalho 'Molecular surveillance of drug resistance markers inisolates from Ghana.' da Frontiers in cellular and infection microbiology (PMID 43041397): Avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo. Lembrete central de integração para a equipe: traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM.
 
-Antônio: Frente prática número 2, ancorada no trabalho 'Urbanization development characteristics coincide with elevated Anopheles stephensi habitat suitability.' da Commun Earth Environ (PMID 43031714): Avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo. Lembrete central de integração para a equipe: traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM.
+Antônio: Frente prática número 2, ancorada no trabalho 'Survival following 14% Plasmodium falciparum hyperparasitaemia: cerebral malaria and anaemic heart failure in a Nigerian toddler.' da Tropical medicine and health (PMID 43040445): Cruzar os alvos endoteliais e imunes identificados com os marcadores de disfunção microvascular (claudina-5, extravasamento de Evans Blue) nos dias 4–6 pós-infecção. Lembrete central de integração para a equipe: incide diretamente sobre os mecanismos celulares de lesão ou proteção endotelial na barreira hematoencefálica durante a malária cerebral, comparável ao modelo PbA/C57BL/6J do LUCHM.
 
-Francisca: Frente prática número 3, ancorada no trabalho 'Evidence of co-circulation and co-exposure to arboviruses and malaria in a longitudinal cohort in Kenya from 2019 to 2022.' da Sci Rep (PMID 43024391): Avaliar alvos conservados (receptores LDL, proteases neuronais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório. Lembrete central de integração para a equipe: relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya) e resposta imune/antiviral em vetores e hospedeiros.
+Francisca: Frente prática número 3, ancorada no trabalho 'Immunometabolic alterations in young adults with obesity are accompanied by divergent monocyte and muscle mitochondrial bioenergetic profiles.' da Metabologia (PMID 43036379): Avaliar se os alvos moleculares ou protocolos do trabalho podem ser incorporados aos ensaios ativos do laboratório. Lembrete central de integração para a equipe: traz parâmetros celulares de gotículas lipídicas, homeostase redox, sinalização bioelétrica ou vesículas extracelulares relevantes para comparações transversais no LUCHM.
 
 Francisca: E vale lembrar que todas essas referências, com os respectivos dossiês em cinco blocos, PMIDs clicáveis e os quatro eixos transversais de ligação, ficam imediatamente acessíveis ao lado desta transcrição na aba Pauta e na aba Horizonte Lateral do site do laboratório.
 
