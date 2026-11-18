@@ -1,65 +1,110 @@
 {
-  "data": "2026-11-17",
-  "total": 29,
+  "data": "2026-11-18",
+  "total": 48,
   "origem": "espelho da revista do claude.ai (Resumo da Literatura Científica v6)",
-  "arquivo_captura": "2026-11-17.json",
+  "arquivo_captura": "2026-11-18.json",
   "articles": [
     {
-      "pmid": "43039802",
-      "doi": "10.1016/j.pt.2026.10.010",
-      "titulo": "Life-history trade-offs: the constraints underlying mosquito-borne pathogen transmission.",
-      "revista": "Trends in parasitology",
+      "pmid": "43041090",
+      "doi": "10.1111/mve.70140",
+      "titulo": "Development of a model of tick-borne encephalitis virus transmission from experimentally infected bank voles to Ixodes ricinus ticks",
+      "revista": "Med Vet Entomol",
       "ano": "2026",
-      "autores": "Johnson B, Jacobs GR, … Murdock C (4 autores)",
-      "resumo_original": "Mosquito-borne pathogen transmission models typically assume that vector life-history traits vary independently. While survival, reproduction, and immunity are shaped by evolutionary forces to maximize fitness, life-history theory predicts that resource and physiological constraints create trade-offs among these traits. These trade-offs can shape pathogen development and transmission in nonintuitive ways. We argue that incorporating trade-offs into epidemiological and ecological modeling could improve predictive capacity for disease establishment and spread. Environmental variation alters resource allocation and, thus, trait covariation, so environmental variability may have cascading effects on transmission potential. This perspective unifies infection biology, local adaptation, vector-pathogen coevolution, invasion dynamics, and vector control under a common mechanistic framework to improve predictions of disease risk in a rapidly changing world.",
+      "autores": "Sick F, Răileanu C, … Wernike K (5 autores)",
+      "resumo_original": "Tick-borne encephalitis virus (TBEV) is an important arbovirus in Europe. TBEV is transmitted mainly by ticks of the Ixodes ricinus (Ixodes ricinus-Ixodes persulcatus) species complex and causes infections of the central nervous system, making it one of the most important viral tick-borne diseases of humans in Europe. The natural transmission cycle relies on a complex interplay of arthropod vector and mammalian host factors. Besides the infection of ticks by feeding on viremic animals and co-feeding, transstadial transmission of the virus within the tick is also essential for further TBEV transmission to the next vertebrate host during the subsequent bloodmeal. In this study, we attempted to establish a mammalian host-tick transmission model for the simulation of the natural transmission under controlled laboratory conditions in order to study virus transmission from the reservoir host bank vole (Myodes glareolus) to I. ricinus larvae and to evaluate transstadial transmission of TBEV when engorged larvae moult into nymphs. We demonstrated acquisition of TBEV by larval ticks that blood fed on TBEV-infected viremic bank voles, although the TBEV infection prevalence of the engorged larvae was low (9.3%). Fully and partially engorged larvae were collected and further kept in the insectary and were allowed to moult into nymphs to assess transstadial virus transmission. No transstadial virus transmission was observed, as all nymphs tested negative by real-time RT-PCR. Although no general conclusions on transstadial transmission could be drawn yet, the establishment of this model forms a basis for future research.",
       "consultas": [
-        "vetores_amplo"
+        "plasmodium OR arbovirus OR dengue OR zika"
       ],
-      "data_fonte": "2026-11-16",
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 78,
+        "implicacao": "Competência vetorial: desenho de aquisição hospedeiro virêmico → vetor sob condições controladas, comparável ao repasto de Aedes em hospedeiro infectado.",
+        "resumo": "Os autores tentam estabelecer em laboratório um modelo de transmissão do vírus da encefalite transmitida por carrapato do reservatório (arganaz infectado) para Ixodes ricinus, simulando a infecção por alimentação em animal virêmico, o co-feeding e a transmissão transestadial.",
+        "metodo": "Infecção experimental de arganazes e alimentação controlada de carrapatos em hospedeiro virêmico."
+      }
+    },
+    {
+      "pmid": "43043974",
+      "doi": "10.1371/journal.pntd.0013452",
+      "titulo": "The effects of environmental temperature on the extrinsic incubation period of arboviruses in their mosquito vectors: A systematic review",
+      "revista": "PLoS Negl Trop Dis",
+      "ano": "2026",
+      "autores": "Hartner AM, Herath T, … Irrgang C (8 autores)",
+      "resumo_original": "Arboviruses are an increasing global public health concern, driven by both human and environmental factors. A key parameter shaping vectorial capacity for transmission is the extrinsic incubation period (EIP), the time required for a mosquito that has ingested an infectious blood meal to become capable of transmitting the virus via its saliva, which is strongly influenced by temperature. However, the temperature-EIP relationship remains poorly characterized across arboviruses and mosquito species.\nWe conducted the first systematic review of laboratory studies evaluating temperature effects on EIP across all reported mosquito-arbovirus pairings identifiable in the literature. We searched three databases and extracted data on infection and transmission efficiency (TE), applying a binomial generalized linear mixed-effects model to estimate the median extrinsic incubation period, the time post-infection at which 50% of infected mosquitoes become infectious.\nOur synthesis included 53 studies covering 17 arboviruses. We found substantial heterogeneity in temperature effects on TE. Zika and West Nile viruses generally showed increased TE and shorter EIP at higher temperatures. However, similar trends based on published data were not clear for many viruses, such as Sindbis and chikungunya viruses, because of limited data granularity and small sample sizes. Even across different vectors of the same virus, findings varied widely, reflecting both biological differences and inconsistent experimental designs.\nThe findings revealed gaps in the understanding of the temperature effects on the EIP of arboviruses in mosquito vectors. Standardisation of reporting in vector competence experiments and expanded research on neglected viruses are urgently needed. Real-world environmental conditions should also be incorporated to improve modelling and support robust vector control and public health planning under changing climatic conditions.",
+      "consultas": [
+        "vetores_amplo, vetores_mecanismo, arboviroses"
+      ],
+      "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
         "tema": "vetor",
         "importancia": "alta",
         "prioridade": "essencial",
         "score": 78,
-        "implicacao": "Alimentação sanguínea de Aedes / Imunometabolismo: dá o enquadramento para tratar competência como resultado de alocação de recursos (dieta/repasto) e não como traço isolado, útil para o Pearl de repasto × doença metabólica; para Epidemiologia de Precisão, é o argumento para modelar covariância entre traços em vez de valores médios.",
-        "resumo": "Perspectiva que propõe que sobrevivência, reprodução e imunidade do mosquito covariam por restrição de recursos (trade-offs), e que modelos de transmissão que tratam esses traços como independentes perdem previsões não intuitivas; a variação ambiental muda a alocação de recursos e, com ela, o potencial de transmissão.",
-        "metodo": "Sem dados novos: arcabouço de história de vida para incluir covariância entre traços do vetor em modelos epidemiológicos e ecológicos."
+        "implicacao": "Competência vetorial × estado metabólico (Alimentação sanguínea de Aedes / Imunometabolismo) e comparação de competência de Aedes aegypti nos recortes do Rio (Epidemiologia de Precisão): o desenho deve registrar temperatura e reportar infecção, disseminação e transmissão por dia pós-infecção, a padronização que a revisão pede.",
+        "resumo": "Primeira revisão sistemática de estudos de laboratório sobre temperatura e período de incubação extrínseco (EIP): 53 estudos, 17 arbovírus. Zika e vírus do Nilo Ocidental mostram maior eficiência de transmissão e EIP mais curto em temperaturas altas; para Sindbis e chikungunya não há tendência clara, por dados escassos, e vetores do mesmo vírus divergem muito, em parte por desenhos experimentais inconsistentes.",
+        "metodo": "Busca em três bases, extração de infecção e eficiência de transmissão e modelo linear misto generalizado binomial para estimar a mediana do EIP (tempo para 50% dos mosquitos infectados tornarem-se infectantes)."
       }
     },
     {
-      "pmid": "43040049",
-      "doi": "10.1038/s41590-026-02700-6",
-      "titulo": "Maternal and early life obesity programs CD4T cell fate to impair vaccine immunity.",
-      "revista": "Nature immunology",
+      "pmid": "43038290",
+      "doi": "10.1371/journal.pgen.1012270",
+      "titulo": "NF-κB/Dif-driven miR-1000 feedback restrains toll signaling via targeting Myd88 to restore Drosophila immune homeostasis",
+      "revista": "PLoS Genet",
       "ano": "2026",
-      "autores": "Michieletto MF, Jimenez MT, … Henao-Mejia J (33 autores)",
-      "resumo_original": "In their first 3 years, children experience an average of 14 infections and receive vaccines against roughly 15 pathogens, yet whether maternal and early life obesity alters adaptive immune responses during this critical period remains largely undefined. Using a mouse model that mirrored the epidemiological link between maternal and childhood obesity, we found that high-fat diet exposure during pregnancy or early postnatal life, but not adulthood, reshaped the epigenetic and transcriptional landscape of naive CD4+ T cells and impaired their ability to differentiate into T follicular helper (TFH) cells and support germinal center reactions in response to mRNA-based and protein-based vaccines. Mechanistically, epigenetic repression of the ubiquitin-editing enzyme A20 (Tnfaip3) was a central driver of these defects. Pediatric patients with haploinsufficiency of A20 displayed a marked reduction in circulating TFH cells. Altogether, these findings establish maternal and early life obesity as determinants of adaptive immunity during a critical developmental window.",
+      "autores": "Jia C, Li J, … Jin P (8 autores)",
+      "resumo_original": "Innate immune homeostasis is vital for animal survival and requires precise control of both the intensity and duration of immune signaling. Although microRNAs (miRNAs) are known to fine-tune immune responses, their transcriptional regulation mechanisms during infection remain poorly characterized. Here, we identify an NF-κB-dependent miRNA feedback loop essential for Drosophila Toll pathway. Through dynamic expression profiling and functional genetics, we demonstrate that the NF-κB transcription factor Dif directly activates miR-1000 transcription upon Gram-positive bacterial infection, while miR-1000 in turn targets the adaptor Myd88 mRNA for degradation. Moreover, we show that upon immune challenge, miR-1000 is significantly induced in the fat body, and fat body-specific manipulations confirm that Dif activates miR-1000 transcription and miR-1000 directly targets Myd88 in this key immune tissue. This dual function of Dif - concurrently inducing immune effectors (e.g., Drosomycin) and their suppressor miR-1000 - establishes a self-limiting circuit: Dif/miR-1000/Myd88 axis. Crucially, miR-1000-mediated suppression of Myd88, the hub of Toll pathway, constrains signal transduction and enables timely termination. Disruption of this axis prolongs Toll pathway activation and compromises host fitness during infection. Furthermore, this miRNA-adaptor regulatory paradigm is evolutionarily conserved, as miRNAs targeting MyD88 (such as miR-155) also inhibit TLR signaling in mammals. Our work reveals a transcriptionally connected feedback mechanism that dynamically restores animal innate immune homeostasis by targeting a central signaling adaptor.",
       "consultas": [
-        "imunometabolismo"
+        "(drosophila OR Aedes) AND (virus OR immunity)"
       ],
-      "data_fonte": "2026-11-17",
+      "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
       "v6": {
         "tema": "hospedeiro",
         "importancia": "alta",
         "prioridade": "essencial",
-        "score": 68,
-        "implicacao": "Imunidade & Memória Imune (priming ontogenético) e Alimentação sanguínea de Aedes / Imunometabolismo: a dieta rica em gordura só reprograma a célula imune dentro de uma janela do desenvolvimento, o que sugere o desenho a testar em Aedes (HFHS na larva ou na mãe versus só no adulto); pergunta concreta de expressão: checar se o ortólogo de A20 (Tnfaip3) muda nos dados de Aag2 e de corpo gorduroso/intestino.",
-        "resumo": "Em camundongos, dieta hiperlipídica na gestação ou no início da vida pós-natal, mas não na vida adulta, remodela o perfil epigenético e transcricional de células T CD4 virgens e prejudica sua diferenciação em Tfh e a reação de centro germinativo após vacinas de mRNA e de proteína. O mecanismo central é a repressão epigenética de A20 (Tnfaip3); pacientes pediátricos com haploinsuficiência de A20 têm menos células T circulantes.",
-        "metodo": "Modelo murino com dieta hiperlipídica restrita a janelas de exposição (gestação, pós-natal precoce, adulto), perfil epigenético e transcricional de células T CD4 virgens e imunização com vacinas de mRNA e de proteína; comparação com pacientes com haploinsuficiência de A20."
+        "score": 77,
+        "implicacao": "Imunidade & Memória Imune (priming imune): um circuito que termina a sinalização Toll é candidato a controlar a duração do estado primado; vale procurar o equivalente de miR-1000 e medir Myd88 ao longo do tempo em Aag2 primada e controle antes de atribuir a persistência a marca epigenética.",
+        "resumo": "Em Drosophila, Dif (NF-κB) ativa miR-1000 após infecção por bactéria Gram-positiva, e miR-1000 degrada o mRNA de Myd88, fechando uma alça que encerra a sinalização Toll; no corpo gorduroso, romper o eixo prolonga a ativação de Toll e reduz a aptidão do hospedeiro na infecção.",
+        "metodo": "Perfil dinâmico de expressão e genética funcional em Drosophila, com manipulações específicas do corpo gorduroso de Dif, miR-1000 e Myd88 após desafio bacteriano."
       }
     },
     {
-      "pmid": "43036379",
-      "doi": "10.1007/s44357-026-00031-5",
-      "titulo": "Immunometabolic alterations in young adults with obesity are accompanied by divergent monocyte and muscle mitochondrial bioenergetic profiles.",
-      "revista": "Metabologia",
+      "pmid": "43040116",
+      "doi": "10.1007/s10753-026-02542-2",
+      "titulo": "Metabolic and Signaling Pathways of Macrophage Reprogramming in Atherosclerosis and Myocardial Infarction",
+      "revista": "Inflammation",
       "ano": "2026",
-      "autores": "Ursel S, Nekkanti S, … Islam H (14 autores)",
-      "resumo_original": "Mitochondrial dysfunction and chronic inflammation are implicated in obesity-associated metabolic disorders. Studies interrogating muscle mitochondrial bioenergetics in obesity are confounded by the impact of age and/or physical activity. How obesity impacts mitochondrial bioenergetics in monocytes-precursors to muscle-resident macrophages-is poorly understood. We aimed to compare whole-body immunometabolic function and mitochondrial respiration in muscle and monocytes in adults with or without obesity of similar sex, age and physical activity levels.\nIn this cross-sectional study, young adults with obesity (BMI ≥ 30) or without obesity (BMI < 30) of similar age, sex and activity levels provided a fasted blood sample and muscle biopsy (vastus lateralis), and underwent a mixed-meal tolerance test. Mitochondrial respiration was measured in permeabilised muscle fibres and blood monocytes using high-resolution respirometry alongside muscle mitochondrial proteins and enzyme activity. Blood monocyte phenotype, polarisation and mitochondrial reactive oxygen species (mtROS) were quantified using flow cytometry.\nYoung adults with obesity (n = 17 [9 female/8 male], age 23.1 [SD 5.7] years, BMI 33.2 [SD 3.1] kg/m2) exhibited impaired whole-body insulin sensitivity (d = 1.2) and elevated white blood cell counts (d = 0.9; both p < 0.01) compared with those without obesity (n = 20 [10 female/10 male], age 22.8 [SD 4.6] years, BMI 21.8 [SD 2.1] kg/m2). Muscle oxidative phosphorylation (OXPHOS; d = 0.7-0.8) and electron transfer system capacity (ETS; d = 1.0) were higher in young adults with obesity than in those without obesity (p < 0.05) despite similar mitochondrial content markers (d = 0.2; p > 0.6). Monocyte OXPHOS (d = 1.0) and ETS (d = 0.8) were attenuated in those with obesity and accompanied by lower Toll-like receptor 4 expression (d = 0.7-0.8), diminished cytokine-stimulated mtROS production (d = 0.8-1.0) (all p < 0.05) and exaggerated proinflammatory marker expression ex vivo (d = 0.8; p = 0.07).\nYoung adults with obesity exhibit elevated muscle mitochondrial respiration-consistent with early adaptive remodelling in response to energy surplus-accompanied by heightened systemic inflammation and cellular markers suggestive of a dysregulated immunometabolic phenotype.\nThe online version contains supplementary material available at https://doi.org/10.1007/s44357-026-00031-5.",
+      "autores": "Ding Z, Wang Y, … Yu L (4 autores)",
+      "resumo_original": "Atherosclerosis and myocardial infarction remain the predominant contributors to mortality despite advances in interventional cardiology. Chronic inflammatory responses mediated by macrophages serve as a critical determinant of the pathogenesis of cardiovascular diseases. This review systematically dissects the immunometabolic and signaling networks underlying macrophage reprogramming, with a focus on key cardiovascular diseases. We assess the characteristics of M1 macrophages, which involve aerobic glycolysis, activation of the pentose phosphate pathway, and disruption of the tricarboxylic acid cycle, compared to M2 macrophages that rely on oxidative phosphorylation and fatty acid oxidation. Integrated signaling pathways dynamically regulate these metabolic programmes-centred on TLR/NF-κB-mediated inflammatory priming, JAK/STAT-dependent transcriptional polarization, and PI3K/Akt/mTOR-AMPK-PPARγ metabolic checkpoints, which interpret microenvironmental signals to control macrophage polarization. Within atherosclerotic lesions, we demonstrate that M1-dominant macrophage populations exacerbate plaque inflammation and compromise structural integrity, whereas M2 macrophages augment inflammatory resolution and tissue restoration. Following myocardial infarction, the timely therapeutic reprogramming from M1 to M2 phenotype is essential for efficiently attenuating adverse cardiac remodeling and improving cardiac function. Targeting metabolic enzymes and signaling pathways offers a promising strategy for reprogramming macrophages and mitigating cardiovascular diseases.",
       "consultas": [
-        "stork_espelho"
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 68,
+        "resumo": "Revisão do imunometabolismo da reprogramação de macrófagos: M1 com glicólise aeróbia, via das pentoses e ciclo TCA rompido, M2 com fosforilação oxidativa e oxidação de ácidos graxos, e vias integradoras TLR/NF-κB, JAK/STAT e PI3K/Akt/mTOR.",
+        "metodo": "Revisão."
+      }
+    },
+    {
+      "pmid": "43039781",
+      "doi": "10.1016/j.tem.2026.10.008",
+      "titulo": "Obesity memory as biological hysteresis",
+      "revista": "Trends Endocrinol Metab",
+      "ano": "2026",
+      "autores": "Corrao S, Tuccinardi D, … Baratta R (3 autores)",
+      "resumo_original": "Sem abstract no PubMed: avaliada só pelo título e pelo veículo (Trends Endocrinol Metab, IF 20,1 pelo Stork). Trata a memória da obesidade como histerese biológica, o mesmo vocabulário de memória e persistência após retirada do estímulo que usamos para priming.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
       ],
       "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
@@ -68,21 +113,20 @@
         "importancia": "media",
         "prioridade": "contexto",
         "score": 68,
-        "implicacao": "Imunometabolismo: precedente em célula imune primária de que excesso de energia reduz a respiração e eleva a resposta pró-inflamatória; respirometria de alta resolução é o método a testar em hemócitos ou Aag2 sob HFHS.",
-        "resumo": "Adultos jovens com obesidade (n=17) e sem obesidade (n=20), pareados por idade, sexo e atividade, tiveram respiração mitocondrial muscular maior, mas respiração de monócitos menor (OXPHOS e ETS), com menor TLR4, menor mtROS estimulado por citocina e marcadores pró-inflamatórios ex vivo exagerados (p=0,07).",
-        "metodo": "Respirometria de alta resolução em fibras musculares permeabilizadas e em monócitos do sangue, citometria de fluxo de fenótipo e mtROS, teste de refeição mista."
+        "implicacao": "Imunidade & Memória Imune: abrir o texto para ver se a histerese inclui reprogramação de célula imune.",
+        "resumo": "Sem abstract no PubMed: avaliada só pelo título e pelo veículo (Trends Endocrinol Metab, IF 20,1 pelo Stork). Trata a memória da obesidade como histerese biológica, o mesmo vocabulário de memória e persistência após retirada do estímulo que usamos para priming."
       }
     },
     {
-      "pmid": "43041240",
-      "doi": "10.3389/fimmu.2026.1981520",
-      "titulo": "Serum context shapes macrophage baseline state and LPS responsiveness in human monocyte-derived macrophages.",
-      "revista": "Frontiers in immunology",
+      "pmid": "43040328",
+      "doi": "10.1186/s12915-026-02763-9",
+      "titulo": "Drosophila CerS homeodomain sites differentially alter insulin resistance",
+      "revista": "BMC Biol",
       "ano": "2026",
-      "autores": "Cosma NC, Eren N, … Hellmann-Regen J (4 autores)",
-      "resumo_original": "Human monocyte-derived macrophages (MDMs) are central to translational immunology, yet most differentiation protocols rely on xenogeneic fetal calf serum (FCS), which may alter macrophage functional states. Autologous serum (AS) maintains the donor-specific immunometabolic milieu, but its impact on macrophage baseline programming and stimulus responsiveness has not been systematically evaluated.\nMonocytes from 32 healthy donors were differentiated in parallel with 10% AS or FCS for five days with M-CSF, followed by 24-hour stimulation with LPS, IL-4/IL-10/TGF-β, or vehicle. Cytokine secretion was quantified by multiplex assay, activation markers by qPCR, and baseline transcriptional programs by bulk RNA sequencing.\nAS- versus FCS-differentiated MDMs showed significantly greater LPS-induced secretion of TNF-α, IL-6, IL-1β, IP-10, IL-23, TARC and IL-1RA together with higher CD86 and CCR7 expression, whereas these differences were not observed following IL-4/IL-10/TGF-β stimulation or in unstimulated cells. Transcriptomic analysis of unstimulated MDMs identified distinct serum-dependent baseline programs, with FCS associated with increased expression of inflammatory cytokines, chemokines, and innate immune activation genes, whereas AS was associated with genes involved in lipid metabolism, extracellular matrix remodeling, and immune surveillance.\nSerum context is a major determinant of macrophage baseline state and inflammatory responsiveness. FCS is associated with a more inflammatory baseline and attenuated LPS-induced activation, while AS shows a metabolically and immunologically homeostatic baseline with greater LPS responsiveness. These findings demonstrate that serum composition shapes basal macrophage programs and differentially modulates responses to inflammatory versus alternative stimulation, supporting consideration of autologous serum when modeling donor-specific innate immune responses.",
+      "autores": "Vera-Granda C, Sociale M, … Bauer R (11 autores)",
+      "resumo_original": "Ceramides are central sphingolipid intermediates whose abundance and molecular composition are closely linked to insulin resistance. Ceramide synthases (CerSs) generate ceramides and, in several family members, also contain a conserved homeodomain with poorly understood metabolic functions. Drosophila has a single CerS, Schlank, which contains a catalytic Lag1p motif and two predicted nuclear localization sequences, NLS1 and NLS2. We investigated how distinct Schlank homeodomain mutations affect high-sugar diet (HSD)-induced insulin resistance.\nEndogenous KINLS1 and KIE118A knock-in alleles retained DNA binding and transcriptional repression under basal conditions but increased susceptibility to HSD-induced metabolic dysfunction. Both mutants developed enhanced hyperglycemia and impaired insulin-responsive tGPH recruitment, while KIE118A additionally showed increased FoxO nuclear localization and DILP2 retention in insulin-producing cells. By contrast, fat-body-specific switching to the DNA-binding-deficient NLS2 variant or the catalytically inactive H215D variant attenuated selected HSD-induced phenotypes, including FoxO nuclear accumulation and DILP2 retention, without fully correcting hyperglycemia or reduced body weight. Lipidomic analysis revealed extensive diet-dependent sphingolipid remodeling. In particular, NLS2 and H215D markedly reduced the fat-body ceramide pool, including abundant d14:1/20:0- and d14:1/22:0-containing Cer, CerPE, and HexCer species.\nThe Schlank homeodomain regulates insulin homeostasis in a site- and tissue-dependent manner. Distinct homeodomain mutations can either increase susceptibility to or partially attenuate HSD-induced insulin resistance, potentially involving insulin signaling, inter-organ communication, and sphingolipid composition.",
       "consultas": [
-        "imunometabolismo"
+        "(drosophila OR mosquito) AND diet"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
@@ -90,112 +134,90 @@
         "tema": "hospedeiro",
         "importancia": "media",
         "prioridade": "contexto",
-        "score": 60,
-        "resumo": "Em macrófagos humanos derivados de monócitos (32 doadores), a diferenciação com soro autólogo em vez de soro fetal bovino muda o estado basal (FCS: mais inflamatório; autólogo: lipídios, matriz, vigilância) e aumenta a resposta a LPS (TNF, IL-6, IL-1β, IP-10, IL-23), sem diferença com IL-4/IL-10/TGF-β.",
-        "metodo": "Monócitos diferenciados com M-CSF em 10% de soro autólogo ou FCS por 5 dias, estímulo por 24 h, multiplex de citocinas, qPCR e RNA-seq do estado basal."
+        "score": 67,
+        "implicacao": "Alimentação sanguínea de Aedes / Imunometabolismo (insulina-vetor, tema silencioso): a leitura de DILP2/FoxO e a lipidômica de ceramidas do corpo gorduroso sob dieta rica em açúcar é o desenho transferível para Aedes sob HFHS.",
+        "resumo": "Alelos knock-in no homeodomínio da ceramida sintase Schlank aumentam ou atenuam a resistência à insulina induzida por dieta rica em açúcar conforme o sítio e o tecido: KIE118A e KINLS1 pioram hiperglicemia e recrutamento de tGPH, KIE118A acumula mais FoxO nuclear e retém DILP2 nas células produtoras de insulina, e no corpo gorduroso NLS2 e H215D reduzem o pool de ceramidas.",
+        "metodo": "Knock-in endógeno em Drosophila, dieta rica em açúcar, marcadores de sinalização de insulina (tGPH, FoxO, DILP2) e lipidômica de corpo gorduroso."
       }
     },
     {
-      "pmid": "43041067",
-      "doi": "10.7554/eLife.110625",
-      "titulo": "Transposons contribute to splice-isoform diversity in thebrain.",
-      "revista": "eLife",
+      "pmid": "43043975",
+      "doi": "10.1093/jimmun/vkag314",
+      "titulo": "Robust CD8 T-cell response generated via attenuated Plasmodium sporozoite prime and multi-epitope mRNA vaccine boost",
+      "revista": "J Immunol",
       "ano": "2026",
-      "autores": "Choucri M, Rainey T, Treiber CD (3 autores)",
-      "resumo_original": "The extraordinary complexity of the brain depends in part on the vast diversity of mRNA isoforms it expresses, often in a cell-type specific manner. In a recent study, we found that intronic transposable elements (TEs) are spliced into neural transcripts and diversify the splice isoform repertoire of neurons and glia (Treiber and Waddell, 2020). A recent paper by Azad et al. revisits these findings using their TIDAL analysis pipeline applied to our published data (Azad et al., 2024). Their analysis did not find any of the splicing reads we reported and although they used RT-PCR to test seven of the 264 TE-gene pairs we had previously reported, they failed to validate TE-gene splicing in any of them. Here, we conduct a quantitative analysis of TE exonisation and show that intronic TE insertions are frequently recruited as alternative exons, with exon usage ranging from rare events to near-complete inclusion in transcripts. We implement this analysis in an improved version of our TEChim software and present clear support for TE-gene splicing at the seven loci tested by Azad et al. We also identify methodological issues in the experimental and computational design of the Azad et al. study that likely explains their failure to detect TE-gene chimeras, while demonstrating that TE-gene splicing can be detected by RT-PCR under appropriate experimental conditions. Together, our data demonstrates that TE splice isoforms are not rare artefacts but measurable and biologically relevant features of the Drosophila brain transcriptome that may contribute to the molecular complexity and functional adaptability of the brain.",
+      "autores": "Arumugam S, Hassert M, … Harty JT (4 autores)",
+      "resumo_original": "Plasmodium infections and subsequent malaria disease remain a global health scourge. Liver-resident and circulating memory CD8 T cells elicited by whole parasite vaccines such as genetically or radiation-attenuated sporozoites can provide potent immunity to Plasmodium infection and prevent the development of the symptomatic blood stage of infection in humans, nonhuman primates, and mice. However, this requires multiple, large doses of attenuated sporozoites, posing numerous logistical challenges. To partially address these logistical challenges, here, we prime CB6F1 mice with a human weight-normalized, subprotective single dose of genetically or radiation-attenuated Plasmodium berghei sporozoites to elicit liver-resident and circulating memory T cells prior to boosting with a novel lipid nanoparticle mRNA vaccine encoding multiple CD8 T-cell epitopes from liver-stage proteins. We show that boosting primed mice with this mRNA vaccine engenders sterilizing immunity against sporozoite challenge by generating a robust liver-stage-specific CD8 T-cell response when administered intravascularly or intramuscularly. Thus, combining a single, dose-sparing attenuated sporozoite immunization with a multi-epitope translationally relevant mRNA vaccine can engender protective immunity against P. berghei sporozoite challenge via the generation of a potent circulating and resident memory liver CD8 T-cell response. Minimizing the number of attenuated sporozoite doses required to prime CD8 T cells with a full complement of liver-stage malaria-specific epitopes effectively mitigates some logistical challenges associated with attenuated sporozoite vaccination.",
       "consultas": [
-        "neuro_eixo"
+        "malaria_vetor"
       ],
       "data_fonte": "2026-11-17",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "cerebro",
-        "importancia": "media",
-        "prioridade": "contexto",
-        "score": 55,
-        "resumo": "Réplica de Treiber e Waddell à crítica de Azad et al.: com análise quantitativa de exonização, mostram que inserções intrônicas de elementos transponíveis são recrutadas como éxons alternativos no cérebro de Drosophila, com uso de raro a quase total, e que o RT-PCR valida os sete loci contestados em condições apropriadas. A disputa metodológica segue aberta.",
-        "metodo": "Reanálise com o TEChim aprimorado e RT-PCR em sete loci TE-gene; ponto metodológico é a sensibilidade de detecção de quimeras TE-gene."
-      }
-    },
-    {
-      "pmid": "43037875",
-      "doi": "10.1007/s15010-026-02978-6",
-      "titulo": "Molecular screening of arboviruses in asymptomatic blood donors from Northern Brazil.",
-      "revista": "Infection",
-      "ano": "2026",
-      "autores": "Calazans AR, da Costa VD, … Alvarez P (20 autores)",
-      "resumo_original": "Asymptomatic infections caused by the arboviruses dengue virus (DENV), zika virus (ZIKV) and chikungunya virus (CHIKV) pose a hidden risk to blood safety, as viremic donors may contribute to transfusion-transmitted infections with severe outcomes.\nViral RNA from 5,954 pools (each pool contains six samples) was extracted using the Chemagic™ Prime™ platform, as part of the Brazilian NAT PLUS system from pooled plasma samples collected at Amazonas Hematology and Hemotherapy Hospital Foundation (HEMOAM) and analyzed by RT-qPCR using the ZC D-Tipagem molecular assay (Bio-Manguinhos).\nOver eighteen consecutive epidemiological weeks, 11 CHIKV-positive cases were identified, 4 DENV-positive cases, and no ZIKV-positive detections on the blood bags samples analyzed.\nThe detection of asymptomatic arboviral infections during the rainy season, when environmental conditions favor mosquito proliferation and arbovirus transmission, suggests ongoing silent viral circulation in the region and reinforces the importance of blood donor surveillance.",
-      "consultas": [
-        "vetores_amplo"
-      ],
-      "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
       "v6": {
         "tema": "ciclo",
         "importancia": "media",
         "prioridade": "contexto",
-        "score": 45,
-        "implicacao": "Epidemiologia de Precisão (subnotificação): dá uma referência de circulação silenciosa por sangue de doador para comparar com outras fontes de vigilância.",
-        "resumo": "Em 5.954 pools de seis amostras de doadores do HEMOAM (Amazonas), testados por RT-qPCR ao longo de 18 semanas epidemiológicas, houve 11 pools positivos para CHIKV, 4 para DENV e nenhum para ZIKV, em doadores assintomáticos na estação chuvosa. A positividade é por pool, não por doador.",
-        "metodo": "RT-qPCR (ZC D-Tipagem, Bio-Manguinhos) em pools de plasma do sistema NAT PLUS."
+        "score": 57,
+        "implicacao": "Malária / Plasmodium (glândula e esporozoíto, tema silencioso): o esporozoíto atenuado é colhido de glândula salivar de mosquito, o gargalo de produção que a nossa frente de glândula conhece.",
+        "resumo": "Camundongos CB6F1 recebem dose única subprotetora de esporozoítos de P. berghei atenuados (por genética ou radiação) para gerar células T de memória residentes no fígado e circulantes, seguida de reforço com vacina de mRNA em nanopartícula lipídica que codifica epítopos CD8 de proteínas do estágio hepático.",
+        "metodo": "Priming com esporozoíto atenuado e reforço com mRNA-LNP multiepítopo em camundongo."
       }
     },
     {
-      "pmid": "43038261",
-      "doi": "10.1371/journal.pone.0362945",
-      "titulo": "Intelligent classification of medically and veterinary important mosquito vectors using self-distillation-enhanced supervised learning.",
-      "revista": "PloS one",
+      "pmid": "43049708",
+      "doi": "10.1128/iai.00383-26",
+      "titulo": "Basophil FcεR1γ signaling regulates gut barrier integrity and systemic antibacterial immunity during malaria with a sex bias",
+      "revista": "Infect Immun",
       "ano": "2026",
-      "autores": "Chuwongin S, Kaewthamasorn M, … Kittichai V (8 autores)",
-      "resumo_original": "Mosquito-borne diseases remain a persistent global public health burden, with effective control strategies depending on the accurate and timely identification of mosquito species and estimation of their population density. The current gold standard, morphological identification via microscopic examination, is limited by inter-observer variability and a scarcity of local taxonomic expertise. While highly accurate, molecular techniques like polymerase chain reaction and DNA barcoding are often impractical for widespread field use due to their cost, procedural complexity, and reliance on specialized equipment and technicians. In response to these challenges, this study harnesses the potential of artificial intelligence (AI) to develop a robust, accessible diagnostic tool. We introduce an innovative application of the Distillation of knowledge with NO labels v2 (DINOv2-l14) algorithm, a self-supervised learning (SSL) model, for the classification of 30 distinct mosquito species from image data. A key focus was enabling the model to learn effectively from a highly imbalanced dataset, where the number of images per class ranged from 15 to 124. We also investigated the data efficiency of SSL by determining the minimum data partition required to match the performance of a conventional supervised model. Our image processing pipeline involved cropping, padding, and dividing images into 14 × 14 patches before converting them into embedded vectors for classification. The fully trained DINOv2-l14 model significantly outperformed a selected ResNet101 baseline, achieving 99.2% accuracy, 97.7% specificity, an F1 score of 86.1%, and a robust area under the curve (AUC) value of 0.996. Most notably, when fine-tuned on just 20% of the available data (averaging 11-13 images per class), the SSL model achieved performance comparable to the baseline model trained on the entire dataset, demonstrating exceptional data efficiency. Although limitations exist, including dataset imbalance and a lack of standardization for broader application, the model's high performance across five-fold cross-validation and strong Cohen's Kappa coefficients (up to 0.836) confirm its reliability. This work validates a novel, efficient, and highly accurate AI-driven approach to mosquito identification. By integrating such a model into a mobile application using an embedding AI framework, this technology holds significant promise for empowering field personnel with a practical, powerful tool to enhance vector surveillance and control programs worldwide.",
+      "autores": "Céspedes N, Fellows AM, … Luckhart S (11 autores)",
+      "resumo_original": "Malaria predisposes individuals to concurrent bacteremia, a complication associated with increased intestinal permeability and mast cell (MC) activation. These effects correlate with elevated type-2 cytokines, including interleukin (IL)-3, IL-4, and IL-10. We previously demonstrated that basophils regulate MC activation and protect intestinal barrier integrity during malaria. Because FcεR1γ signaling is required for basophil IL-4 production, we monitored parasitemia, barrier integrity, bacteremia, and cytokine and chemokine profiles in male and female mice with basophil-specific deletion of FcεR1γ [baso Fcer1g (-)], generated by crossing Mcpt8-Cre and Fcer1gflox/flox mice. Baso Fcer1g (-) mice retain IL-3 responsiveness but fail to produce IL-4 upon activation. Mice were infected with Plasmodium yoelii 17XNL to assess the role of basophil FcεR1γ signaling during infection. Basophil FcεR1γ deficiency had no effect on parasitemia. However, female baso Fcer1g (-) mice exhibited significantly increased intestinal permeability by day 6 post-infection (PI) compared to genotype controls. Despite this enhanced barrier disruption, bacterial 16S levels in blood were reduced in female baso Fcer1g (-) mice by day 10 PI relative to female controls and mutant males. Increased permeability was associated with elevated ileal IL-6 and CCL4, and increased plasma CCL3 and CCL5 at day 6 PI. At day 10 PI, reduced bacteremia correlated with increased systemic IL-17A and GM-CSF, and reduced IL-10 and Mcpt1, indicating reduced MC activation. These findings demonstrate that basophil FcεR1γ signaling shapes female-biased mucosal and systemic immune responses during malaria, extending our understanding of sex-specific gut-systemic immune crosstalk during infection.",
       "consultas": [
-        "vetores_amplo"
+        "vetores_amplo, vetores_mecanismo, malaria_vetor"
       ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "metodos",
-        "importancia": "media",
-        "prioridade": "contexto",
-        "score": 41,
-        "implicacao": "Ultraestrutura & Bioimagem (análise de dados de imagem): embeddings auto-supervisionados com poucos rótulos são uma via a testar para classificar organelas ou estágios em volumes de EM; o artigo só mostra fotos de mosquito inteiro, então a transferência é hipótese.",
-        "resumo": "O modelo auto-supervisionado DINOv2-L14 classificou 30 espécies de mosquito a partir de imagens (acurácia 99,2%, F1 86,1%, AUC 0,996) e superou uma ResNet101; com 20% dos dados (11 a 13 imagens por classe) igualou o baseline treinado com tudo. O conjunto é desbalanceado (15 a 124 imagens por classe).",
-        "metodo": "Recorte e preenchimento das imagens, patches de 14×14 convertidos em embeddings e classificador sobre eles, com validação cruzada em cinco dobras."
-      }
-    },
-    {
-      "pmid": "43038110",
-      "doi": "10.1080/22221751.2026.2765975",
-      "titulo": "Efficacy of Early Ivermectin Administration in Acute Chikungunya Virus Infection: A Multicenter, Open-Label, Randomized Controlled Trial.",
-      "revista": "Emerging microbes & infections",
-      "ano": "2026",
-      "autores": "Chusri S, Surasombatpattana S, … Fernandez S (20 autores)",
-      "resumo_original": "Acute and chronic joint pain is the hallmark of chikungunya virus (CHIKV) infection, often progressing to debilitating persistent joint pain. No approved antiviral therapy is available. We evaluated the clinical and virological efficacy of early ivermectin administration in acute CHIKV infection.\nThis open-label, randomized trial enrolled and randomized 127 adult patients with acute chikungunya within 72 hours of symptom onset in Thailand. Patients were assigned (1:1) to oral ivermectin (400 µg/kg/day for 3 days) plus standard of care or standard of care alone. Before the 1-month endpoint, 7 patients were lost to follow-up, leaving a finalized complete-case cohort of 120 participants (n = 60 per arm) for primary efficacy analysis. Co-primary outcomes were time to acute joint pain clearance and the proportion of patients with persistent joint pain at 1 month.\nEarly ivermectin significantly accelerated acute joint pain resolution compared to controls (median 3.5 days [IQR 2, 6] vs 12.0 days [IQR 8, 35]; adjusted hazard ratio (aHR) 3.65, 95% CI 2.28, 5.84; p < 0.0001). Ivermectin was associated with a 92% reduction in the odds of persistent joint pain at 1 month (6.6% vs 30%; adjusted odds ratio (aOR) 0.08, 95% CI 0.03, 0.21; p < 0.0001). It also shortened fever clearance (median 2.0 vs 5.0 days; p < 0.0001) and accelerated viral clearance by day 7.\nEarly ivermectin intervention within 72 hours of symptom onset significantly accelerates clinical recovery, suppresses viral replication, and profoundly reduces persistent joint pain at 1 month. These findings position ivermectin as a promising, scalable therapeutic strategy against CHIKV.\nClinicalTrials.gov, NCT06259383 (Retrospectively registered on February 20, 2024 prior to thawing bio-banked samples for sequential assays, laboratory assay and final analysis).\nTrial registration: ClinicalTrials.gov identifier: NCT06259383..",
-      "consultas": [
-        "arboviroses"
-      ],
-      "data_fonte": "2026-11-16",
+      "data_fonte": "2026-11-18",
       "fonte_captura": "PubMed",
       "v6": {
         "tema": "hospedeiro",
         "importancia": "media",
         "prioridade": "contexto",
-        "score": 38,
-        "implicacao": "Fator do hospedeiro no repasto: paciente tratado com ivermectina é fonte de sangue com mosquitocida sistêmico, então tratamento prévio é variável de confusão em estudos de competência que usem sangue de pacientes.",
-        "resumo": "Ensaio aberto randomizado na Tailândia (127 adultos, 120 analisados) com ivermectina 400 µg/kg/dia por 3 dias, iniciada em até 72 h dos sintomas: a dor articular aguda resolveu em mediana de 3,5 contra 12 dias (aHR 3,65), a dor persistente em 1 mês caiu de 30% para 6,6% (aOR 0,08) e a depuração viral até o dia 7 foi mais rápida. Sem cegamento e com registro retrospectivo.",
-        "metodo": "RCT 1:1 aberto, ivermectina mais cuidado padrão contra cuidado padrão; desfechos co-primários de dor articular e dor persistente; carga viral seriada em amostras biobancadas."
+        "score": 49,
+        "implicacao": "Barreira intestinal na malária com viés de sexo: lembrete de registrar o sexo dos animais nos experimentos de P. berghei do programa Malária / Plasmodium.",
+        "resumo": "Camundongos com deleção de FcεR1γ em basófilos, infectados com a cepa 17XNL de Plasmodium, não mudam a parasitemia, mas as fêmeas têm mais permeabilidade intestinal no dia 6, menos bacteremia no dia 10, mais IL-6 e CCL4 no íleo e mais CCL3 e CCL5 no plasma.",
+        "metodo": "Deleção basófilo-específica de FcεR1γ, infecção de machos e fêmeas, permeabilidade intestinal, 16S no sangue e perfil de citocinas."
       }
     },
     {
-      "pmid": "43042937",
-      "doi": "10.1093/jee/toag347",
-      "titulo": "Profiling cultivable bacteria in Forcipomyia spp. (Diptera: Ceratopogonidae), feeding on the silkworm Antheraea mylitta (Lepidoptera: Saturniidae): insights into possible transmission routes.",
-      "revista": "Journal of economic entomology",
+      "pmid": "10.64898/2026.11.16.766917",
+      "doi": "10.64898/2026.11.16.766917",
+      "titulo": "Synergistic mechanistic and deep learning approaches for modeling insect thermal responses and geographic distributions",
+      "revista": "bioRxiv (preprint)",
       "ano": "2026",
-      "autores": "Maitra Mazumdar S, Banerjee N, … Mazumdar A (6 autores)",
-      "resumo_original": "The co-occurrence of Antheraea mylitta Drury larvae (commonly known as tasar silkworm) and hemolymph-feeding Forcipomyia spp. (commonly known as biting midges) in the same habitat increases the likelihood of interaction and pathogen transmission. This study investigated bacterial species shared between Forcipomyia fuliginosa Meigen, Forcipomyia esakiana Tokunaga, and A. mylitta, with emphasis on potential pathogens affecting silk productivity, a sector valued at USD 220.58 million as of 2022 to 2023. As tasar rearing occurs outdoors, larvae are at risk of a plethora of biotic stressors, from prey and predators to pathogens. Cultivable bacteria were isolated from the gut and salivary glands of adult midges following their feeding on 5th instar silkworm larvae. The bacterial isolates obtained from these 2 tissues were then compared with those recovered from healthy and diseased 5th instar larvae to assess similarities and differences in bacterial composition. Bacterial identification was done using DNA barcoding, colony morphology, and biochemical characterization. The isolates belonged to Firmicutes (Bacillaceae), mainly Bacillus and Lysinibacillus. Common strains included Bacillus cereus FFG1, Bacillus thuringiensis IL4, Lysinibacillus fusiformis FFG3, and Lysinibacillus boronitolerans FFG2, the latter being the most prevalent. Bacillus subtilis FFS5 was found only in the salivary gland of F. fuliginosa, while all gut bacteria were also present in salivary glands. Transmission studies detected B. cereus and B. thuringiensis in adult A. mylitta but not in eggs or early larvae, suggesting unlikely trans-ovarian or trans-stadial transmission and a possible vector-mediated role of Forcipomyia spp. This study provides the first baseline report of their cultivable bacterial communities.",
+      "autores": "Vanalli C, van Tiel N, … Tuia D (6 autores)",
+      "resumo_original": "Aim The Hutchinsonian shortfall, the lack of knowledge about species' abiotic tolerance, limits our understanding of species responses to environmental change and consequently also the outlining of their distribution in space and time. Such environmental tolerance is commonly inferred with two distinct approaches: i) trait performance studies, which use lab experiments to model species' functional responses, often overlooking real-world complexity, and ii) species distribution models, which infer environmental suitability from occurrence data, but offer limited causal insights. In this paper, we argue that these two strategies bring complementary information that can be integrated to estimate species-environment relationships more robustly and accurately map species distributions. Location Global scale Time period 2000-2019 Major taxa studied Given their exceptional diversity and climatic sensitivity, insects provide a powerful system for studying these responses. We selected key insect species representing i) disease vectors: the yellow fever (Aedes aegypti) and Asian tiger (Aedes albopictus) mosquitoes; ii) agricultural pests: the cotton bollworm (Helicoverpa armigera) and the fall armyworm (Spodoptera frugiperda); and iii) biocontrol agents: the green lacewing (Chrysoperla carnea) and the 14-spotted ladybug (Propylea quatuordecimpunctata). Methods We compared predicted insect thermal suitability and distributions derived from two complementary methodological approaches: mechanistic models based on experimentally derived thermal responses of ecological rates, and deep learning-based species distribution models based on occurrence data. We further tested hybrid frameworks integrating mechanistic and correlational information through model ensembling, mechanistic regularization, and mechanistically informed deep learning. We assessed the efficacy of these methods under increasing data scarcity by progressively removing up to 80% of species occurrence records using three strategies: removal from the warmest or coldest parts of species' thermal ranges, removal from the least-sampled locations based on geographic sampling bias, and random removal as a baseline. Results Our findings highlight that occurrence-derived thermal suitability closely reproduces the observed distributions of insects. Compared to the mechanistic estimates, these thermal response curves are consistently shifted towards lower temperatures, potentially reflecting niche underfilling. However, when challenged with progressive data removal, correlative methods fail to extrapolate reliably in data-deficient regimes, where mechanistic knowledge becomes increasingly more crucial. Hybrid approaches in turn leveraged complementary information, improving predictive performance and reducing the sensitivity of environmental suitability estimates to sampling biases. Main conclusions Ultimately, we show how the synergistic integration of experimental ecology with observational biogeography can lead to more accurate and ecologically robust predictions for species distributions and their environmental responses to climatic changes.",
       "consultas": [
-        "praga_lepidoptero"
+        "bioRxiv (API de detalhes)"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "preprint",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 46,
+        "implicacao": "Epidemiologia de Precisão: parâmetros térmicos mecanísticos são a entrada que a revisão de EIP do mesmo dia diz faltar.",
+        "resumo": "Preprint não revisado por pares que combina abordagem mecanística e aprendizado profundo para modelar respostas térmicas e distribuições geográficas de insetos (Aedes aegypti e albopictus, Helicoverpa, Spodoptera). Sem abstract na captura: avaliado pelo título."
+      }
+    },
+    {
+      "pmid": "43044838",
+      "doi": "10.1098/rspb.2026.2083",
+      "titulo": "Modelling modified insect release interventions for malaria control: a scoping review and thematic comparison with dengue",
+      "revista": "Proc Biol Sci",
+      "ano": "2026",
+      "autores": "Lakshminarayanan P, Tiley K, … Brady O (7 autores)",
+      "resumo_original": "Wolbachia is a promising new intervention for malaria control. While modelling has supported Wolbachia deployment for dengue control, its application in Anopheles is still emerging. We systematically reviewed dynamic transmission models of Wolbachia-based modified insect releases for malaria using PubMed and Embase. Evidence was compared primarily with Wolbachia-based dengue models from a parallel Wolbachia-Aedes aegypti scoping review and secondarily with gene drive-based Anopheles models identified through a separate systematic search. Across 110 included studies, three major gaps were identified. First, context-dependent fitness effects are rarely incorporated, with many models assuming high maternal transmission (MT) and cytoplasmic incompatibility (CI), limiting assessment of how environmental variability influences persistence. Second, spatial heterogeneity is infrequently modelled despite evidence that mosquito movement shapes Wolbachia spread. Third, few studies embed Wolbachia dynamics within integrated malaria transmission models, preventing estimation of epidemiological impact to assess Wolbachia's role in malaria control and elimination. Lessons from Wolbachia-based dengue control and parallel developments in gene drive provide an established framework, with actionable pathways for advancement. Addressing these priorities will be essential to guide safe, effective and scalable implementation of Wolbachia as a new malaria control intervention.",
+      "consultas": [
+        "vetores_amplo, arboviroses, malaria_vetor"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
@@ -203,21 +225,290 @@
         "tema": "vetor",
         "importancia": "media",
         "prioridade": "contexto",
-        "score": 34,
-        "resumo": "Bactérias cultiváveis do intestino e das glândulas salivares de Forcipomyia (mosquito-pólvora) que se alimentam de lagartas de Antheraea mylitta: predominam Bacillus e Lysinibacillus, incluindo B. cereus e B. thuringiensis; B. cereus e B. thuringiensis foram detectados em adultos da lagarta após o repasto, mas não em ovos nem em larvas jovens.",
-        "metodo": "Isolamento em cultura, identificação por DNA barcoding, morfologia de colônia e testes bioquímicos, com ensaio de transmissão em adultos, ovos e larvas."
+        "score": 46,
+        "implicacao": "Epidemiologia de Precisão: apoia o pedido à SVS de incorporar distribuição e período de liberação de Wolbachia como camada do mapa de amostragem.",
+        "resumo": "Revisão de escopo de 110 estudos de modelos de liberação de insetos modificados (Wolbachia) para malária, comparados a modelos de dengue em Aedes aegypti e a modelos de gene drive em Anopheles; entre as lacunas, efeitos de aptidão dependentes de contexto raramente entram (muitos assumem alta transmissão materna e incompatibilidade citoplasmática) e a heterogeneidade espacial é pouco modelada.",
+        "metodo": "Revisão de escopo em PubMed e Embase."
       }
     },
     {
-      "pmid": "43038989",
-      "doi": "10.1016/j.cub.2026.10.053",
-      "titulo": "A connectome and transcriptome identity shift through a single transcription factor isoform.",
-      "revista": "Current biology : CB",
+      "pmid": "43041224",
+      "doi": "10.3389/fpubh.2026.1870429",
+      "titulo": "Exploring the nexus of climate-socioeconomic drivers of dengue transmission: a covariate-augmented SEIR-SEI mechanistic model",
+      "revista": "Front Public Health",
       "ano": "2026",
-      "autores": "Smolin N, Dombrovski M, … von Reyn CR (12 autores)",
-      "resumo_original": "The brain exhibits remarkable neuronal diversity. The sheer number of cell types emerging from extensive transcriptional, morphological, and connectome datasets provokes the question of how the brain is capable of generating so many unique identities. Proper neuronal specification and subsequent features of identity, such as wiring, are essential for normal cognitive and behavioral function. However, we still know little about how identity and wiring are encoded within developmental programs. Here, we turn to the visual system of Drosophila melanogaster. We use its unprecedented combination of single-synapse-resolution wiring diagrams from electron microscopy (EM) connectomes and developmental gene expression profiles from single-cell transcriptomic atlases to study the molecular basis of cell-type-specific terminal identity specification and downstream wiring patterns. We integrate analyses of neuronal anatomy, whole-cell electrophysiology, and single-cell RNA sequencing after perturbation (scRNA-Perturb-seq) to establish that the transcription factor broad functions to control terminal features of identity between two visual projection neuron cell types, LPLC1 and LPLC2. We demonstrate the first characterization in functional connectivity changes following changes in neuronal identity specification. We find broad acts through a single isoform (broad-z4) that is selectively expressed in LPLC1 and has the capacity to reprogram the morphology, functional connectivity, and transcriptional identity of postmitotic LPLC2 neurons into an LPLC1-like cell type. Our findings establish a single transcription factor isoform as the smallest unit required to differentiate neuronal identity, a strategy that may be conserved within developmental programs to expand the capacity for cell-type diversity across animal species.",
+      "autores": "Adeniji A, Miller J, … He Z (4 autores)",
+      "resumo_original": "A deterministic covariate-augmented SEIR-SEI model is developed and used to gain insight into the nexus between climate and socioeconomic parameters and the transmission dynamics of dengue. The model developed a framework that incorporates two external influences: climate and socioeconomic factors. The model is rigorously analyzed, with disease-free and endemic equilibria investigated, and is simulated using data relevant to Medellín, Colombia. We then employ machine learning algorithms as an empirical feature-selection step to identify and rank socioeconomic predictors of dengue incidence, revealing that the unemployed population is the dominant socioeconomic driver. This finding motivates the selection of unemployment as the socioeconomic covariate in the mechanistic model. From our numerical simulation, we computed using temperature only and combined [temperature + socioeconomic (unemployment)] parameters to determine how their influences drive the epidemic spread. Our model suggests that socioeconomic influence can act as a driver alongside temperature, increasing the transmission rate and leading to an earlier peak. The framework is appropriate for endemic settings where socioeconomic and climatic factors are the primary drivers of transmission dynamics. The approach demonstrates how empirical machine-learning insights can inform covariate selection in mechanistic epidemiological models, thereby strengthening interpretation of how socioeconomic and climatic conditions interact to shape epidemic potential.",
+      "consultas": [
+        "plasmodium OR arbovirus OR dengue OR zika"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 46,
+        "implicacao": "Epidemiologia de Precisão: exemplo de seleção empírica de covariável antes do modelo mecanístico, a ser comparado com a escolha de camadas para os recortes do Rio.",
+        "resumo": "Modelo determinístico SEIR-SEI com covariáveis de clima e socioeconômicas, simulado com dados de Medellín (Colômbia): aprendizado de máquina ranqueia preditores socioeconômicos, com a população desempregada como principal, e a simulação indica que o desemprego soma-se à temperatura, eleva a transmissão e antecipa o pico.",
+        "metodo": "SEIR-SEI com covariáveis, seleção de variáveis por machine learning e simulação com dados de Medellín."
+      }
+    },
+    {
+      "pmid": "43049467",
+      "doi": "10.1093/mam/ozag121",
+      "titulo": "Fixation Matters: Multidimensional Effects of Chemical Preparation on Morphology and SEM Image Texture Features of Extremophilic Bacteria",
+      "revista": "Microsc Microanal",
+      "ano": "2026",
+      "autores": "Galván FS, Albarracín VH (2 autores)",
+      "resumo_original": "Scanning electron microscopy (SEM) is widely used to investigate bacterial morphology and surface-associated features; however, sample preparation protocols may introduce artifacts that influence the interpretation of morphometric measurements and image characteristics observed in SEM micrographs. This issue is particularly relevant for extremophilic microorganisms, whose specialized cell envelopes may respond differently to chemical fixation. In this study, we evaluated two aldehyde-based fixation protocols (2.5% glutaraldehyde and Karnovsky's solution), each tested at three fixation times (1, 3, and 24 h) and with or without osmium tetroxide (OsO4) postfixation, in three Gram-positive bacterial strains: the polyextremophiles Exiguobacterium sp. S17 and Nesterenkonia sp. Act20 and the mesophile Kocuria rosea CH-021. Morphometric responses were assessed using cell surface area and surface-to-volume ratio (S/V), together with SEM image-texture analysis using Haralick-based features. Fixation conditions produced significant strain-dependent differences in both morphometric and image-texture outcomes. The magnitude of morphometric variability differed among strains, and SEM image-texture patterns were not always paralleled by morphometric measurements. These findings indicate that bacterial responses to fixation conditions are strain-dependent and support the combined use of cellular geometry and SEM image-texture descriptors for quantitative comparison of preparation conditions within a standardized SEM workflow.",
+      "consultas": [
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "metodos",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 42,
+        "implicacao": "Ultraestrutura & Bioimagem: o mesmo desenho fatorial, com textura de imagem como controle de qualidade objetivo, é aplicável ao preparo da MET de volume da glândula salivar de Anopheles antes de gastar tempo de feixe.",
+        "resumo": "Compara glutaraldeído 2,5% e Karnovsky, em 1, 3 e 24 h, com e sem pós-fixação com tetróxido de ósmio, em três bactérias Gram-positivas (duas poliextremófilas e uma mesófila), avaliando morfometria de célula e características de textura da imagem de MEV.",
+        "metodo": "Desenho fatorial de fixação (fixador × tempo × OsO4) com morfometria e textura de imagem."
+      }
+    },
+    {
+      "pmid": "43045701",
+      "doi": "10.1038/s41467-026-78770-9",
+      "titulo": "Production of abundant defective viral genomes by an insect-specific alphavirus revealed by nanopore sequencing",
+      "revista": "Nat Commun",
+      "ano": "2026",
+      "autores": "Tan L, Guo Z, … Li R (9 autores)",
+      "resumo_original": "Defective viral genomes (DVGs) shape virus-host interactions and evolution, yet remain poorly characterized in insect-specific viruses. Using Nanopore direct RNA sequencing (DRS), we profile full-length RNA species of Eilat virus (EILV), a mosquito-restricted alphavirus. We found that EILV produces abundant deletion-type DVGs far exceeding those seen in related arboviruses under identical conditions. These DVGs retain intact terminal sequences with conserved junction motifs. A modified DRS approach reveals widespread premature termination during EILV genomic RNA synthesis, linking DVG formation to reduced replicase processivity. Notably, a subset of DVGs is selectively replicated and packaged, accumulating over serial passages and interfering with parental virus replication. Our findings uncover an intrinsic, high DVG-generating capacity in EILV, linking low-processivity RNA synthesis with increased genomic plasticity. This suggests that elevated DVG production may be an adaptive mechanism, providing important insights into alphavirus evolution and replication fidelity in insect-specific RNA viruses.",
+      "consultas": [
+        "vetores_amplo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "alta",
+        "prioridade": "essencial",
+        "score": 41,
+        "implicacao": "Imunidade & Memória Imune (priming epigenético): o sequenciamento direto lê RNA nativo de comprimento total e, em princípio, também modificações de base; conferir no texto se há análise de m6A, tema do mini-review sobre histonas e priming (o abstract não menciona modificação de base).",
+        "resumo": "Com sequenciamento direto de RNA em nanoporo, o Eilat virus (alfavírus restrito a mosquito) produz genomas virais defeituosos por deleção em quantidade muito maior que arbovírus relacionados nas mesmas condições; a terminação prematura na síntese do RNA genômico sugere baixa processividade da replicase, e um subconjunto de DVGs é replicado, empacotado e interfere no vírus parental ao longo de passagens seriadas.",
+        "metodo": "Direct RNA sequencing em nanoporo de moléculas de comprimento total, com versão modificada para mapear terminação prematura, e passagens seriadas para acompanhar os DVGs."
+      }
+    },
+    {
+      "pmid": "43041013",
+      "doi": "10.1002/med.70127",
+      "titulo": "Targeting the Lactate-Lactylation Axis in Cancer Immunotherapy Resistance: From Tumor Acidosis to Context-Dependent Immune Reprogramming",
+      "revista": "Med Res Rev",
+      "ano": "2026",
+      "autores": "Liang X, Lin M, … Li Y (6 autores)",
+      "resumo_original": "Lactate is now recognized as an active immunometabolic regulator in the tumor microenvironment (TME), not simply as a glycolytic byproduct. Its immunological effects arise through several related but distinct routes. Extracellular acidosis, glucose competition, and impaired monocarboxylate transporter-dependent flux can impair CD8+ T cells, natural killer cells, and dendritic cells. Lactate- and proton-sensing receptors can also favor suppressive myeloid and regulatory-cell programs. Histone and non-histone lactylation add another layer by linking lactate availability to chromatin regulation and protein function. During sustained or repeated metabolic stress, these processes may support regulatory T-cell fitness, suppressive programs in tumor-associated macrophages and myeloid-derived suppressor cells, checkpoint expression, and resistance to immunotherapy. Lactylation is a plausible mediator through which sustained metabolic stress may be converted into persistent immune reprogramming; however, post-withdrawal persistence and cellular memory remain to be demonstrated in cancer. We distinguish lactate-dependent regulation from acidosis and evaluate the links to immune dysfunction and treatment resistance by their temporal, causal, and clinical support. This framework defines tests of post-exposure persistence and connects mechanistic evidence and pharmacological specificity to biomarker development and mechanism-matched trial design.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 41,
+        "implicacao": "Mini-review histonas e priming em mosquitos (Imunidade & Memória Imune): os critérios de temporalidade, causalidade e persistência após retirada do estímulo servem de lista de verificação para afirmar memória em Aag2; lactilação de histona é marca candidata a testar.",
+        "resumo": "Revisão que trata o lactato como regulador imunometabólico no microambiente tumoral e a lactilação de histonas e proteínas como elo entre disponibilidade de lactato e cromatina; propõe a lactilação como mediador plausível da conversão de estresse metabólico sustentado em reprogramação imune persistente e diz que persistência após a retirada do estímulo e memória celular ainda não foram demonstradas no câncer.",
+        "metodo": "Revisão; avalia as ligações por critérios de temporalidade, causalidade e suporte clínico."
+      }
+    },
+    {
+      "pmid": "43046336",
+      "doi": "10.1002/ps.71497",
+      "titulo": "Fitness costs and effects on the peritrophic matrix associated with chitin synthase 2 gene knockout in Vip3Aa-resistant Helicoverpa zea",
+      "revista": "Pest Manag Sci",
+      "ano": "2026",
+      "autores": "Heu CC, Schutze IX, … Fabrick JA (8 autores)",
+      "resumo_original": "Genetically engineered crops producing insecticidal Bacillus thuringiensis (Bt) proteins are used globally to manage key insect pests, including Helicoverpa zea (Lepidoptera: Noctuidae). In the United States, H. zea has evolved practical resistance to Bt corn and cotton producing crystalline Bt proteins and early warning of resistance to the vegetative insecticidal protein Vip3Aa has been reported. CRISPR/Cas9 gene editing that introduced disruptive mutations in the H. zea chitin synthase 2 (CHS2) gene facilitated creation of a strain (CHS2-KO) with 29 000-fold resistance to Vip3Aa relative to its parental susceptible strain, LAB-S. However, quantitative information about fitness costs associated with CHS2-mediated resistance remains limited. Here, we tested whether CHS2-KO exhibited costs affecting survival, development time, and pupal mass on diet without Vip3Aa, and examined direct effects on the peritrophic matrix (PM).\nRelative to LAB-S, fitness costs in CHS2-KO were 27.8% for neonate to adult survival, 23.2% for neonate to adult development time, and 17.8% for pupal mass. An intact PM was evident in LAB-S and F1 larvae, but not in CHS2-KO larvae.\nMutations disrupting the CHS2 gene in the CHS2-KO strain of H. zea were associated with large fitness costs affecting survival, development time, and pupal mass when reared on diet under laboratory conditions. Also, no intact PM was evident in CHS2-KO. These results suggest that costs could oppose the spread of knockout alleles in the absence of Vip3Aa, although their magnitude on host plants and applicability to less disruptive CHS2 resistance alleles remain to be determined. © 2026 Society of Chemical Industry. This article has been contributed to by U.S. Government employees and their work is in the public domain in the USA.",
+      "consultas": [
+        "praga_lepidoptero"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "alta",
+        "prioridade": "essencial",
+        "score": 35,
+        "implicacao": "Hemócitos & homeostase intestinal — A. gemmatalis × Bt: a matriz peritrófica, e não só o receptor, aparece como determinante de resistência a toxina de Bt em lepidóptero-praga; no proteoma de intestino de A. gemmatalis exposto a Bt, vale procurar chitina sintase e proteínas da matriz peritrófica entre as diferenciais, depois de fechar montagem, anotação e correção para múltiplos testes.",
+        "resumo": "Linhagem de Helicoverpa zea com chitina sintase 2 nocauteada por CRISPR/Cas9 (resistência de 29.000 vezes à Vip3Aa) paga custos de aptidão de 27,8% na sobrevivência de neonato a adulto, 23,2% no tempo de desenvolvimento e 17,8% na massa pupal; a matriz peritrófica íntegra, presente na linhagem suscetível e em larvas F1, não aparece nas larvas nocaute.",
+        "metodo": "Nocaute de CHS2 por CRISPR/Cas9, comparação com a linhagem parental suscetível (LAB-S) e F1 em dieta sem toxina, e avaliação direta da presença da matriz peritrófica nas larvas."
+      }
+    },
+    {
+      "pmid": "43044582",
+      "doi": "10.1016/j.cell.2026.10.038",
+      "titulo": "Evolutionary repurposing of a pore-forming toxin drives epithelial remodeling during terrestrial adaptation",
+      "revista": "Cell",
+      "ano": "2026",
+      "autores": "Siciliani D, Benedicenti O, … Salinas I (15 autores)",
+      "resumo_original": "The ability of vertebrates to conquer land is attributed to innovations in respiration and locomotion. However, land adaptation profoundly reshaped mucosal surfaces such as the skin, the main interface between hosts and the environment. To adapt to land, African lungfish annually remodel their skin, forming a cocoon. Here, we report the discovery of a small pore-forming toxin in African lungfish, Protop-CrTX-A, with no other vertebrate counterpart that is sufficient to drive epithelial morphogenesis transcriptional programs. In free-swimming lungfish, goblet cells secrete Protop-CrTX-A into the mucus. During estivation, this niche is replaced by a mucin-low/basal epithelial niche, adjacent to a granulocyte immune niche that becomes the predominant source of Protop-CrTX-A in the estivated skin. Protop-CrTX-A acts as a reversible switch for skin remodeling, sufficient to convert African lungfish skin between aquatic and terrestrial states. We propose that innate immunity, through its capacity to remodel tissues, was a key driver of vertebrate water-land transitions.",
+      "consultas": [
+        "vetores_amplo, vetores_mecanismo"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 35,
+        "implicacao": "🎲 Hemócitos & homeostase intestinal (bt-barreira): toxina formadora de poro lida como sinal de remodelação epitelial, e não só de lise; se Vip3Aa ou Cry em dose subletal induzirem programa de remodelação no intestino de A. gemmatalis, matriz peritrófica e barreira estariam respondendo a esse sinal.",
+        "resumo": "Uma toxina pequena formadora de poro do pulmonado africano (Protop-CrTX-A) é suficiente para ativar programas transcricionais de morfogênese epitelial e funciona como interruptor reversível da remodelação da pele entre os estados aquático e terrestre; goblet cells a secretam no muco e, na estivação, granulócitos tornam-se a fonte principal. Os autores propõem que a imunidade inata, por remodelar tecidos, foi motor da transição água-terra.",
+        "metodo": "Descoberta e caracterização de uma toxina formadora de poro em pele de pulmonado, sinalização epitelial e sistema reversível aquático/terrestre."
+      }
+    },
+    {
+      "pmid": "43048157",
+      "doi": "10.3389/fcimb.2026.2010190",
+      "titulo": "Shifting climates, shifting microbes: environmental determinants of the microbiome and impact on malaria transmission",
+      "revista": "Front Cell Infect Microbiol",
+      "ano": "2026",
+      "autores": "Archaga O, Simões ML (2 autores)",
+      "resumo_original": "Malaria transmission dynamics are governed by complex tripartite interactions between the Anopheles mosquito, the Plasmodium parasite, and the vector's gut microbiota, all mediated by the mosquito's innate immune system. Although global malaria control is increasingly hindered by drug and insecticide resistance, significant knowledge gaps persist regarding how climate shifts and environmental variations impact vector competence. While most experimental research relies on static laboratory conditions (typically fixed at 27 °C and 75-80% relative humidity), mosquitoes in nature experience continuous diurnal and seasonal environmental fluctuations that alter their physiology, immune responses, and microbiome. Here, we focus on how these environmental shifts likely influence the efficacy and translational success of innovative, microbial-based control strategies, including paratransgenesis, Wolbachia-based interventions, and microbial larvicides. By examining how climate-driven variations impact both the mosquito-microbiota-parasite system and the performance of biocontrol tools, we bridge ecological and molecular perspectives to identify the current understanding of how shifting environments influence the mosquito microbiome and microbial-based tools. We highlight the critical need to integrate dynamic climatic regimes into upstream laboratory evaluations to ensure future malaria control tools remain resilient in a global changing climate.",
+      "consultas": [
+        "vetores_amplo, vetores_mecanismo, malaria_vetor"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 34,
+        "implicacao": "Imunidade & Memória Imune (microbiota-inseto, nunca tocada): as nossas criações a temperatura fixa limitam qualquer inferência sobre microbiota × imunidade; uma condição de temperatura flutuante é o controle a considerar.",
+        "resumo": "Revisão sobre como variações ambientais diárias e sazonais alteram fisiologia, imunidade e microbioma do mosquito e, com isso, o desempenho de estratégias baseadas em micróbios (paratransgênese, larvicidas microbianos); aponta que a maioria dos experimentos usa 27 °C e 75–80% de umidade fixos.",
+        "metodo": "Revisão narrativa."
+      }
+    },
+    {
+      "pmid": "43038963",
+      "doi": "10.1016/j.cub.2026.10.035",
+      "titulo": "Rapid spread of nutritional Wolbachia symbionts across and within solitary bee species",
+      "revista": "Curr Biol",
+      "ano": "2026",
+      "autores": "Preuß L, Tischer M, … Gerth M (7 autores)",
+      "resumo_original": "Maternally inherited, intracellular bacteria of the genus Wolbachia are extremely widespread among arthropods. Their evolutionary success is owed to frequent host shifts and rapid subsequent spread within host populations, often facilitated by Wolbachia-induced reproductive manipulations. Theory suggests that often, Wolbachia spread may also be explained by fitness benefits, the nature of which have remained unclear. Here, we demonstrate that Wolbachia's success in many solitary bee species is strongly associated with the presence of a gene cassette enabling Wolbachia to synthesize biotin (vitamin B7). This ability is absent from almost all other Wolbachia strains but common among bee-associated strains. We show that Wolbachia occurs in up to 60% of all bee species and that strains carrying this rare genomic element have independently spread into numerous bee hosts recently. We further demonstrate that the presence of the biotin operon is associated with specialized diets in several bee species, suggesting a previously overlooked nutritional role of Wolbachia in this group of important pollinators. Overall, our results suggest that nutritional benefits provided by symbionts may represent a more widespread and important mechanism by which reproductive manipulators spread into new host species than previously appreciated.",
+      "consultas": [
+        "Wolbachia"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 34,
+        "implicacao": "Epidemiologia de Precisão (camada de Wolbachia pedida à SVS): checar se as linhagens liberadas em Aedes têm o cassete de biotina.",
+        "resumo": "Wolbachia ocorre em até 60% das espécies de abelhas solitárias e o sucesso está associado a um cassete gênico de síntese de biotina (vitamina B7), raro em outras linhagens e comum nas de abelhas; linhagens com o elemento se espalharam de forma independente e recente por vários hospedeiros.",
+        "metodo": "Genômica comparada de Wolbachia em abelhas solitárias."
+      }
+    },
+    {
+      "pmid": "43038972",
+      "doi": "10.1016/j.cub.2026.10.005",
+      "titulo": "Evolution: A mobile microbial toolkit for arthropod nutrition",
+      "revista": "Curr Biol",
+      "ano": "2026",
+      "autores": "Duron O (1 autor)",
+      "resumo_original": "Arthropods often overcome nutritional constraints by relying on microorganisms to provide essential metabolic functions. A recent study reveals that a mobile biotin synthesis operon provides Wolbachia symbionts with a key function that may facilitate the nutrition of solitary bees.",
+      "consultas": [
+        "Wolbachia"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "media",
+        "prioridade": "contexto",
+        "score": 34,
+        "resumo": "Comentário sobre o estudo de Wolbachia nutricional em abelhas: um operon móvel de síntese de biotina dá ao simbionte função que pode facilitar a nutrição de abelhas solitárias."
+      }
+    },
+    {
+      "pmid": "43039935",
+      "doi": "10.1038/s41467-026-78772-7",
+      "titulo": "Nuclear adaptation to intracellular mechanical forces regulates the phagocytic capacity of Drosophila macrophages in vivo",
+      "revista": "Nat Commun",
+      "ano": "2026",
+      "autores": "Amato C, Graham R, … Wood W (7 autores)",
+      "resumo_original": "How macrophages fine-tune their appetite to fulfil their clearance role is incompletely understood. Phagocytosis exacerbates cytoplasmic crowding, but whether macrophages can sense this increase and use it to regulate their phagocytic capacity has never been investigated. Here, we test the hypothesis that phagosomes exert a strain on the nucleus, which in turn responds to the intracellular mechanical inputs influencing macrophage appetite. Combining genetic manipulation and live in vivo imaging, we show that engulfed apoptotic bodies indent and deform the nucleus of Drosophila embryonic macrophages, and that phagocytosis increases Lamin B levels. Importantly, we show that silencing Lamin B or components of the LINC complex negatively regulates apoptotic body engulfment in vivo. Thus, we demonstrate that phagosome-induced nuclear molecular and mechanical adaptations are critical for Drosophila embryonic macrophages to sustain apoptotic corpse uptake, thereby unveiling a role for nuclear plasticity in the regulation of macrophage phagocytic capacity in vivo.",
+      "consultas": [
+        "(drosophila OR Aedes) AND (virus OR immunity)"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "alta",
+        "prioridade": "essencial",
+        "score": 26,
+        "implicacao": "Hemócitos & homeostase intestinal — A. gemmatalis × Bt: a deformação nuclear como limite biofísico da fagocitose é uma variável que não medimos em hemócito de lepidóptero; na análise de imagem de hemócitos, medir forma do núcleo e Lamin B antes e depois de desafio com Bt.",
+        "resumo": "Em macrófagos embrionários de Drosophila, corpos apoptóticos engolidos deformam o núcleo e aumentam Lamin B; silenciar Lamin B ou componentes do complexo LINC reduz a captação de corpos apoptóticos in vivo, de modo que a plasticidade nuclear regula a capacidade fagocítica.",
+        "metodo": "Manipulação genética e imageamento ao vivo in vivo de macrófagos embrionários de Drosophila."
+      }
+    },
+    {
+      "pmid": "43046913",
+      "doi": "10.18097/PBMCR1745",
+      "titulo": "Antimicrobial peptides that cross the blood-brain barrier: systematisation of data on known representatives and prospects for their use in CNS diseases",
+      "revista": "Biomeditsinskaia khimiia",
+      "ano": "2026",
+      "autores": "Martynov DD, Shamova OV (2 autores)",
+      "resumo_original": "The limited permeability of the blood-brain barrier (BBB) is one of the key obstacles in the development of new drugs for treating brain disorders. Most small molecules fail to reach therapeutic concentrations within the brain parenchyma; this causes systemic toxicity, low efficacy, and the development of drug resistance in pathogens and tumor cells. Antimicrobial peptides (AMPs) represent a large, heterogeneous group of substances that exhibit a wide range of therapeutic effects and often show low toxicity toward healthy cells. Their ability to cross the BBB independently makes them promising drug candidates for the treatment of infectious, inflammatory, and oncological diseases of the brain. To date, only a small number of peptides are known to combine antimicrobial properties with their ability to cross the BBB. Despite the significant potential of this group of molecules, experimental data on the transport of AMPs across the BBB remain fragmentary and are often obtained using incomparable experimental conditions; moreover, some earlier findings require re-evaluation in light of current knowledge regarding the barrier function of the BBB. This review provides the first systematic compilation of scattered data on peptides that combine antimicrobial activity with the capacity for transcytosis across the BBB. Three key groups of peptides have been identified and analyzed: 1) proline-rich insect AMPs (apidaecin 137, oncocin, and drosocin); 2) endogenous mammalian neuropeptides (substance P, neuropeptide Y, vasoactive intestinal peptide (VIP), and pituitary adenylate cyclase-activating polypeptide (PACAP)); 3) cell-penetrating peptides with AMP properties (penetratin, transportan 10, pVEC). The combination of antimicrobial activity and the ability to cross BBB appears to be an achievable and reproducible characteristic for peptides of various origins, thus underlying the clear need for their discovery and development.",
       "consultas": [
         "neuro_eixo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "cerebro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43048651",
+      "doi": "10.1155/japr/7993879",
+      "titulo": "Epidemiology and Associated Risk Factors of Malaria Infection in Loka Abaya District, Sidama Region, Ethiopia",
+      "revista": "J Parasitol Res",
+      "ano": "2026",
+      "autores": "Melese M, Woldesenbet A, … Birmeka M (3 autores)",
+      "resumo_original": "Despite continuous efforts to manage malaria, it remains a deadly disease, particularly common in low-lying areas of Ethiopia. Therefore, the purpose of this study was to assess the prevalence, trends, and risk factors associated with malaria infection in Loka Abaya district, Sidama region, Ethiopia.\nA community-based cross-sectional study was carried out using house-to-house visits from April to June 2023. A total of 186 febrile patients were chosen using systematic random sampling. Those above the age of 18 were included in the study. Five health facilities and one primary hospital in the district provided retrospective data. A systematic questionnaire and microscopic analysis of blood films were used to gather data. The blood samples were evaluated in Hantate primary hospital. Univariate and multivariate binary logistic regression analyses were performed to identify the associated factors of malaria infection. Variables with p value less than 5% were considered statistically significant.\nOf 34,613 suspected patients tested for malaria over the previous 5 years, 26.2% were positive. The lowest rate recorded at 20.3% in 2018, whereas 2020 was the highest rate at 30.1%. Among them, 47.4% and 52.6% were females and males, respectively. Age groups from 5 to 14 covered up 21.6%, adults aged over 15 take up to 57.2%, and children under age 5 were 21.2%. The infection distribution was 58.8% for Plasmodium falciparum, 38.8% for Plasmodium vivax, and 2.4% mixed infections. The highest rate of infection was recorded during September to November. Cross-sectional parasitological survey showed that 18.3% of individuals were infected. The identified risk of contracting malaria was significant for individuals who were closer to mosquito breeding sites (AOR, 13.3, 95% CI, 8.23-26.96, p < 0.001), did not use a mosquito net while sleeping (AOR, 18.4, 95% CI, 2.82-32.85, p < 0.02), did not use indoor residual spraying in the previous 12 months (AOR,13.3, 95% CI, 8.23-26.96, p < 0.001), used a window without a screen (AOR, 2.78.3, 95% CI, 1.03-13.86, p < 0.02), used a thatched roof (AOR, 18.4, 95% CI, 2.82-32.85, p < 0.02), and did not know how malaria is transmitted (AOR, 4.3, 95% CI, 2.36-22.6, p < 0.04).\nThe study indicated that malaria remains a health issue in the Loko Abaya district. Several factors, including low income, wall openings, proximity to mosquito breeding sites, lack of indoor residual spraying, and lack of bed net use, were important predictors of malaria.",
+      "consultas": [
+        "vetores_amplo, malaria_vetor"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "ciclo",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43037869",
+      "doi": "10.1007/s12035-026-06312-x",
+      "titulo": "Viral Infections and Dysregulation of Neurotrophin Signaling: Potential impact in the Central Nervous System",
+      "revista": "Mol Neurobiol",
+      "ano": "2026",
+      "autores": "Miteva MT, Protto V, … De Chiara G (6 autores)",
+      "resumo_original": "Viral infections can perturb neurotrophin signaling in the central nervous system, with important consequences for neuronal survival, synaptic plasticity, neurodevelopment, and long-term cognitive and neuropsychiatric outcomes. Neurotrophins, including nerve growth factor, brain-derived neurotrophic factor, neurotrophin-3, and neurotrophin-4, mediate their actions primarily through tropomyosin receptor kinases (TrkA, TrkB and TrkC) and the p75 neurotrophin receptor (p75NTR), activating intracellular pathways such as PI3K-AKT, MAPK-ERK, and PLC-γ. Growing evidence suggests that both neurotropic/neuroinvasive and non-classically neurotropic viruses can interfere with these pathways through multiple mechanisms, including those elicited by direct infection of neural and glial cells, interference with endosomal trafficking required for sustained Trk signaling, and inflammation-driven alterations in neurotrophin expression and receptor balance. This review summarizes current knowledge on how selected viruses affect neurotrophin availability and downstream signaling in experimental models and clinical settings. Specifically, the review focuses on: 1) viruses capable of establishing life-long latent or persistent infection such as i) herpesviruses (herpes simplex virus-1; Epstein Barr virus; human cytomegalovirus), and ii) human immunodeficiency virus; 2) other neurotropic viruses driving peculiar neuropathological profiles, such West Nile virus, Japanese encephalitis virus, Zika virus, and Borna disease virus 1; 3) respiratory viruses, such as influenza A virus, human respiratory syncytial virus, and severe acute respiratory syndrome coronavirus 2. For each virus group, we discuss convergent pathogenic mechanisms and receptor-level interference with neurotrophin signaling. We further highlight some gaps in current knowledge, including limited longitudinal human data and the underexplored role of viral co-infections and reactivations, and the unclear causal directionality of neurotrophin dysregulation.",
+      "consultas": [
+        "plasmodium OR arbovirus OR dengue OR zika"
       ],
       "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
@@ -229,18 +520,18 @@
       }
     },
     {
-      "pmid": "43041130",
-      "doi": "10.1111/1348-0421.70105",
-      "titulo": "Anti-ZIKV IgG Subclass Profiles and Anti-DENV IgG Are Associated With Neonatal Outcomes Following ZIKV Infection During Pregnancy.",
-      "revista": "Microbiology and immunology",
+      "pmid": "10.64898/2026.11.16.767120",
+      "doi": "10.64898/2026.11.16.767120",
+      "titulo": "TRIM5α, TRIM56 and TRIM69 differentially regulate dengue virus 2 infection through selective NS2B3-mediated antagonism",
+      "revista": "bioRxiv (preprint)",
       "ano": "2026",
-      "autores": "Antonelli ACB, Peres GBM, … Silveira LAD (13 autores)",
-      "resumo_original": "Zika virus (ZIKV) is a flavivirus transmitted by Aedes mosquitoes. Most infected individuals present mild symptoms; however, vertical transmission of ZIKV can lead to Congenital Zika Syndrome (CZS), which includes microcephaly, neurological, hearing, ophthalmological, and morphological abnormalities. Given the high prevalence of dengue virus (DENV) exposure and antibody cross-reactivity among flaviviruses, understanding how maternal humoral antibody profiles relate to neonatal outcomes after ZIKV infection is important. In this exploratory study, we evaluated maternal and neonatal anti-ZIKV total IgG, anti-ZIKV IgG1 and anti-ZIKV IgG3, and anti-DENV IgG reactivity in relation to maternal-neonatal antibody patterns and neonatal outcomes. Samples from pregnant women and their newborns were collected in Brazil, including pregnancies with microcephaly and other clinical or imaging abnormalities. Anti-ZIKV and anti-DENV IgG reactivity was measured by ELISA. Lower neonatal anti-ZIKV IgG3 reactivity was observed in pregnancies with ophthalmological abnormalities in the individual comparison, although this association did not remain significant after false discovery rate adjustment. Lower neonatal anti-DENV IgG reactivity was observed in pregnancies with ophthalmological abnormalities and with any clinical or imaging abnormality, and both associations remained significant after false discovery rate adjustment. These exploratory associations are hypothesis-generating and do not establish functional protection or a causal role for the measured antibody profiles.",
+      "autores": "Paswan RR, Martins L, … Berthoux L (10 autores)",
+      "resumo_original": "Dengue virus (DENV) is a major mosquito-borne human pathogen. Understanding the mechanisms of cellular resistance to the infection is vital to develop novel therapeutic tools. Tripartite motif (TRIM) proteins contribute to antiviral innate immunity through direct restriction of viral replication and regulation of antiviral signaling, but current knowledge on DENV targeting by TRIM proteins remains preliminary. Previously, TRIM56 was found to inhibit DENV, whereas reports on whether TRIM69 is a DENV restriction factor are conflicting. Surprisingly, the broad-spectrum viral restriction factor TRIM5 was proposed to restrict tick-borne but not mosquito-borne flaviviruses. Here, we investigated the effects of TRIM5, TRIM56, and TRIM69 on DENV serotype 2 (DENV2) infection. Overexpression experiments showed that TRIM5 and TRIM56 restrict DENV2, whereas TRIM69 enhances it. Consistently, CRISPR/Cas9-mediated loss-of-function showed that knocking out TRIM5 or TRIM56 increases infection, while TRIM69 knockout decreases it. Restriction correlated with reduced viral RNA and viral protein levels in TRIM5- and TRIM56-expressing cells. Virus-free experiments showed that TRIM56 downregulates the DENV2 protease complex NS2B3 levels. Reciprocally, DENV2 NS2B3 reduced TRIM56 and TRIM69 abundance independently of protease activity. RING domain-mutated TRIM56 retained partial antiviral activity and the ability to reduce NS2B3 levels, and TRIM56-NS2B3 reciprocal downmodulation effects were not counteracted by proteasomal or lysosomal inhibition. Together, these findings establish TRIM5 as a DENV2 restriction factor, reveal TRIM69 as a positive factor in DENV2 infection, suggest that TRIM5? and TRIM56 inhibit DENV2 through distinct mechanisms, and hint at proteasome-independent TRIM56-NS2B3 reciprocal downmodulation.",
       "consultas": [
-        "vetores_amplo"
+        "bioRxiv (API de detalhes)"
       ],
-      "data_fonte": "2026-11-17",
-      "fonte_captura": "PubMed",
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "preprint",
       "v6": {
         "tema": "hospedeiro",
         "importancia": "baixa",
@@ -249,17 +540,37 @@
       }
     },
     {
-      "pmid": "43038967",
-      "doi": "10.1016/j.cub.2026.08.060",
-      "titulo": "Neural mitochondria size is negatively correlated with sleep duration.",
-      "revista": "Current biology : CB",
+      "pmid": "10.1101/2025.10.09.681498",
+      "doi": "10.1101/2025.10.09.681498",
+      "titulo": "Loss of macrodomain catalytic activity modulates Chikungunya virus",
+      "revista": "bioRxiv (preprint)",
       "ano": "2026",
-      "autores": "Brecht M (1 autores)",
-      "resumo_original": "Discharge of fruit fly sleep-promoting neurons is coupled to mitochondrial activity1. In vertebrates, adenosine accumulation resulting from adenosine triphosphate metabolization triggers sleep2. Such observations and theoretical considerations3,4 prompted us to investigate the link between neural mitochondria and sleep duration. To this end, we measured mitochondrial cross-sections in electron microscopy micrographs from publications of nerve or brain mitochondria in 51 mammalian species. There was considerable within-species variability of mitochondrial cross-section areas and we only included species where measurements from at least two publications could be made. Across 50 of the 51 species the average neural mitochondrial cross-section area decreased roughly exponentially with sleep duration (r = -0.76, p < 0.0001). The naked mole rat was an outlier having large brain mitochondria and long sleep. We also observed a significant decrease of sleep duration with body weight, and a multiple linear regression using sleep duration and body weight explained about 64% of the variance of mitochondrial cross-section areas. We suggest that the urge to sleep might be biophysically linked to mitochondrial size and mitochondrial leakage. Specifically, size-related decreases of mitochondrial surface-to-volume-ratio might reduce the need for sleep by decreasing mitochondrial leakage of reactive oxygen species (ROS). We identify neural mitochondrial size as a possible cellular determinant of sleep duration.",
+      "autores": "Bardossy ES, Bergmann L, … Saleh MC (8 autores)",
+      "resumo_original": "Viral macrodomains are promising antiviral targets that counteract host ADP-ribosylation-mediated antiviral responses in mammals. However, their role in dual-host viruses within the mosquito vector remains largely unknown. Here, we investigated the role of the Chikungunya virus (CHIKV) nsP3 macrodomain catalytic activity by mutating the active-site asparagine 24 (N24). N24 mutant viruses rapidly selected for compensatory second-site mutations at aspartate 31 (D31) in mammalian Vero cells, while interferon-competent human cells favored reversion at position 24 instead, suggesting adaptive responses to macrodomain functional impairment. Catalytically inactive double-mutant viruses replicated poorly in interferon-competent human cells but comparably to wild-type in mosquito cells. In Aedes mosquitoes in vivo, macrodomain mutations modulated CHIKV replication and infectivity in a mutation-specific manner: one mutant reduced them while another enhanced them. Biochemical and structural analyses confirmed that these phenotypes arise in the context of a catalytically inactive macrodomain that retains ADP-ribose binding capacity, with D31 mutations lining the substrate exit path. These findings demonstrate that macrodomain catalytic activity modulates CHIKV dissemination and transmission potential in Aedes mosquitoes, revealing fundamental differences in host-dependent evolutionary advantage for a catalytically inactive viral enzyme.",
       "consultas": [
-        "polyp_ultraestrutura"
+        "bioRxiv (API de detalhes)"
       ],
-      "data_fonte": "2026-11-16",
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "preprint",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43043707",
+      "doi": "10.1073/pnas.2614685123",
+      "titulo": "Unconventional modulation of Na1.4 by a scorpion toxin through cooperative binding to voltage sensor and the pore domain",
+      "revista": "PNAS",
+      "ano": "2026",
+      "autores": "Zhou X, Wang H, … Liu Z (13 autores)",
+      "resumo_original": "Voltage-gated sodium (Nav) channels are targeted by animal peptide toxins, which serve as powerful molecular probes for dissecting channel structure-function relationships and lead molecules for drug discovery. β-scorpion toxins trap voltage sensor domains to remodel Nav channel gating, yet high-resolution structural evidence defining this process remains elusive. Here, we characterize LmNaTx1, a β-scorpion toxin from Lychas mucronatus. LmNaTx1 exerts state-dependent bimodal modulation on Nav1.4: it facilitates channel activation while suppressing sodium conductance, accelerates slow-inactivation onset, and delays recovery from slow inactivation. We solved the 2.68 Å cryo-EM structure of the LmNaTx1-hNav1.4 complex, revealing that LmNaTx1 inserts into the extracellular cleft jointly formed by domain II voltage sensor (VSDII) and the extracellular loop III (ECLIII) of the pore domain. Toxin binding remodels the S3-S4II loop and displaces S0/S3II helices to trap VSDII within a pre-activated intermediate state. MD simulations recapitulate step-wise VSDII conformational transitions and demonstrate that toxin-driven rearrangements tighten the intracellular pore gate. Mutagenesis combined with electrophysiology confirm that VSDII trapping remodels the activation and inactivation gating, whereas ECLIII engagement contributes both to inhibition and activation. Subtype-specific sequence variations in the ECLIII region underlie the prominent species- and isoform-dependent activities of the toxin toward insect and mammalian Nav channels. Our study provides a structural basis for the dual-action mechanisms of β-scorpion toxins on Nav channels and presents a structural framework for understanding toxin binding, channel gating modulation, ecological adaptation, and rational drug design.",
+      "consultas": [
+        "extra_bioimagem"
+      ],
+      "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
         "tema": "cerebro",
@@ -269,15 +580,15 @@
       }
     },
     {
-      "pmid": "43042358",
-      "doi": "10.1039/d6cb00237d",
-      "titulo": "The ATPase YchF regulates the alarmone levels in.",
-      "revista": "RSC chemical biology",
+      "pmid": "43044369",
+      "doi": "10.1016/j.talanta.2026.130944",
+      "titulo": "Online extraction and preconcentration system employing a mini-column packed with 4-(2-thiazolylazo)-resorcinol-coated CoFe2O4 nanoparticles for the determination of lead in water samples by F AAS",
+      "revista": "Talanta",
       "ano": "2026",
-      "autores": "Milanov M, Prucker I, … Koch HG (12 autores)",
-      "resumo_original": "Bacteria are constantly challenged by rapid environmental changes and therefore require efficient acclimation strategies for survival. One conserved strategy is the stringent response, which is mainly executed when bacteria face nutrient limitation. Under those conditions, bacteria synthesize the signalling molecules pppGpp and ppGpp, which induce a metabolic adaptation program that regulates multiple cellular processes. While the importance of (p)ppGpp accumulation for stress adaptation is well established, their basal levels are also essential for coordinating metabolism and survival under non-stress conditions. However, how these basal levels are maintained when sufficient nutrients are available is largely unknown. In the current study, we demonstrate that ribosome binding of the (p)ppGpp synthetase RelA is compromised in the absence of the ATPase YchF, which was previously linked to stress response and polyphosphate metabolism. We furthermore show that basal (p)ppGpp levels are reduced in the absence of YchF and that amino acid derivatives, such as serine hydroxamate, inhibit growth of both the ΔychF and ΔrelA strains. However, under minimal-medium conditions or mild amino acid starvation, the ΔychF strain exhibits a more pronounced growth defect than the ΔrelA strain. Biochemical assays reveal that YchF interacts directly with the pseudohydrolase- and TGS-domains of RelA, which potentially promotes RelA binding to the ribosome. In conclusion, our data suggest that YchF serves as a so far unknown regulator of alarmone production in E. coli.",
+      "autores": "de Souza Júnior JJCL, Santos BRS, … Guimarães LB (6 autores)",
+      "resumo_original": "In this study, an online solid-phase extraction system was developed that employs a mini-column packed with 4-(2-thiazolylazo)-resorcinol (TAR)-coated CoFe2O4 nanoparticles for the preconcentration and determination of lead in water samples by flame atomic absorption spectrometry. The synthesis of CoFe2O4 nanoparticles was accomplished through a coprecipitation method in basic media, followed by a coating process with the TAR complexing reagent. The characterization of both uncoated and coated nanoparticles was performed by means of analysis of X-ray diffraction (XRD), Fourier-transform infrared (FT-IR) spectroscopy, and transmission electron microscopy (TEM). Multivariate methodology was employed to optimize the flow injection analysis (FIA) system. A two-level full factorial design was employed to evaluate the factors, namely eluent concentration, sampling flow rate, and pH of the sample or standard solution. The Box-Behnken design was utilized to ascertain the optimal conditions for the online system. The eluent concentration was determined to be 0.10 mol L-1, the sampling flow rate was set to 2.5 mL min-1, and the pH was adjusted to 5.0. For a sample volume of 25.0 mL and under the established optimum conditions, the online system has been shown to achieve a limit of detection and quantification of 0.9 and 2.9 μg L-1, respectively, with an enrichment factor of 71 and a frequency of 5.7 h-1 for the determination of lead in water. The precision of the proposed method, evaluated as relative standard deviation (RSD%), yielded values of 7.3% and 6.9% for standard solutions containing 10.0 and 50.0 μg L-1 of Pb, respectively, while intraday and interday RSD values remained below 5.3% and 8.1%. The accuracy of the method was confirmed through analysis of the certified reference materials European Ultrapure Laboratory water (EUL, CRM) and European Primary Laboratory water (EPL, CRM), with an agreement ranging from 90% to 102%. The proposed flow injection analysis line system was subsequently employed for the analysis of mineral water and tap water. To evaluate the method's accuracy, an additional recovery test was also performed. The recovery values obtained ranged from 94 to 103%.",
       "consultas": [
-        "polyp_ultraestrutura"
+        "polifosfato_ultraestrutura"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
@@ -289,59 +600,82 @@
       }
     },
     {
-      "pmid": "43041397",
-      "doi": "10.3389/fcimb.2026.1944712",
-      "titulo": "Molecular surveillance of drug resistance markers inisolates from Ghana.",
-      "revista": "Frontiers in cellular and infection microbiology",
+      "pmid": "43040354",
+      "doi": "10.1186/s12951-026-04923-z",
+      "titulo": "A \"ready to move in\" osteoporosis bone regeneration material",
+      "revista": "J Nanobiotechnology",
       "ano": "2026",
-      "autores": "Myers-Hansen JL, Broyles B, … He Q (9 autores)",
-      "resumo_original": "The emergence and spread of Plasmodium falciparum drug-resistant parasites remain a significant hurdle to malaria control and elimination. However, how changes in transmission affect the evolution of drug resistance remains incompletely understood. We investigated the spatiotemporal prevalence of drug resistance across three distinct eco-epidemiological zones of Ghana (Guinea Savannah, Forest and Coastal) by characterizing genetic polymorphisms in five drug resistance genes (pfdhfr, pfdhps, pfmdr1, pfk13 and pfmdr2). A total of 764 P. falciparum isolates collected between 2010 and 2017 were analyzed using amplicon sequencing. The artemether lumefantrine (AL) resistance-associated genotypes, pfmdr1-N86 and pfmdr1-N86 F 184D1246, were near fixation in the Forest zone (90-100% and 63.9-100%, respectively). The prevalence of pfmdr1-N86 also increased significantly over time in the Guinea Savannah and Coastal zones (χ2 = 7.13, P<0.05; χ2 = 7.19, P<0.05). Regarding artemisinin (ART) resistance, none of the validated Southeast Asian pfk13 mutations were detected. We also characterized mutations in pfmdr2, another ART resistance-associated gene, for the first time in the Savannah and Forest zones of Ghana. For sulphadoxine-pyrimethamine (SP) resistance, the resistance-conferring alleles pfdhps - 540E and pfdhps - 581G occurred at prevalences below 5% and 10%, respectively. Similarly, the pfdhfr/pfdhps-I51R59N108G437E540 haplotype, associated with full SP resistance, was detected in fewer than 5% of parasites. The observed resurgence of parasites carrying the chloroquine (CQ)-sensitive proxy marker pfmdr1-N86, together with the increase in CQ-wildtype marker (pfcrt-K76) prevalence reported in other studies, suggests that CQ sensitivity is re-emerging and may inform future consideration of CQ-based combination therapies. Additionally, the rarity of the pfdhfr/pfdhps-I51R59N108G437E540 and pfdhfr/pfdhps-I51R59N108G437E540G581 haplotypes, driven by the low prevalence of pfdhps - 540E and pfdhps - 581G alleles, supports the continued use of SP for preventive therapy in Ghana.",
+      "autores": "Deng S, Zhao C, … Li D (9 autores)",
+      "resumo_original": "The repair of osteoporotic bone defects remains challenging because of the hostile pathological microenvironment-resembling \"barren soil\"-characterized by excessive oxidative stress and persistent inflammation, which impair cell survival and tissue regeneration. To address this problem, we developed a \"fertile soil\" implant system as a ready-to-use platform for osteoporotic bone regeneration. It consists of: (1) a three-dimensional (3D) -printed β-tricalcium phosphate/gelatin methacryloyl (β-TCP/GelMA) composite scaffold as a structural \"soil matrix,\" and (2) a Kaempferol-loaded ZIF-8 metal organic framework as an \"intelligent nutrient bank\" that responsively releases zinc ions and Kaempferol in acidic osteoporotic conditions.In vitro, the implant promoted a shift in macrophage polarisation from a pro-inflammatory M1 phenotype towards a pro-regenerative M2 phenotype. Mechanistic studies showed that this immunomodulatory effect was associated with improved mitochondrial function and reduced mitochondrial DNA (mtDNA) accumulation, accompanied by suppression of the cGAS-STING-TBK1-NF-κB signaling pathway. The implant reversed inflammation-induced metabolic reprogramming in macrophages by reducing glycolytic activity and restoring oxidative phosphorylation, thereby favouring the re-establishment of immune homeostasis. In parallel, the implant directly enhanced the osteogenic differentiation of mesenchymal stem cells and inhibited osteoclastogenesis, helping to restore the balance of bone remodelling. Conditioned-medium experiments further demonstrated that scaffold-mediated macrophage reprogramming established a pro-regenerative microenvironment that indirectly promoted osteogenesis and restrained osteoclast formation. In osteoporotic bone defect models, implantation enhanced new bone formation, improved trabecular microarchitecture, tissue integration, and vascularisation, and reduced local inflammation.In summary, this \"ready-to-move in\" osteoporotic bone repair system remodels the hostile microenvironment through immunomodulation and direct cell regulation, providing a \"fertile soil\" that may enhance bone defect repair under osteoporotic conditions.",
       "consultas": [
-        "malaria_vetor"
+        "(phosphate AND homeostasis) OR polyphosphate OR acidocalcisome"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
-        "tema": "ciclo",
-        "importancia": "baixa",
+        "tema": "hospedeiro",
+        "importancia": "media",
         "prioridade": "contexto",
-        "score": 20
+        "score": 20,
+        "implicacao": "🎲 Polifosfato em osso e célula mesenquimal (nunca tocada): não envolve polifosfato; a faísca é o conjunto de leituras imunometabólicas (mtDNA, glicólise versus OXPHOS, cGAS-STING) que pode acompanhar os experimentos de depleção de polyP em MSC.",
+        "resumo": "Implante de β-fosfato tricálcico e GelMA impresso em 3D, com MOF ZIF-8 carregado de kaempferol que libera zinco e kaempferol em meio ácido; em macrófagos, desloca M1 para M2, melhora a função mitocondrial, reduz mtDNA acumulado e suprime a via cGAS-STING-TBK1-NF-κB, revertendo a reprogramação metabólica inflamatória (menos glicólise, retorno da fosforilação oxidativa).",
+        "metodo": "Scaffold impresso em 3D, liberação responsiva e ensaios in vitro em macrófagos com leituras mitocondriais e de via inflamatória."
       }
     },
     {
-      "pmid": "43042031",
-      "doi": "10.1039/d6ra09055a",
-      "titulo": "Three-dimensional FIB-SEM analysis of the pore network of meso-/macroporous TiO-supported Pt catalysts and its relation to methylcyclohexane dehydrogenation kinetics.",
-      "revista": "RSC advances",
+      "pmid": "43037437",
+      "doi": "10.1128/cmr.00044-26",
+      "titulo": "Lymphatic filariasis-associated lymphedema: pathogenesis, diagnosis, management, and global elimination",
+      "revista": "Clin Microbiol Rev",
       "ano": "2026",
-      "autores": "Otani M, Takahashi R, … Matsuda K (4 autores)",
-      "resumo_original": "Porous TiO2 supports were synthesized by a sol-gel method using alkyl ketene dimer (AKD) particles as a template (0-5 wt%), and Pt/TiO2 catalysts were prepared by liquid-phase reductive deposition. Focused ion beam-scanning electron microscopy (FIB-SEM) tomography showed that, within the templated series, the macropore fraction of the reconstructed 5 µm × 5 µm × 5 µm volumes generally increased from 0.24 (AKD 1 wt%) to 0.77 (AKD 5 wt%), with apparently through-connected macropores in the most porous support, information complementary to N2 sorption. The actual Pt loadings (ICP-MS) were 2.25, 2.09, 1.31, and 1.25 wt% for AKD 0, 1, 3, and 5 wt%, with Pt nanoparticles of about 1-3 nm (TEM). In methylcyclohexane (MCH) dehydrogenation under an H2-rich feed, the reaction was far from equilibrium at 598-623 K, where the per-gram rates decreased in the order AKD 3 > 1 ≥ 0 > 5 wt%; at 623 K the rates per gram of Pt were 1.4-2.1 times higher on the AKD 3 and 5 wt% supports than on the template-free support. Intraparticle diffusion is most likely insignificant for the powder catalysts (Weisz-Prater), and the most macroporous catalyst was less active per Pt than the AKD 3 wt% catalyst at a similar Pt surface density, so the activity differences are associated with the Pt phase rather than with the macropores. A reversible plug-flow analysis gave the same activation energy for all catalysts over 573-623 K (30-32 kJ mol-1). The apparent activation energies (25.7-34.8 kJ mol-1, 523-623 K) were lower than that of a Pt/Al2O3 reference measured with the same apparatus and procedure (58.6 kJ mol-1, 523-598 K); this is a comparison of apparent values, both affected by the approach to equilibrium. As an order-of-magnitude projection that depends on the assumed diffusivity enhancement (3-30-fold), a first-order-equivalent Thiele analysis indicates that such a macropore network would raise the effectiveness factor of millimetre-scale pellets by about 1.6-4.8 times (2.6-3 times for a tenfold enhancement).",
+      "autores": "Narahari SR, Rajkumar P, … Murugaiyan J (7 autores)",
+      "resumo_original": "SUMMARYFilarial lymphedema (FL), a chronic consequence of lymphatic filariasis, represents one of the most neglected manifestations of helminth infection, despite affecting an estimated 120 million individuals across tropical and subtropical regions. More than 40 million people live with irreversible limb or genital disfigurement, accompanied by lifelong pain, disability, psychological distress, and social stigma. Unlike other causes of lymphedema, FL arises from sustained host-parasite interactions, in which prolonged immune modulation, microbial persistence, and secondary infections drive progressive lymphatic damage. Disease transmission and early pathology often remain clinically silent for years, allowing lymphatic injury to accumulate before overt swelling becomes apparent. Although global elimination efforts have reduced transmission, individuals with established FL remain largely neglected, highlighting a critical disconnect between parasite control and morbidity management. Current interventions are limited to hygiene-based care, infection control, and conservative limb management; no vaccine or curative therapy exists for established lymphatic failure. Diagnostic approaches primarily capture infection status rather than ongoing immune-mediated tissue damage, constraining disease staging, monitoring, and therapeutic evaluation in resource-limited settings. This review synthesizes current knowledge on the immunopathogenesis of FL, emphasizing the roles of chronic inflammation, genetics, immune dysregulation, microbial translocation, and lymphatic adipose tissue remodeling in disease persistence. We highlight emerging diagnostic biomarkers, therapeutic targets, and integrative management strategies, and outline critical gaps that hinder effective morbidity reduction. Advancing stage-specific diagnostic approaches and exploring intervention mechanisms will be essential to improve quality of life for affected individuals and achieve meaningful, sustainable elimination of lymphatic filariasis-associated morbidity.",
       "consultas": [
-        "polyp_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-17",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "ciclo",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43038759",
-      "doi": "10.1016/j.micron.2026.104141",
-      "titulo": "The importance of stomatal complex structure to the early evolution of vessels in angiosperms.",
-      "revista": "Micron (Oxford, England : 1993)",
-      "ano": "2026",
-      "autores": "Pautov A, Ivanova A, … Pautova I (7 autores)",
-      "resumo_original": "The development and structural variety of stomatal complexes in Trochodendron aralioides, a species with primitive vessels, were studied. Light, scanning and transmission electron microscopy were used. The stomata have large outer ledges which form stomatal cavities. The guard cells that develop through maternal cells division initially lie on a level with the subsidiary cells. Mutual arrangement of stomatal complex cells changes during their growth. The subsidiary cells of mature stomata lie under the stomata and contain large lipid inclusions, which occupy most of their volume. Four generations of stomata were identified. The epidermis is dominated by tertiary and quaternary stomata. They are smaller than the primary and secondary ones and have the narrowest outer ledge apertures. Based upon the notion that the cavities with narrow apertures are able to decrease stomatal conductance and transpiration rate, and large lipid inclusions hinder hydropassive opening of stomata, it was supposed that these structures could be important for the evolution of some plants, i.e., that they could protect their more vulnerable than tracheids primitive vessels from cavitation and thus provide the possibility of their further structure modifications. Besides, stomatal cavities could represent a structural advantage across varying environments. The cavities occur in plants both in humid environments, where they impede the physical blockage of stomatal pores by water, and in arid ones, where they limit water loss. So, stomatal cavities, even when they have appeared in humid environmental conditions, were adaptive for the arid ones, and vice versa. If they have emerged early in plant evolution, they could contribute to the expansion of flowering plants into different environments.",
-      "consultas": [
-        "polyp_ultraestrutura"
+        "Wolbachia"
       ],
       "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
       "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43047716",
+      "doi": "10.3389/fimmu.2026.1928095",
+      "titulo": "T/NK-cell remodeling and IFN-responsive myeloid activation delineate immunometabolic risk profiles in chronic active Epstein-Barr virus disease",
+      "revista": "Front Immunol",
+      "ano": "2026",
+      "autores": "Cao Y, Zhou Z, … Zhang W (13 autores)",
+      "resumo_original": "Chronic active Epstein-Barr virus disease (CAEBV) is a rare EBV-associated T/NK-cell lymphoproliferative disorder characterized by persistent viral infection, systemic inflammation, and highly variable clinical courses. Patients may develop HLH-like hyperinflammation, severe organ involvement, lymphoma transformation, or death, yet current assessment does not fully explain why patients with similar viral burden follow divergent trajectories.\nWe integrated PBMC single-cell RNA-sequencing profiles from healthy controls and CAEBV samples with a retrospective cohort of 130 independent CAEBV patients to connect cellular immune remodeling with clinically measurable features.\nSingle-cell analysis identified T/NK remodeling toward cytotoxic, exhaustion-associated, senescence-associated, and metabolically altered states, accompanied by IFN-responsive, antigen-presenting myeloid programs. Ligand-receptor and receiver-side analyses prioritized candidate IFNγ-associated T/NK-to-myeloid communication within this IFN-responsive program, linking NK and CD8+ T-cell states with myeloid inflammatory activation. Guided by these findings, we mapped inflammatory, metabolic, coagulation, and lymphocyte-subset variables into a biology-informed clinical immunometabolic index reflecting inflammatory cytokine activation, metabolic stress, and adaptive immune contraction. Internally defined index strata were associated with increasing CAEBV+HLH, death, and severe-disease burden. Unsupervised clinical mapping further identified three exploratory but interpretable immunometabolic patterns, including immune-metabolically preserved, intermediate immune-contraction, and IFNγ-high immunometabolic high-risk, with distinct immune-cell, inflammatory, metabolic, and outcome profiles.\nTogether, these findings organize CAEBV heterogeneity around linked T/NK remodeling, myeloid activation, and systemic immunometabolic stress. This single-cell-informed clinical-pattern map complements EBV-DNA and organ-size assessment and supports prospective validation of clinically measurable, mechanism-guided monitoring and intervention strategies.",
+      "consultas": [
+        "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43040891",
+      "doi": "10.1002/ardp.70381",
+      "titulo": "Recent Developments in Sulfonamide-Based Anti-Malarial Agents: Structure-Activity Relationships and Future Perspectives",
+      "revista": "Arch Pharm (Weinheim)",
+      "ano": "2026",
+      "autores": "Kong SH, Chauhan S, … Qin HL (6 autores)",
+      "resumo_original": "Despite tremendous advancements in prevention and treatment, malaria continues to be one of the deadliest infectious illnesses in the world and a persistent public health concern. The critical need to find new chemotherapeutic drugs with better efficacy, selectivity, and resistance profiles is highlighted by the widespread rise of resistance to traditional anti-malarial drugs. Due to their exceptional structural adaptability, advantageous pharmacokinetic characteristics, and capacity to modulate several biological targets involved in the Plasmodium life cycle, sulfonamide-based compounds have garnered significant attention in anti-malarial drug discovery among the various classes of bioactive molecules. Many derivatives with strong action against drug-sensitive and multidrug-resistant strains of Plasmodium falciparum have been produced via structural modifications of the sulfonamide pharmacophore. All things considered, this review offers insightful information about the medicinal chemistry of sulfonamide derivatives and a strategic framework for the logical development of novel anti-malarial treatments.",
+      "consultas": [
+        "plasmodium OR arbovirus OR dengue OR zika"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
         "tema": "ciclo",
         "importancia": "baixa",
         "prioridade": "contexto",
@@ -349,15 +683,55 @@
       }
     },
     {
-      "pmid": "43034225",
-      "doi": "10.1007/s11306-026-02547-w",
-      "titulo": "Correction: Metabolomics of cerebrospinal fluid in pediatric neuroborreliosis: unraveling candidate immunometabolic signatures and diagnostic potential.",
-      "revista": "Metabolomics : Official journal of the Metabolomic Society",
+      "pmid": "43039345",
+      "doi": "10.1002/ptr.70526",
+      "titulo": "Saponins and Sapogenins in Inflammation Therapeutics: Glycosylation-Dependent Mechanisms, Pharmacokinetics and Advanced Delivery Solutions",
+      "revista": "Phytother Res",
       "ano": "2026",
-      "autores": "Serrafi A, El Idrissi A, … Szenborn L (13 autores)",
+      "autores": "Qin M, Fu Y, … Gao X (8 autores)",
+      "resumo_original": "Saponins and their aglycones, the sapogenins, are the bioactive constituents of medicinal herbs such as Panax ginseng and Astragalus membranaceus, and they act on inflammation at several levels at once. The canonical nuclear factor kappa-light-chain-enhancer of activated B cells (NF-κB), mitogen-activated protein kinase (MAPK), and NLR family pyrin domain-containing 3 (NLRP3) inflammasome cascades are the best-replicated entry points, and beyond them these compounds modify non-coding RNA networks and post-translational regulation and reshape immuno-metabolic circuits by suppressing glycolytic enzymes and engaging AMPK-dependent energy sensing. Whether a given activity belongs to the glycoside or to the aglycone is often unclear, because orally administered glycosides are extensively deglycosylated by the intestinal microbiota, and this review therefore organises the evidence by glycosylation status and annotates every compound accordingly. Translation is constrained by poor aqueous solubility, low and variable bioavailability, structural instability, and dose-dependent toxicity, and stimulus-responsive nanocarriers, exosome-based systems, and microbiota-aware pharmacokinetic modelling are the most credible routes past these barriers. The mechanistic picture that emerges is coherent but still provisional, and progress now depends less on further pathway catalogues than on experiments that establish direct target engagement and on pharmacokinetic-pharmacodynamic data obtained in human-relevant models.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43041060",
+      "doi": "10.3350/cmh.2025.1165",
+      "titulo": "Integrated metabolomics reveals nervonic acid-associated immunometabolic",
+      "revista": "Clin Mol Hepatol",
+      "ano": "2026",
+      "autores": "Xu Y, Xu D, … Qin L (15 autores)",
+      "resumo_original": "Hepatocellular carcinoma (HCC) exhibits profound metabolic heterogeneity, yet the functional lipid metabolites driving tumor progression and immune microenvironment remodeling remain insufficiently defined. This study aimed to construct a metabolomic atlas of HCC and identify clinically relevant metabolic vulnerabilities.\nUntargeted metabolomic profiling was performed in 91 paired HCC and adjacent non-tumor tissues. Integrated metabolomic, transcriptomic, clinicopathological, and immune analyses characterized metabolic heterogeneity. Nervonic acid was evaluated in HCC cells, immunocompetent and immunodeficient mouse models, and knockdown and rescue experiments targeting ATP citrate lyase (ACLY).\nHCC showed extensive metabolic remodeling with limited metabolite-gene concordance. Clustering identified four metabolomic subtypes. The high-risk subtype MS1 exhibited poor prognosis, pronounced very-long-chain fatty acid remodeling, and immunosuppressive features. Nervonic acid, a very-long-chain monounsaturated fatty acid, was enriched in MS1, increased in HCC tissues, and associated with unfavorable survival. It promoted HCC cell proliferation, migration, invasion, and tumor growth. In immunocompetent models, nervonic acid reduced CD8+ T-cell infiltration and increased M2-like macrophage enrichment. Exploratory CD8 depletion suggested attenuation of the nervonic acid-associated tumor growth increment. Coordinated lipid remodeling included altered free fatty acid composition, enhanced fatty acid uptake, increased cholesterol abundance, and changes in membrane lipid order. Nervonic acid induced an ACLY-centered lipogenic program; in HCC cells, ACLY knockdown attenuated malignant phenotypes and lipid accumulation, and ACLY rescue restored these responses.\nNervonic acid marks an aggressive HCC subtype with distinct immune features. Knockdown and rescue in HCC cells implicate ACLY in lipid remodeling. The prognostic value of tumor nervonic acid requires independent validation.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-17",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43041167",
+      "doi": "10.1093/infdis/jiag553",
+      "titulo": "What Vaccines Teach Us About Dengue Immunity",
+      "revista": "J Infect Dis",
+      "ano": "2026",
+      "autores": "Halstead SB (1 autor)",
       "resumo_original": "",
       "consultas": [
-        "stork_espelho"
+        "plasmodium OR arbovirus OR dengue OR zika"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
@@ -369,235 +743,275 @@
       }
     },
     {
-      "pmid": "43039855",
-      "doi": "10.3724/zdxbyxb-2026-0318",
-      "titulo": "[Echinacoside attenuates microglial pyroptosis after cerebral ischemia-reperfusion injury in mice by inhibiting STING/NLRP3 pathway].",
-      "revista": "Zhejiang da xue xue bao. Yi xue ban = Journal of Zhejiang University. Medical sciences",
+      "pmid": "43040841",
+      "doi": "10.1002/cbic.70603",
+      "titulo": "Understanding Nonreacting Substrate Analogs as Potential Scaffolds for Inhibitor Design Against Mycobacterium tuberculosis Cystathionine β-Synthase",
+      "revista": "ChemBioChem",
       "ano": "2026",
-      "autores": "Lu Q, Guo M, … Wang Y (4 autores)",
-      "resumo_original": "To investigate the regulatory effect of echinacoside (ECH) on microglial pyroptosis in cerebral ischemia-reperfusion injury and its underlying mechanism.\nFifty 8-week-old specific-pathogen-free male C57BL/6 mice were randomly divided into a sham group, a model group, and an ECH intervention group (n=15 per group). A mouse model of transient middle cerebral artery occlusion (tMCAO) was established to mimic cerebral ischemia-reperfusion injury. The ECH intervention group received ECH (9 mg/kg) for 7 days after modeling. Neurological function, infarct volume, and cerebral blood flow were assessed by Longa neurological deficit scoring, TTC staining, and laser speckle imaging, respectively. The expression levels of proteins related to the NLRP3 inflammasome and the STING signaling pathway were determined by Western blotting and immunohistochemical staining. Microglia were labeled with ionized calcium-binding adaptor molecule-1 (Iba-1), and the proportions of STING-positive and GSDMD-positive microglia were determined by double immunofluorescence colocalization staining. GSDMD-mediated membrane pore formation was observed by transmission electron microscopy.\nCompared with the model group, the ECH intervention group showed improved neurological deficit scores, reduced infarct volume, and restored cerebral blood flow (all P<0.01). ECH significantly downregulated the expression of NLRP3, apoptosis-associated speck-like protein containing a CARD domain (ASC), cleaved caspase-1, GSDMD, STING, phosphorylated nuclear factor-κB p65, and monocyte chemoattractant protein-1 (all P<0.01). Double immunofluorescence colocalization showed that GSDMD and STING were co-expressed with Iba-1, respectively, indicating that pyroptosis and STING pathway activation occurred predominantly in microglia. Transmission electron microscopy revealed that ECH reduced GSDMD-mediated membrane pore formation in microglia.\nECH may inhibit microglial pyroptosis by suppressing NLRP3 inflammasome activation and the STING signaling pathway.",
+      "autores": "Polepalli S, Roy A, … Dutta S (7 autores)",
+      "resumo_original": "Mycobacterium tuberculosis cystathionine beta-synthase (MtbCBS), a pyridoxal-5'-phosphate (PLP)-dependent enzyme, regulates sulfur metabolism and redox homeostasis, making it a model enzyme for inhibition studies and to understand scaffold behavior. Amino acids remains as an attractive scaffold for designing novel inhibitors having reduced cytotoxicity and improved properties for cellular uptake. This study integrates computational, biophysical, and structural approaches to provide for a potential scaffold that could be further modified to inhibit MtbCBS. Structure-based sequence alignment of CBS homologs identified seven conserved polar/charged regions critical for PLP-substrate interactions. Molecular docking of polar substrate analogs (threonine, histidine, glutamic acid, and arginine) at the conserved active site revealed distinct binding modes for histidine, glutamic acid, and arginine. Molecular dynamics simulations demonstrated persistent binding of histidine, stabilized by hydrophobic interactions relative to other analogs. Experimental studies revealed histidine's ability to form stable external aldimine adducts, modulating enzyme thermostability (ΔTm), akin to known reacting substrates. Finally, cryo-EM-based structural studies revealed two classes of MtbCBS, one with extra density suggesting the noncovalently bound histidine and the unbound WT MtbCBS maintaining internal aldimine. This suggests that exploration of the chemical modification space of the histidine moiety might provide us with a potential inhibitor against MtbCBS and enzymes of the RTS pathway.",
       "consultas": [
-        "polyp_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "cerebro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43035198",
-      "doi": "10.1016/j.phrs.2026.109744",
-      "titulo": "Metabolic Reprogramming in Hepatocellular Carcinoma: Liver-Specific Immune Dysfunction, Immunotherapy Resistance, and Translational Biomarker Development.",
-      "revista": "Pharmacological research",
-      "ano": "2026",
-      "autores": "Dai C, Lou S, … Xu X (10 autores)",
-      "resumo_original": "Hepatocellular carcinoma (HCC) arises in chronically injured, often fibrotic or cirrhotic liver, where metabolism, immunity, vascular and stromal organization, disease etiology, tumor state, and hepatic reserve are tightly interconnected. Although immune checkpoint inhibitor (ICI)-based therapies have expanded treatment options for advanced HCC, responses remain heterogeneous because of both primary and acquired resistance. Metabolic reprogramming may shape these outcomes by altering nutrient availability, metabolite accumulation, antigen presentation, immune-cell fitness, stromal organization, and spatial immune access. This review provides an evidence-weighted assessment of major immunometabolic mechanisms in HCC, focusing on the glycolysis-hypoxia-lactate and tryptophan-kynurenine/IDO1 axes, lipid and cholesterol metabolism, purinergic signaling, mitochondrial and redox regulation, and ferroptosis. We emphasize that these pathways are context dependent, with effects determined by cellular source, differentiation state, spatial organization, and tumor-intrinsic versus immune-cell metabolic adaptation. Molecular heterogeneity, etiology, and cirrhosis are considered together, with WNT-β-catenin/CTNNB1-associated states illustrating their intersection with immune organization and ICI response. Because translational maturity varies widely, we distinguish mechanistic evidence, biomarker association, predictive validation, and clinical utility. We propose a framework integrating HCC specificity, primary human validation, cellular and spatial localization, causal immune-functional evidence, treatment-linked and longitudinal assessment, biomarker feasibility, and liver-specific safety. The framework also considers intervention timing and the distinction between primary and acquired ICI resistance. It may guide progression from metabolic discovery to spatially resolved mechanism, biomarker development, pharmacodynamic validation, and clinical evaluation while accounting for cirrhosis-associated remodeling, hepatic reserve, and treatment-related toxicity.",
-      "consultas": [
-        "stork_espelho"
-      ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "hospedeiro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43038066",
-      "doi": "10.1097/COH.0000000000001092",
-      "titulo": "Killer lifestyle: natural killer cells, obesity, and HIV/simian immunodeficiency virus infections.",
-      "revista": "Current opinion in HIV and AIDS",
-      "ano": "2026",
-      "autores": "Beaumont E, Daira M, … Apetrei C (4 autores)",
-      "resumo_original": "The success of antiretroviral therapy (ART) that transformed HIV infection in a chronic clinical condition, and reversed the typical failure to thrive characteristic for HIV disease progression to weight gains, resulted in new challenges for the clinical management of the persons living with HIV (PLWH). Prolonged survival also dramatically increased the average age of PLWH, and the frequency of comorbidities associated with HIV. Most of these clinical challenges stem from the persistent inflammation and accelerated aging characteristic to PLWH, which are also associated with obesity.\nNatural killer (NK) cells, which suffer multiple alterations during HIV infection and in obese people, such as a reduction in the frequency of circulating NK cells, alterations in their surface receptor repertoire and expression, unbalanced anti and proinflammatory profiles, with a dysregulated cytokine production. In the meantime, while NK cells are increasingly activated, their functionality (i.e., cytotoxicity) is impaired and their metabolism is altered in obese individuals and in PLWH.\nThese multiple effects of HIV and obesity on NK cells call for interventions aimed at reversing the immunometabolic reprograming. Multiple such interventions are currently tested, and their impact on the NK cells functionality is still to be evaluated.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "hospedeiro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43037760",
-      "doi": "10.1007/s10661-026-16149-5",
-      "titulo": "Matrix-matching calibration determination of cadmium using coral reef-like FeOOH-based preconcentration in Antarctic lake water samples.",
-      "revista": "Environmental monitoring and assessment",
-      "ano": "2026",
-      "autores": "Kılıçlı CK, Bağlı Ş, … Bakırdere S (4 autores)",
-      "resumo_original": "In this work, solid-phase extraction based on iron oxyhydroxide (FeOOH) nanoparticles were used to extract and pre-concentrate cadmium ions in a precise and sensitive manner. The sensitivity and accuracy of the developed method have increased compared to conventional flame atomic absorption spectrophotometry (FAAS). The improved method provides simple, economic and efficient procedure for the determination of cadmium ions. FeOOH nanoparticles were synthesized by using a hydrothermal route. The nano-sized structure of the FeOOH was as indicated by X-ray diffraction analysis and scanning electron microscopy. Numerous variables, including the medium's pH, the amount of sorbent, mixing type and time, the eluent concentration/volume were optimized using a univariate approach. Optimal conditions resulted in limits of detection and quantification of 0.24 and 0.79 μg/L, respectively. Real samples were obtained from two different lakes (Horseshoe Island, Antarctica) and recovery experiments were performed for the accuracy check. Recovery percentages were calculated using the matrix matching method and high percent recovery results between 85.3 and 113.5% demonstrated the applicability and accuracy of the developed method for cadmium determination in complex environmental matrices.",
-      "consultas": [
-        "polyp_ultraestrutura"
-      ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "ciclo",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43042837",
-      "doi": "10.1021/acs.accounts.6c00639",
-      "titulo": "Toward Sustainable Production of Reduced Phosphorus Compounds.",
-      "revista": "Accounts of chemical research",
-      "ano": "2026",
-      "autores": "Löwe P, Cummins CC (2 autores)",
-      "resumo_original": "Although phosphate is the thermodynamically stable and overwhelmingly abundant form of phosphorus in Nature, the modern phosphorus chemicals industry still relies heavily on white phosphorus (P4) as its central feedstock. In the thermal process, phosphate rock is reduced with coke and silica at temperatures around 1500 °C to produce P4, which is then converted to intermediates such as PCl3 before further conversion to value-added phosphorus compounds. This reaction sequence is effective, but involves the reduction of phosphate under high temperature, followed by additional redox and functionalization steps before many target phosphorus compounds are obtained. We therefore asked whether phosphate-derived feedstocks could be converted more directly into reduced phosphorus compounds, making the production of P4 as an intermediate unnecessary while retaining the synthetic flexibility needed for producing a large variety of phosphorus compounds. That question led to three areas of investigation. The first exploits the strong thermodynamic driving force of Si-O bond formation to achieve oxygen-abstraction reduction of phosphate-derived substrates. This led to the discovery of the bis(trichlorosilyl)phosphide anion,[P(SiCl3)2]-, a previously unknown P(-3) synthon that can now be accessed from trimetaphosphate, orthophosphate salts, and phosphoric acid. It can be further converted to value-added phosphorus compounds, such as phosphines, hexafluorophosphate, or phosphonium salts. Protonation of [P(SiCl3)2]- gives bis(trichlorosilyl)phosphine,HP(SiCl3)2, which undergoes selective radical hydrophosphination and gives synthetic access to primary phosphines, chlorophosphines, phosphinic acids, phosphonic acids, and phosphonium salts. The second strategy uses mechanochemistry to convert condensed phosphates directly to phosphite through hydride phosphorylation. Ball milling with alkali-metal hydrides provides a solvent-free route to a P(III) product while retaining the PO3 framework of the starting material. This route also works with biologically recovered polyphosphate feedstocks, which is important for the recycling of sewage sludge. The same mechanochemical platform further proved useful for the analogous redox-neutral phosphorylation of acetylides, giving alkynyl phosphonates directly from condensed phosphates. Finally, strongly reducing mechanochemical conditions based on supported alkali-metal dispersions gave access to ortho-phosphite,PO33-, a previously \"missing\" phosphorus oxoanion. This new anion can be converted further to phosphite salts, tris(trimethylsilyl) phosphite, and alkyl phosphonates. Taken together, these studies show that condensed phosphates and phosphoric acid can be directly used as feedstocks for synthetic phosphorus chemistry, without relying on P4 as an intermediate. This approach enables the identification of reactions that preserve P-O bonds where desirable and creates new opportunities to link phosphorus recovery from waste streams with the synthesis of value-added phosphorus compounds. Determining whether such routes are also more sustainable relative to established manufacturing processes will require a comparative assessment of energy demand, reagent production, waste generation, and process hazards.",
-      "consultas": [
-        "polyp_ultraestrutura"
+        "(phosphate AND homeostasis) OR polyphosphate OR acidocalcisome"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
-        "tema": "ciclo",
+        "tema": "metodos",
         "importancia": "baixa",
         "prioridade": "contexto",
         "score": 20
       }
     },
     {
-      "pmid": "43040445",
-      "doi": "10.1186/s41182-026-01115-1",
-      "titulo": "Survival following 14% Plasmodium falciparum hyperparasitaemia: cerebral malaria and anaemic heart failure in a Nigerian toddler.",
-      "revista": "Tropical medicine and health",
+      "pmid": "43045350",
+      "doi": "10.1016/j.vprsr.2026.101587",
+      "titulo": "Case report: A worm's eye view: Fatal intraocular Dirofilaria immitis in a domestic cat from Georgia, USA",
+      "revista": "Vet Parasitol Reg Stud Reports",
       "ano": "2026",
-      "autores": "Unuane AE, Adedosu NA, … Adewuyi GM (12 autores)",
-      "resumo_original": "Malaria remains a leading cause of mortality amongst children under five in sub-Saharan Africa. Complicated Plasmodium falciparum malaria frequently presents with multiple life-threatening sequelae, including cerebral malaria, profound anaemia, and hyperparasitaemia. Although parasite densities exceeding 10% are independently associated with high mortality, achieving full recovery in a young child presenting with simultaneous extreme parasitaemia, deep coma, and severe malarial anaemia remains exceptionally noteworthy.\nWe report the case of a 20-month-old male from Akoko, Ondo State, Nigeria, who presented with a five-day history of fever, cough, and diarrhoea, progressing to unconsciousness. Clinical examination revealed a Blantyre Coma Scale of 2/5, profound pallor, tachycardia (158 bpm), and tender hepatomegaly. Laboratory investigations confirmed an extreme 14% P. falciparum parasitaemia and a life-threatening packed cell volume of 8%. Cerebrospinal fluid analysis ruled out bacterial meningitis though an elevated protein level (71 mg/dL) supported the diagnosis of cerebral malaria.\nThe patient was stabilised in the cardiac position to optimise venous return and alleviate signs of incipient heart failure, and was initiated on a multi-modal therapeutic regimen. Antimalarial therapy was commenced with intravenous artesunate (3 mg/kg), supported by two sessions of sedimented red blood cell transfusions and empiric IV Ceftriaxone. By the fourth day of treatment, the child regained full consciousness and was transitioned to oral artemether-lumefantrine. The patient was discharged in a stable condition on day seven with a recovered packed cell volume of 35%.\nThis case highlights the critical importance of the \"24-h window\" in treating severe malaria. The successful outcome confirms the efficacy of intravenous artesunate and the necessity of aggressive supportive care-including blood transfusion-in managing the severe triad of hyperparasitaemia, cerebral sequestration, and severe anaemia in paediatric patients within endemic regions. This report emphasises the need for public health initiatives that educate caregivers on the early recognition of malaria symptoms to facilitate prompt care. Furthermore, it reaffirms that urgent microscopic evaluation remains the gold standard for the immediate diagnosis of hyperparasitaemic cases in resource-limited settings.",
-      "consultas": [
-        "malaria_vetor"
-      ],
-      "data_fonte": "2026-11-17",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "cerebro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43043070",
-      "doi": "10.1002/iid3.70606",
-      "titulo": "Novel EGCG Analog Modulates Host Immune Response to Promote Intracellular Clearance of Staphylococcus Aureus Through Interaction With the 67-kDa Laminin Receptor.",
-      "revista": "Immunity, inflammation and disease",
-      "ano": "2026",
-      "autores": "Grosso R, Ahmed SK, … Wong-Beringer A (4 autores)",
-      "resumo_original": "Staphylococcus aureus bacteremia (SAB) is a leading cause of sepsis. Intracellular bacterial survival in liver macrophages contributes to persistent bacteremia. We evaluated the immunometabolic action of EGCG epigallocatechin gallate (EGCG), a green tea polyphenol, and its synthetic analogs (MCC-2 and MCC-4) and the putative target, 67-kDa laminin receptor (67LR).\nMurine Kupffer cells (KCs) were infected with live or heat-killed MRSA and treated with study compounds alone or in combination with vancomycin. Intracellular bacterial clearance was assessed at 0, 10, and 24 h post-treatment. KCs were challenged with heat-killed SA when evaluating compound immunometabolic activity: ROS generation using dihydroethidium fluorescence, TNF-α and IL-10 production by ELISA, and mitochondrial biogenesis markers (PGC-1 α, TFAM, mtDNA) by qRT-PCR, and MitoTracker assays. The role of 67LR mediating immunometabolic action was investigated by receptor disruption and binding studies via computational docking and surface plasmon resonance (SPR).\nMCC-2 enhanced KC-mediated intracellular MRSA clearance by 1.07 log CFU reduction when combined with vancomycin compared to vancomycin alone. Enhanced clearance was accompanied by up to a 269% increase in ROS generation, a 3.4-fold increase in the TNF-α/IL-10 ratio, and a 25% increase in mitochondrial mass. Receptor disruption and binding studies suggest that MCC-2 activity is mediated partially via 67LR. MCC-4 showed similar mitochondrial activating effects as MCC-2 but was devoid of any antibacterial or immune enhancing activity.\nMCC-2 demonstrates promise for further development as an adjunct candidate to antibiotic therapy given its immunometabolic action in enhancing macrophage antimicrobial function while restoring mitochondrial competence through the putative target, 67LR.",
-      "consultas": [
-        "imunometabolismo"
-      ],
-      "data_fonte": "2026-11-17",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "hospedeiro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43037646",
-      "doi": "10.1083/jcb.202610012",
-      "titulo": "Mature dendrites can function without their mitochondria under ideal conditions.",
-      "revista": "The Journal of cell biology",
-      "ano": "2026",
-      "autores": "Harbauer AB (1 autores)",
-      "resumo_original": "In this issue, Wang et al. (https://doi.org/10.1083/jcb.202511010) show that adult Drosophila horizontal system dendrites remain structurally and functionally intact despite mitochondrial depletion, contrasting with the necessity of mitochondria during development. Their findings suggest that visual system functionality does not require mitochondrial functions under ideal conditions.",
-      "consultas": [
-        "neuro_eixo"
-      ],
-      "data_fonte": "2026-11-16",
-      "fonte_captura": "PubMed",
-      "v6": {
-        "tema": "cerebro",
-        "importancia": "baixa",
-        "prioridade": "contexto",
-        "score": 20
-      }
-    },
-    {
-      "pmid": "43042721",
-      "doi": "10.1111/ans.71070",
-      "titulo": "The Muheza Approach: A 7-Year Experience of Sustainable and Affordable Mesh Hernia Surgery in a Lower-Middle Income Country.",
-      "revista": "ANZ journal of surgery",
-      "ano": "2026",
-      "autores": "Pickering O, Michael B, … Szymankiewicz M (7 autores)",
-      "resumo_original": "Hernias are a public health priority in Africa, with a focus on hernia surgery providing the potential to reduce the significant burden of hernia-related morbidity. Only a minority of patients in Africa are currently receiving a gold-standard mesh repair, owing to the cost of commercial mesh. In this study, we describe the long-term outcomes for patients undergoing hernia repairs utilising an affordable polyethylene 'mosquito-net' mesh (MNM) in Muheza, Tanzania.\nData from consecutive patients undergoing MNM hernia repair in a single centre in Muheza between November 2018 and February 2026 were recorded in a prospectively maintained database. Operative technique using a tension-free sublay technique and postoperative care, where feasible, was standardised. Follow-up was performed through a mix of face-to-face and telephone consultation.\nA total of 268 hernia repairs were included in the final analysis with a 596-day median follow-up. Most cases were inguinal hernias (89.9%) and primary repairs (85.1%). Thirty-day morbidity rate was 3.5%, including one (0.4%) mesh infection and two patients (0.7%) who required a return to theatre. Chronic pain was reported in 17 (6.3%) patients. There was one hernia recurrence during the study period.\nFollowing our reporting of the early results in 2020, we now offer the longer-term data to demonstrate that the Muheza Approach to hernias utilising MNM is a safe, effective, affordable and sustainable strategy that could provide a platform for wider implementation across LMICs to address the shortfall in high-quality hernia surgery.",
+      "autores": "Jones H, Yared K, … Yabsley MJ (5 autores)",
+      "resumo_original": "Dirofilaria immitis (canine heartworm) is a mosquito-transmitted nematode for which the domestic cat (Felis catus) is an aberrant host. Feline infections typically involve low worm burdens, unisex or developmentally arrested specimens, absent or transient microfilaremia, and unreliable antigen serology. Ectopic larval migration to the ocular anterior chamber is rarely reported. We describe a fatal case of intraocular D. immitis in a 6-year-old male neutered indoor/outdoor domestic shorthair from Walton County, Georgia, USA. The cat presented to a local veterinary hospital with lethargy, hyporexia, and an owner-observed organism in the right eye (OD); examination revealed anterior chamber opacity, and a presumptive diagnosis of ophthalmomyiasis interna likely due to a Cuterebra species. Prior to referral, the cat received selamectin/sarolaner (Revolution® Plus), epsiprantel (Cestex), and a rabies vaccine. At the referral center, the cat developed recurrent seizure-like episodes and died overnight despite supportive care. A SNAP Feline Triple Test (IDEXX) was negative for heartworm antigen, FeLV antigen, and FIV antibody. Post-mortem enucleation of OD revealed a single nematode (10.74 cm) within the anterior chamber. The worm was morphologically consistent with Dirofilaria and was confirmed to be D. immitis by sequence analysis of the COI and 18S rDNA gene targets. This case highlights the limitations of feline heartworm testing, initial clinical misidentification, morphologic limitations in aberrant host-tissue combinations, and the importance of pre-treatment microfilaremia assessment.",
       "consultas": [
         "vetores_amplo"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
-        "tema": "ciclo",
+        "tema": "vetor",
         "importancia": "baixa",
         "prioridade": "contexto",
         "score": 20
       }
     },
     {
-      "pmid": "43041974",
-      "doi": "10.3762/bjnano.17.108",
-      "titulo": "Kinetically controlled boron carbide composite sub-micrometer particle formation pathways during continuous-flow laser melting in liquids with high-power lasers.",
-      "revista": "Beilstein journal of nanotechnology",
+      "pmid": "43046210",
+      "doi": "10.1186/s12931-026-03881-2",
+      "titulo": "Endoplasmic reticulum stress promotes ferroptosis in ventilator-induced lung injury by promoting HRD1-dependent GPX4 ubiquitination via the IRE1α/XBP1 pathway",
+      "revista": "Respir Res",
       "ano": "2026",
-      "autores": "Koch NG, Rehbock C, … Barcikowski S (4 autores)",
-      "resumo_original": "Monodisperse, spherical sub-micrometer particles with clean, smooth surfaces are key materials used as composite reinforcements, abrasives, and tribological additives, but remain synthetically challenging to produce. Pulsed laser melting in liquids (LML) is an environmentally friendly, emerging route for producing such particles. However, demonstrations have so far been limited to batch reactors, which are difficult to scale up to industrial production. Here, we extend laser melting in liquids to a continuous flat jet flow-through reactor in which boron carbide composite nanoparticles (B4CC) dispersed in ethanol are fed perpendicular to a nanosecond pulsed high-power ultraviolet laser beam; this is complemented by additional experiments employing pristine boron carbide. We elucidate how flow conditions and the application of modern high-repetition-rate lasers alter particle formation pathways. Characterization of B4CC, irradiated at fluences of 45-135 mJ·cm-2, by transmission electron microscopy and dynamic light scattering, evidences the formation of a bimodal size distribution of spherical particles with mean diameters of ≈50 and ≈100 nm, verifying the parallel occurrence of isochoric reshaping and an aggregation-melting-fusion mechanism. While the smaller particle size fraction formed in accordance with thermal equilibrium calculations, the second size mode, derived from a multistep aggregation-melt-fusion pathway, was significantly smaller than predicted. Systematic variation of the number of laser pulses per unit volume (PPV) from 1 to 16 by tuning the interpulse delay (τIP) from 1.4 to 0.1 ms revealed an initial increase of the mean diameter of the second mode with PPV, reaching maximum size at 4 PPV. Interestingly, at higher PPV, further particle growth is arrested, probably due to an interplay between low particle mass concentration and shorter τIP limiting the number of aggregation-melt-fusion steps, indicating kinetically controlled particle formation pathways. If the laser fluence is increased to 180 mJ·cm-2, laser fragmentation in liquid prevails, and small mass fractions of ultrasmall nanoparticles (approx. 2 nm) are formed, which constitutes the upper limit of the LML process window. Overall, at the example of the ultrahard material boron carbide, difficult to process by other methods into perfect spheres, kinetically controlled LML in a flat jet flow-through reactor gives access to nanostructures in a size range previously unattainable by laser processing, establishing the basis for upscaling production in liquid flow with matched laser pulse numbers.",
+      "autores": "Jiang Y, Ling M, … Ye L (11 autores)",
+      "resumo_original": "Ventilator-induced lung injury (VILI) is a serious complication of mechanical ventilation. Endoplasmic reticulum stress (ERS) has been implicated in regulating ferroptosis, and we previously linked ERS to VILI-associated inflammation. However, how ERS mechanistically drives ferroptosis during VILI remains unclear.\nC57BL/6J mice were pretreated with the IRE1α RNase inhibitor STF-083010 or the HRD1 inhibitor LS102 before high tidal volume (HTV) ventilation for 4 h. Mouse lung epithelial cells were transfected with sgGpx4, siHrd1, or corresponding controls and then subjected to 20% cyclic stretch (CS) with or without ferrostatin-1. Lung injury was assessed by H&E staining, wet/dry ratio, and bronchoalveolar lavage fluid (BALF) protein and cell counts. Inflammation was quantified by ELISA and qRT-PCR. Ferroptosis was evaluated by transmission electron microscopy and measurement of malondialdehyde (MDA), Fe²⁺, and reactive oxygen species (ROS). Protein abundance and localization were analyzed by immunoblotting and immunohistochemistry. HRD1/GPX4 interaction and GPX4 ubiquitination were examined by co-immunoprecipitation and ubiquitination assays.\nHTV ventilation induced severe lung injury with ferroptotic features and reduced SLC7A11 and GPX4 expression. STF-083010 alleviated lung injury and inflammation, suppressed ferroptosis, and restored SLC7A11/GPX4, while attenuating HRD1 upregulation. GPX4 deletion markedly increased susceptibility to CS-induced cell death and was not rescued by ferrostatin-1. Mechanistically, HRD1 interacted with GPX4 and promoted its ubiquitination and degradation under injurious ventilation. HRD1 knockdown preserved GPX4 stability and reduced CS-induced ferroptosis. Consistently, LS102 mitigated ferroptosis, lung injury, and inflammatory responses in vivo.\nERS promotes ferroptosis in VILI through an IRE1α/XBP1-HRD1 axis that drives ubiquitin-mediated GPX4 degradation. Targeting HRD1 or upstream IRE1α RNase activity preserves GPX4, limits ferroptosis, and attenuates VILI, supporting this pathway as a therapeutic target.",
       "consultas": [
-        "polyp_ultraestrutura"
+        "polifosfato_ultraestrutura"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43045993",
+      "doi": "10.1186/s12868-026-01036-z",
+      "titulo": "Urolithin A mitigates behavioural and synaptic deficits associated with epilepsy",
+      "revista": "BMC Neurosci",
+      "ano": "2026",
+      "autores": "Mishra S, Verma V, … Nongthomba U (10 autores)",
+      "resumo_original": "The persistence of drug-resistant epilepsy highlights the need for new therapies that target novel mechanisms while maintaining synaptic strength and minimizing side effects. Small molecules of natural origin with anti-epileptogenic potential can influence altered synaptic deficits and reducing seizure threshold, offering a strategy to restore cellular energy homeostasis and slow the progression of epilepsy and associated comorbidities.\nWe used a combination of approaches including behavioural assays, immunostaining and electrophysiological recordings to study the synaptic contributions to reduced seizure-threshold in both Drosophila and mouse models of epilepsy. In addition, we used affinity-purification with synthesized beads specific for our small molecule to identify its cellular partners.\nWe found that administration of Urolithin-A (UA), a small molecule of natural origin, mitigated behavioural and synaptic dysfunctions under chemically and genetically induced epileptic conditions in Drosophila. Additionally, chronic treatment with UA attenuated the altered single-cell and network synaptic transmission in PTZ-induced chronic kindling of mice. However, UA exerted no seizure-suppressive effects in in vitro epileptic conditions, suggesting the absence of acute anti-epileptic effects. In addition, we identified the direct interactor of UA as the complex of tubulin dimer and VDAC1. Molecular docking analyses also predicted that urolithin A interacts with VDAC1. Consistent with the neuroprotective role of VDAC1 downregulation reported in previous studies, neuron-specific knockdown of VDAC1 in Drosophila phenocopied the effects of UA.\nCollectively, our data show that UA exerts disease-modifying anti-epileptic effects in both Drosophila and mouse models with VDAC1 identified as a critical functional mediator; however, direct functional modulation of VDAC1 and associated partners by UA will require further experimental validation. These findings provide the blueprint for future drug discovery targeting VDAC1-dependent pathways.",
+      "consultas": [
+        "neuro_eixo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "cerebro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43040527",
+      "doi": "10.1186/s12967-026-08788-6",
+      "titulo": "Targeting endoplasmic reticulum-associated glucose-6-phosphate metabolism sensitizes glioblastoma to chemoradiotherapy",
+      "revista": "J Transl Med",
+      "ano": "2026",
+      "autores": "Vitale F, Losacco S, … Marini C (20 autores)",
+      "resumo_original": "Antioxidant capacity is a major determinant of glioblastoma (GBM) resistance to temozolomide (TMZ) and radiotherapy (RT). Endoplasmic reticulum (ER) glucose-6-phosphate (G6P) metabolism, regulated by hexose-6-phosphate dehydrogenase (H6PD) and glucose-6-phosphatase 3 (G6PC3), sustains ER-linked nicotinamide adenine dinucleotide phosphate (NADPH) production and thereby supports glutathione (GSH)-dependent redox buffering; however, its clinical relevance and therapeutic exploitability in GBM remain poorly defined.\nPublic GBM transcriptomic datasets were analyzed to assess the prognostic relevance of H6PD and G6PC3 expression. U87 GBM cells were treated with TMZ and fractionated RT, with or without transient chlorogenic acid (CGA) exposure administered prior to irradiation. CGA was selected as a modulator of ER G6P metabolism due to its capability to inhibit G6P transport across the reticular membrane. Cell survival, oxidative stress, intracellular redox balance, and metabolic activity were evaluated.\nHigh expression of H6PD and G6PC3 predicted poorer patient survival, with H6PD retaining independent prognostic significance, identifying ER-associated G6P/NADPH metabolism as an adverse metabolic signature in GBM. Transient CGA exposure significantly potentiated TMZ + RT cytotoxicity, increasing membrane damage and reducing cell survival after irradiation. CGA induced an early increase in oxidative stress followed by delayed depletion of reduced NADPH and GSH, amplifying redox imbalance under combinedchemoradiotherapy. Metabolic analyses indicated enhanced glycolytic engagement without further stimulation of mitochondrial respiration.\nER-associated NADPH metabolism represents a clinically relevant determinant of redox resilience in GBM, with H6PD emerging as an independent prognostic marker within this metabolic axis. In a U87 proof-of-concept model, transient, timing-based metabolic priming with CGA disrupts antioxidant buffering and amplifies oxidative vulnerability during chemoradiotherapy, thereby enhancing tumor in vitro. These findings provide a strong mechanistic and translational rationale for targeting ER-linked redox metabolism as an adjuvant strategy to improve GBM responsiveness to standard chemoradiotherapy.",
+      "consultas": [
+        "(phosphate AND homeostasis) OR polyphosphate OR acidocalcisome"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
-        "tema": "ciclo",
+        "tema": "hospedeiro",
         "importancia": "baixa",
         "prioridade": "contexto",
         "score": 20
       }
     },
     {
-      "pmid": "43042231",
-      "doi": "10.2147/JIR.S653270",
-      "titulo": "Longitudinal Dynamics of Circulating NET-Associated Biomarkers and Their Association with Progressive Perihematomal Edema After Spontaneous Intracerebral Hemorrhage.",
-      "revista": "Journal of inflammation research",
+      "pmid": "10.64898/2026.11.13.766408",
+      "doi": "10.64898/2026.11.13.766408",
+      "titulo": "Validating regional insect pest phenology forecasts using published developmental data",
+      "revista": "bioRxiv (preprint)",
       "ano": "2026",
-      "autores": "Wei N, Yang J, … Zhang X (6 autores)",
-      "resumo_original": "In patients with spontaneous intracerebral hemorrhage (sICH), perihematomal edema (PHE) is a major driver of secondary brain injury, yet the temporal dynamics of circulating neutrophil extracellular trap (NET)-associated biomarkers and their clinical relevance to PHE progression remain incompletely understood. This study aimed to characterize their longitudinal dynamics and associations with PHE progression and clinical outcomes after sICH.\nIn this prospective cohort study, 200 patients with sICH (70 surgical and 130 non-surgical) and 50 healthy controls were enrolled, with serial peripheral blood samples collected at four predefined time points. Plasma cell-free DNA (cfDNA), citrullinated histone H3 (CitH3), myeloperoxidase-DNA (MPO-DNA), and neutrophil elastase-DNA (NE-DNA) complexes were quantified. NET-associated neutrophil phenotypes were characterized by flow cytometry, with scanning electron microscopy for complementary ultrastructural assessment. PHE volume was quantified using 3D Slicer, and 90-day functional outcomes were assessed. In the non-surgical cohort, five regression algorithms were compared for exploratory estimation of peak PHE volume from baseline features using all 36 baseline variables within nested cross-validation. SHAP was used to interpret the best-performing model.\nCirculating NET-associated biomarkers were markedly elevated in patients with sICH (all P < 0.001), with descriptive plots suggesting different temporal patterns in the surgical and non-surgical subgroups. SEM revealed NET-like extracellular ultrastructures in peripheral neutrophils. In the non-surgical cohort, PHEV was highest at T3 (3-5 days after onset) among the four scheduled assessments; baseline MPO-DNA was strongly correlated with peak PHE volume (ρ = 0.76, P < 0.001) and remained independently associated after multivariable adjustment. Within the non-surgical cohort, exploratory machine-learning analysis identified CitH3, MPO-DNA, and hematoma volume as the top-ranked contributors to peak PHEV estimation. Higher baseline MPO-DNA was also independently associated with unfavorable 90-day functional outcome in this cohort.\nCirculating NET-associated biomarkers showed temporal changes after sICH. In the non-surgical cohort, higher baseline MPO-DNA was associated with greater peak PHEV and unfavorable 90-day functional outcome. These findings point to a biological link that larger multicenter studies now need to confirm; the machine-learning findings remain exploratory and require external validation before clinical application.",
+      "autores": "San-Segundo Molina D, Stefanescu C, Morales-Castilla I (3 autores)",
+      "resumo_original": "BACKGROUND: Crop losses caused by insect pests are expected to increase under global warming, highlighting the need for accurate phenology forecasts to support integrated pest management (IPM). Arthropod pests, as ectotherms, exhibit temperature-dependent development and phenology that can be described by thermal performance curves (TPCs). For decades, developmental models have predicted pest emergence through thermal accumulation approaches, yet it remains unclear to what extent experimentally derived development models can accurately predict field phenology across spatial and temporal scales. Here, we evaluate whether developmental TPCs and linear degree-day models fitted from published experimental data can predict large-scale pest phenology under a rate-summation approach. RESULTS: We compiled published developmental data for the widespread crucifer pest Pieris rapae and fitted several TPCs and linear degree-day models. Model predictions were validated against independent long-term monitoring data from the Catalan Butterfly Monitoring Scheme for mainland Spain and the Balearic Islands. Published experimental data accurately predicted large-scale pest emergence, with prediction errors generally below one week. However, predictive performance depended strongly on the spatial and temporal scale considered, with model rankings changing according to the scale and temperature resolution used. CONCLUSION: Published experimental thermal biology data can accurately predict regional insect pest phenology when developmental models are selected according to the intended forecasting scale. These findings provide practical guidance for improving pest alert systems and other decision-support tools, while demonstrating how decades of experimental research can be translated into operational phenology forecasting.",
       "consultas": [
-        "polyp_ultraestrutura"
+        "bioRxiv (API de detalhes)"
+      ],
+      "data_fonte": "2026-11-13",
+      "fonte_captura": "preprint",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "10.64898/2026.11.14.766452",
+      "doi": "10.64898/2026.11.14.766452",
+      "titulo": "Differential modulation of host cell Serine and Arginine-Rich (SR) protein and apoptotic factor BCL-2",
+      "revista": "bioRxiv (preprint)",
+      "ano": "2026",
+      "autores": "Mandal D (1 autor)",
+      "resumo_original": "Regulation of alternative splicing (AS) is important in controlling cellular functions. More than 95% human genes are alternatively spliced and AS is regulated by close to 100 splicing factors. Line of evidences suggest that virus infections alter the AS pattern of numerous host genes. In this study we have investigated Chandipura virus (CHPV) induced alteration of host cell SR protein gene expressions and determined if these changes have any effect on apoptotic factor BCL-2 levels. CHPV is a negative stranded RNA virus which causes fever, brain encephalitis and death among young children with a case-fatality rate of 50%. Few studies were done in past to understand the roles of host factors in CHPV pathogenesis and no study was done on virus induced changes in AS. Our study showed that there is a down-regulation of SR proteins SRp55 and SRp75 expression levels significantly decreased in the CHPV infected Vero E6 cells compared to uninfected cells. For a comparison, we also looked at the levels of SRp55 and SRp75 in dengue virus (DENV) infected cells. Our results showed that SRp75 levels is unchanged whereas SRp55 levels increased in DENV infected cells. We have also determined the levels of large and small splice variants of apoptotic gene BCL-2 to find out possible correlation between the altered splicing factor expressions and virus infected cell death via apoptosis. Our data indicates that in CHPV infected cells, BCL-2 large splice variant expressions decreased as compared to uninfected cells. This is the first study of CHPV mediated alteration of splicing factor expressions and these results warrant further study with other viruses to better understand the global changes in host splicing events, cell survival, host immune response during virus infection.",
+      "consultas": [
+        "bioRxiv (API de detalhes)"
+      ],
+      "data_fonte": "2026-11-14",
+      "fonte_captura": "preprint",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43044795",
+      "doi": "10.1016/j.actatropica.2026.108420",
+      "titulo": "A DNA barcode reference library of the mosquitoes of Iran: insights into species boundaries and evolutionary relationships",
+      "revista": "Acta Trop",
+      "ano": "2026",
+      "autores": "Norouzi B, Oshaghi MA, … Azari-Hamidian S (6 autores)",
+      "resumo_original": "Mosquitoes (Diptera: Culicidae) are the most significant arthropods in public health. In Iran, 73 species across eight genera are known to occur, including 35 species and seven genera in Guilan Province. Due to challenges in morphological identification, this study evaluated the utility of DNA barcoding for mosquito species identification in Iran. Sampling was conducted from 2022 to 2024 across five counties in Guilan Province. Species were initially identified morphologically, followed by molecular analysis using the mitochondrial cytochrome c oxidase subunit I (COI) gene. Sequences were compared with reference data in GenBank, and phylogenetic trees were constructed using the Maximum Likelihood method. A total of 13151 adult mosquitoes were collected and morphologically identified including 17 species, with COI sequences generated for 15 species, 10 of which are newly barcoded from Iran. Phylogenetic analysis of the genera and species of Aedes, Anopheles and Culex was performed. The analysis revealed a close genetic relationship between Cx. pipiens and Cx. quinquefasciatus (p-distance = 0.019); however, diagnostic nucleotide positions successfully differentiated Iranian specimens. Within the genus Anopheles, An. hyrcanus and An. pseudopictus formed closely related clades (p-distance = 0.023), underscoring the challenging debates of the Hyrcanus Group with the COI gene and the need for complementary markers. Overall, COI-based phylogeny supported the traditional classification of the genera, subgenera and species of Iranian mosquitoes. DNA barcoding clearly displayed the geographical and phylogenetic affinities of Iranian species and served as a suitable tool for tracing distributional routes, whether natural or anthropogenic.",
+      "consultas": [
+        "vetores_amplo"
       ],
       "data_fonte": "2026-11-17",
       "fonte_captura": "PubMed",
       "v6": {
-        "tema": "ciclo",
+        "tema": "vetor",
         "importancia": "baixa",
         "prioridade": "contexto",
         "score": 20
       }
     },
     {
-      "pmid": "43038208",
-      "doi": "10.1371/journal.pone.0362308",
-      "titulo": "Cohort profile: Assessment of factors impacting on foetal and infant immunity, growth, and neurodevelopment in HIV and antiretroviral drug exposed uninfected children: The Siyakhula Study.",
-      "revista": "PloS one",
+      "pmid": "43039323",
+      "doi": "10.1016/j.jconrel.2026.115552",
+      "titulo": "The targeted modulation of the inflammatory response to alleviate myocardial ischemia-reperfusion injury via a biomimetic allicin delivery platform",
+      "revista": "J Control Release",
       "ano": "2026",
-      "autores": "du Toit L, Molokoane F, … Rossouw T (10 autores)",
-      "resumo_original": "This cohort profile paper describes the Siyakhula cohort, a prospective longitudinal study of mother-child dyads during the ante- and postpartum period. The cohort was established to investigate how in-utero and early postnatal environments altered by maternal HIV status influence infants' growth trajectories, cognitive development, immune development and function, irrespective of the infant's HIV status. Pregnant women aged ≥18 years with singleton pregnancies at <22 weeks' gestation (as per best obstetric estimate, including ultrasound), regardless of HIV status, were recruited from January 2018 to January 2021 and followed throughout pregnancy. After delivery, women were approached for continued enrolment in the postpartum arm, which followed the dyads for 24 months. A total of 315 pregnant women (152 living with HIV and 163 without HIV) were recruited. Routine (pregnancy-related clinical data, HIV status, anthropometry) and research-specific (socio-demographic information, body composition analysis, diet, vaginal swabs, bloods) were collected antepartum. Cord blood and placental samples were collected intrapartum, while breast milk, stool samples, and blood were collected postpartum. Infants had anthropometric measurements performed at 6, 10 and 14 weeks, as well as 6, 12 and 24 months. Neurodevelopmental assessments were conducted during later follow-up visits. Extensive clinical, immunological, metabolomic, nutritional, and developmental data, together with a large biorepository of maternal and infant biospecimens, have been established. This paper provides an overview of the cohort design, participant characteristics, available data and biospecimens, completed analyses, and future research opportunities. Future plans include developing immunometabolic signatures associated with optimal and suboptimal growth and neurodevelopment of infants in the first two years of life.",
+      "autores": "Gao Y, Yin J, … Li X (7 autores)",
+      "resumo_original": "Reperfusion strategies, the clinical standard for acute myocardial infarction, inevitably trigger severe myocardial ischemia/reperfusion (MI/R) injury. The acute phase of MI/R causes dual imbalance: excessive cardiomyocyte apoptosis and impaired macrophage phagocytosis. This pathological mechanism, the aberrant accumulation of apoptotic cells, triggers secondary necrosis, thereby serving as a critical driver of inflammatory storm and maladaptive cardiac remodeling. However, there is currently no targeted anti-inflammatory therapeutic strategy for this early pathological mechanism. To break these treatment limitations, we engineered a biomimetic stem cell membrane-camouflaged, allicin-loaded metal-organic framework nanoplatform (MOF-Al@NVs). Leveraging the nanovesicles' ischemic homing capability and the MOF's high drug-loading capacity and acidic degradation properties, this platform enables rapid, targeted delivery and release of allicin (which has anti-apoptotic and anti-inflammatory effects) within the ischemic myocardium. In vitro and in vivo investigations demonstrate that MOF-Al@NVs efficiently rescue dying cardiomyocytes by scavenging reactive oxygen species (ROS) bursts and blocking the mitochondrial apoptotic pathway. Concurrently, the platform re-orchestrates cardio-immune homeostasis by cooperatively upregulating the efferocytic receptor axis (TREM2/MERTK) on macrophages via activation of the PI3K/Akt signaling cascade. This dual coordinative effect accelerates the clearance of cellular debris and promotes the anti-inflammatory phenotypic transition from M1 to M2 macrophages, thereby attenuating the inflammatory storm, ameliorating acute-phase MI/R-induced cardiac dysfunction, and improving short-term prognosis. High-resolution spatial transcriptomics, integrated with multi-omics, confirms that MOF-Al@NVs effectively restore spatial immunometabolic homeostasis in the early infarct border zone. This biomimetic nanoplatform offers a promising strategy for targeted anti-inflammatory therapy in early MI/R injury.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43047301",
+      "doi": "10.3389/fimmu.2026.1958259",
+      "titulo": "Cell-informed host-response profiling distinguishes neutrophil-like and PLA2G7-associated immunometabolic axes in systemic infection",
+      "revista": "Front Immunol",
+      "ano": "2026",
+      "autores": "Gu Y, Yu Y, … Ding S (6 autores)",
+      "resumo_original": "Whole-blood host-response signatures can distinguish infection-positive from infection-negative systemic inflammation, but their signal combines changes in leucocyte composition with regulation within cells. We asked whether a retrospectively selected and subsequently fixed blood transcriptomic framework could relate candidate transcripts to granulocyte-associated and monocyte/macrophage-associated expression contexts rather than serve as another stand-alone diagnostic product.\nA 12-gene framework was retrospectively derived from four contrasts across three studies (444 contrast-level observations; 443 unique arrays) and subsequently fixed for external evaluation using a single-sample transcriptome-rank score. Performance was examined separately across cohorts with different specimens, age groups and comparators. Transcript-score sensitivity analyses, donor-level whole-blood single-cell pseudobulk and cell-line qRT-PCR were used to assess candidate localization and cell-line expression-context concordance. Cis-eQTL Mendelian randomisation and colocalisation were included as exploratory genetic context.\nIn the closest target-context cohort, GSE134347, the fixed score achieved an AUROC of 0.827 (95% CI 0.764-0.889) for sepsis versus non-infectious critical illness. Performance was lower in pediatric day-1 SIRS comparisons, indicating dependence on population and comparator context. Adjustment for alternative neutrophil-associated transcript scores produced a marker-dependent ordering, with SMPDL3A among the most attenuated and PLA2G7 among the least attenuated candidates; no candidate remained FDR-significant in the primary six-gene family. Donor-level single-cell analysis and qRT-PCR supported a monocyte/macrophage context for PLA2G7 and granulocyte-like localization of the diagnostic immune markers. Exploratory Mendelian randomisation did not support a susceptibility effect for the testable immunometabolism-associated candidates, and the HLA-DRB1 regional signal lacked evidence of a shared variant under single-variant colocalisation assumptions.\nThis study provides an auditable, cell-informed framework that relates granulocyte-associated transcription to PLA2G7-associated monocyte/macrophage localization within the whole-blood infection response. The framework is intended for biological prioritisation, and it defines testable candidates for future studies.",
       "consultas": [
         "imunometabolismo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43047935",
+      "doi": "10.1177/11779322261468102",
+      "titulo": "Exploring Neem Phytochemicals as Potential Inhibitors of Trehalose-6-Phosphate Synthase",
+      "revista": "Bioinform Biol Insights",
+      "ano": "2026",
+      "autores": "Bella-Omunagbe M, Adebayo AH, … Chinedu SN (3 autores)",
+      "resumo_original": "Increasing resistance to insecticides and their accompanying off-target effects call for the development of biodegradable insecticides with selective metabolism-based targets. Anopheles gambiae trehalose-6-phosphate synthase (AgTPS), the first enzyme in the trehalose metabolic pathway, is essential for key developmental processes in the organism but absent in vertebrates, making it an attractive insecticidal target. This study aims to evaluate the inhibitory potential of neem-derived compounds against AgTPS using in silico methods. The 3D structure was predicted, and its active-site residues were identified based on conserved TPS homologues. A library of 275 neem phytochemicals was compiled from IMPPAT and Dr Duke's databases, alongside known substrates and inhibitors. Molecular docking was performed using AutoDock Vina at the glucose-6-phosphate (G6P), UDP-glucose (UDPG), and combined binding sites. Protein-ligand interactions were analysed using LigPlot+, while insecticide-likeness and ADMET properties were evaluated using QEPest and pkCSM. Several neem-derived compounds exhibited stronger binding affinities to AgTPS than the natural substrates across all binding sites. Tannic acid showed a high binding affinity across all binding sites, with a range of -11.3 to -12.1 kcal/mol, showing interactions with conserved catalytic residues. Other compounds, including 1-cinnamoylmelianolone, nimbilin, 6-acetylnimbandiol, and 7-deacetyl-7-oxogedunin, also demonstrated strong and consistent binding, frequently outperforming known TPS inhibitors. ADMET analysis revealed that tannic acid possessed unfavourable pharmacokinetic and toxicity profiles. In contrast, limonoids such as 1-cinnamoylmelianolone and nimbilin displayed a more favourable balance between potency, insecticide-likeness, and predicted safety. Neem-derived phytochemicals show significant potential as inhibitors of AgTPS, supporting AgTPS as a promising target for selective mosquito control. While tannic acid demonstrates strong binding affinity, its poor drug-likeness limits practical application. The limonoids, such as 1-cinnamoylmelianolone and nimbilin, thus emerge as more viable lead candidates. These findings provide molecular insights into neem's insecticidal activity and support further experimental validation for vector control applications.",
+      "consultas": [
+        "vetores_amplo"
+      ],
+      "data_fonte": "2026-11-18",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "vetor",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43039413",
+      "doi": "10.3988/jcn.2026.0289",
+      "titulo": "A Male-Specific Immunometabolic Peripheral Blood Mononuclear Cell Transcriptomic Signature in Amyotrophic Lateral Sclerosis",
+      "revista": "J Clin Neurol",
+      "ano": "2026",
+      "autores": "Bura A, Noh MY, … Kim SH (10 autores)",
+      "resumo_original": "Amyotrophic lateral sclerosis (ALS) demonstrates well-recognized sex-related differences in incidence, age at onset, and clinical features, but the biological mechanisms underlying this heterogeneity remain incompletely understood. Peripheral immune mechanisms have been proposed as potential contributors.\nWe performed sex-stratified transcriptomic profiling of peripheral blood mononuclear cells (PBMCs) obtained from a clinically well-characterized cohort of 60 participants: 15 male ALS participants, 15 female ALS participants, and 30 sex-matched healthy controls. Differential gene expression and pathway enrichment were analyzed, followed by quantitative real-time polymerase chain reaction (qPCR) validation and correlation with clinical parameters, including plasma neurofilament light chain (NfL) levels.\nPBMCs from male ALS participants exhibited extensive transcriptional alterations, with coordinated downregulation of mitochondrial oxidative phosphorylation pathways and upregulation of the extracellular matrix and inflammatory signaling. In contrast, PBMCs from female ALS participants showed minimal and less-consistent transcriptomic changes. These findings were validated by qPCR. Notably, changes in mitochondrial and immune-related transcripts were not associated with the plasma NfL level, disease progression rate, or clinical severity.\nThis study has identified a male-specific peripheral immunometabolic transcriptomic signature in ALS that is independent of established biomarkers of neurodegeneration. These findings may help to explain sex-related differences in disease pathogenesis and clinical presentation, and they underscore the importance of considering sex as an influential biological variable in ALS.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43039282",
+      "doi": "10.1016/j.ejphar.2026.179574",
+      "titulo": "Vitamin D3 Attenuates Experimental Colitis with PPARγ-associated regulation of macrophage lipid accumulation",
+      "revista": "Eur J Pharmacol",
+      "ano": "2026",
+      "autores": "Lu J, Hu Q, … Zhang J (10 autores)",
+      "resumo_original": "Vitamin D3 (cholecalciferol) and its active metabolite calcitriol exert immunoregulatory effects, but their macrophage metabolic actions during intestinal inflammation remain incompletely defined. We examined oral vitamin D3 in experimental colitis and explored vitamin D receptor (VDR)-associated peroxisome proliferator-activated receptorγ (PPARγ) involvement in macrophage responses to calcitriol. In a dextran sulfate sodium-induced mouse model, oral vitamin D3 reduced disease activity, colonic injury, macrophage infiltration and inflammatory cytokine production, and partly normalized selected serum lipid parameters, with dose-related increases in serum 1,25-dihydroxyvitamin D3 (1,25-(OH)2D3). In lipopolysaccharide-stimulated bone marrow-derived macrophages, calcitriol lowered IL-6 and IL-12/23p40, increased IL-10 and TGF-β, reduced M1-like/M2-like macrophage ratio, and decreased intracellular triglyceride, cholesterol and lipid-droplet accumulation. Oral vitamin D3 restored colonic PPARγ expression, PPARγ knockdown attenuated the effects of calcitriol on cytokine release and lipid accumulation. Murine colon microarray data linked myeloid Pparg deficiency to higher expression of inflammatory genes and lower expression of selected lipid-metabolism genes. Human UC macrophages with detectable VDR transcripts had higher PPARγ-target and lipid-metabolism module scores. These findings support anti-colitic effects of oral vitamin D3 and suggest VDR-associated PPARγ involvement in the macrophage response to calcitriol.",
+      "consultas": [
+        "immunometabolism OR trained immunity"
+      ],
+      "data_fonte": "2026-11-16",
+      "fonte_captura": "PubMed",
+      "v6": {
+        "tema": "hospedeiro",
+        "importancia": "baixa",
+        "prioridade": "contexto",
+        "score": 20
+      }
+    },
+    {
+      "pmid": "43037123",
+      "doi": "10.1093/genetics/iyag331",
+      "titulo": "Draper-mediated efferocytosis by Drosophila imaginal disc epithelial cells clears cellular debris during regeneration",
+      "revista": "Genetics",
+      "ano": "2026",
+      "autores": "Mathure SA, Maghinang K, … Smith-Bolton R (3 autores)",
+      "resumo_original": "Regeneration is a coordinated process that restores tissue integrity following damage. Following injury, tissues initiate early responses, including epithelial remodeling and clearance of cellular debris. However, how debris clearance is coordinated with regenerative growth to ensure efficient tissue repair remains poorly understood. To address how early damage responses, particularly debris clearance, are coordinated with regeneration, we used a genetic ablation system in Drosophila wing imaginal discs to induce apoptosis in the pouch region. Targeted damage generates cellular debris that localizes to both the apical and basal sides of the epithelium. We show that most cellular debris is cleared within two days after damage, although some debris persists apical to the regenerating epithelium. Our data indicate that residual debris consists of a heterogeneous mixture of cellular components, suggesting no preferential targeting by the clearance machinery. Notably, immune cells are not recruited to the damaged tissue due to restricted access by an intact basement membrane. Instead, we discovered that debris clearance is mediated by efferocytosis, whereby neighboring hinge epithelial cells activate JNK signaling and engulf debris via lysosomal formation. Reduction of efferocytosis by mutation of the phagocytic receptor Draper delays debris removal and increases debris persistence. This impairment has a modest impact on regeneration, as measured by adult wing size. Together, our results reveal a previously unappreciated role for epithelial cells as non-professional phagocytes for debris clearance during regeneration.",
+      "consultas": [
+        "(drosophila OR Aedes) AND (virus OR immunity)"
       ],
       "data_fonte": "2026-11-16",
       "fonte_captura": "PubMed",
