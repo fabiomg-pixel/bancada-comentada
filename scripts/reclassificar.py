@@ -111,6 +111,7 @@ if os.path.exists(CACHE_FILE):
     except Exception:
         cache_enriquecido = {}
 
+data_edicao = str(raw_data.get("data") or hoje)
 reclassified = {}
 alta_count = 0
 media_count = 0
@@ -137,16 +138,23 @@ for a in articles:
     is_neurodegen_review = any(w in txt for w in ["huntington", "alzheimer", "parkinson", "insomnia", "traditional chinese medicine"])
     is_offtopic_noise = (
         any(w in txt for w in [
-            "water electrolyzer", "proton exchange membrane", "cyanobacterial bloom",
-            "soil-plant", "banana peel", "silver nanoparticles", "preoperative opioid",
-            "arthroplasty", "social needs", "cardiomyopathy", "mycoplasma pneumoniae",
-            "mullins-sekerka", "barite mineralization", "mineralization at gas-liquid",
-            "salinity acclimation", "fish physiol", "testicular aging", "anthocyanins",
-            "bovine mastitis", "bariatric surgery", "colorectal cancer",
-            "intervertebral disc", "skeletal muscle of critically ill",
-            "nanofibrous yarns", "electrospinning", "solitary bees and wasps",
+            "stannous fluoride", "plaque biofilm", "feline heartworm", "dirofilaria",
+            "epstein-barr", "melanoma", "tumorigenesis", "corpora amylacea",
+            "ribosome-associated vesicles",
         ])
-        and not (has_plasmodium or has_mosquito or has_arbovirus)
+        or (
+            any(w in txt for w in [
+                "water electrolyzer", "proton exchange membrane", "cyanobacterial bloom",
+                "soil-plant", "banana peel", "silver nanoparticles", "preoperative opioid",
+                "arthroplasty", "social needs", "cardiomyopathy", "mycoplasma pneumoniae",
+                "mullins-sekerka", "barite mineralization", "mineralization at gas-liquid",
+                "salinity acclimation", "fish physiol", "testicular aging", "anthocyanins",
+                "bovine mastitis", "bariatric surgery", "colorectal cancer",
+                "intervertebral disc", "skeletal muscle of critically ill",
+                "nanofibrous yarns", "electrospinning", "solitary bees and wasps",
+            ])
+            and not (has_plasmodium or has_mosquito or has_arbovirus)
+        )
     )
     has_hemopexin_vector = ("hemopexin" in txt or "heme toxicity" in txt or "heme scavenging" in txt) and (has_mosquito or has_plasmodium)
     has_polyphosphate = any(w in txt for w in ["polyphosphate", "acidocalcisome", "exopolyphosphatase", "polyphosphate kinase", "polyp ", "ppx1", "ppk1", "ppk2"]) and "organophosphate" not in txt and not is_offtopic_noise and not is_retraction
@@ -196,35 +204,37 @@ for a in articles:
         implicacao = "Incide diretamente sobre os mecanismos celulares de lesão ou proteção endotelial na barreira hematoencefálica durante a malária cerebral, comparável ao modelo PbA/C57BL/6J do LUCHM."
         faisca = "💡 Cruzar os alvos endoteliais e imunes identificados com os marcadores de disfunção microvascular (claudina-5, extravasamento de Evans Blue) nos dias 4–6 pós-infecção."
 
-    elif has_plasmodium and any(w in txt for w in ["hsp90", "dna replication", "elimination", "preventing malaria", "sporozoite", "liver-stage", "vacuole", "pvm", "ap2-l", "obm", "phase-gradient", "maps-fc", "pfs47", "vector competence", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria", "grammomys", "pvcsp", "graphene"]):
-        is_core = any(w in txt for w in ["hsp90", "dna replication", "sporozoite", "liver-stage", "ap2-l", "pvm", "preventing malaria", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria"])
+    elif has_plasmodium and any(w in txt for w in ["hsp90", "dna replication", "elimination", "preventing malaria", "sporozoite", "liver-stage", "vacuole", "pvm", "ap2-l", "obm", "phase-gradient", "maps-fc", "pfs47", "vector competence", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria", "grammomys", "pvcsp", "graphene", "gametocyte", "cytoskeleton", "pfht1", "sugar transporter", "crispr-cas"]):
+        is_core = any(w in txt for w in ["hsp90", "dna replication", "sporozoite", "liver-stage", "ap2-l", "pvm", "preventing malaria", "pantothenate", "pantazine", "cholesterol", "pfncr1", "rodent malaria", "gametocyte", "pfht1", "crispr-cas"])
         importancia = "alta" if is_core else "media"
         prioridade = "essencial" if importancia == "alta" else "contexto"
-        score = 104 if any(w in txt for w in ["hsp90", "ap2-l", "sporozoite", "pantothenate", "pantazine"]) else (98 if "cholesterol" in txt or "pfncr1" in txt else (94 if is_core else 84))
+        score = 108 if "gametocyte" in txt and "hemoglobin" in txt else (104 if any(w in txt for w in ["hsp90", "ap2-l", "sporozoite", "pantothenate", "pantazine"]) else (98 if any(w in txt for w in ["cholesterol", "pfncr1", "pfht1"]) else (94 if is_core else 84)))
         tema = "ciclo"
         programa = "Biologia Celular de Plasmodium & Bloqueio de Transmissão"
-        implicacao = "Traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, sobrevivência intracelular ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM."
+        implicacao = "Traz alvos moleculares essenciais da replicação, homeostase metabólica/esterólica, citoesqueleto ou bloqueio de transmissão em Plasmodium, com interface direta com os ensaios celulares do LUCHM."
         faisca = "💡 Avaliar se os alvos moleculares, gradientes lipídicos ou protocolos de bloqueio podem ser integrados aos ensaios de desenvolvimento e transmissão parasitária do grupo."
 
     elif has_mosquito and any(w in txt for w in ["midgut", "microbiome", "bacterial", "funestus", "residual malaria", "peritrophic", "oviposition", "dietary", "blood meal", "vector competence", "hemocyte", "insecticide resistance", "microsatellite"]):
-        is_core_vec = any(w in txt for w in ["midgut", "microbiome", "funestus", "peritrophic", "vector competence", "hemocyte", "insecticide resistance"])
+        is_essential_oil = "essential oil" in txt
+        is_core_vec = not is_essential_oil and any(w in txt for w in ["midgut", "microbiome", "funestus", "peritrophic", "vector competence", "hemocyte", "insecticide resistance", "blood meal"])
         importancia = "alta" if is_core_vec else "media"
         prioridade = "essencial" if is_core_vec else "contexto"
-        score = 101 if any(w in txt for w in ["midgut", "microbiome", "hemocyte"]) else (96 if is_core_vec else 84)
+        score = 101 if any(w in txt for w in ["midgut", "microbiome", "hemocyte"]) and not is_essential_oil else (96 if is_core_vec else 82)
         tema = "vetor"
         programa = "Repasto Sanguíneo HFHS & Metabolismo do Vetor" if ("dietary" in txt or "blood" in txt or "midgut" in txt) else "Imunidade de Vetores & RNAi"
         implicacao = "Conecta ecologia de intestino médio de mosquitos, resposta imune de hemócitos, microbiota comensal e competência vetorial aos bioensaios do insetário de Aedes e Anopheles no LUCHM."
         faisca = "💡 Testar impacto sobre imunidade intestinal, estabilização de hemócitos ou colonização por microbiota sob dieta HFHS."
 
     elif has_arbovirus:
-        is_mech_arbo = any(w in txt for w in ["oropouche", "macrodomain", "druggability", "bispecific", "permissiveness", "alphavirus", "antiviral", "ndel1", "ldlr", "low-density lipoprotein"])
-        importancia = "alta" if ("oropouche" in txt or "ndel1" in txt) else "media"
+        is_endoth = "endothelial hyperpermeability" in txt or "glycocalyx" in txt
+        is_mech_arbo = any(w in txt for w in ["oropouche", "macrodomain", "druggability", "bispecific", "permissiveness", "alphavirus", "antiviral", "ndel1", "ldlr", "low-density lipoprotein"]) or is_endoth
+        importancia = "alta" if ("oropouche" in txt or "ndel1" in txt or is_endoth) else "media"
         prioridade = "essencial" if importancia == "alta" else "contexto"
-        score = 93 if importancia == "alta" else 84
-        tema = "vetor"
-        programa = "Imunidade de Vetores & RNAi"
-        implicacao = "Relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya) e resposta imune/antiviral em vetores e hospedeiros."
-        faisca = "💡 Avaliar alvos conservados (receptores LDL, proteases neuronais ou vias de permissividade) frente aos estoques e ensaios de infecção viral do laboratório."
+        score = 99 if is_endoth else (93 if importancia == "alta" else 84)
+        tema = "cerebro" if is_endoth else "vetor"
+        programa = "Malária Cerebral & Neuroinflamação" if is_endoth else "Imunidade de Vetores & RNAi"
+        implicacao = "Relevante para a frente de arboviroses emergentes (Oropouche, Dengue, Zika, Mayaro/Chikungunya), barreira endotelial e resposta imune/antiviral em vetores e hospedeiros."
+        faisca = "💡 Avaliar alvos conservados (glicocálix endotelial, receptores LDL, proteases neuronais ou vias de permissividade) frente aos ensaios do laboratório."
 
     elif has_neuropeptide:
         importancia = "alta"
@@ -350,9 +360,9 @@ for a in articles:
         "consulta": ", ".join(a.get("consultas", [])),
         "indicado_por": "Resumo da Literatura Científica v6 (LUCHM)",
         "fonte_captura": a.get("fonte_captura", "PubMed"),
-        "data_fonte": hoje,
-        "visto_em": hoje,
-        "entrou_em": hoje
+        "data_fonte": data_edicao,
+        "visto_em": data_edicao,
+        "entrou_em": data_edicao
     }
 
 def _rev_curta(rev):

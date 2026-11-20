@@ -117,6 +117,8 @@ def eh_artigo_fora_de_escopo(artigo):
         "salinity acclimation", "testicular aging", "anthocyanins",
         "bovine mastitis", "bariatric surgery", "colorectal cancer",
         "intervertebral disc", "nanofibrous yarns", "solitary bees and wasps",
+        "stannous fluoride", "plaque biofilm", "feline heartworm",
+        "epstein-barr", "melanoma", "corpora amylacea", "ribosome-associated vesicles",
     ]
     if any(r in txt for r in ruidos) and not any(k in txt for k in ["plasmodium", "malaria", "anopheles", "aedes", "mosquito", "polyphosphate"]):
         return True
@@ -469,7 +471,7 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
             if len(grupo_plasmodium) < 3:
                 grupo_plasmodium.append(a)
                 usados.add(aid)
-        elif tema == "vetor" and any(k in blob for k in ["microbiome", "mosquito", "hemocyte", "vector", "oropouche", "odor", "neuropeptide", "p2 neurons", "zika", "ndel1", "orthoflavivirus", "aedes", "culex"]):
+        elif tema == "vetor":
             if len(grupo_vetores) < 4:
                 grupo_vetores.append(a)
                 usados.add(aid)
@@ -512,18 +514,23 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
     tec2 = tecnicas[1] if len(tecnicas) > 1 else {}
 
     falas = [
-        # ATO 1: ABERTURA & PANORAMA DA EDIÇÃO
-        ("A", f"Olá, professor Fábio! Seja muito bem-vindo a mais uma edição integral do podcast científico de bancada do LUCHM, preparado especialmente para a sua viagem de carro com base estrita na curadoria de {data_extenso}. Ajuste o volume do carro, deixe as demandas administrativas em pausa por alguns instantes e acompanhe os próximos minutos de debate metodológico profundo no ritmo dos nossos seminários no Instituto de Biofísica Carlos Chagas Filho da UFRJ."),
-        ("B", "Boa tarde, Fábio, e um cumprimento especial a toda a equipe do laboratório distribuída entre o biotério de camundongos, o insetário de dípteros e as bancadas de biologia celular e bioimagem no CENABIO. Aqui na Bancada Comentada o nosso compromisso é absoluto: zero manchetes soltas e zero extrapolações inventadas. Nós vamos dissecar os modelos experimentais, os controles bioquímicos, as plataformas estatísticas, as limitações reais de cada desenho e a tradução imediata para o que muda amanhã na rotina dos nossos alunos."),
-        ("A", f"Exatamente, Francisca. Na varredura estruturada desta edição, avaliamos e curamos {total_artigos} publicações recentes oriundas da captura automática do PubMed e de servidores de preprints. Após aplicar a malha de exclusão de ruído fora de escopo e recalibrar a pontuação por aderência temática ao LUCHM, fechamos a pauta com {altas} estudos de prioridade alta que formam o núcleo duro da discussão de hoje, além de {medias} trabalhos de importância média para acompanhamento seletivo e {baixas} registros complementares de contexto."),
-        ("B", f"E o conjunto de periódicos desta rodada mostra uma amplitude metodológica rara, reunindo artigos publicados em {destaques_rev or 'periódicos de referência da área'}. Logo acima do botão de transcrição na página da Pauta, já deixamos organizados os quatro eixos transversais que costuram esta edição: {formatar_lista_pt(con_titulos, 4) or 'patogênese e bloqueio da malária, fisiologia e microbioma do vetor, bioquímica redox e intersecções com neurobiologia e vacinas'}. Vamos percorrer cada um desses blocos sem pressa e com o pé firmemente apoiado na bancada."),
-        ("A", "Antes do fechamento prático com as três frentes acionáveis para a reunião de amanhã, vamos também abrir a janela mensal do Horizonte Lateral para testar nossas hipóteses contra ideias fora da caixinha da parasitologia convencional. Vamos então direto ao primeiro grande bloco de hoje."),
+        # ATO 1: ABERTURA DIRETA (< 30s — sem preâmbulos longos)
+        ("A", f"Bancada Comentada do LUCHM, edição de {data_extenso}. Na análise de hoje triamos {total_artigos} publicações recentes e identificamos {altas} estudos prioritários e {medias} de acompanhamento em {destaques_rev or 'periódicos indexados'}, cruzados nos eixos de {formatar_lista_pt(con_titulos, 4) or 'biologia de Plasmodium, fisiologia do vetor e métodos avançados'}."),
+        ("B", "Então vamos direto para o primeiro artigo."),
     ]
 
     def _ganchos_adaptativos(art, idx):
         tl = f"{art.get('titulo', '')} {art.get('programa', '')}".lower()
         regras = [
-            (["pantothenate", "pantazine"], "Nosso estudo âncora de bloqueio de transmissão ataca uma assimetria metabólica crítica entre o estágio sanguíneo e o ciclo de Plasmodium no mosquito.", "Fábio e Antônio, vale reparar como esse ensaio testa separadamente crescimento sanguíneo in vitro e bloqueio de oocistos e esporozoítos in vivo."),
+            (["gametocyte", "human hemoglobin"], "Começamos por uma descoberta estrutural impressionante da biologia de Plasmodium: como o gametócito coopta a própria hemoglobina humana para proteger seu citoesqueleto.", "Antônio e Fábio, esse trabalho de crio-EM conversa frontalmente com a identidade do LUCHM em ultraestrutura celular e bloqueio de transmissão."),
+            (["cryo-plasma fib", "staggered cryo"], "Na fronteira instrumental de microscopia de volume, este estudo da Nature Communications redefine a velocidade segura da fresagem por plasma-FIB para crio-tomografia em tecidos espessos.", "Para a rotina de FIB-SEM, SBF-SEM e colaborações de crio-EM no CENABIO, quantificar o limite seguro de corrente de xenônio em mais de quatro mil tomogramas é ouro técnico."),
+            (["endothelial hyperpermeability", "glycocalyx"], "No eixo de barreira endotelial, este preprint desacopla duas camadas críticas da lesão vascular induzida por NS1 de Dengue: degradação do glicocálix versus colapso das junções intercelulares.", "Para o nosso modelo de malária cerebral em C57BL/6J, separar dano ao glicocálix de perda de claudina-5 e TEER muda completamente o desenho temporal dos controles."),
+            (["pfht1", "sugar transporter"], "Na biofísica de membranas do parasito, este trabalho investiga por dinâmica molecular e mutagênese como o transportador de açúcares PfHT1 alcança sua poliespecificidade.", "Entender a flexibilidade da hélice TM7b oferece uma janela concreta de química medicinal e fisiologia nutricional do parasito intraeritrocítico."),
+            (["approach-avoidance", "leucokinin"], "No eixo neuroendócrino de insetos, a Science Advances mapeia um circuito completo que explica como a fome suprime respostas aversivas em presença de pistas alimentares.", "Ver neurônios de leucocinina desligarem sinais aversivos no corpo em leque ventral dialoga diretamente com a busca de hospedeiro em fêmeas de mosquito."),
+            (["bunyamwera", "medicines for malaria venture"], "Na intersecção entre malária e arboviroses emergentes, os autores usaram coleções abertas da MMV em triagem por imagem de células vivas contra o vírus Oropouche.", "Reposicionar coleções antimaláricas clássicas para uma emergência brasileira como Oropouche acelera muito o caminho translacional."),
+            (["yellow fever", "blood meals"], "Em ecologia de repasto sanguíneo no Brasil, uma série longitudinal na Serra da Cantareira usou Nanopore para rastrear em quem os vetores silvestres se alimentaram após a extinção local de bugios.", "O dado de quase noventa e cinco por cento de sangue humano em Haemagogus leucocelaenus chama atenção imediata para o risco de reurbanização e para a utilidade do Nanopore em campo."),
+            (["crispr-cas", "protozoan"], "No plano de genética reversa, esta revisão compara sistematicamente edição por CRISPR-Cas9 — inclusive via entrega de ribonucleoproteínas — em Plasmodium e outros protozoários parasitos.", "Um roteiro metodológico direto para o grupo calibrar protocolos de marcação endógena e knockdown sem depender apenas de plasmídeos clássicos."),
+            (["pantothenate", "pantazine"], "Nosso estudo âncora de metabolismo do parasito ataca diretamente a biossíntese de coenzima A dependente de pantotenato quinase em Plasmodium.", "Fábio e Antônio, vale olhar com lupa a arquitetura catalítica e a seletividade funcional demonstradas pelos mutantes e controles do trabalho."),
             (["cholesterol gradient", "pfncr1"], "Na biologia celular do parasito intraeritrocítico, este trabalho traz um modelo integrativo sofisticado sobre assimetria de colesterol e mecânica de membrana.", "Para a nossa tradição no IBCCF em organização de membranas e vacúolo parasitóforo, a distinção entre diluição por fosfolipídios e transporte ativo é cirúrgica."),
             (["rodent malaria", "grammomys"], "Fechando o eixo de biologia evolutiva do parasito, um estudo de campo raro investiga os reservatórios silvestres originais da malária de roedores.", "Isso dialoga diretamente com a forma como interpretamos os limites e as forças do nosso modelo PbA em camundongos C57BL/6J."),
             (["insecticide resistance", "cameroon", "albimanus"], "Na frente de entomologia de campo, examinamos como coexistência de múltiplos vetores e mutações de resistência sustentam a transmissão residual.", "Do ponto de vista de quem acompanha competência vetorial e biologia metabólica de insetos, os marcadores enzimáticos mapeados aqui chamam muito atenção."),
@@ -558,7 +565,6 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
     def _montar_com_cota(gp, gv, gt, incl_faisca=True):
         seq = list(falas_abertura)
 
-        seq.append(("B", "Abrimos o primeiro bloco analítico mergulhando na interface entre biologia celular e metabólica do Plasmodium, mecanismos de bloqueio de transmissão e determinantes de campo dos parasitos."))
         for i, art in enumerate(gp):
             ga, gb = _ganchos_adaptativos(art, i)
             seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))

@@ -1237,5 +1237,109 @@
     "resultados": "O modelo XGBoost superou abordagens lineares tradicionais na identificação espacial de áreas urbanas de alto risco para abundância de Aedes, evidenciando sinergia preditiva entre cobertura vegetacional, microclima e indicadores socioeconômicos locais.",
     "implicacao_luchm": "Fornece parâmetro de vigilância geoespacial para relacionar ilhas de calor e sazonalidade ambiental com picos populacionais de Aedes e circulação arboviral.",
     "faisca_lateral": "💡 Cruzar variáveis microclimáticas de sazonalidade térmica urbana com os perfis de sobrevida e dinâmica reprodutiva de fêmeas alimentadas no insetário."
+  },
+  "43052311": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "A transmissão de Plasmodium falciparum depende da diferenciação em gametócitos que remodelam profundamente seu citoesqueleto em torno de uma rede não canônica de microtúbulos subpeliculares (SPMTs). Até agora, desconhecia-se quais fatores proteicos estabilizam essa arquitetura durante o longo desenvolvimento intraeritrocítico do gametócito.",
+    "metodo_bancada": "Os autores isolaram microtúbulos subpeliculares (SPMTs) de gametócitos em desenvolvimento de P. falciparum e resolveram sua estrutura em alta resolução por crio-microscopia eletrônica de partícula única (single-particle cryo-EM), combinada a perturbação farmacológica de microtúbulos e ensaios de troca de isoformas de hemoglobina.",
+    "resultados": "A crio-EM revelou de modo inesperado que a hemoglobina humana se liga diretamente aos SPMTs de P. falciparum como um fator associado a microtúbulos na forma dimérica — e não no clássico tetrâmero eritrocitário. Perturbações farmacológicas e trocas de isoformas comprovaram que essa interação hemoglobina-SPMT é indispensável para a organização correta dos microtúbulos e a maturação dos gametócitos.",
+    "implicacao_luchm": "Descoberta de alto impacto direto para o LUCHM (ultraestrutura celular + biologia de Plasmodium): mostra um exemplo extraordinário de cooptação estrutural de uma proteína metabólica do hospedeiro (hemoglobina dimérica) para estabilizar o citoesqueleto do parasito, abrindo alvos inéditos de bloqueio de transmissão.",
+    "faisca_lateral": "💡 Avaliar em microscopia eletrônica de alta resolução ou crio-imunomarcação no CENABIO se alterações na estabilidade/oxidação da hemoglobina hospedeira (ou variantes de hemoglobina) desestruturam os feixes de SPMTs em estágios sexuados de Plasmodium."
+  },
+  "43044821": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "A pantotenato quinase (PanK) inicia a síntese de coenzima A (CoA) essencial para a sobrevivência intraeritrocítica de Plasmodium falciparum, mas ao contrário dos homodímeros típicos de outros organismos, o parasito monta um complexo heteromérico peculiar composto por PfPanK1, PfPanK2 e Pf14-3-3I cujo papel catalítico e regulatório de cada subunidade era incerto.",
+    "metodo_bancada": "Mutagênese dirigida gerando 10 mutantes de PfPanK, sistema de knockdown condicional para testar essencialidade de PfPanK2 na proliferação sanguínea e imunoprecipitação seguida de espectrometria de massas enriquecida para fosfopeptídeos, complementada por cinco mutantes adicionais nos sítios preditos de ligação a Pf14-3-3I.",
+    "resultados": "Os autores demonstraram que o complexo heteromérico PfPanK possui apenas um sítio ativo funcional, exigindo simultaneamente PfPanK1 e PfPanK2 para atividade catalítica, e que PfPanK2 é essencial para a proliferação intraeritrocítica normal. A fosfoproteômica identificou novos sítios de fosforilação em ambas as subunidades e a mutação de quatro motivos em PfPanK1 dissociou a ligação de Pf14-3-3I sem abolir a atividade enzimática.",
+    "implicacao_luchm": "Conecta-se diretamente ao eixo de pantotenato/CoA e pantazinas discutido na edição de 13/11 (PMID 43019082), explicando a arquitetura estrutural assimétrica da PanK do parasito frente à PanK do mosquito vetor.",
+    "faisca_lateral": "💡 Explorar a diferença estrutural entre o complexo heteromérico PfPanK1/PfPanK2 de sítio ativo único e a PanK homodimérica de Anopheles/Aedes ao desenhar ensaios seletivos de inibição ou ativação metabólica de CoA."
+  },
+  "43045759": {
+    "programa_luchm": "Microscopia Eletrônica de Volume & Bioimagem",
+    "racional": "A combinação de fresagem por feixe de íons focado criogênico (cryo-FIB) com crio-tomografia eletrônica (cryo-ET) permite observar macromoléculas em contexto nativo, mas o baixo rendimento em amostras espessas e o receio de dano por feixe limitavam o uso de fontes de plasma em altas correntes.",
+    "metodo_bancada": "Avaliação sistemática de fresagem por plasma-FIB de xenônio (PFIB) em altas correntes, quantificando o dano dependente da corrente em mais de 4.700 tomogramas obtidos a partir de um volume total de lift-out de 9.000 µm³, validada com rotina escalonada (staggered milling) em preparações waffle e lift-outs seriados de tecido.",
+    "resultados": "Correntes de até 2.500 nA puderam ser empregadas na preparação de lamelas para cryo-ET acelerando drasticamente a velocidade de fresagem e o volume tecidual inspecionado sem comprometer a integridade ultraestrutural, viabilizando reconstruções de alta resolução de ribossomos e um experimento completo de lift-out seriado de tecido em menos de 24 horas.",
+    "implicacao_luchm": "Avanço instrumental de referência direta para o parque de microscopia de volume (FIB-SEM / SBF-SEM / crio-EM) do CENABIO/UFRJ, demonstrando parâmetros quantitativos seguros de corrente de plasma para tecidos biológicos espessos como intestino médio de vetores e tecido cerebral murino.",
+    "faisca_lateral": "💡 Incorporar a curva de dano versus corrente em PFIB de xenônio como referência técnica ao planejar colaborações de cryo-ET / lift-out seriado de amostras de intestino de Aedes e cérebro infectado por PbA."
+  },
+  "10.64898/2026.11.16.766930": {
+    "programa_luchm": "Malária Cerebral & Neuroinflamação",
+    "racional": "A proteína não estrutural secretada NS1 do vírus Dengue (DENV) desencadeia extravasamento vascular ao degradar o glicocálix endotelial (EGL) e romper complexos juncionais intercelulares (IJC), porém não estava claro se ambos os eventos compartilham a mesma via intracelular ou dependem de fatores distintos do hospedeiro.",
+    "metodo_bancada": "Abordagem genética direcionada (depleção de fatores hospedeiros reguladores da barreira endotelial) em modelos de endotélio expostos a DENV NS1, avaliando separadamente a perda do glicocálix por imunofluorescência (EGL) e o colapso de junções intercelulares por resistência elétrica transendotelial (TEER).",
+    "resultados": "Os autores demonstraram que a ruptura do glicocálix endotelial (EGL) e a perda de integridade das junções intercelulares (IJC/TEER) induzidas por NS1 são fenômenos mecanisticamente desacoplados, permitindo mapear fatores hospedeiros específicos responsáveis por cada braço da hiperpermeabilidade vascular.",
+    "implicacao_luchm": "Dialoga de forma transversal com o modelo de quebra da barreira hematoencefálica (PbA/C57BL/6J) no LUCHM: reforça a necessidade de medir separadamente integridade de glicocálix endotelial e junções oclusivas (claudina-5/TEER) em vez de tratá-las como um único evento monolítico.",
+    "faisca_lateral": "💡 Nos ensaios de barreira endotelial do LUCHM, combinar marcação de glicocálix (lectinas/sindecano-1) com claudina-5 e extravasamento de azul de Evans nos dias 4–5 pós-infecção por PbA para testar se o dano ao glicocálix precede a perda juncional."
+  },
+  "10.64898/2026.09.13.751325": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "O transportador de açúcares PfHT1 é indispensável para a captação de hexoses por Plasmodium falciparum em nichos nutricionais variáveis, mas as bases estruturais, termodinâmicas e cinéticas que permitem sua poliespecificidade — e como explorá-las para inibidores seletivos — permaneciam mal definidas.",
+    "metodo_bancada": "Simulações de dinâmica molecular do ciclo completo de transporte de substratos em PfHT1 integradas à validação experimental por mutagênese dirigida de resíduos-chave que calibram a especificidade do bolsão de ligação.",
+    "resultados": "A flexibilidade local derivada da quebra parcial (cracking) da hélice extracelular TM7b remodela dinamicamente o sítio de ligação de PfHT1 de modo dependente do substrato, fornecendo a assinatura estrutural e energética que sustenta sua promiscuidade funcional semelhante à de enzimas poliespecíficas.",
+    "implicacao_luchm": "Relevante para a frente de metabolismo energético de Plasmodium no LUCHM, conectando biologia estrutural de transportadores de membrana à vulnerabilidade metabólica do parasito frente a variações glicêmicas do hospedeiro.",
+    "faisca_lateral": "💡 Avaliar como a sobrecarga glicêmica/lipídica do hospedeiro (modelo dieta HFHS) interage com a captação de hexoses mediada por PfHT1 durante o desenvolvimento parasitário."
+  },
+  "43050517": {
+    "programa_luchm": "Neurobiologia, Neuropeptídeos & Eixo Intestino-Cérebro",
+    "racional": "Animais precisam ponderar risco e recompensa conforme o estado metabólico interno, mas o circuito neuromodulador preciso pelo qual a fome suprime a evitação aversiva para priorizar a busca por alimento permanecia incompletamente mapeado em insetos.",
+    "metodo_bancada": "Ensaio comportamental de conflito aproximação-evitação em Drosophila melanogaster no qual moscas precisam atravessar uma barreira de choque elétrico para alcançar alimento, combinado a manipulação genética e registro funcional de neurônios produtores de leucocinina, neurônios de saída do corno lateral (PV5K1) e neurônios FB2B do corpo em leque ventral.",
+    "resultados": "O jejum elevou a tolerância ao choque elétrico apenas na presença de pistas olfatórias alimentares. Mecanisticamente, neurônios de leucocinina codificam a fome e sinalizam para neurônios PV5K1, que integram estado interno e odor alimentar para suprimir a atividade evocada por choque nos neurônios aversivos FB2B.",
+    "implicacao_luchm": "Conexão direta com o programa de neurobiologia de insetos e neuropeptídeos do LUCHM: posiciona a leucocinina como chave neuromoduladora capaz de desligar sinais aversivos diante de pistas sensoriais de alimento/hospedeiro.",
+    "faisca_lateral": "💡 Investigar se a expressão ou liberação de leucocinina em fêmeas de Aedes aegypti em jejum versus pós-repasto HFHS modula a tolerância a estímulos repelentes durante a busca pelo hospedeiro."
+  },
+  "43050370": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Surtos explosivos do vírus Oropouche (OROV) na Amazônia e sua expansão pelo Brasil em 2024 — incluindo casos neurológicos e óbitos — expuseram a ausência completa de antivirais específicos contra membros da família Peribunyaviridae.",
+    "metodo_bancada": "Triagem fenotípica de reposicionamento das bibliotecas abertas Pandemic Response Box e Global Health Priority Box da Medicines for Malaria Venture (MMV) utilizando vírus Bunyamwera recombinante expressando eGFP (BUNV-eGFP) monitorado por imageamento de células vivas, seguida de validação contra infecção por vírus Oropouche.",
+    "resultados": "A triagem identificou nove compostos com atividade significativa contra BUNV-eGFP, destacando três candidatos principais — incluindo Trimetrexate e GSK-983 — com potencial inibitório translacional contra a infecção por Oropouche.",
+    "implicacao_luchm": "Une duas pontes estratégicas do laboratório no Brasil: coleções farmacológicas da MMV (tradicionalmente usadas em malária) aplicadas por imagem em células vivas à descoberta rápida de antivirais contra o Oropouche reemergente.",
+    "faisca_lateral": "💡 Avaliar a possibilidade de testar os hits da MMV (como Trimetrexate e GSK-983) em ensaios celulares ou em modelos vetoriais/hospedeiros de coinfecção arboviral no grupo."
+  },
+  "43053073": {
+    "programa_luchm": "Repasto Sanguíneo HFHS & Metabolismo do Vetor",
+    "racional": "A epidemia silvestre de febre amarela de 2016–2019 atingiu parques periurbanos de São Paulo e extinguiu localmente bugios no Parque Estadual Alberto Löfgren (Serra da Cantareira), levantando a questão crítica de para quais hospedeiros vertebrados os mosquitos vetores redirecionaram seus repastos sanguíneos.",
+    "metodo_bancada": "Coleta longitudinal de 5.001 fêmeas de mosquitos entre dezembro/2017 e março/2020 no PEAL (São Paulo), com triagem de 143 fêmeas ingurgitadas de sangue e identificação molecular da fonte alimentar vertebrada por sequenciamento Nanopore.",
+    "resultados": "Fontes sanguíneas foram identificadas em 74,8% (107/143) das amostras: mamíferos responderam por 83,2%, sendo humanos 76,6% (82/107) de todos os repastos, seguidos por aves (10,3%) e refeições mistas (6,5%). No vetor primário Haemagogus leucocelaenus, impressionantes 94,6% (35/37) dos repastos eram de origem humana.",
+    "implicacao_luchm": "Evidência empírica brasileira de alto valor ecológico para o LUCHM: mostra plasticidade alimentar extrema em vetores silvestres após o colapso de primatas não humanos e valida o sequenciamento Nanopore para rastreamento de fontes de repasto sanguíneo.",
+    "faisca_lateral": "💡 Aplicar o fluxo de identificação molecular por Nanopore como referência metodológica para caracterizar fontes mistas de sangue e impactos dietéticos em capturas de campo periurbanas no Rio de Janeiro."
+  },
+  "43053097": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "A eficácia das redes impregnadas com piretroides na África Subsaariana depende do monitoramento contínuo das mutações de resistência alvo-sítio kdr-west (L1014F) e kdr-east (L1014S) em populações simpátricas de Anopheles gambiae s.l. sob diferentes cenários de transmissão.",
+    "metodo_bancada": "Coleta de larvas em quatro localidades dos distritos de Nioro e Velingara (Senegal), criação até fêmeas adultas de 3–5 dias, bioensaios de susceptibilidade da OMS frente a permetrina, deltametrina, alfacipermetrina, bendiocarbe e pirimifós-metil, e genotipagem molecular por PCR de espécies crípticas e alelos kdr com cálculo de odds ratios.",
+    "resultados": "As populações de An. gambiae s.l. de ambos os distritos apresentaram elevada resistência fenotípica a piretroides acompanhada de distribuição contrastante dos alelos L1014F e L1014S entre distritos e espécies irmãs, reforçando a necessidade de rotação química baseada em vigilância molecular local.",
+    "implicacao_luchm": "Complementa o panorama longitudinal de resistência em vetores anofelinos (junto ao estudo de Camarões de 13/11), balizando discussões de controle vetorial e impacto fisiológico de mutações de canais de sódio no inseto.",
+    "faisca_lateral": "💡 Considerar o perfil de mutações em canais de sódio dependentes de voltagem (kdr) ao interpretar diferenças de excitabilidade neuronal e fitness reprodutivo entre linhagens de mosquitos."
+  },
+  "43052209": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Diante da expansão geográfica recente do vírus Oropouche e da cocirculação silenciosa de Mayaro e flavivírus neurotrópicos no Brasil, faltavam séries multianuais integrando pacientes febris, mosquitos e primatas não humanos fora da Bacia Amazônica.",
+    "metodo_bancada": "Vigilância molecular integrada conduzida entre 2019 e 2025 no norte de Minas Gerais (Brasil), testando amostras de 824 pacientes com doença febril aguda, 3.484 mosquitos e 113 primatas não humanos negativos para Dengue, Chikungunya e Zika quanto à presença de OROV, MAYV, WNV e SLEV.",
+    "resultados": "Embora todas as amostras triadas tenham sido negativas para DENV, CHIKV e ZIKV e não tenha sido confirmada transmissão enzoótica sustentada nos vetores e primatas locais, detectou-se um caso humano importado de infecção por vírus Oropouche, sinalizando vulnerabilidade de introdução na região.",
+    "implicacao_luchm": "Referência epidemiológica nacional direta (Minas Gerais/Sudeste) para a frente de arboviroses emergentes do LUCHM, destacando a importância de vigilância ativa em corredores de trânsito humano antes do estabelecimento local.",
+    "faisca_lateral": "💡 Manter protocolos diagnósticos diferenciais para OROV e MAYV no radar de colaborações clínicas do Sudeste brasileiro frente a casos febris negativos para DENV/CHIKV/ZIKV."
+  },
+  "43044679": {
+    "programa_luchm": "Biologia Celular de Plasmodium & Bloqueio de Transmissão",
+    "racional": "Protozoários parasitos apresentam genomas complexos, vias atípicas de reparo de DNA e ciclos multiestágio que tornam a edição gênica por CRISPR-Cas9 altamente variável entre espécies, exigindo comparação sistemática de protocolos validados.",
+    "metodo_bancada": "Revisão metodológica comparativa abrangendo sistemas CRISPR-Cas9 experimentalmente estabelecidos em Plasmodium, Leishmania, Toxoplasma gondii, Trypanosoma, Babesia, Theileria e Cryptosporidium, contrastando expressão plasmidial versus transitória, entrega por ribonucleoproteína (RNP), eletroporação/nucleofecção, desenho de RNAs-guia/doadores e estratégias de seleção.",
+    "resultados": "Sistematiza os determinantes críticos de eficiência de edição — acessibilidade cromatínica, capacidade endógena de reparo por recombinação homóloga, disponibilidade de doador e custo de fitness da lesão — oferecendo um guia operacional comparativo entre apicomplexos e cinetoplastídeos.",
+    "implicacao_luchm": "Manual prático valioso para a bancada molecular do LUCHM/IBCCF tanto para geração de linhagens marcadas/knockdowns em Plasmodium quanto para estudos comparativos em tripanossomatídeos (ex. vias de polifosfato/acidocalcisomos).",
+    "faisca_lateral": "💡 Comparar entrega direta de complexos Cas9-RNP versus sistemas plasmidiais nos protocolos de marcação endógena (tagging) de proteínas de membrana ou acidocalcisomos no laboratório."
+  },
+  "43053130": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Ortobuniavírus da família Peribunyaviridae possuem genoma de RNA segmentado de fita negativa altamente propenso a rearranjo genético (reassortment), mas além do Oropouche grande parte de sua diversidade viral permanece negligenciada na vigilância global.",
+    "metodo_bancada": "Revisão genômica e ecoepidemiológica integrando diversidade de linhagens, mecanismos evolutivos de rearranjo segmentar e fatores climáticos/antropogênicos em ortobuniavírus clinicamente relevantes (OROV, LACV, JCV, SBV) e negligenciados (ILEV, BWAV, INGV) na América Latina, África e Ásia.",
+    "resultados": "Sintetiza como eventos de rearranjo entre segmentos genômicos podem gerar cepas com virulência alterada ou ampliação de espectro de vetores e hospedeiros, explicando a rápida expansão recente de OROV na América do Sul e SBV na Europa.",
+    "implicacao_luchm": "Oferece base conceitual evolutiva para interpretar a emergência súbita de cepas rearranjadas de Oropouche no Brasil e sua possível adaptação a diferentes dípteros hematófagos.",
+    "faisca_lateral": "💡 Acompanhar marcadores genômicos de rearranjo segmentar ao selecionar cepas de referência de OROV para estudos futuros de competência vetorial."
+  },
+  "43052185": {
+    "programa_luchm": "Imunidade de Vetores & RNAi",
+    "racional": "Em 2024 o vírus Oropouche (OROV) emergiu em escala nacional em Cuba fora da bacia amazônica tradicional, gerando necessidade urgente de quantificar taxas de confirmação, faixa etária acometida e o desafio diagnóstico imposto pela cocirculação simultânea de Dengue.",
+    "metodo_bancada": "Investigação epidemiológica e laboratorial do surto de febre Oropouche em Havana (junho a setembro de 2024), avaliando 549 casos clínicos suspeitos quanto à confirmação laboratorial, gravidade clínica, incidência por faixa etária e interferência diagnóstica por Dengue.",
+    "resultados": "Dos 549 casos suspeitos, 189 (34,4%) foram confirmados para OROV, sem registro de quadros graves. A incidência geral alcançou 8,9/100.000 habitantes — atingindo pico de 10,2/100.000 em adultos de 27 a 59 anos — com três lactentes positivos e forte sobreposição clínica com Dengue.",
+    "implicacao_luchm": "Complementa o retrato da expansão caribenha e latino-americana de Oropouche junto ao estudo de Minas Gerais (PMID 43052209) e à triagem antiviral MMV (PMID 43050370), reforçando o papel de vigilância diferencial frente à Dengue.",
+    "faisca_lateral": "💡 Integrar painéis diferenciais de OROV/DENV nas análises epidemiológicas e de competência vetorial conduzidas em colaboração pelo laboratório."
   }
 }

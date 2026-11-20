@@ -103,7 +103,7 @@ Mensalmente, a revista integra a aba e dossiê **Horizonte Lateral** governada p
 * **Francisca (`pt-BR-FranciscaNeural`)**: Métodos de bancada, protocolos experimentais, controles, microscopia, dissecções e impacto imediato para os alunos e técnicos do LUCHM.
 
 ### Estrutura Canônica dos 7 Atos do Roteiro Dinâmico
-1. **Ato 1 (Abertura & Panorama do Dia)**: Contextualização da data da edição (`radar_edicao_dia.data`), volume triado, distribuição de prioridades e antecipação dos 4 eixos transversais (~3.5 min).
+1. **Ato 1 (Abertura Direta — < 30 segundos)**: Sem saudações longas nem preâmbulos de apresentação. Vai direto ao ponto: data da edição (`radar_edicao_dia.data`), contagem de artigos triados/prioritários e transição imediata (*"na análise de hoje identificamos X; então vamos direto para o primeiro artigo"*).
 2. **Ato 2 (Malária Cerebral, Endotélio & Neuroinflamação)**: Análise dos trabalhos prioritários de BHE e resposta vascular ($PbA$/C57BL/6J, controles humanos, citocinas endoteliais e sinalização glial/plaquetária) (~6.5 min).
 3. **Ato 3 (Fisiologia do Vetor, Digestão & Interação Patógeno-Mosquito)**: Dissecação de mecanismos de tolerância ao hemo, metabolismo de repasto HFHS e seleção/resposta imune no intestino médio de culicídeos (~5.5 min).
 4. **Ato 4 (Biofísica, Polifosfatos, Ultraestrutura & Bioimagem)**: Polifosfatos inorgânicos, biologia celular de organelas/vacúolos, preparo de amostras no CENABIO (OTO, FIB-SEM, SBF-SEM) e métodos ópticos quantitativos (~4.5 min).
