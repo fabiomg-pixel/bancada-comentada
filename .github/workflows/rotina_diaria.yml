@@ -1,13 +1,10 @@
 name: Rotina Diária da Bancada Comentada
 
-# Desde 09/11/2026 este repositório é espelho da revista do claude.ai e não faz captura própria.
-# A rotina dispara quando a tarefa "Espelho da Bancada no GitHub" grava o depósito do dia da v6
-# em data/captura_v6/ (dias úteis, por volta das 18h45 de Brasília).
+# Desde 20/11/2026 a curadoria em português e a síntese de áudio rodam localmente
+# via automação agendada no Antigravity (Gemini 4 Neon, tentativas às 23h00 e 08h00 BRT).
+# Este workflow fica mantido apenas para disparo manual de emergência (workflow_dispatch),
+# evitando commits duplicados ou publicação sem enriquecimento às 18h45.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/captura_v6/**'
   workflow_dispatch: # Permite disparar manualmente pelo botão "Run workflow" no GitHub
 
 permissions:
