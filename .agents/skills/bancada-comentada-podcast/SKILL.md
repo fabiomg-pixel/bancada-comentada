@@ -96,26 +96,27 @@ Mensalmente, a revista integra a aba e dossiê **Horizonte Lateral** governada p
 
 ---
 
-## 4. Arquitetura do Podcast (Stork Cast — 25-30 Minutos)
+## 4. Arquitetura do Áudio Neural Jornalístico (Voz Única — Audio-First)
 
-### As Duas Vozes Neurais
-* **Antônio (`pt-BR-AntonioNeural`)**: Visão conceitual, fisiopatologia, epidemiologia, imunometabolismo e formulação teórica de hipóteses.
-* **Francisca (`pt-BR-FranciscaNeural`)**: Métodos de bancada, protocolos experimentais, controles, microscopia, dissecções e impacto imediato para os alunos e técnicos do LUCHM.
+### Voz, Ritmo e Chunking Sem Cortes
+* **Voz Oficial (Nível 1):** `pt-BR-AntonioNeural` via `edge-tts` (Python), com timbre sóbrio de âncora de rádio jornalismo e velocidade **`--rate=+3%`** (elimina o arrastado de TTS sem distorcer o tom).
+* **Sem alternância picotada de personagens:** locução única contínua elimina os cortes e reinícios de prosódia entre turnos.
+* **Chunking inteligente (≤ 3.500 caracteres):** o roteiro integral é fatiado estritamente em quebras duplas de parágrafo (`\n\n`) em ~6 a 8 blocos contínuos, unidos por **concatenação binária direta** (`fout.write(fin.read())`) sem estalos e sem inserção de silêncios artificiais.
+* **Resiliência em 3 Camadas:**
+  1. **Nível 1 (Principal):** `edge-tts` com `pt-BR-AntonioNeural` (`+3%`).
+  2. **Nível 2 (Fallback Local Offline):** `say -v Luciana` (macOS) convertido para MP3 mono via `ffmpeg`.
+  3. **Nível 3 (Navegador):** botão **"🔊 Ouvir com voz do navegador"** (`window.speechSynthesis`, `lang: pt-BR`, `rate: 1.03`) em `index.html`, além do botão **"📋 Copiar Transcrição (Eleven Reader)"**.
 
-### Estrutura Canônica dos 7 Atos do Roteiro Dinâmico
-1. **Ato 1 (Abertura Direta — < 30 segundos)**: Sem saudações longas nem preâmbulos de apresentação. Vai direto ao ponto: data da edição (`radar_edicao_dia.data`), contagem de artigos triados/prioritários e transição imediata (*"na análise de hoje identificamos X; então vamos direto para o primeiro artigo"*).
-2. **Ato 2 (Malária Cerebral, Endotélio & Neuroinflamação)**: Análise dos trabalhos prioritários de BHE e resposta vascular ($PbA$/C57BL/6J, controles humanos, citocinas endoteliais e sinalização glial/plaquetária) (~6.5 min).
-3. **Ato 3 (Fisiologia do Vetor, Digestão & Interação Patógeno-Mosquito)**: Dissecação de mecanismos de tolerância ao hemo, metabolismo de repasto HFHS e seleção/resposta imune no intestino médio de culicídeos (~5.5 min).
-4. **Ato 4 (Biofísica, Polifosfatos, Ultraestrutura & Bioimagem)**: Polifosfatos inorgânicos, biologia celular de organelas/vacúolos, preparo de amostras no CENABIO (OTO, FIB-SEM, SBF-SEM) e métodos ópticos quantitativos (~4.5 min).
-5. **Ato 5 (Horizonte Lateral & Fronteiras)**: Integração fiel do ensaio de ponto cego, dos 2 pesquisadores de referência lateral, dos 2 temas de expansão e das 2 técnicas emergentes lidas dinamicamente de `data/radar_cultural.json` (~3.5 min).
-6. **Ato 6 (Três Diretrizes Acionáveis de Bancada para Amanhã)**: Três protocolos objetivos para o grupo executar no biotério, insetário e microscopia (~2.5 min).
-7. **Ato 7 (Encerramento)**: Síntese final e despedida para a comutação (~1 min).
+### Diretriz de Roteiro Audio-First
+1. **Abertura Direta (< 30 segundos):** data expandida por extenso (*"Edição de 19 de novembro de 2026"* — nunca `"19/11"`), contagem de artigos triados/prioritários e entrada imediata no primeiro artigo (*"Vamos direto ao primeiro artigo."*).
+2. **Cadência por Matéria:** editoria, periódico/PMID e título encerrados com **ponto final** para forçar pausas naturais de respiração, seguidos por 3 parágrafos contínuos (contexto/racional → método de bancada → achados) e arremate explícito **"Por que importa na bancada: ..."** (+ próximo passo no LUCHM).
+3. **Vinhetas de Transição Faladas:** anúncio claro nas viradas de bloco (Plasmodium → Vetores & Arboviroses → Barreira Endotelial/Métodos → Horizonte Lateral → 3 Diretrizes Finais).
 
 ### Formato de Saída e Distribuição
-* `audio/briefing_atual.txt` e `audio/podcast_comutacao_28min_{data_edicao}.txt`: Transcrição integral no formato de diálogo (`Antônio: ...` e `Francisca: ...`) pronta para o Eleven Reader.
-* `~/Downloads/LUCHM_Podcast_Transcricao_{data_edicao}.txt`: Cópia sem cabeçalhos `#` pronta para importar diretamente no Eleven Reader no celular/Mac.
-* `audio/briefing_atual.mp3` e `audio/podcast_comutacao_28min_{data_edicao}.mp3`: Master MP3 fallback em 128 kbps mono (`44.1 kHz`, `loudnorm`).
-* `~/Downloads/LUCHM_Podcast_Comutacao_{data_edicao}.mp3` e Google Drive (`stork-podcast/episodes/stork-cast-{data_edicao}-profundo-28min.mp3`): Sincronização automática quando gerado com áudio completo.
+* `audio/briefing_atual.txt` e `audio/podcast_comutacao_28min_{data_edicao}.txt`: Transcrição limpa em parágrafos narrados (sem rótulos de diálogo), pronta para Web Speech API e Eleven Reader.
+* `~/Downloads/LUCHM_Podcast_Transcricao_{data_edicao}.txt`: Cópia sem cabeçalhos `#` pronta para importar diretamente no Eleven Reader.
+* `audio/briefing_atual.mp3` e `audio/podcast_comutacao_28min_{data_edicao}.mp3`: Master MP3 contínuo gerado por concatenação binária direta dos blocos `edge-tts`.
+* `~/Downloads/LUCHM_Podcast_Comutacao_{data_edicao}.mp3` e Google Drive (`stork-podcast/episodes/stork-cast-{data_edicao}-profundo-28min.mp3`): Sincronização automática.
 
 ---
 

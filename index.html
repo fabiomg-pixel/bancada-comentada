@@ -1149,7 +1149,7 @@ body { padding-bottom: 78px; }
       try {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: "Stork Cast — LUCHM",
-          artist: "Antônio & Francisca · LUCHM/IBCCF/UFRJ",
+          artist: "Âncora Neural (pt-BR-AntonioNeural) · LUCHM/IBCCF/UFRJ",
           album: "Bancada Comentada",
           artwork: [
             { src: "icon.png", sizes: "512x512", type: "image/png" }
@@ -1251,6 +1251,66 @@ body { padding-bottom: 78px; }
     }
   }
   window.copiarTranscricaoPodcast = copiarTranscricaoPodcast;
+
+  let _webSpeechAtivo = false;
+  async function toggleFalaNavegador(btn, podcastIso) {
+    if (!("speechSynthesis" in window)) {
+      S.msg = "⚠️ Este navegador não oferece síntese de voz nativa (Web Speech API).";
+      render();
+      return;
+    }
+    if (_webSpeechAtivo || window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      _webSpeechAtivo = false;
+      if (btn) btn.textContent = "🔊 Ouvir com voz do navegador";
+      return;
+    }
+    podcastIso = podcastIso || (S.pauta && (S.pauta.periodo || S.pauta.fim)) || diaAtual();
+    const rotuloOriginal = btn ? btn.textContent : "🔊 Ouvir com voz do navegador";
+    if (btn) btn.textContent = "⏳ Carregando voz…";
+    try {
+      let txt = "";
+      for (const u of [`audio/podcast_comutacao_28min_${podcastIso}.txt?v=${podcastIso}`, `audio/briefing_atual.txt?v=${podcastIso}`]) {
+        try {
+          const resp = await fetch(u);
+          if (resp.ok) {
+            txt = await resp.text();
+            if (txt && txt.length > 100) break;
+          }
+        } catch (e) {}
+      }
+      const limpo = (txt || "").replace(/^#.*(\r?\n|$)/gm, "").replace(/\n{3,}/g, "\n\n").trim();
+      if (!limpo) throw new Error("Transcrição indisponível");
+      const blocos = limpo.split("\n\n").map((p) => p.trim()).filter(Boolean);
+      window.speechSynthesis.cancel();
+      _webSpeechAtivo = true;
+      if (btn) btn.textContent = "⏹ Parar voz do navegador";
+      const vozes = window.speechSynthesis.getVoices();
+      const vozPt = vozes.find((v) => /pt[-_]BR/i.test(v.lang)) || null;
+      let idx = 0;
+      const falarProximo = () => {
+        if (!_webSpeechAtivo || idx >= blocos.length) {
+          _webSpeechAtivo = false;
+          if (btn) btn.textContent = rotuloOriginal;
+          return;
+        }
+        const utt = new SpeechSynthesisUtterance(blocos[idx++]);
+        utt.lang = "pt-BR";
+        utt.rate = 1.03;
+        if (vozPt) utt.voice = vozPt;
+        utt.onend = falarProximo;
+        utt.onerror = () => { _webSpeechAtivo = false; if (btn) btn.textContent = rotuloOriginal; };
+        window.speechSynthesis.speak(utt);
+      };
+      falarProximo();
+    } catch (err) {
+      _webSpeechAtivo = false;
+      if (btn) btn.textContent = rotuloOriginal;
+      S.msg = "⚠️ Não foi possível iniciar a voz do navegador.";
+      render();
+    }
+  }
+  window.toggleFalaNavegador = toggleFalaNavegador;
 
   /* ---------- ficha de leitura ---------- */
   function abrirFicha(id) {
@@ -1452,20 +1512,36 @@ body { padding-bottom: 78px; }
             h("div", { style: "display:flex; align-items:center; gap:8px;" },
               h("span", { style: "font-size:26px;" }, "🎙️"),
               h("div", null,
-                h("strong", { style: "font:700 15px var(--f-display); display:block; color:var(--ink);" }, `Podcast de Bancada & Stork Cast — ${podcastDataStr}`),
-                h("span", { class: "mono", style: "font-size:11px; color:var(--muted);" }, "25-28 min · Diálogo Antônio & Francisca pronto para Eleven Reader"))),
+                h("strong", { style: "font:700 15px var(--f-display); display:block; color:var(--ink);" }, `Boletim Narrado & Stork Cast — ${podcastDataStr}`),
+                h("span", { class: "mono", style: "font-size:11px; color:var(--muted);" }, "Voz única contínua · pt-BR-AntonioNeural (+3%) · Audio-First"))),
             h("p", { style: "font-size:12.5px; line-height:1.45; color:var(--ink); margin:2px 0 0;" },
-              "Roteiro denso costurando os achados prioritários e as conexões mecanísticas da semana com os ensaios do LUCHM."),
+              "Locução jornalística contínua em blocos de até 3.500 caracteres (sem cortes entre personagens), costurando os estudos prioritários da edição com a bancada do LUCHM."),
             h("div", { style: "background:rgba(30,126,52,0.06); border:1px solid var(--ok); border-radius:4px; padding:8px 10px; margin-top:2px;" },
-              h("span", { class: "mono", style: "font-size:11px; font-weight:700; color:var(--ok); display:block; margin-bottom:2px;" }, "🎧 Caminho Principal: Eleven Reader"),
+              h("span", { class: "mono", style: "font-size:11px; font-weight:700; color:var(--ok); display:block; margin-bottom:2px;" }, "🎧 Áudio Neural Contínuo + Eleven Reader"),
               h("span", { style: "font-size:11.5px; line-height:1.35; color:var(--ink); display:block;" },
-                "Copie o diálogo limpo (Antônio: / Francisca:) em um clique e cole no app Eleven Reader para síntese contínua sem quebras entre personagens."))),
+                "Ouça o MP3 contínuo direto abaixo, use a voz nativa do navegador ou copie o roteiro limpo em 1 clique para o Eleven Reader."))),
           h("div", { style: "display:flex; flex-direction:column; gap:8px;" },
-            h("div", { style: "display:flex; gap:8px; align-items:center; flex-wrap:wrap;" },
+            h("div", { style: "display:flex; align-items:center; gap:8px; flex-wrap:wrap;" },
+              h("button", {
+                id: "btn-pauta-play",
+                type: "button",
+                class: "btn-dock-play",
+                style: "font-size:11.5px; padding:7px 14px; cursor:pointer;",
+                onclick: () => toggleAudioPlay()
+              }, "▶ Ouvir Boletim MP3 (+3%)"),
+              h("button", {
+                id: "btn-web-speech",
+                type: "button",
+                class: "btn-subtle mono",
+                style: "font-size:11px; padding:6px 10px; cursor:pointer;",
+                onclick: (e) => toggleFalaNavegador(e.currentTarget, podcastIso),
+                title: "Ouvir imediatamente via Web Speech API do navegador (pt-BR, 1.03x)"
+              }, "🔊 Ouvir com voz do navegador")),
+            h("div", { style: "display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding-top:6px; border-top:1px solid var(--rule);" },
               h("button", {
                 class: "btn-subtle mono",
                 type: "button",
-                style: "font-size:11.5px; padding:7px 12px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:var(--ink); color:var(--paper); font-weight:700;",
+                style: "font-size:11px; padding:5px 10px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; background:var(--ink); color:var(--paper); font-weight:700;",
                 onclick: (e) => copiarTranscricaoPodcast(e.currentTarget, podcastIso),
                 title: "Copiar transcrição limpa para colar no Eleven Reader"
               }, "📋 Copiar Transcrição (Eleven Reader)"),
@@ -1476,22 +1552,13 @@ body { padding-bottom: 78px; }
                 rel: "noopener",
                 style: "font-size:11px; padding:5px 8px; text-decoration:none;",
                 title: "Abrir roteiro completo em texto"
-              }, "📄 Abrir Roteiro TXT"),
+              }, "📄 Roteiro TXT"),
               h("a", {
                 class: "btn-subtle mono",
                 href: audioSrc,
                 download: podcastDownloadName,
                 style: "font-size:11px; padding:5px 8px; text-decoration:none;"
-              }, "⬇ MP3 Fallback")),
-            h("div", { style: "display:flex; align-items:center; gap:10px; padding-top:6px; border-top:1px solid var(--rule); flex-wrap:wrap;" },
-              h("button", {
-                id: "btn-pauta-play",
-                type: "button",
-                class: "btn-dock-play",
-                style: "font-size:11.5px; padding:5px 12px; cursor:pointer;",
-                onclick: () => toggleAudioPlay()
-              }, "▶ Player Local (Edge-TTS)"),
-              h("span", { class: "mono", style: "font-size:10.5px; color:var(--muted);" }, "Fallback rápido no navegador."))));
+              }, "⬇ Baixar MP3"))));
 
         const boxSintese = h("div", { class: "sintese-transversal-box" },
           h("div", { style: "display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;" },

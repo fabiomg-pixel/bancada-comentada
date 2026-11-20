@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-gerar_podcast_28min.py — Motor de Podcast Dinâmico v2 (Stork Cast — LUCHM/IBCCF/UFRJ)
-Duração rigorosamente calibrada: 26 a 28 minutos (~3.700 a 3.850 palavras de debate denso de bancada).
-Companheiro dinâmico de viagem de carro do Prof. Fábio Gomes.
+gerar_podcast_28min.py — Motor de Áudio Neural Jornalístico v3 (Stork Cast — LUCHM/IBCCF/UFRJ)
 
-MOTOR 100% DINÂMICO:
-- Lê dinamicamente os artigos reais de data/edicao_atual.json e data/radar_cultural.json.
-- Agrupa os artigos essenciais/altos por eixos temáticos (Malária PbA/BHE, Fisiologia do Vetor/Repasto/Hemo, Bioimagem/Polifosfato).
-- Gera o debate em 7 Atos com as personas canônicas:
-    * Antônio (pt-BR-AntonioNeural): Visão teórica, fisiopatologia, imunometabolismo, neuroinflamação e hipóteses provocativas.
-    * Francisca (pt-BR-FranciscaNeural): Bancada, métodos detalhados, modelos C57BL/6J, Aedes, Anopheles, dissecção, microscopia CENABIO (FIB-SEM, SBF-SEM) e implicações imediatas para os alunos.
-- Síntese com Edge-TTS neural de estúdio e masterização em 192 kbps com ffmpeg.
-- Sincronização tripla automática:
-    1. Web/Local: audio/briefing_atual.mp3, audio/podcast_comutacao_28min_{hoje}.mp3 e transcrição .txt (botão Eleven Reader).
-    2. Mac do Fábio: ~/Downloads/LUCHM_Podcast_Comutacao_{hoje}.mp3.
-    3. Google Drive: stork-podcast/episodes/stork-cast-{hoje}-profundo-28min.mp3.
+Arquitetura de Voz Única (Audio-First Copywriting + Chunking de 3.500 caracteres):
+- Voz oficial: pt-BR-AntonioNeural (via edge-tts) com velocidade --rate=+3% (ritmo de rádio jornalismo).
+- Sem alternância picotada entre personagens e sem inserção de silêncios artificiais.
+- Fatiamento inteligente em blocos de até 3.500 caracteres cortando estritamente em quebras de parágrafo (\n\n).
+- Concatenação binária direta dos fluxos MP3 gerados pelo edge-tts (contínuo e sem estalos).
+- Resiliência em camadas:
+    * Nível 1 (Principal): edge-tts com pt-BR-AntonioNeural (+3%).
+    * Nível 2 (Fallback Local Offline): macOS `say -v Luciana` convertido para MP3 mono via ffmpeg.
+    * Nível 3 (Navegador): botão "Ouvir com voz do navegador" (Web Speech API, pt-BR, rate 1.03) no index.html.
+- Sincronização automática:
+    1. Repositório/Web: audio/briefing_atual.mp3, audio/briefing_atual.txt e cópias datadas.
+    2. Mac do Fábio: ~/Downloads/LUCHM_Podcast_Comutacao_{data}.mp3 e ~/Downloads/LUCHM_Podcast_Transcricao_{data}.txt.
+    3. Google Drive: stork-podcast/episodes/stork-cast-{data}-profundo-28min.mp3.
 """
 
 import os
@@ -23,7 +24,7 @@ import json
 import asyncio
 import argparse
 import subprocess
-import tempfile
+import shutil
 import time
 import re
 from datetime import datetime, timezone, timedelta
@@ -35,23 +36,26 @@ AUDIO_DIR = os.path.join(REPO_DIR, "audio")
 os.makedirs(AUDIO_DIR, exist_ok=True)
 os.makedirs(os.path.join(DATA_DIR, "audio"), exist_ok=True)
 
-VOZ_A = "pt-BR-AntonioNeural"     # Narrador / Visão Teórica & Imunometabolismo
-VOZ_B = "pt-BR-FranciscaNeural"   # Métodos / Bancada LUCHM & Ultraestrutura
+VOZ_PRINCIPAL = "pt-BR-AntonioNeural"
+TAXA_PRINCIPAL = "+3%"
+LIMITE_CHUNK_CHARS = 3500
 
 MESES_PT = [
-    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
 ]
+
 
 def formatar_data_extenso(iso_date):
     try:
-        parts = iso_date.split("-")
+        parts = str(iso_date).split("-")
         ano = parts[0]
         mes_idx = int(parts[1]) - 1
         dia = int(parts[2])
         return f"{dia} de {MESES_PT[mes_idx]} de {ano}"
     except Exception:
-        return iso_date
+        return str(iso_date)
+
 
 def carregar_dados_edicao():
     caminho = os.path.join(DATA_DIR, "edicao_atual.json")
@@ -61,6 +65,7 @@ def carregar_dados_edicao():
     with open(caminho, "r", encoding="utf-8") as f:
         return json.load(f)
 
+
 def carregar_radar_cultural():
     caminho = os.path.join(DATA_DIR, "radar_cultural.json")
     if not os.path.exists(caminho):
@@ -68,22 +73,22 @@ def carregar_radar_cultural():
     with open(caminho, "r", encoding="utf-8") as f:
         return json.load(f)
 
+
 def extrair_artigos_dict(edicao_data):
     colecao = edicao_data.get("colecao_artigos", {})
     if isinstance(colecao, dict):
         return list(colecao.values())
-    elif isinstance(colecao, list):
+    if isinstance(colecao, list):
         return colecao
     artigos = edicao_data.get("artigos", [])
-    if isinstance(artigos, list):
-        return artigos
-    return []
+    return artigos if isinstance(artigos, list) else []
+
 
 def eh_texto_ingles(txt):
     if not txt or len(txt) < 20:
         return False
     t = " " + txt.lower() + " "
-    acentos_pt = len(re.findall(r'[ãõçáéíóúêôâ]', t))
+    acentos_pt = len(re.findall(r"[ãõçáéíóúêôâ]", t))
     marcadores_en = sum(
         1 for w in [
             " the ", " and ", " of ", " with ", " that ", " from ", " were ", " was ",
@@ -103,9 +108,10 @@ def eh_texto_ingles(txt):
         return True
     return marcadores_en >= 3 and marcadores_en > marcadores_pt
 
+
 def eh_artigo_fora_de_escopo(artigo):
-    tit = (artigo.get('titulo') or '').lower()
-    if re.match(r'^\s*(retraction|retracted|erratum|corrigendum)\b', tit) or "retraction notice" in tit:
+    tit = (artigo.get("titulo") or "").lower()
+    if re.match(r"^\s*(retraction|retracted|erratum|corrigendum)\b", tit) or "retraction notice" in tit:
         return True
     txt = f"{tit} {(artigo.get('resumo') or '')[:500]}".lower()
     ruidos = [
@@ -120,52 +126,12 @@ def eh_artigo_fora_de_escopo(artigo):
         "stannous fluoride", "plaque biofilm", "feline heartworm",
         "epstein-barr", "melanoma", "corpora amylacea", "ribosome-associated vesicles",
     ]
-    if any(r in txt for r in ruidos) and not any(k in txt for k in ["plasmodium", "malaria", "anopheles", "aedes", "mosquito", "polyphosphate"]):
+    if any(r in txt for r in ruidos) and not any(
+        k in txt for k in ["plasmodium", "malaria", "anopheles", "aedes", "mosquito", "polyphosphate"]
+    ):
         return True
     return False
 
-def selecionar_eixos_tematicos(artigos):
-    candidatos = [
-        a for a in artigos
-        if not eh_artigo_fora_de_escopo(a)
-        and (a.get("importancia") in ["alta", "media"] or a.get("prioridade") in ["essencial", "alta"] or (a.get("score") or 0) >= 65)
-    ]
-    artigos_ordenados = sorted(
-        candidatos,
-        key=lambda x: (
-            0 if x.get("importancia") == "alta" else (1 if x.get("importancia") == "media" else 2),
-            -(x.get("score") or 0),
-        ),
-    )
-
-    eixo_malaria = []
-    eixo_vetor = []
-    eixo_bioimagem = []
-    outros = []
-
-    for a in artigos_ordenados:
-        prog = (a.get("programa") or "").lower()
-        tit = (a.get("titulo") or "").lower()
-        res = (a.get("resumo") or "").lower()[:500]
-        blob = f"{prog} {tit} {res}"
-
-        if any(k in blob for k in ["polifosfato", "polyphosphate", "hfq", "sporozoite", "esporozoíto", "maps-fc", "obm", "phase-gradient", "cryo-et", "fib-sem", "sbf-sem", "ap2-l", "parasitophorous vacuole", "ultraestrutura"]):
-            eixo_bioimagem.append(a)
-        elif any(k in blob for k in ["hemopexin", "hemopexina", "blood-feeding", "aedes", "anopheles", "pfs47", "vector-mediated", "cry1ac", "midgut", "vetor", "repasto"]):
-            eixo_vetor.append(a)
-        elif any(k in blob for k in ["cerebral malaria", "malária cerebral", "ripk1", "wnt7a", "il-15", "il-10r", "serotonin", "tph1", "endothelial", "bhe", "pba", "berghei", "yoelii"]):
-            eixo_malaria.append(a)
-        else:
-            outros.append(a)
-
-    if not eixo_malaria and outros:
-        eixo_malaria.append(outros.pop(0))
-    if not eixo_vetor and outros:
-        eixo_vetor.append(outros.pop(0))
-    if not eixo_bioimagem and outros:
-        eixo_bioimagem.append(outros.pop(0))
-
-    return eixo_malaria, eixo_vetor, eixo_bioimagem
 
 def extrair_bloco(artigo, chave, default=""):
     if not isinstance(artigo, dict):
@@ -179,212 +145,6 @@ def extrair_bloco(artigo, chave, default=""):
     if cand and not eh_texto_ingles(cand) and "Trabalho de contexto biológico complementar" not in cand:
         return cand
     return default
-
-def min_ini(txt):
-    t = str(txt or "").strip()
-    if not t:
-        return t
-    # Preserva siglas ou símbolos iniciados por maiúscula dupla/hífen (ex: IL-15C, AP2-L, RIPK1, DNA)
-    if len(t) >= 2 and (t[1].isupper() or t[1] in "-0123456789"):
-        return t
-    return t[0].lower() + t[1:]
-
-def resumir_revista_pmid(artigo, fallback_rev=""):
-    if not isinstance(artigo, dict) or not artigo:
-        return fallback_rev or "periódico indexado"
-    rev = (artigo.get("revista") or fallback_rev or "periódico indexado").split(":")[0].strip()
-    pmid = artigo.get("pmid") or artigo.get("_id") or ""
-    return f"{rev} (PMID {pmid})" if pmid else rev
-
-def formatar_lista_pt(itens, limite=3):
-    itens = [str(x).strip() for x in itens if str(x).strip()][:limite]
-    if not itens:
-        return ""
-    if len(itens) == 1:
-        return itens[0]
-    return ", ".join(itens[:-1]) + " e " + itens[-1]
-
-def _roteiro_nov8(artigos, conexoes, cultural_data, data_edicao, by_id, eixo_malaria, eixo_vetor, eixo_bioimagem):
-    total_artigos = len(artigos) or 116
-    altas = sum(1 for a in artigos if a.get("importancia") == "alta") or 8
-    medias = sum(1 for a in artigos if a.get("importancia") == "media") or 62
-    baixas = sum(1 for a in artigos if a.get("importancia") == "baixa") or 46
-
-    data_extenso = formatar_data_extenso(data_edicao)
-
-    # Seleção factual por PMID/tema quando presente, com fallback dinâmico seguro no eixo
-
-    def pegar(id_pref, lista_fallback, idx=0):
-        if id_pref in by_id and not eh_artigo_fora_de_escopo(by_id[id_pref]):
-            return by_id[id_pref]
-        if idx < len(lista_fallback):
-            return lista_fallback[idx]
-        return {}
-
-    art_m1 = pegar("42993832", eixo_malaria, 0)
-    art_m2 = pegar("42995941", eixo_malaria, 1)
-    art_m3 = pegar("42995426", eixo_malaria, 2)
-    art_m4 = pegar("42992273", eixo_malaria, 3)
-
-    art_v1 = pegar("42996130", eixo_vetor, 0)
-    art_v2 = pegar("42996199", eixo_vetor, 1)
-
-    art_b1 = pegar("42984176", eixo_bioimagem, 0)
-    art_b2 = pegar("42990558", eixo_bioimagem, 1)
-    art_b3 = pegar("42986815", eixo_bioimagem, 2)
-    art_o1 = pegar("42991882", eixo_bioimagem, 3)
-    art_o2 = pegar("42995420", eixo_malaria, 4)
-
-    o1_tit = art_o1.get("titulo", "Microscopia por retroiluminação oblíqua (OBM) para sensoriamento óptico sem marcadores na malária")
-    o1_cit = resumir_revista_pmid(art_o1, "ACS Omega")
-    o1_met = extrair_bloco(art_o1, "metodologia", "Microscopia por retroiluminação oblíqua acoplada à análise de conteúdo de frequência espacial de gradientes de fase.")
-    o1_res = extrair_bloco(art_o1, "resultados", "Permite detectar alterações morfológicas e de índice de refração em hemácias parasitadas por contraste óptico direto sem corantes.")
-
-    o2_tit = art_o2.get("titulo", "Dinâmica temporal da resposta imunometabólica hepática na infecção por Plasmodium yoelii")
-    o2_cit = resumir_revista_pmid(art_o2, "ImmunoHorizons")
-    o2_met = extrair_bloco(art_o2, "metodologia", "Estudo longitudinal em camundongos C57BL/6J infectados com Plasmodium yoelii avaliando dinâmica hepática de ferro e bioenergética mitocondrial.")
-    o2_res = extrair_bloco(art_o2, "resultados", "A progressão da parasitemia induziu remodelamento mitocondrial hepático robusto acoplado a alterações do metabolismo de ferro.")
-
-    ensaio = cultural_data.get("ensaio", {})
-    titulo_ensaio = ensaio.get("titulo", "A Física Oculta da Transmissão: Separação de Fases, Bioeletricidade e a Mecânica Invisível entre o Vetor e o Patógeno")
-    ponto_cego = ensaio.get("ponto_cego", "Por que olhar apenas para receptores clássicos e transcrição gênica nos cegou para os gradientes bioelétricos e as forças físicas que decidem a infecção.")
-    pesquisadores = cultural_data.get("grandes_pesquisadores", [])
-    temas_exp = cultural_data.get("temas_expansao", [])
-    tecnicas = cultural_data.get("tecnicas_emergentes", [])
-
-    pesq1 = pesquisadores[0] if len(pesquisadores) > 0 else {}
-    pesq2 = pesquisadores[1] if len(pesquisadores) > 1 else {}
-    tema_exp1 = temas_exp[0] if len(temas_exp) > 0 else {}
-    tema_exp2 = temas_exp[1] if len(temas_exp) > 1 else {}
-    tec1 = tecnicas[0] if len(tecnicas) > 0 else {}
-    tec2 = tecnicas[1] if len(tecnicas) > 1 else {}
-
-    # Bloco M1..M4
-    m1_tit = art_m1.get("titulo", "Estudo prioritário de patogênese microvascular em malária cerebral")
-    m1_cit = resumir_revista_pmid(art_m1, "Science Advances")
-    m1_ano = art_m1.get("ano", "2026")
-    m1_rac = extrair_bloco(art_m1, "racional", "Investigação dos mecanismos efetores pelos quais linfócitos T CD8+ desencadeiam morte celular endotelial e ruptura da barreira hematoencefálica na malária cerebral.")
-    m1_met = extrair_bloco(art_m1, "metodologia", "Modelo murino C57BL/6J infectado por Plasmodium berghei ANKA combinado a análises em tecido cerebral humano.")
-    m1_res = extrair_bloco(art_m1, "resultados", "A fosforilação da quinase RIPK1 ativa necroptose endotelial dependente de células T CD8+, causando colapso das junções oclusivas microvasculares e edema vasogênico.")
-    m1_imp = extrair_bloco(art_m1, "implicacoes", "Conecta-se diretamente aos nossos protocolos de malária cerebral experimental por PbA/C57BL/6J no LUCHM.")
-    m1_faisca = extrair_bloco(art_m1, "faisca_lateral", "Testar inibidores de RIPK1 como necrostatina-1s na janela pré-edema (dias 4 a 5 pós-infecção) no biotério.")
-
-    m2_tit = art_m2.get("titulo", "Avaliação da sinalização de Wnt7a astrocitário na barreira hematoencefálica durante infecção por Plasmodium")
-    m2_cit = resumir_revista_pmid(art_m2, "bioRxiv")
-    m2_met = extrair_bloco(art_m2, "metodologia", "Transcriptômica de astrócitos primários, co-culturas neurovasculares e ensaio de resgate gênico com Wnt7a durante infecção por Plasmodium.")
-    m2_res = extrair_bloco(art_m2, "resultados", "A suplementação ou resgate de Wnt7a não reverteu a disfunção endotelial microvascular induzida pela infecção.")
-    m2_imp = extrair_bloco(art_m2, "implicacoes", "Desloca o foco causal primário do suporte trófico astrocitário para o dano endotelial direto.")
-
-    m3_tit = art_m3.get("titulo", "Eixo IL-15C / IL-10Rα endotelial na contenção do arrest de células T CD8+")
-    m3_cit = resumir_revista_pmid(art_m3, "Journal of Immunology")
-    m3_met = extrair_bloco(art_m3, "metodologia", "Transferência adotiva de linfócitos T OT-I e microscopia intravital bifotônica na vasculatura cerebral.")
-    m3_res = extrair_bloco(art_m3, "resultados", "O complexo IL-15C induz IL-10 que sinaliza diretamente no receptor IL-10Rα endotelial, reduzindo ICAM-1 e o aprisionamento de células CD8+ nos capilares.")
-
-    m4_tit = art_m4.get("titulo", "Papel da serotonina periférica dependente de Tph1 na gravidade da malária cerebral")
-    m4_cit = resumir_revista_pmid(art_m4, "iScience")
-    m4_met = extrair_bloco(art_m4, "metodologia", "Modelo experimental de camundongos nocautes para triptofano hidroxilase 1 (Tph1 -/-) infectados com Plasmodium berghei ANKA.")
-    m4_res = extrair_bloco(art_m4, "resultados", "A ablação de Tph1 suprimiu a serotonina plaquetária periférica e atenuou a vasoconstrição patológica e a letalidade neurológica.")
-
-    # Bloco V1..V2
-    v1_tit = art_v1.get("titulo", "Sequestro de hemopexina de mamíferos e proteção contra toxicidade por hemo em dípteros hematófagos")
-    v1_cit = resumir_revista_pmid(art_v1, "Research Square")
-    v1_ano = art_v1.get("ano", "2026")
-    v1_rac = extrair_bloco(art_v1, "racional", "Compreender como vetores hematófagos neutralizam concentrações milimolares de hemo livre liberadas pela digestão da hemoglobina após o repasto sanguíneo.")
-    v1_met = extrair_bloco(art_v1, "metodologia", "Proteômica quantitativa da hemolinfa de Anopheles gambiae associada a bioensaios com hemina e detecção de hemopexina hospedeira.")
-    v1_res = extrair_bloco(art_v1, "resultados", "A hemopexina plasmática ingerida atravessa a barreira intestinal para a hemolinfa do vetor, tampona o hemo livre contra estresse oxidativo e favorece o desenvolvimento do parasito.")
-    v1_imp = extrair_bloco(art_v1, "implicacoes", "Conecta-se frontalmente ao modelo de repasto sanguíneo HFHS (dieta rica em açúcar e gordura) em Aedes aegypti no insetário do LUCHM.")
-    v1_faisca = extrair_bloco(art_v1, "faisca_lateral", "Dosar hemopexina íntegra na hemolinfa de Aedes pós-repasto HFHS e correlacionar com peroxidação lipídica intestinal por C11-BODIPY.")
-
-    v2_tit = art_v2.get("titulo", "Seleção mediada pelo vetor sobre haplótipos de Pfs47 em infecções por Plasmodium falciparum")
-    v2_cit = resumir_revista_pmid(art_v2, "bioRxiv")
-    v2_met = extrair_bloco(art_v2, "metodologia", "Genotipagem de locos polimórficos (Pfs47, CSP, AMA1, TRAP) em parasitos recuperados de diferentes espécies de Anopheles e mosquitos infectados em campo.")
-    v2_res = extrair_bloco(art_v2, "resultados", "Variantes específicas de Pfs47, como o polimorfismo I248L, exibem vantagem seletiva distinta conforme a espécie de Anopheles transmissora.")
-
-    # Bloco B1..B3
-    b1_tit = art_b1.get("titulo", "Compactação de DNA impulsionada por polifosfato inorgânico e regiões desordenadas de Hfq")
-    b1_cit = resumir_revista_pmid(art_b1, "Biophysical Journal")
-    b1_ano = art_b1.get("ano", "2026")
-    b1_met = extrair_bloco(art_b1, "metodologia", "Simulações de dinâmica molecular coarse-grained e all-atom avaliando interações eletrostáticas entre cadeias de polifosfato, regiões C-terminais intrinsecamente desordenadas e ácidos nucleicos.")
-    b1_res = extrair_bloco(art_b1, "resultados", "O polifosfato inorgânico forma pontes eletrostáticas moduladas por cátions divalentes com domínios proteicos desordenados, governando a compactação e a segregação de fases macromolecular.")
-    b1_imp = extrair_bloco(art_b1, "implicacoes", "Dialoga diretamente com a tradição do IBCCF/UFRJ em acidocalcisomos, estoques densos de polifosfato/cálcio e preparação de amostras para microscopia de volume no CENABIO.")
-
-    b2_tit = art_b2.get("titulo", "Remodelamento da membrana do vacúolo parasitóforo hepático dependente de AP2-L")
-    b2_cit = resumir_revista_pmid(art_b2, "bioRxiv")
-    b2_met = extrair_bloco(art_b2, "metodologia", "Deleção gênica do fator de transcrição AP2-L em Plasmodium e análise estrutural de formas exoeritrocíticas hepáticas.")
-    b2_res = extrair_bloco(art_b2, "resultados", "Sem AP2-L, o parasito falha na manutenção da membrana do vacúolo parasitóforo (PVM) e sucumbe à eliminação intracelular no hepatócito.")
-
-    b3_tit = art_b3.get("titulo", "Classificação de esporozoítos de Plasmodium por citometria de pulso multi-angular MAPS-FC")
-    b3_cit = resumir_revista_pmid(art_b3, "PLoS One")
-    b3_met = extrair_bloco(art_b3, "metodologia", "Citometria de fluxo com espalhamento de luz multi-angular resolvido no tempo acoplada a redes neurais recorrentes (LSTM) sem uso de fluoróforos.")
-    b3_res = extrair_bloco(art_b3, "resultados", "Permite identificar esporozoítos e quantificar carga infectiva por assinatura óptica intrínseca em larga escala.")
-
-    con_titulos = [c.get("titulo", "") for c in conexoes[:4] if c.get("titulo")]
-
-    # Construção dos 7 Atos em diálogo limpo para Eleven Reader (~3.600 palavras | ~26 min)
-    falas = [
-        # ATO 1: ABERTURA & PANORAMA (~500 palavras)
-        ("A", f"Olá, professor Fábio! Seja muito bem-vindo a mais uma edição integral do podcast científico de bancada do LUCHM, preparado especialmente para a sua viagem de carro referente à edição de {data_extenso}. Ajuste o som do carro, desligue-se por instantes das burocracias administrativas e aproveite os próximos vinte e seis minutos contínuos de discussão metodológica profunda no espírito dos seminários do Instituto de Biofísica Carlos Chagas Filho da UFRJ."),
-        ("B", "Boa tarde, Fábio, e boa tarde a todo o grupo do laboratório entre o biotério de camundongos, o insetário de Aedes e as janelas de microscopia no CENABIO. Aqui na Bancada Comentada a nossa regra é inegociável: nada de manchetes vazias ou abstrações genéricas. Nós vamos entrar nos controles experimentais, na estatística, nos reagentes, nas limitações de cada modelo e na pergunta prática que interessa amanhã de manhã: o que estes dados mudam nas teses, nas dissecções e nos manuscritos do LUCHM?"),
-        ("A", f"Exatamente, Francisca. Na varredura calibrada desta edição, processamos e curamos {total_artigos} publicações recentes do PubMed e do bioRxiv. Depois de filtrarmos ruídos periféricos e checarmos artigo por artigo, consolidamos {altas} estudos de prioridade alta que formam o núcleo duro da semana, acompanhados por {medias} trabalhos de importância média para acompanhamento e {baixas} registros de contexto. E o quadro que emergiu desta triagem é extraordinário porque articula quatro grandes eixos transversais que já deixamos explícitos ao lado do áudio na página da pauta."),
-        ("B", f"Sim! Quem abrir a aba Pauta da Bancada Comentada agora vê exatamente esses eixos integrados: {formatar_lista_pt(con_titulos, 4) if con_titulos else 'morte endotelial na barreira hematoencefálica, imunorregulação vascular com serotonina periférica, sequestro de hemopexina no vetor e biofísica de polifosfatos associada ao vacúolo parasitóforo'}. São trabalhos publicados na Science Advances, iScience, Journal of Immunology, Biophysical Journal, PLoS One, Research Square e bioRxiv que conversam diretamente com os nossos experimentos com Plasmodium berghei ANKA em C57BL/6J, com o modelo de dieta hiperlipídica HFHS em Aedes aegypti e com a nossa tradição de ultraestrutura em protozoários."),
-        ("A", "E no penúltimo bloco vamos ainda abrir a edição de Horizonte Lateral para sair da caixa da biologia molecular linear e explorar como contactomas de organelas, bioeletricidade epitelial e espectroscopia AFM-IR em nanoescala iluminam perguntas cegas da parasitologia. Vamos começar pelo cérebro e pelo colapso da barreira hematoencefálica na malária cerebral."),
-
-        # ATO 2: MALÁRIA CEREBRAL — RIPK1, WNT7A, IL-15C/IL-10Rα E Tph1 (~920 palavras)
-        ("B", f"Nosso primeiro bloco mergulha no modelo murino padrão-ouro que o LUCHM domina há anos: a malária cerebral experimental induzida por Plasmodium berghei ANKA em camundongos C57BL/6J. O trabalho âncora da semana acaba de sair na {m1_cit}, neste ano de {m1_ano}, com o título '{m1_tit}'."),
-        ("A", "Francisca, este artigo resolve uma tensão conceitual clássica da neuroimunologia da malária. Sabíamos que o acúmulo de linfócitos T CD8 positivos nos capilares cerebrais é indispensável para desencadear o edema fatal, mas restava a pergunta mecanística decisiva: o endotélio morre apenas por efeito colateral inflamatório ou existe um interruptor programado dentro da própria célula endotelial que executa a ruptura da barreira?"),
-        ("B", f"A arquitetura experimental deles foi cirúrgica, Fábio: {min_ini(m1_met)} Combinando o modelo PbA in vivo com amostras de autópsias cerebrais humanas de malária por Plasmodium falciparum, os autores evitaram descrever um fenômeno restrito a roedores."),
-        ("A", f"E qual foi o achado central? {m1_res} Para quem acompanha curvas de sobrevida no biotério, o ponto crucial é que a inibição seletiva de RIPK1 protege a barreira hematoencefálica e contém o edema vasogênico mesmo sem derrubar a parasitemia periférica."),
-        ("B", f"Isso reorienta totalmente a nossa janela de coleta no LUCHM! {m1_imp} Quando colhemos cérebro de C57BL/6J apenas no sétimo ou oitavo dia, em hipotermia e convulsão, estamos vendo falência terminal. A fosforilação endotelial de RIPK1 precisa ser interrogada antes, entre os dias quatro e cinco pós-infecção."),
-        ("A", f"Agora, olha que contraponto limpo aparece quando cruzamos esse resultado com o segundo estudo do bloco, no {m2_cit}: '{m2_tit}'. Durante anos ganhou força a hipótese de que a quebra da barreira vinha do desligamento de fatores tróficos astrocitários, especialmente a sinalização de Wnt7a."),
-        ("B", f"Os autores testaram isso de frente: {min_ini(m2_met)} E o resultado foi categórico: {min_ini(m2_res)} Ou seja, o resgate da sinalização de Wnt7a não bloqueia o colapso microvascular agudo! {m2_imp}"),
-        ("A", "Você percebe o ganho analítico de colocar esses dois estudos juntos? O preprint do bioRxiv descarta a deficiência isolada de Wnt7a astrocitário como causa suficiente da disfunção endotelial, enquanto a Science Advances aponta o executor intracelular direto: a necroptose endotelial comandada por RIPK1 sob contato de células T CD8!"),
-        ("B", f"E esse eixo vascular ganha duas peças complementares essenciais nesta edição. Na {m3_cit}, '{m3_tit}', os autores aplicaram {min_ini(m3_met)} O achado foi direto: {min_ini(m3_res)} Contendo ICAM-1 e o arrest de células CD8+, você interrompe o gatilho mecânico antes mesmo que a cascata de RIPK1 dispare."),
-        ("A", f"E o quarto pilar fecha o braço hemodinâmico dessa sinapse, vindo da {m4_cit}: '{m4_tit}'. Com {min_ini(m4_met)}, mostraram que {min_ini(m4_res)} No mesmo microvaso cerebral, a serotonina plaquetária via Tph1 promove vasoconstrição e estase, o arrest leucocitário sustenta o contato citotóxico e RIPK1 executa a necroptose endotelial."),
-        ("B", f"É um mapa operacional pronto para a bancada! {m1_faisca} Assim entramos no biotério comparando necrostatina-1s nos dias quatro e cinco para claudina-5, azul de Evans e ICAM-1 sem desperdiçar tempo em hipóteses já refutadas."),
-
-        # ATO 3: VETORES — HEMOPEXINA DO HOSPEDEIRO & SELEÇÃO DE Pfs47 (~800 palavras)
-        ("A", "Atravessamos agora para o outro grande braço experimental do LUCHM: a fisiologia digestiva, o estresse oxidativo e a seleção evolutiva em dípteros vetores. Aqui temos o estudo de maior pontuação da nossa triagem nesta edição."),
-        ("B", f"Falo do preprint no {v1_cit} ({v1_ano}): '{v1_tit}'. No insetário do LUCHM todo aluno aprende cedo o dilema bioquímico da hematofagia: digerir miligramas de hemoglobina garante ovos, mas libera concentrações milimolares de hemo livre pró-oxidante no intestino médio."),
-        ("A", f"Até recentemente, explicávamos essa tolerância quase só pelas defesas endógenas do mosquito — matriz peritrófica, cristalização e enzimas antioxidantes próprias. Mas os autores no {v1_cit} mostraram que o inseto também recruta uma proteção vinda diretamente do sangue ingerido do hospedeiro mamífero!"),
-        ("B", f"Veja o desenho experimental: {min_ini(v1_met)} E na hemolinfa do vetor pós-repasto comprovaram o seguinte: {min_ini(v1_res)} Uma fração funcional da hemopexina plasmática atravessa intacta a barreira intestinal, neutraliza o hemo livre circulante e sustenta tanto a sobrevida da fêmea quanto o desenvolvimento do parasito!"),
-        ("A", f"Francisca, isso dialoga frontalmente com a linha do LUCHM sobre repasto de Aedes aegypti com sangue de camundongos sob dieta hiperlipídica HFHS! {v1_imp} Em hospedeiros obesos e hiperglicêmicos, a hemopexina plasmática circulante pode chegar reduzida, glicada ou oxidativamente saturada antes mesmo de entrar no intestino do mosquito."),
-        ("B", "Faz todo o sentido bioquímico! Se a hemopexina do sangue HFHS cruzar menos ou perder afinidade tamponante, o hemo livre encontra sobrecarga de lipídios dietéticos nos enterócitos, amplificando peroxidação lipídica em cadeia e fragilizando a matriz peritrófica e as gotículas lipídicas."),
-        ("A", f"E a nossa faísca experimental nasce direta dessa leitura: {v1_faisca} Comparar hemolinfa de Aedes coletada seis a vinte e quatro horas pós-repasto controle versus HFHS por Western blot para hemopexina murina junto com a sonda C11-BODIPY no confocal é um experimento limpo e conclusivo."),
-        ("B", f"O segundo estudo de vetores fecha a seleção parasitária no intestino do mosquito. No {v2_cit}, '{v2_tit}', os pesquisadores realizaram {min_ini(v2_met)} e demonstraram que {min_ini(v2_res)}"),
-        ("A", "Ou seja, o intestino médio funciona como filtro bioquímico e imunológico duplo: fatores plasmáticos sequestrados como a hemopexina modulam o estresse oxidativo pós-repasto, enquanto alelos como Pfs47 determinam a sobrevivência do parasito em diferentes espécies de Anopheles."),
-        ("B", "Uma base teórica preciosa para orientar os nossos alunos nos projetos de interação vetor-patógeno e competência vetorial."),
-
-        # ATO 4: BIOFÍSICA DE POLIFOSFATO, VACÚOLO HEPÁTICO AP2-L & CITOMETRIA ÓPTICA (~680 palavras)
-        ("A", "No quarto ato entramos em biofísica molecular, biologia celular de protozoários e imageamento quantitativo — temas ligados à história do IBCCF e ao parque instrumental do CENABIO."),
-        ("B", f"O destaque inicial vem do {b1_cit} ({b1_ano}): '{b1_tit}'. Para quem trabalha com homeostase de fósforo e acidocalcisomas, a abordagem metodológica traz precisão atômica: {min_ini(b1_met)}"),
-        ("A", f"E os resultados mostram que o polifosfato inorgânico vai além de mera reserva de fosfato: {min_ini(b1_res)} Ele opera como polímero organizador eletrostático capaz de modular compactação e segregação de fases macromolecular conforme o balanço de cátions divalentes."),
-        ("B", f"Trazendo para a nossa bancada e para o CENABIO: {min_ini(b1_imp)} Em SBF-SEM e FIB-SEM de protozoários e tecidos de insetos, microdomínios ricos em polifosfato e cálcio são suscetíveis à extração aquosa durante fixação inadequada; por isso protocolos em bloco com ósmio-tiocarboidrazida-ósmio, acetato de uranila e chumbo a quente — ou criofixação — são decisivos para preservar a arquitetura eletrondensa e os sítios de contato inter-organela."),
-        ("A", f"Completam os oito essenciais da edição dois avanços sobre estágios hepáticos e esporozoítos. No {b2_cit}, '{b2_tit}', os autores utilizaram {min_ini(b2_met)} e demonstraram que {min_ini(b2_res)} E para amarrar o papel do fígado durante o curso da infecção sanguínea, vale citar também o acompanhamento de média prioridade na {o2_cit}: '{o2_tit}', no qual aplicaram {min_ini(o2_met)} e observaram que {min_ini(o2_res)}"),
-        ("B", "Faz todo o sentido fisiológico cruzar esses dados! Enquanto AP2-L governa a sobrevivência mecânica do vacúolo parasitóforo dentro do hepatócito durante o estágio pré-eritrocítico, na fase sanguínea o fígado sofre um intenso remodelamento mitocondrial e de estoques de ferro — algo que também podemos monitorar no LUCHM quando avaliamos disfunção sistêmica em camundongos C57BL/6J infectados."),
-        ("A", f"Já na frente de detecção rápida e biofotônica sem marcadores, chamam atenção dois trabalhos complementares da coleção desta semana. Primeiro, na {b3_cit}, '{b3_tit}', empregaram {min_ini(b3_met)} O ganho prático é evidente: {min_ini(b3_res)}"),
-        ("B", f"E fechando esse eixo óptico, temos na {o1_cit} o artigo '{o1_tit}'. Nesse estudo aplicaram {min_ini(o1_met)} e mostraram que {min_ini(o1_res)} Para quem lida com esfregaços espessos, citometria e visualização rápida de trofozoítos ou esporozoítos na rotina do laboratório, unir retroiluminação oblíqua em campo claro adaptado e espalhamento multi-angular automatizado abre caminhos práticos sem custo recorrente de anticorpos fluorescentes."),
-
-        # ATO 5: ATO CULTURAL — HORIZONTE LATERAL (CONTEÚDO REAL DO RADAR CULTURAL) (~620 palavras)
-        ("A", "Agora abrimos a nossa tradicional pausa de reflexão ampla da viagem: o bloco do Horizonte Lateral. Aqui nós propositalmente saímos das palavras-chave estreitas da malária cerebral e dos vetores para olhar para pontos cegos conceituais, grandes ensaístas e tecnologias que vêm de outros territórios da biologia e da física."),
-        ("B", f"Na edição mensal vigente do Horizonte Lateral — acessível logo no cartão da barra lateral direita da Pauta — o grande ensaio de abertura tem um título provocador: '{titulo_ensaio}'. E a pergunta incômoda que estrutura o dossiê inteiro é esta: '{ponto_cego}'"),
-        ("A", f"Fábio, durante muito tempo a biologia das infecções operou como se uma célula fosse apenas um circuito impresso de transcrição e tradução. Mas dois grandes pensadores que o nosso Horizonte Lateral destaca ilustram exatamente o que deixamos passar quando ignoramos a física da matéria viva. Primeiro, {pesq1.get('nome', 'Maya Schuldiner')}, {pesq1.get('afiliacao', 'do Instituto Weizmann')}, que transformou nossa compreensão sobre o contactoma celular ao mapear sistematicamente os sítios de contato direto entre membranas de diferentes organelas — mostrando que mitocôndrias, retículo endoplasmático e gotículas lipídicas trocam lipídios, íons e sinais redox por proximidade nanométrica física, não apenas por transporte vesicular clássico!"),
-        ("B", f"E o segundo perfil da revista é {pesq2.get('nome', 'Michael Levin')}, {pesq2.get('afiliacao', 'da Universidade Tufts')}, pioneiro na bioeletricidade tecidual e morfogenética, revelando como gradientes de potencial de membrana em células não-excitáveis — mantidos por canais iônicos e bombas de prótons — funcionam como coordenadas de decisão celular, reparo de barreira epitelial e polaridade tecidual muito antes de qualquer mudança transcricional aparecer no RNA-seq!"),
-        ("A", f"E é impressionante como os dois temas de expansão lateral deste mês caem como uma luva sobre as discussões dos Atos 2 e 3: '{tema_exp1.get('tema', 'Contactoma de Organelas & Homeostase de Hemo no Inseto')}' e '{tema_exp2.get('tema', 'Bioeletricidade de Epitélios & Permissividade de Barreira')}'."),
-        ("B", f"No contato direto com o nosso cotidiano de bancada, se unirmos microscopia de volume no CENABIO para medir contatos retículo-mitocôndria e retículo-gota lipídica em enterócitos de Aedes sob dieta HFHS, junto com ferramentas funcionais como {tec1.get('tecnica', 'Espectroscopia AFM-IR em Nanoescala (15 nm)')} — que permite mapear assinaturas químicas de lipídios e polifosfatos sem fixação com ósmio — e {tec2.get('tecnica', 'Optogenética Não-Invasiva em Insetos Vivos com canais CsChrimson')}, abrimos perguntas que simplesmente não existem nos congressos convencionais da área."),
-
-        # ATO 6: TRÊS DIRETRIZES ACIONÁVEIS PARA A BANCADA AMANHÃ (~440 palavras)
-        ("B", "Entrando nos minutos finais da viagem de retorno, vamos consolidar toda a densidade teórica e metodológica deste episódio em três frentes acionáveis, concretas e auditáveis para a nossa reunião e para a bancada do LUCHM amanhã de manhã:"),
-        ("A", "Frente número um — Malária Cerebral no modelo PbA/C57BL/6J: cruzar a janela pré-sintomática nos dias quatro e cinco pós-infecção. Testar em experimento piloto o bloqueio da via RIPK1 com necrostatina-1s, medindo extravasamento de azul de Evans, perda de claudina-5 e expressão endotelial de ICAM-1 antes do colapso clínico, lembrando dos achados do bioRxiv de que o resgate isolado de Wnt7a astrocitário não impede a quebra endotelial."),
-        ("B", "Frente número dois — Fisiologia do Vetor e Repasto HFHS em Aedes aegypti: incorporar a hipótese da hemopexina plasmática no ensaio comparativo entre sangue de camundongos controle e sangue de animais em dieta HFHS. Coletar hemolinfa e epitélio intestinal entre seis e vinte e quatro horas pós-repasto para avaliar retenção de hemopexina hospedeira por Western blot em paralelo à quantificação da peroxidação lipídica com a sonda C11-BODIPY no microscópio confocal."),
-        ("A", "Frente número três — Ultraestrutura, Polifosfato e Microscopia no CENABIO: revisar os blocos celulares e protocolos de preservação para SBF-SEM e FIB-SEM de organelas ricas em polifosfato e sítios de contato inter-organela em protozoários e enterócitos, minimizando artefatos de extração hídrica e mapeando a possibilidade de colaboração externa para caracterização espectroscópica química sem marcadores como AFM-IR em seções criogênicas."),
-        ("B", "E lembrando a todos do grupo que as quatro sínteses transversais e os botões diretos para abrir o dossiê completo de cada PMID e do Horizonte Lateral já estão ancorados lado a lado ao áudio na aba Pauta do site — prontos para consulta rápida durante o seminário semanal."),
-
-        # ATO 7: ENCERRAMENTO (~130 palavras)
-        ("A", "Professor Fábio, esperamos que esta edição tenha tornado a sua volta para casa mais leve, instigante e intelectualmente produtiva. Todos os controles, números de PMID e revistas mencionados hoje foram estritamente verificados na coleção da edição para garantir confiança total ao levar esses pontos para a bancada."),
-        ("B", "Bom descanso nesta noite, Fábio, uma ótima jornada experimental amanhã para toda a equipe do LUCHM no IBCCF e nos encontramos na próxima edição comentada da bancada. Até amanhã!")
-    ]
-
-    return falas
 
 
 def _tem_blocos_pt(art):
@@ -401,47 +161,90 @@ def _tem_blocos_pt(art):
     )
 
 
-def _limpar_faisca(txt):
+def _limpar_emojis(txt):
     t = str(txt or "").strip()
-    t = re.sub(r'^[💡🎯🔬⚙️🧬🦟🧠📊\s]+', '', t)
+    t = re.sub(r"^[💡🎯🔬⚙️🧬🦟🧠📊🧭📌🎙️📋\s]+", "", t)
     return t
+
+
+def _garantir_ponto(txt):
+    t = str(txt or "").strip()
+    if not t:
+        return ""
+    if t[-1] in ".!?":
+        return t
+    return t + "."
+
+
+def _min_ini(txt):
+    t = str(txt or "").strip()
+    if not t:
+        return t
+    if len(t) >= 2 and (t[1].isupper() or t[1] in "-0123456789"):
+        return t
+    return t[0].lower() + t[1:]
+
+
+def resumir_revista_id(artigo):
+    rev = (artigo.get("revista") or "Periódico indexado").split(":")[0].strip()
+    rev = re.sub(r"^The\s+", "", rev)
+    ident = str(artigo.get("pmid") or artigo.get("_id") or "").strip()
+    if ident.startswith("10."):
+        return f"{rev}, DOI {ident}"
+    if ident:
+        return f"{rev}, PMID {ident}"
+    return rev
+
+
+def formatar_lista_pt(itens, limite=4):
+    itens = [str(x).strip() for x in itens if str(x).strip()][:limite]
+    if not itens:
+        return ""
+    if len(itens) == 1:
+        return itens[0]
+    return ", ".join(itens[:-1]) + " e " + itens[-1]
 
 
 def _blocos_seguros(art):
     prog = art.get("programa") or "Vigilância Científica LUCHM"
-    rac = extrair_bloco(art, "racional", f"Estudo dedicado a esclarecer mecanismos centrais ligados ao eixo {prog}.")
-    met = extrair_bloco(art, "metodologia", f"Delineamento experimental e analítico conduzido dentro da frente de {prog}.")
-    res = extrair_bloco(art, "resultados", f"Os achados principais detalham alterações quantitativas relevantes para o controle experimental no modelo estudado.")
+    rac = extrair_bloco(art, "racional", f"Investigação voltada a mecanismos centrais ligados ao eixo {prog}.")
+    met = extrair_bloco(art, "metodologia", f"Delineamento experimental conduzido dentro da frente de {prog}.")
+    res = extrair_bloco(art, "resultados", f"Os resultados detalham alterações quantitativas relevantes para o modelo experimental avaliado.")
     imp = extrair_bloco(art, "implicacoes", f"Dialoga diretamente com a agenda experimental do programa {prog} no LUCHM.")
-    faisca = _limpar_faisca(extrair_bloco(art, "faisca_lateral", f"Avaliar a transposição dos controles e leituras deste protocolo para a rotina do laboratório no IBCCF."))
+    faisca = _limpar_emojis(extrair_bloco(art, "faisca_lateral", ""))
     return rac, met, res, imp, faisca
 
 
-def _construir_bloco_artigo(art, abertura_fala_a, gancho_b, inclui_faisca=True):
-    tit = (art.get("titulo") or "Estudo selecionado da edição").strip()
-    cit = resumir_revista_pmid(art)
-    ano = art.get("ano") or "2026"
+def _formatar_materia_audio_first(art, inclui_faisca=True):
+    """Formata um artigo no padrão Audio-First:
+    Editoria com ponto final -> Periódico e título com ponto final ->
+    3 parágrafos contínuos (contexto, método, achados) -> Arremate 'Por que importa na bancada:'.
+    """
+    prog = _garantir_ponto(art.get("programa") or "Vigilância Científica")
+    rev_id = _garantir_ponto(resumir_revista_id(art))
+    tit = _garantir_ponto(art.get("titulo") or "Estudo selecionado da edição")
     rac, met, res, imp, faisca = _blocos_seguros(art)
-    prog = art.get("programa") or "bancada do LUCHM"
 
-    fala_imp = f"Na bancada do LUCHM, {min_ini(imp)}"
+    cabecalho = f"{prog} {rev_id} {tit}"
+    p1 = _garantir_ponto(rac)
+    p2 = f"Na bancada e no desenho experimental, {_min_ini(_garantir_ponto(met))}"
+    p3 = _garantir_ponto(res)
+
+    arremate = f"Por que importa na bancada: {_garantir_ponto(imp)}"
     if inclui_faisca and faisca:
-        fala_imp += f" Como desdobramento experimental imediato: {min_ini(faisca)}"
+        arremate += f" Próximo passo no LUCHM: {_garantir_ponto(faisca)}"
 
-    return [
-        ("A", f"{abertura_fala_a} O trabalho saiu na {cit}, em {ano}, com o título '{tit}'. Na partida conceitual, {min_ini(rac)}"),
-        ("B", f"{gancho_b} No desenho experimental, os autores fizeram o seguinte: {min_ini(met)}"),
-        ("A", f"E qual o peso objetivo dos achados para {min_ini(prog)}? {res}"),
-        ("B", fala_imp),
-    ]
+    return [cabecalho, p1, p2, p3, arremate]
 
 
-def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
-    total_artigos = len(artigos) or 47
+def construir_roteiro_narrado(edicao_data, cultural_data, data_edicao):
+    """Gera o roteiro contínuo em voz única (lista de parágrafos separados por \\n\\n)."""
+    artigos = extrair_artigos_dict(edicao_data)
+    total_artigos = len(artigos)
     altas = sum(1 for a in artigos if a.get("importancia") == "alta")
     medias = sum(1 for a in artigos if a.get("importancia") == "media")
-    baixas = sum(1 for a in artigos if a.get("importancia") == "baixa")
     data_extenso = formatar_data_extenso(data_edicao)
+    conexoes = (edicao_data.get("pauta", {}).get("atual", {}) or {}).get("conexoes_transversais", [])
 
     candidatos = [
         a for a in artigos
@@ -459,7 +262,7 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
     usados = set()
     grupo_plasmodium = []
     grupo_vetores = []
-    grupo_translacional = []
+    grupo_fronteira_metodos = []
 
     for a in candidatos:
         aid = str(a.get("_id") or a.get("pmid") or "")
@@ -467,8 +270,10 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
         prog = (a.get("programa") or "").lower()
         blob = f"{a.get('titulo', '')} {prog}".lower()
 
-        if tema in ("ciclo", "hospedeiro") or any(k in blob for k in ["plasmodium", "malaria", "pantothenate", "cholesterol", "anopheles funestus", "rodent malaria", "g6pd", "lipid droplet"]):
-            if len(grupo_plasmodium) < 3:
+        if tema in ("ciclo", "hospedeiro") or any(
+            k in blob for k in ["plasmodium", "malaria", "pantothenate", "cholesterol", "gametocyte", "pfht1", "rodent malaria"]
+        ):
+            if len(grupo_plasmodium) < 4:
                 grupo_plasmodium.append(a)
                 usados.add(aid)
         elif tema == "vetor":
@@ -480,301 +285,242 @@ def _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao):
         aid = str(a.get("_id") or a.get("pmid") or "")
         if aid in usados:
             continue
-        if len(grupo_translacional) < 2:
-            grupo_translacional.append(a)
+        if len(grupo_fronteira_metodos) < 3:
+            grupo_fronteira_metodos.append(a)
             usados.add(aid)
 
-    # Garantir preenchimento mínimo caso uma frente tenha menos itens
-    while len(grupo_plasmodium) < 3 and grupo_translacional:
-        grupo_plasmodium.append(grupo_translacional.pop())
-    while len(grupo_vetores) < 3 and grupo_translacional:
-        grupo_vetores.append(grupo_translacional.pop())
+    while len(grupo_plasmodium) < 2 and grupo_fronteira_metodos:
+        grupo_plasmodium.append(grupo_fronteira_metodos.pop())
+    while len(grupo_vetores) < 2 and grupo_fronteira_metodos:
+        grupo_vetores.append(grupo_fronteira_metodos.pop())
 
-    con_titulos = [c.get("titulo", "") for c in conexoes[:4] if c.get("titulo")]
-    con_resumos = [f"{c.get('titulo', '')}: {c.get('sintese', '')}" for c in conexoes[:4] if c.get("titulo") and c.get("sintese")]
+    con_titulos = [re.sub(r"^\d+\.\s*", "", str(c.get("titulo") or "")).strip() for c in conexoes[:4] if c.get("titulo")]
     destaques_rev = formatar_lista_pt(
-        list(dict.fromkeys((a.get("revista") or "").split(":")[0].strip() for a in candidatos[:8] if a.get("revista"))),
-        limite=5,
+        list(dict.fromkeys(re.sub(r"^The\s+", "", (a.get("revista") or "").split(":")[0].strip()) for a in candidatos[:6] if a.get("revista"))),
+        limite=4,
     )
 
-    ensaio = cultural_data.get("ensaio", {})
-    titulo_ensaio = ensaio.get("titulo", "Física Oculta da Transmissão e Pontos Cegos Conceituais")
-    ponto_cego = ensaio.get("ponto_cego", "Como forças bioelétricas e arquitetura inter-organela precedem a regulação transcricional clássica.")
-    tese_ensaio = ensaio.get("texto", "") or ensaio.get("resumo", "")
+    # Abertura direta (< 25 segundos) com data por extenso
+    abertura = [
+        f"Bancada Comentada do LUCHM. Edição de {data_extenso}.",
+        (
+            f"Na análise de hoje triamos {total_artigos} publicações recentes e identificamos {altas} estudos prioritários "
+            f"e {medias} de acompanhamento em {destaques_rev or 'periódicos indexados'}, articulados em "
+            f"{formatar_lista_pt(con_titulos, 4) or 'biologia de Plasmodium, vetores e métodos de bancada'}. "
+            f"Vamos direto ao primeiro artigo."
+        ),
+    ]
 
+    # Bloco Horizonte Lateral (dinâmico de data/radar_cultural.json)
+    ensaio = cultural_data.get("ensaio", {})
+    titulo_ensaio = ensaio.get("titulo", "Física Oculta da Transmissão")
+    ponto_cego = ensaio.get("subtitulo") or ensaio.get("ponto_cego") or ""
     pesquisadores = cultural_data.get("grandes_pesquisadores", [])
     temas_exp = cultural_data.get("temas_expansao", [])
     tecnicas = cultural_data.get("tecnicas_emergentes", [])
 
-    pesq1 = pesquisadores[0] if len(pesquisadores) > 0 else {}
-    pesq2 = pesquisadores[1] if len(pesquisadores) > 1 else {}
-    tema1 = temas_exp[0] if len(temas_exp) > 0 else {}
-    tema2 = temas_exp[1] if len(temas_exp) > 1 else {}
-    tec1 = tecnicas[0] if len(tecnicas) > 0 else {}
-    tec2 = tecnicas[1] if len(tecnicas) > 1 else {}
-
-    falas = [
-        # ATO 1: ABERTURA DIRETA (< 30s — sem preâmbulos longos)
-        ("A", f"Bancada Comentada do LUCHM, edição de {data_extenso}. Na análise de hoje triamos {total_artigos} publicações recentes e identificamos {altas} estudos prioritários e {medias} de acompanhamento em {destaques_rev or 'periódicos indexados'}, cruzados nos eixos de {formatar_lista_pt(con_titulos, 4) or 'biologia de Plasmodium, fisiologia do vetor e métodos avançados'}."),
-        ("B", "Então vamos direto para o primeiro artigo."),
-    ]
-
-    def _ganchos_adaptativos(art, idx):
-        tl = f"{art.get('titulo', '')} {art.get('programa', '')}".lower()
-        regras = [
-            (["gametocyte", "human hemoglobin"], "Começamos por uma descoberta estrutural impressionante da biologia de Plasmodium: como o gametócito coopta a própria hemoglobina humana para proteger seu citoesqueleto.", "Antônio e Fábio, esse trabalho de crio-EM conversa frontalmente com a identidade do LUCHM em ultraestrutura celular e bloqueio de transmissão."),
-            (["cryo-plasma fib", "staggered cryo"], "Na fronteira instrumental de microscopia de volume, este estudo da Nature Communications redefine a velocidade segura da fresagem por plasma-FIB para crio-tomografia em tecidos espessos.", "Para a rotina de FIB-SEM, SBF-SEM e colaborações de crio-EM no CENABIO, quantificar o limite seguro de corrente de xenônio em mais de quatro mil tomogramas é ouro técnico."),
-            (["endothelial hyperpermeability", "glycocalyx"], "No eixo de barreira endotelial, este preprint desacopla duas camadas críticas da lesão vascular induzida por NS1 de Dengue: degradação do glicocálix versus colapso das junções intercelulares.", "Para o nosso modelo de malária cerebral em C57BL/6J, separar dano ao glicocálix de perda de claudina-5 e TEER muda completamente o desenho temporal dos controles."),
-            (["pfht1", "sugar transporter"], "Na biofísica de membranas do parasito, este trabalho investiga por dinâmica molecular e mutagênese como o transportador de açúcares PfHT1 alcança sua poliespecificidade.", "Entender a flexibilidade da hélice TM7b oferece uma janela concreta de química medicinal e fisiologia nutricional do parasito intraeritrocítico."),
-            (["approach-avoidance", "leucokinin"], "No eixo neuroendócrino de insetos, a Science Advances mapeia um circuito completo que explica como a fome suprime respostas aversivas em presença de pistas alimentares.", "Ver neurônios de leucocinina desligarem sinais aversivos no corpo em leque ventral dialoga diretamente com a busca de hospedeiro em fêmeas de mosquito."),
-            (["bunyamwera", "medicines for malaria venture"], "Na intersecção entre malária e arboviroses emergentes, os autores usaram coleções abertas da MMV em triagem por imagem de células vivas contra o vírus Oropouche.", "Reposicionar coleções antimaláricas clássicas para uma emergência brasileira como Oropouche acelera muito o caminho translacional."),
-            (["yellow fever", "blood meals"], "Em ecologia de repasto sanguíneo no Brasil, uma série longitudinal na Serra da Cantareira usou Nanopore para rastrear em quem os vetores silvestres se alimentaram após a extinção local de bugios.", "O dado de quase noventa e cinco por cento de sangue humano em Haemagogus leucocelaenus chama atenção imediata para o risco de reurbanização e para a utilidade do Nanopore em campo."),
-            (["crispr-cas", "protozoan"], "No plano de genética reversa, esta revisão compara sistematicamente edição por CRISPR-Cas9 — inclusive via entrega de ribonucleoproteínas — em Plasmodium e outros protozoários parasitos.", "Um roteiro metodológico direto para o grupo calibrar protocolos de marcação endógena e knockdown sem depender apenas de plasmídeos clássicos."),
-            (["pantothenate", "pantazine"], "Nosso estudo âncora de metabolismo do parasito ataca diretamente a biossíntese de coenzima A dependente de pantotenato quinase em Plasmodium.", "Fábio e Antônio, vale olhar com lupa a arquitetura catalítica e a seletividade funcional demonstradas pelos mutantes e controles do trabalho."),
-            (["cholesterol gradient", "pfncr1"], "Na biologia celular do parasito intraeritrocítico, este trabalho traz um modelo integrativo sofisticado sobre assimetria de colesterol e mecânica de membrana.", "Para a nossa tradição no IBCCF em organização de membranas e vacúolo parasitóforo, a distinção entre diluição por fosfolipídios e transporte ativo é cirúrgica."),
-            (["rodent malaria", "grammomys"], "Fechando o eixo de biologia evolutiva do parasito, um estudo de campo raro investiga os reservatórios silvestres originais da malária de roedores.", "Isso dialoga diretamente com a forma como interpretamos os limites e as forças do nosso modelo PbA em camundongos C57BL/6J."),
-            (["insecticide resistance", "cameroon", "albimanus"], "Na frente de entomologia de campo, examinamos como coexistência de múltiplos vetores e mutações de resistência sustentam a transmissão residual.", "Do ponto de vista de quem acompanha competência vetorial e biologia metabólica de insetos, os marcadores enzimáticos mapeados aqui chamam muito atenção."),
-            (["hemocyte", "stabilized hemocytes"], "Abrimos o bloco vetorial com um salto técnico muito esperado para a imunidade de insetos: um protocolo de estabilização de hemócitos compatível com scRNA-seq e armazenamento.", "No insetário do LUCHM, poder estabilizar hemócitos perfundidos de Aedes ou Anopheles e guardar por até quatro semanas resolve um gargalo logístico enorme!"),
-            (["p2 neurons", "post-mating"], "Na interface neurobiologia e comportamento alimentar em insetos, avaliamos um estudo limpo com GAL4/UAS sobre circuitos candidatos à reprogramação pós-acasalamento.", "Mesmo com resultado negativo para os neurônios P2 na resposta ao Sex Peptide, o controle neurogenético é um modelo para nossas perguntas sobre neuropeptídeos pós-repasto."),
-            (["ndel1", "zika"], "Saltando para neurovirologia e arboviroses, este trabalho compara diretamente linhagem brasileira de ZIKV contra africana e Dengue sobre a enzima neuronal Ndel1.", "A dissociação precoce entre ativação inflamatória geral e falência catalítica específica da cepa brasileira dá pistas experimentais muito fortes."),
-            (["orthoflavivirus receptors", "ldlr"], "Em evolução e entrada viral, esta revisão consolida a família de receptores de LDL como porta de entrada funcional de ortoflavivírus.", "Pensando no nosso programa de dieta hiperlipídica HFHS e lipoproteínas em Aedes aegypti, receptores da família LDL na entrada viral criam uma ponte imediata!"),
-            (["polyphosphate", "exopolyphosphatase", "ppx1", "ppk1", "acidocalcisom"], "Entramos agora no território histórico do nosso grupo: sinalização e metabolismo de polifosfato inorgânico (polyP) governando lipídios de superfície e virulência.", "Antônio e Fábio, ver o polyP via PPX1 ativar RegX3, derrubar c-di-GMP e reorganizar lipídios de parede renova toda a leitura bioquímica que trazemos dos acidocalcisomos."),
-            (["hsp90", "chaperon"], "Nosso estudo âncora de biologia celular do parasito enfrenta diretamente um gargalo mecanístico clássico da quimioterapia antimalárica.", "Fábio e Antônio, vale olhar com lupa como esse desenho evita inferências indiretas."),
-            (["funestus", "residual malaria"], "Logo na sequência, o foco vira para a ecologia de campo e o comportamento vetorial que sustentam a transmissão mesmo sob intervenções intensivas.", "Do ponto de vista de quem desenha ensaios de campo e insetário, o desenho amostral merece atenção especial."),
-            (["elimination", "preventing malaria"], "Ampliando essa janela de eliminação, o próximo trabalho coloca o ônus global atual em perspectiva clínica e translacional rigorosa.", "O contraste com abordagens isoladas de controle salta aos olhos nessa análise translacional."),
-            (["lipid droplet", "mash"], "No eixo de imunometabolismo do hospedeiro, vale examinar como organelas lipídicas regulam sinalização inflamatória e dano tecidual.", "Esse diálogo entre acúmulo de lipídios neutros, sinalização macrofágica e inflamação conversa com o nosso modelo hepático e dietético."),
-            (["g6pd", "redox"], "Fechando a ponte bioquímica com a homeostase do hospedeiro, examinamos um checkpoint metabólico e redox clássico na proteção eritrocitária.", "Para os projetos do LUCHM em estresse oxidativo e ferroptose, os marcadores moleculares aqui são ouro puro."),
-            (["microbiome", "bacterial enrichment"], "O próximo estudo ataca um problema técnico silencioso que compromete grande parte da literatura de microbioma intestinal de mosquitos.", "Esse cuidado pré-analítico faz toda a diferença antes de mandar pools de intestino médio para sequenciamento no laboratório."),
-            (["odor", "neuropeptide"], "Em seguida, entramos na fisiologia neurocomportamental que explica por que insetos da mesma linhagem exibem apetite olfatório tão heterogêneo.", "Olha como a sinalização peptídica dialoga com o estado nutricional e as reservas de triacilgliceróis do díptero!"),
-            (["borderland", "spatial distribution", "vector abundance", "remote sensing"], "Já o trabalho seguinte traz um retrato quantitativo de vigilância entomológica espacial e predição de abundância de vetores.", "Esse mapeamento espacial conversa diretamente com a nossa vigilância de competência vetorial e ecologia urbana de Aedes."),
-            (["oropouche"], "Este artigo lança luz sobre a reemergência do vírus Oropouche na América Latina e o potencial de hospedeiros vertebrados alternativos.", "Para quem acompanha a expansão recente de arboviroses emergentes, os modelos celulares testados dão pistas concretas."),
-            (["bispecific", "mrna vaccine"], "Aqui temos um avanço engenhoso de engenharia vacinal pensado especificamente para resolver o problema crítico de amplificação dependente de anticorpos.", "Superar a reatividade cruzada não neutralizante entre Dengue e Zika é uma prioridade clínica e translacional direta."),
-            (["macrodomain", "alphavirus"], "O próximo destaque vem de farmacologia estrutural e mira um domínio enzimático altamente conservado entre alfavírus artritogênicos e neurotrópicos.", "Repare no rigor estrutural ao mapear bolsões catalíticos compartilhados entre patógenos relevantes para a saúde pública."),
-            (["electrical synapse", "connexin"], "Fechamos as análises individuais com um artigo de neurociência celular sobre diversidade ultraestrutural e funcional de sinapses elétricas.", "Para quem estuda junções comunicantes, barreira neurovascular e acoplamento bioelétrico tecidual, os ganhos metodológicos saltam da tela."),
-            (["graphene", "lab-on-chip"], "Por fim, no plano de bioengenharia diagnóstica, surge uma plataforma multiplex em grafeno para identificar cinco espécies de Plasmodium sem PCR.", "A sensibilidade attomolar diretamente em amostras mínimas chama atenção como referência instrumental."),
-        ]
-        for chaves, ga, gb in regras:
-            if any(k in tl for k in chaves):
-                return ga, gb
-        prog_art = art.get("programa") or "frente experimental do LUCHM"
-        return (
-            f"O próximo artigo em destaque dialoga diretamente com a linha de {prog_art}.",
-            f"Do ponto de vista metodológico, o desenho traz controles valiosos para os nossos projetos em {min_ini(prog_art)}."
+    bloco_hl = ["Passamos agora ao bloco Horizonte Lateral. Pontos cegos conceituais e técnicas fora da linha direta da parasitologia."]
+    bloco_hl.append(f"Ensaio da edição mensal. {_garantir_ponto(titulo_ensaio)} {_garantir_ponto(ponto_cego)}")
+    if len(pesquisadores) >= 2:
+        p1, p2 = pesquisadores[0], pesquisadores[1]
+        p1_conc = p1.get("conceito_chave") or p1.get("por_que_nao_obvia") or ""
+        p1_imp = p1.get("por_que_importa_luchm") or p1.get("intersecao_luchm") or ""
+        p2_conc = p2.get("conceito_chave") or p2.get("por_que_nao_obvia") or ""
+        p2_imp = p2.get("por_que_importa_luchm") or p2.get("intersecao_luchm") or ""
+        bloco_hl.append(
+            f"Dois pesquisadores de referência lateral ancoram esta edição. "
+            f"{p1.get('nome', '')}, de {p1.get('instituicao', '')}, destaca {_min_ini(_garantir_ponto(p1_conc))} {_garantir_ponto(p1_imp)}"
+        )
+        bloco_hl.append(
+            f"Em complemento, {p2.get('nome', '')}, de {p2.get('instituicao', '')}, demonstra {_min_ini(_garantir_ponto(p2_conc))} {_garantir_ponto(p2_imp)}"
+        )
+    if len(temas_exp) >= 2:
+        t1, t2 = temas_exp[0], temas_exp[1]
+        bloco_hl.append(
+            f"Nos temas em expansão lateral, destacamos {_garantir_ponto(t1.get('tema') or t1.get('titulo') or '')} "
+            f"{_garantir_ponto(t1.get('o_que_e', ''))} "
+            f"Ao lado de {_garantir_ponto(t2.get('tema') or t2.get('titulo') or '')} "
+            f"{_garantir_ponto(t2.get('o_que_e', ''))}"
+        )
+    if len(tecnicas) >= 2:
+        tc1, tc2 = tecnicas[0], tecnicas[1]
+        bloco_hl.append(
+            f"Por que importa na bancada: as técnicas emergentes da edição — "
+            f"{tc1.get('tecnica') or tc1.get('titulo') or ''} e {tc2.get('tecnica') or tc2.get('titulo') or ''} — "
+            f"{_min_ini(_garantir_ponto(tc1.get('aplicacao_luchm') or ''))}"
         )
 
-    def _montar_com_cota(gp, gv, gt, incl_faisca=True):
-        seq = list(falas_abertura)
+    # Fechamento com 3 diretrizes acionáveis
+    def _montar_fechamento(top3):
+        out = ["Encerramos o boletim com três diretrizes objetivas para a bancada do LUCHM."]
+        for idx_f, art in enumerate(top3, start=1):
+            _, _, _, imp, faisca = _blocos_seguros(art)
+            rev_id = resumir_revista_id(art)
+            acao = faisca or imp
+            out.append(f"Diretriz número {idx_f}, baseada em {rev_id}. {_garantir_ponto(acao)}")
+        out.append(
+            f"Todas as fichas detalhadas em cinco blocos, PMIDs clicáveis e os quatro eixos transversais desta edição de "
+            f"{data_extenso} estão disponíveis na aba Pauta da Bancada Comentada. Boa jornada experimental no LUCHM."
+        )
+        return out
 
-        for i, art in enumerate(gp):
-            ga, gb = _ganchos_adaptativos(art, i)
-            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
+    def _montar_corpo(gp, gv, gm, incl_faisca=True):
+        parags = list(abertura)
 
-        seq.append(("A", "No terceiro ato, cruzamos para a frente de entomologia molecular, resposta imune de vetores, neurobiologia do comportamento pós-repasto e arboviroses — onde o insetário de Aedes e Anopheles encontra aplicações imediatas."))
-        for i, art in enumerate(gv):
-            ga, gb = _ganchos_adaptativos(art, i)
-            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
+        if gp:
+            parags.append("Iniciamos pelo bloco de biologia celular de Plasmodium e bloqueio de transmissão.")
+            for art in gp:
+                parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
 
-        seq.append(("B", "Chegamos ao quarto ato reunindo os estudos complementares de alta densidade mecanística — passando por polifosfato inorgânico, biologia química e metodologias emergentes — e amarrando tudo nos eixos transversais da edição."))
-        for i, art in enumerate(gt):
-            ga, gb = _ganchos_adaptativos(art, i)
-            seq.extend(_construir_bloco_artigo(art, ga, gb, inclui_faisca=incl_faisca))
+        if gv:
+            parags.append("Passamos agora ao bloco de vetores, fisiologia do repasto sanguíneo e arboviroses.")
+            for art in gv:
+                parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
 
-        return seq
+        if gm:
+            parags.append("Avançamos para o bloco de barreira endotelial, ultraestrutura e métodos de fronteira.")
+            for art in gm:
+                parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
 
-    falas_abertura = list(falas)
-    # Seleciona o maior conjunto de artigos que mantém a fala total <= 3.770 palavras
+        parags.extend(bloco_hl)
+        top3 = (gp + gm + gv)[:3]
+        parags.extend(_montar_fechamento(top3))
+        return parags
+
+    # Orçamento adaptativo: mira 3.100 a 3.750 palavras (~21 a 26 min em +3%)
     opcoes_cota = [
-        (3, 4, 2, True),
+        (4, 4, 3, True),
+        (4, 3, 2, True),
         (3, 3, 2, True),
         (3, 3, 2, False),
         (3, 2, 2, True),
         (3, 2, 2, False),
         (2, 2, 2, True),
-        (2, 2, 2, False),
-        (2, 2, 1, False),
     ]
-    falas = _montar_com_cota(grupo_plasmodium[:3], grupo_vetores[:3], grupo_translacional[:2], incl_faisca=True)
-    # Mede overhead fixo (Ato 1 já em falas_abertura; síntese + Ato 5 + Ato 6 + Ato 7 ~ 950 palavras)
-    overhead_estimado = 980
-    for c_p, c_v, c_t, inc_f in opcoes_cota:
-        cand_seq = _montar_com_cota(
-            grupo_plasmodium[:c_p],
-            grupo_vetores[:c_v],
-            grupo_translacional[:c_t],
+    paragrafos = _montar_corpo(grupo_plasmodium[:3], grupo_vetores[:3], grupo_fronteira_metodos[:2], True)
+    for cp, cv, cm, inc_f in opcoes_cota:
+        cand = _montar_corpo(
+            grupo_plasmodium[:cp],
+            grupo_vetores[:cv],
+            grupo_fronteira_metodos[:cm],
             incl_faisca=inc_f,
         )
-        n_w = sum(len(t.split()) for _, t in cand_seq)
-        if n_w + overhead_estimado <= 3770:
-            falas = cand_seq
+        n_words = sum(len(p.split()) for p in cand)
+        if n_words <= 3750:
+            paragrafos = cand
             break
     else:
-        falas = cand_seq
+        paragrafos = cand
 
-    if con_resumos:
-        falas.append(("A", f"Antes de entrarmos no Horizonte Lateral, vale consolidar o que os quatro cartões de conexões transversais da página da Pauta mostram quando colocamos esses estudos em diálogo: {' '.join(con_resumos[:2])}"))
-        if len(con_resumos) > 2:
-            falas.append(("B", f"E completam esse quadro integrador os dois outros eixos da nossa grade de leitura: {' '.join(con_resumos[2:4])} É justamente essa costura entre papéis dispersos que evita que o grupo leia artigos como ilhas isoladas."))
-
-    # ATO 5: HORIZONTE LATERAL — CONTEÚDO DINÂMICO DE RADAR CULTURAL
-    p1_nome = pesq1.get("nome", "pesquisador de fronteira")
-    p1_inst = pesq1.get("instituicao") or pesq1.get("afiliacao") or "instituição de referência internacional"
-    p1_conc = pesq1.get("conceito_chave") or pesq1.get("historia", "")[:240]
-    p1_imp = pesq1.get("por_que_importa_luchm") or pesq1.get("intersecao_luchm") or "Expande a leitura de contato inter-organela nos nossos modelos."
-
-    p2_nome = pesq2.get("nome", "segundo pensador lateral")
-    p2_inst = pesq2.get("instituicao") or pesq2.get("afiliacao") or "centro avançado de biofísica"
-    p2_conc = pesq2.get("conceito_chave") or pesq2.get("historia", "")[:240]
-    p2_imp = pesq2.get("por_que_importa_luchm") or pesq2.get("intersecao_luchm") or "Convida a investigar sinais bioelétricos em epitélios e barreiras infectadas."
-
-    t1_tit = tema1.get("titulo") or tema1.get("tema") or "Contactoma de organelas e tráfego não-vesicular"
-    t1_desc = tema1.get("o_que_e", "")
-    t1_int = tema1.get("intersecao_luchm", "")
-
-    t2_tit = tema2.get("titulo") or tema2.get("tema") or "Bioeletricidade de epitélios e permissividade de barreira"
-    t2_desc = tema2.get("o_que_e", "")
-    t2_int = tema2.get("intersecao_luchm", "")
-
-    tec1_tit = tec1.get("titulo") or tec1.get("tecnica") or "Espectroscopia química em nanoescala sem marcadores"
-    tec1_ap = tec1.get("aplicacao_luchm") or tec1.get("o_que_e") or ""
-    tec2_tit = tec2.get("titulo") or tec2.get("tecnica") or "Ferramentas optogenéticas não-invasivas em insetos vivos"
-    tec2_ap = tec2.get("aplicacao_luchm") or tec2.get("o_que_e") or ""
-
-    falas.extend([
-        ("A", "Chegamos ao nosso bloco cultural e interdisciplinar de meio de viagem: a leitura comentada do Horizonte Lateral. Aqui o exercício deliberado é sair das palavras-chave confortáveis da parasitologia e perguntar o que a biofísica de membranas, a biologia de organelas e novas espectroscopias enxergam nos pontos cegos da nossa área."),
-        ("B", f"O ensaio principal da edição vigente na aba Horizonte Lateral parte do título '{titulo_ensaio}' e formula uma questão provocativa para todo o laboratório: '{ponto_cego}' {tese_ensaio[:320]}"),
-        ("A", f"Dois perfis de pesquisadores ancoram essa virada de perspectiva. O primeiro é {p1_nome}, ligado a {p1_inst}, cuja contribuição central reside em mostrar que {min_ini(p1_conc)} Trazendo essa lupa para os nossos modelos no IBCCF, {min_ini(p1_imp)}"),
-        ("B", f"Em complemento direto, o segundo perfil destaca {p2_nome}, de {p2_inst}, com foco em como {min_ini(p2_conc)} No contexto das nossas barreiras epiteliais e vasculares, {min_ini(p2_imp)}"),
-        ("A", f"Os dois temas em expansão lateral da edição traduzem essas ideias em hipóteses experimentais concretas: '{t1_tit}' — {min_ini(t1_desc)} {t1_int} — e '{t2_tit}' — {min_ini(t2_desc)} {t2_int}"),
-        ("B", f"E no plano instrumental de fronteira, o dossiê aponta duas técnicas emergentes para radar e eventuais colaborações externas: '{tec1_tit}' — {min_ini(tec1_ap)} — ao lado de '{tec2_tit}' — {min_ini(tec2_ap)}"),
-    ])
-
-    # ATO 6: TRÊS DIRETRIZES ACIONÁVEIS PARA A BANCADA AMANHÃ
-    top3 = (grupo_plasmodium + grupo_vetores + grupo_translacional)[:3]
-    falas.append(("A", "Entrando na reta final do percurso, vamos sintetizar toda essa massa crítica em três ações objetivas, auditáveis e ancoradas estritamente nos estudos reais da edição de hoje para levar para a reunião de bancada:"))
-    for idx_f, art in enumerate(top3, start=1):
-        loc = "B" if idx_f % 2 == 1 else "A"
-        _, _, _, imp, faisca = _blocos_seguros(art)
-        cit = resumir_revista_pmid(art)
-        tit = (art.get("titulo") or "").strip()
-        falas.append((loc, f"Frente prática número {idx_f}, ancorada no trabalho '{tit}' da {cit}: {faisca} Lembrete central de integração para a equipe: {min_ini(imp)}"))
-
-    falas.append(("B", "E vale lembrar que todas essas referências, com os respectivos dossiês em cinco blocos, PMIDs clicáveis e os quatro eixos transversais de ligação, ficam imediatamente acessíveis ao lado desta transcrição na aba Pauta e na aba Horizonte Lateral do site do laboratório."))
-
-    # ATO 7: ENCERRAMENTO
-    falas.extend([
-        ("A", "Professor Fábio, esperamos que esta travessia detalhada pelos avanços e pelas sutilezas metodológicas da literatura tenha rendido ótimos insights durante a viagem. Cada título, periódico, PMID e controle discutido hoje reflete fielmente a curadoria registrada na edição desta data."),
-        ("B", "Excelente descanso ao chegar, Fábio, uma semana experimental produtiva para toda a equipe do LUCHM no IBCCF e até o nosso próximo encontro comentado na bancada. Um grande abraço!")
-    ])
-
-    # Calibrador suave de extensão (alvo estrito: 3.500 a 3.800 palavras de fala)
-    total_palavras = sum(len(t.split()) for _, t in falas)
-    if total_palavras < 3500:
-        falas.insert(-2, (
-            "A",
-            "Francisca, antes mesmo de estacionar o carro, há um ganho metodológico silencioso em atravessar os "
-            "grandes blocos desta edição juntos: quando comparamos rigor pré-analítico em amostras biológicas "
-            "complexas, como enriquecimento de microbioma intestinal e proteômica química de alvos do parasito, "
-            "fica nítido que metade dos artefatos nasce antes da leitura instrumental, na lise e na preservação."
-        ))
-        falas.insert(-2, (
-            "B",
-            "Concordo em gênero, número e grau, Antônio. É a mesma disciplina que exigimos no LUCHM quando avaliamos "
-            "controle negativo de extração, normalização por carga biológica e janela temporal pré-sintomática em "
-            "camundongos ou em fêmeas alimentadas com dieta HFHS: um controle negativo bem desenhado vale mais do que "
-            "dez painéis descritivos sem calibração."
-        ))
-
-    return falas
+    return "\n\n".join(p.strip() for p in paragrafos if p and p.strip())
 
 
-def construir_roteiro_dinamico(edicao_data, cultural_data, data_edicao):
-    artigos = extrair_artigos_dict(edicao_data)
-    eixo_malaria, eixo_vetor, eixo_bioimagem = selecionar_eixos_tematicos(artigos)
-    conexoes = (edicao_data.get("pauta", {}).get("atual", {}) or {}).get("conexoes_transversais", [])
-    by_id = {str(a.get("_id") or a.get("pmid") or ""): a for a in artigos}
-
-    if "42993832" in by_id:
-        return _roteiro_nov8(artigos, conexoes, cultural_data, data_edicao, by_id, eixo_malaria, eixo_vetor, eixo_bioimagem)
-    return _roteiro_dinamico_geral(artigos, conexoes, cultural_data, data_edicao)
-
-async def sintetizar_dialogo(falas, temp_dir):
-    import edge_tts
-    segment_files = []
-    total = len(falas)
-    print(f"🎙️ Sintetizando {total} intervenções de diálogo com vozes neurais estúdio...")
-    
-    for idx, (locutor, texto) in enumerate(falas):
-        voz = VOZ_A if locutor == "A" else VOZ_B
-        seg_path = os.path.join(temp_dir, f"seg_{idx:03d}.mp3")
-        
-        if os.path.exists(seg_path) and os.path.getsize(seg_path) > 1000:
-            segment_files.append(seg_path)
-            print(f"   ⚡ [{idx+1:02d}/{total:02d}] {locutor}: em cache ({os.path.getsize(seg_path)} bytes)")
+def chunking_por_paragrafos(roteiro_texto: str, limite_chars: int = LIMITE_CHUNK_CHARS):
+    """Fatia o texto em blocos de até limite_chars cortando estritamente em quebras duplas de linha (\\n\\n)."""
+    blocos = []
+    atual = []
+    tamanho_atual = 0
+    for paragrafo in roteiro_texto.split("\n\n"):
+        paragrafo = paragrafo.strip()
+        if not paragrafo:
             continue
-            
+        extra = len(paragrafo) + (2 if atual else 0)
+        if tamanho_atual + extra > limite_chars and atual:
+            blocos.append("\n\n".join(atual))
+            atual = [paragrafo]
+            tamanho_atual = len(paragrafo)
+        else:
+            atual.append(paragrafo)
+            tamanho_atual += extra
+    if atual:
+        blocos.append("\n\n".join(atual))
+    return blocos
+
+
+async def gerar_audio_jornalistico(
+    roteiro_texto: str,
+    arquivo_saida_mp3: str,
+    voz: str = VOZ_PRINCIPAL,
+    taxa: str = TAXA_PRINCIPAL,
+    limite_chars: int = LIMITE_CHUNK_CHARS,
+) -> bool:
+    """Nível 1: edge-tts com pt-BR-AntonioNeural (+3%), chunking <= 3.500 chars e concatenação binária direta.
+    Nível 2 (Fallback local offline): macOS `say -v Luciana` convertido via ffmpeg se o edge-tts falhar.
+    """
+    import edge_tts
+
+    os.makedirs(os.path.dirname(os.path.abspath(arquivo_saida_mp3)), exist_ok=True)
+    blocos = chunking_por_paragrafos(roteiro_texto, limite_chars=limite_chars)
+    print(f"🎙️ Síntese Neural Contínua ({voz}, rate={taxa}): {len(blocos)} blocos (≤ {limite_chars} chars cada)...")
+
+    partes_mp3 = []
+    sucesso = True
+
+    for i, bloco in enumerate(blocos):
+        mp3_part = f"{arquivo_saida_mp3}.part{i:02d}.mp3"
+        if os.path.exists(mp3_part) and os.path.getsize(mp3_part) > 10000:
+            partes_mp3.append(mp3_part)
+            print(f"   ⚡ Bloco [{i + 1:02d}/{len(blocos):02d}]: reutilizado do cache parcial ({os.path.getsize(mp3_part):,} bytes)")
+            continue
         t0 = time.time()
-        sucesso = False
-        
+        ok_part = False
         for tentativa in range(4):
             try:
-                com = edge_tts.Communicate(texto, voz, rate="+1%", pitch="+0Hz")
-                await com.save(seg_path)
-                if os.path.exists(seg_path) and os.path.getsize(seg_path) > 1000:
-                    sucesso = True
+                com = edge_tts.Communicate(bloco, voz, rate=taxa, pitch="+0Hz")
+                await asyncio.wait_for(com.save(mp3_part), timeout=90)
+                if os.path.exists(mp3_part) and os.path.getsize(mp3_part) > 1000:
+                    ok_part = True
                     break
             except Exception as e:
-                print(f"   ⚠️ Tentativa {tentativa+1} falhou para seg {idx+1}: {e}. Aguardando 1.5s...")
-                await asyncio.sleep(1.5)
-                
-        if not sucesso:
-            print(f"   🔄 Recorrendo a fallback macOS say para seg {idx+1}...")
-            voz_say = "Luciana" if locutor == "A" else "Eddy"
-            aiff = seg_path.replace(".mp3", ".aiff")
-            subprocess.run(["say", "-v", voz_say, "-r", "190", "-o", aiff, texto], check=True)
-            subprocess.run(["ffmpeg", "-y", "-i", aiff, "-b:a", "128k", seg_path], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            if os.path.exists(aiff): os.remove(aiff)
+                if os.path.exists(mp3_part):
+                    os.remove(mp3_part)
+                print(f"   ⚠️ Tentativa {tentativa + 1} falhou no bloco {i + 1}/{len(blocos)}: {type(e).__name__}: {e}")
+                await asyncio.sleep(1.5 * (tentativa + 1))
+
+        if not ok_part:
+            sucesso = False
+            break
 
         dt = time.time() - t0
-        segment_files.append(seg_path)
-        n_palavras = len(texto.split())
-        print(f"   ✓ [{idx+1:02d}/{total:02d}] {locutor}: {n_palavras} palavras em {dt:.1f}s")
-        await asyncio.sleep(0.3)
-    
-    return segment_files
+        partes_mp3.append(mp3_part)
+        print(f"   ✓ Bloco [{i + 1:02d}/{len(blocos):02d}]: {len(bloco)} chars ({len(bloco.split())} palavras) em {dt:.1f}s")
 
-def concatenar_master(segment_files, out_path, temp_dir):
-    # Gerar micro-silêncio natural para transição entre turnos (350ms)
-    silence_file = os.path.join(temp_dir, "silence_turn.mp3")
-    try:
-        subprocess.run([
-            "ffmpeg", "-y", "-f", "lavfi", "-i", "anullsrc=r=44100:cl=mono",
-            "-t", "0.35", "-q:a", "9", "-acodec", "libmp3lame", silence_file
-        ], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    except Exception:
-        silence_file = None
+    if sucesso and partes_mp3:
+        with open(arquivo_saida_mp3, "wb") as fout:
+            for p in partes_mp3:
+                with open(p, "rb") as fin:
+                    fout.write(fin.read())
+                os.remove(p)
+        print(f"   ✅ Concatenação binária direta concluída ({os.path.getsize(arquivo_saida_mp3):,} bytes).")
+        return True
 
-    concat_list = os.path.join(temp_dir, "concat.txt")
-    with open(concat_list, "w", encoding="utf-8") as f:
-        for idx, sf in enumerate(segment_files):
-            f.write(f"file '{sf}'\n")
-            if silence_file and os.path.exists(silence_file) and idx < len(segment_files) - 1:
-                f.write(f"file '{silence_file}'\n")
+    # Limpeza de parciais em caso de falha no Nível 1
+    for p in partes_mp3:
+        if os.path.exists(p):
+            os.remove(p)
 
-    print(f"\n🎧 Gerando master MP3 em alta fidelidade e normalização broadcast com ffmpeg...")
-    # 128 kbps mono a 44.1 kHz produz clareza de estúdio perfeita para podcast de fala e reduz o arquivo de ~38MB para ~25MB
-    cmd = [
-        "ffmpeg", "-y", "-f", "concat", "-safe", "0",
-        "-i", concat_list,
-        "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
-        "-c:a", "libmp3lame", "-b:a", "128k", "-ar", "44100", "-ac", "1",
-        out_path
-    ]
-    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    # Nível 2: Fallback local offline (macOS say -v Luciana -> MP3 mono)
+    if shutil.which("say") and shutil.which("ffmpeg"):
+        print("   🔄 Recorrendo ao Nível 2 (Fallback local offline: say -v Luciana + ffmpeg)...")
+        aiff_path = f"{arquivo_saida_mp3}.fallback.aiff"
+        try:
+            subprocess.run(["say", "-v", "Luciana", "-r", "195", "-o", aiff_path, roteiro_texto], check=True)
+            subprocess.run(
+                ["ffmpeg", "-y", "-i", aiff_path, "-ac", "1", "-b:a", "48k", arquivo_saida_mp3],
+                check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            )
+            return os.path.exists(arquivo_saida_mp3) and os.path.getsize(arquivo_saida_mp3) > 1000
+        finally:
+            if os.path.exists(aiff_path):
+                os.remove(aiff_path)
+
+    return False
+
 
 async def main():
-    parser = argparse.ArgumentParser(description="Motor de Podcast Científico LUCHM v2")
-    parser.add_argument("--somente-texto", action="store_true", help="Gera e salva apenas as transcrições TXT (caminho principal Eleven Reader) sem sintetizar MP3 via Edge-TTS.")
-    parser.add_argument("--data", type=str, default="", help="Sobrescreve a data ISO da edição (ex.: 2026-11-08).")
+    parser = argparse.ArgumentParser(description="Motor de Áudio Neural Jornalístico LUCHM v3 (Voz Única)")
+    parser.add_argument("--somente-texto", action="store_true", help="Gera apenas as transcrições TXT sem sintetizar MP3.")
+    parser.add_argument("--data", type=str, default="", help="Sobrescreve a data ISO da edição (ex.: 2026-11-19).")
     args, _ = parser.parse_known_args()
 
     fuso_br = timezone(timedelta(hours=-3))
@@ -790,67 +536,66 @@ async def main():
     )
 
     print("=" * 80)
-    print(f"🚗 MOTOR DE PODCAST CIENTÍFICO LUCHM v2 (25-30 MIN) — {data_edicao}")
+    print(f"🎙️ MOTOR DE ÁUDIO JORNALÍSTICO LUCHM v3 (VOZ ÚNICA · +3%) — {data_edicao}")
     print("=" * 80)
 
-    falas = construir_roteiro_dinamico(edicao_data, cultural_data, data_edicao)
+    roteiro_limpo = construir_roteiro_narrado(edicao_data, cultural_data, data_edicao)
+    total_palavras = len(roteiro_limpo.split())
+    total_chars = len(roteiro_limpo)
+    est_min = total_palavras / 150.0  # pt-BR-AntonioNeural em +3%
+    blocos = chunking_por_paragrafos(roteiro_limpo)
 
-    total_palavras = sum(len(txt.split()) for _, txt in falas)
-    est_min = total_palavras / 140.0
-    print(f"   • Total de intervenções de diálogo: {len(falas)}")
-    print(f"   • Volume total de texto: {total_palavras} palavras")
-    print(f"   • Duração estimada em áudio: {est_min:.1f} minutos (alvo estrito: 25-28 min)\n")
+    print(f"   • Parágrafos: {len(roteiro_limpo.split(chr(10) + chr(10)))}")
+    print(f"   • Blocos de síntese (≤ {LIMITE_CHUNK_CHARS} chars): {len(blocos)}")
+    print(f"   • Volume total: {total_palavras} palavras ({total_chars:,} caracteres)")
+    print(f"   • Duração estimada (+3%): {est_min:.1f} minutos\n")
 
-    # Salvar a transcrição limpa para o Eleven Reader
     transcricao_atual = os.path.join(AUDIO_DIR, "briefing_atual.txt")
     transcricao_dated = os.path.join(AUDIO_DIR, f"podcast_comutacao_28min_{data_edicao}.txt")
 
-    conteudo_txt = f"# Podcast Científico LUCHM (Stork Cast) — Edição de {formatar_data_extenso(data_edicao)}\n"
-    conteudo_txt += f"# Apresentadores: Antônio (Visão Teórica/Neuro) & Francisca (Bancada/Métodos/CENABIO)\n"
-    conteudo_txt += f"# Duração estimada: {est_min:.1f} minutos ({total_palavras} palavras)\n\n"
-
-    for loc, txt in falas:
-        nome = "Antônio" if loc == "A" else "Francisca"
-        conteudo_txt += f"{nome}: {txt}\n\n"
+    cabecalho = (
+        f"# Boletim Científico Narrado LUCHM (Stork Cast) — Edição de {formatar_data_extenso(data_edicao)}\n"
+        f"# Voz oficial: {VOZ_PRINCIPAL} (rate={TAXA_PRINCIPAL}) | Chunking: {len(blocos)} blocos (≤ {LIMITE_CHUNK_CHARS} chars)\n"
+        f"# Duração estimada: {est_min:.1f} minutos ({total_palavras} palavras)\n\n"
+    )
+    conteudo_com_cabecalho = cabecalho + roteiro_limpo + "\n"
 
     with open(transcricao_atual, "w", encoding="utf-8") as f:
-        f.write(conteudo_txt)
+        f.write(conteudo_com_cabecalho)
     with open(transcricao_dated, "w", encoding="utf-8") as f:
-        f.write(conteudo_txt)
+        f.write(conteudo_com_cabecalho)
     print(f"   ✅ Transcrição salva em {transcricao_atual} e {transcricao_dated}")
 
     downloads_dir = os.path.expanduser("~/Downloads")
     if os.path.isdir(downloads_dir):
         try:
             downloads_txt = os.path.join(downloads_dir, f"LUCHM_Podcast_Transcricao_{data_edicao}.txt")
-            limpo_downloads = "\n".join(l for l in conteudo_txt.splitlines() if not l.startswith("#")).strip() + "\n"
             with open(downloads_txt, "w", encoding="utf-8") as f:
-                f.write(limpo_downloads)
-            print(f"   ✅ Transcrição Eleven Reader sincronizada em Downloads: {downloads_txt}")
+                f.write(roteiro_limpo + "\n")
+            print(f"   ✅ Transcrição limpa sincronizada em Downloads: {downloads_txt}")
         except Exception as e:
             print(f"   ⚠️ Aviso ao salvar TXT em Downloads: {e}")
 
     if args.somente_texto:
-        print("\n🏁 Modo --somente-texto concluído. Transcrição limpa pronta para Eleven Reader.")
+        print("\n🏁 Modo --somente-texto concluído.")
         return
-
-    # Cache isolado pela data da edição evita que áudio de ontem persista hoje
-    temp_dir = f"/tmp/luchm_podcast_{data_edicao}"
-    os.makedirs(temp_dir, exist_ok=True)
 
     master_mp3 = os.path.join(AUDIO_DIR, "briefing_atual.mp3")
     dated_mp3 = os.path.join(AUDIO_DIR, f"podcast_comutacao_28min_{data_edicao}.mp3")
     downloads_mp3 = os.path.expanduser(f"~/Downloads/LUCHM_Podcast_Comutacao_{data_edicao}.mp3")
-    drive_dir = os.path.expanduser("~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast/episodes")
+    drive_dir = os.path.expanduser(
+        "~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast/episodes"
+    )
 
-    segment_files = await sintetizar_dialogo(falas, temp_dir)
-    concatenar_master(segment_files, master_mp3, temp_dir)
+    ok = await gerar_audio_jornalistico(roteiro_limpo, master_mp3)
+    if not ok:
+        print("❌ Falha ao gerar áudio MP3.")
+        sys.exit(1)
 
-    import shutil
     shutil.copyfile(master_mp3, dated_mp3)
     try:
         shutil.copyfile(master_mp3, downloads_mp3)
-        print(f"\n   ✅ Áudio salvo em Downloads para o carro: {downloads_mp3}")
+        print(f"   ✅ Áudio salvo em Downloads: {downloads_mp3}")
     except Exception as e:
         print(f"   ⚠️ Aviso ao salvar em Downloads: {e}")
 
@@ -863,8 +608,9 @@ async def main():
             print(f"   ⚠️ Aviso ao salvar no Drive: {e}")
 
     print("\n" + "=" * 80)
-    print("🏁 PODCAST v2 CONCLUÍDO COM SUCESSO! Duração final compatível com comutação.")
+    print("🏁 ÁUDIO JORNALÍSTICO v3 CONCLUÍDO COM SUCESSO!")
     print("=" * 80)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
