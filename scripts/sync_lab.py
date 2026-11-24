@@ -42,24 +42,11 @@ def sincronizar(arquivo_custom=None, sem_push=False):
     # 1. Puxar dados remotos do repo bancada-comentada
     if not arquivo_custom:
         print("\n1. Atualizando repositório bancada-comentada via git pull...")
-        ok, out, err = run_cmd("git pull origin main", cwd=REPO_DIR)
+        ok, out, err = run_cmd("git pull --ff-only origin main", cwd=REPO_DIR)
         if ok:
             print(f"   Git pull: {out or 'Já atualizado.'}")
         else:
             print(f"   Aviso ao atualizar git: {err}")
-
-    # Atualizar também o Obsidian Vault (LUCHM_Brain) com a edição atual
-    try:
-        vault_sync_script = "/Users/fabiogomes/.gemini/antigravity/scratch/sync_bancada_to_vault.py"
-        if os.path.exists(vault_sync_script):
-            print("\nSincronizando edição no Obsidian Vault (LUCHM_Brain)...")
-            ok_v, out_v, err_v = run_cmd(f"python3 {vault_sync_script}")
-            if ok_v:
-                print(f"   ✅ Obsidian Vault atualizado: {out_v.splitlines()[-1] if out_v else 'OK'}")
-            else:
-                print(f"   Aviso no sync Obsidian: {err_v}")
-    except Exception as e:
-        print(f"   Aviso sync obsidian: {e}")
 
     caminho_interacoes = arquivo_custom or INTERACOES_FILE
     if not os.path.exists(caminho_interacoes):
@@ -119,7 +106,12 @@ def sincronizar(arquivo_custom=None, sem_push=False):
 
     if not alvo_ids:
         print("\nℹ️ Nenhuma nova anotação ou artigo catalogado no momento.")
-        print("   Marque artigos no leitor e clique em 'Sincronizar' para alimentar o sistema!")
+        # Sincronizar apenas uma vez o Obsidian Vault com a edição vigente
+        vault_sync_script = "/Users/fabiogomes/.gemini/antigravity/scratch/sync_bancada_to_vault.py"
+        if os.path.exists(vault_sync_script):
+            ok_v, out_v, _ = run_cmd(f"python3 {vault_sync_script}")
+            if ok_v:
+                print(f"   ✅ Obsidian Vault sincronizado: {out_v.splitlines()[-1] if out_v else 'OK'}")
         return
 
     # 4. Escrever páginas no Second Brain (Logseq)
@@ -222,16 +214,26 @@ def sincronizar(arquivo_custom=None, sem_push=False):
             notas_atualizadas += 1
             print(f"   [*] Nota atualizada: @{citekey}")
 
-    # Atualizar Índice Geral da Bancada Comentada no Logseq
+    # Atualizar Índice Geral da Bancada Comentada no Logseq de forma idempotente (apenas citekeys ainda não listadas)
     indice_path = os.path.join(PAGES_DIR, "Bancada Comentada.md")
-    hoje = datetime.now().strftime("%Y-%m-%d")
-    with open(indice_path, "a", encoding="utf-8") as f:
-        f.write(f"\n- ## Sincronização em [[{hoje}]]\n")
-        for aid in alvo_ids:
-            art = artigos_map.get(aid, {})
-            ck = gerar_citekey(art)
+    conteudo_indice = ""
+    if os.path.exists(indice_path):
+        with open(indice_path, "r", encoding="utf-8") as f:
+            conteudo_indice = f.read()
+
+    novas_entradas = []
+    for aid in sorted(alvo_ids):
+        art = artigos_map.get(aid, {})
+        ck = gerar_citekey(art)
+        if f"[[@{ck}]]" not in conteudo_indice:
             tit = art.get("titulo", aid)
-            f.write(f"\t- [[@{ck}]] — {tit}\n")
+            novas_entradas.append(f"\t- [[@{ck}]] — {tit}\n")
+
+    if novas_entradas:
+        hoje = datetime.now().strftime("%Y-%m-%d")
+        with open(indice_path, "a", encoding="utf-8") as f:
+            f.write(f"\n- ## Sincronização em [[{hoje}]]\n")
+            f.writelines(novas_entradas)
 
     print(f"\n4. Resumo Logseq: {notas_criadas} novas notas, {notas_atualizadas} atualizadas.")
 

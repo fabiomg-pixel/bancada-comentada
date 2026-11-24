@@ -1,3 +1,6 @@
 *.log
+*.tmp
 .DS_Store
 __pycache__/
+data/edicao_embedded.js
+audio/*.part*.mp3

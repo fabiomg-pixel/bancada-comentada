@@ -1,32 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-gerar_podcast_28min.py — Motor de Áudio Neural Jornalístico v3 (Stork Cast — LUCHM/IBCCF/UFRJ)
+gerar_podcast_28min.py — Motor de Áudio Neural Jornalístico v4 (Stork Cast — LUCHM/IBCCF/UFRJ)
 
-Arquitetura de Voz Única (Audio-First Copywriting + Chunking de 3.500 caracteres):
-- Voz oficial: pt-BR-AntonioNeural (via edge-tts) com velocidade --rate=+3% (ritmo de rádio jornalismo).
-- Sem alternância picotada entre personagens e sem inserção de silêncios artificiais.
-- Fatiamento inteligente em blocos de até 3.500 caracteres cortando estritamente em quebras de parágrafo (\n\n).
-- Concatenação binária direta dos fluxos MP3 gerados pelo edge-tts (contínuo e sem estalos).
-- Resiliência em camadas:
-    * Nível 1 (Principal): edge-tts com pt-BR-AntonioNeural (+3%).
-    * Nível 2 (Fallback Local Offline): macOS `say -v Luciana` convertido para MP3 mono via ffmpeg.
-    * Nível 3 (Navegador): botão "Ouvir com voz do navegador" (Web Speech API, pt-BR, rate 1.03) no index.html.
-- Sincronização automática:
-    1. Repositório/Web: audio/briefing_atual.mp3, audio/briefing_atual.txt e cópias datadas.
-    2. Mac do Fábio: ~/Downloads/LUCHM_Podcast_Comutacao_{data}.mp3 e ~/Downloads/LUCHM_Podcast_Transcricao_{data}.txt.
-    3. Google Drive: stork-podcast/episodes/stork-cast-{data}-profundo-28min.mp3.
+Melhorias estruturais (v4):
+- Compatível com a janela rolante de 14 dias: contabiliza com precisão o lote do dia e
+  resgata automaticamente artigos `alta` das últimas 72h ainda não narrados em episódios
+  anteriores (eliminando perda de conteúdo após fins de semana/repouso sem repetir papers).
+- Cache parcial estritamente isolado em `/tmp/luchm_podcast_{data_edicao}/` com hash SHA-256
+  do texto do bloco (cumprindo a Regra 10 da SKILL.md e evitando lixo em `audio/`).
+- Síntese concorrente controlada (`asyncio.Semaphore(3)`) + concatenação binária direta sem
+  estalos (`pt-BR-AntonioNeural`, `--rate=+3%`).
+- Retenção enxuta no Git (`manter_ultimos_mp3=3`): faz backup automático no Google Drive antes
+  de remover MP3s antigos de `audio/`, mantendo 100% das transcrições `.txt` no repositório.
 """
 
-import os
-import sys
-import json
-import asyncio
 import argparse
-import subprocess
-import shutil
-import time
+import asyncio
+import datetime as dt
+import glob
+import hashlib
+import json
+import os
 import re
+import shutil
+import subprocess
+import sys
+import time
 from datetime import datetime, timezone, timedelta
 
 REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,16 +34,28 @@ DATA_DIR = os.path.join(REPO_DIR, "data")
 AUDIO_DIR = os.path.join(REPO_DIR, "audio")
 
 os.makedirs(AUDIO_DIR, exist_ok=True)
-os.makedirs(os.path.join(DATA_DIR, "audio"), exist_ok=True)
 
 VOZ_PRINCIPAL = "pt-BR-AntonioNeural"
 TAXA_PRINCIPAL = "+3%"
 LIMITE_CHUNK_CHARS = 3500
+MANTER_ULTIMOS_MP3 = 3
 
 MESES_PT = [
     "janeiro", "fevereiro", "março", "abril", "maio", "junho",
-    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro",
 ]
+
+
+def obter_drive_episodes_dir():
+    candidatos = [
+        os.environ.get("DRIVE_PODCAST_EPISODES_DIR"),
+        os.path.expanduser("~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast/episodes"),
+        os.path.expanduser("~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/My Drive/Laboratório/LUCHM/Claude Code/stork-podcast/episodes"),
+    ]
+    for c in candidatos:
+        if c and os.path.isdir(c):
+            return c
+    return ""
 
 
 def formatar_data_extenso(iso_date):
@@ -84,6 +96,26 @@ def extrair_artigos_dict(edicao_data):
     return artigos if isinstance(artigos, list) else []
 
 
+def carregar_ids_ja_narrados(data_edicao):
+    """Lê transcrições anteriores para evitar repetir artigos já cobertos em dias prévios."""
+    narrados = set()
+    padrao = os.path.join(AUDIO_DIR, "podcast_comutacao_28min_*.txt")
+    for caminho in sorted(glob.glob(padrao)):
+        m = re.search(r"podcast_comutacao_28min_(\d{4}-\d{2}-\d{2})\.txt$", caminho)
+        if not m or m.group(1) >= str(data_edicao):
+            continue
+        try:
+            with open(caminho, encoding="utf-8") as f:
+                txt = f.read()
+            for pm in re.findall(r"\bPMID\s+(\d{6,10})\b", txt):
+                narrados.add(pm)
+            for doi in re.findall(r"\bDOI\s+(10\.\d{4,9}/[^\s.]+(?:\.[^\s.]+)*)", txt):
+                narrados.add(doi.rstrip(".,;)"))
+        except Exception:
+            continue
+    return narrados
+
+
 def eh_texto_ingles(txt):
     if not txt or len(txt) < 20:
         return False
@@ -113,7 +145,9 @@ def eh_artigo_fora_de_escopo(artigo):
     tit = (artigo.get("titulo") or "").lower()
     if re.match(r"^\s*(retraction|retracted|erratum|corrigendum)\b", tit) or "retraction notice" in tit:
         return True
-    txt = f"{tit} {(artigo.get('resumo') or '')[:500]}".lower()
+    if artigo.get("estagio") == "vault":
+        return True
+    txt = f"{tit} {(artigo.get('resumo_original') or artigo.get('resumo') or '')[:500]}".lower()
     ruidos = [
         "huntington", "insomnia", "insônia", "traditional chinese medicine",
         "alzheimer", "parkinson", "glioblastoma", "prostate cancer", "breast cancer",
@@ -125,6 +159,8 @@ def eh_artigo_fora_de_escopo(artigo):
         "intervertebral disc", "nanofibrous yarns", "solitary bees and wasps",
         "stannous fluoride", "plaque biofilm", "feline heartworm",
         "epstein-barr", "melanoma", "corpora amylacea", "ribosome-associated vesicles",
+        "diabetes-related foot ulcer", "pulmonary arterial hypertension", "oral-brain axis",
+        "ecmwf", "osteotropic",
     ]
     if any(r in txt for r in ruidos) and not any(
         k in txt for k in ["plasmodium", "malaria", "anopheles", "aedes", "mosquito", "polyphosphate"]
@@ -147,7 +183,7 @@ def extrair_bloco(artigo, chave, default=""):
     return default
 
 
-def _tem_blocos_pt(art):
+def _tem_blocos_pt_densos(art):
     rb = art.get("resumo_blocos") or {}
     if not isinstance(rb, dict):
         return False
@@ -155,9 +191,9 @@ def _tem_blocos_pt(art):
     met = str(rb.get("metodologia") or "").strip()
     res = str(rb.get("resultados") or "").strip()
     return (
-        len(rac) > 40 and not eh_texto_ingles(rac)
-        and len(met) > 40 and not eh_texto_ingles(met) and not met.startswith("Delineamento experimental descrito")
-        and len(res) > 40 and not eh_texto_ingles(res)
+        len(rac) > 70 and not eh_texto_ingles(rac)
+        and len(met) > 70 and not eh_texto_ingles(met) and not met.startswith("Delineamento experimental detalhado no artigo")
+        and len(res) > 70 and not eh_texto_ingles(res) and not res.startswith("Síntese da curadoria v6:")
     )
 
 
@@ -186,7 +222,7 @@ def _min_ini(txt):
 
 
 def resumir_revista_id(artigo):
-    rev = (artigo.get("revista") or "Periódico indexado").split(":")[0].strip()
+    rev = (artigo.get("revista") or "Periódico indexado").split(":")[0].replace("(preprint)", "").strip()
     rev = re.sub(r"^The\s+", "", rev)
     ident = str(artigo.get("pmid") or artigo.get("_id") or "").strip()
     if ident.startswith("10."):
@@ -209,17 +245,13 @@ def _blocos_seguros(art):
     prog = art.get("programa") or "Vigilância Científica LUCHM"
     rac = extrair_bloco(art, "racional", f"Investigação voltada a mecanismos centrais ligados ao eixo {prog}.")
     met = extrair_bloco(art, "metodologia", f"Delineamento experimental conduzido dentro da frente de {prog}.")
-    res = extrair_bloco(art, "resultados", f"Os resultados detalham alterações quantitativas relevantes para o modelo experimental avaliado.")
+    res = extrair_bloco(art, "resultados", "Os resultados detalham alterações quantitativas relevantes para o modelo experimental avaliado.")
     imp = extrair_bloco(art, "implicacoes", f"Dialoga diretamente com a agenda experimental do programa {prog} no LUCHM.")
     faisca = _limpar_emojis(extrair_bloco(art, "faisca_lateral", ""))
     return rac, met, res, imp, faisca
 
 
 def _formatar_materia_audio_first(art, inclui_faisca=True):
-    """Formata um artigo no padrão Audio-First:
-    Editoria com ponto final -> Periódico e título com ponto final ->
-    3 parágrafos contínuos (contexto, método, achados) -> Arremate 'Por que importa na bancada:'.
-    """
     prog = _garantir_ponto(art.get("programa") or "Vigilância Científica")
     rev_id = _garantir_ponto(resumir_revista_id(art))
     tit = _garantir_ponto(art.get("titulo") or "Estudo selecionado da edição")
@@ -238,80 +270,106 @@ def _formatar_materia_audio_first(art, inclui_faisca=True):
 
 
 def construir_roteiro_narrado(edicao_data, cultural_data, data_edicao):
-    """Gera o roteiro contínuo em voz única (lista de parágrafos separados por \\n\\n)."""
-    artigos = extrair_artigos_dict(edicao_data)
-    total_artigos = len(artigos)
-    altas = sum(1 for a in artigos if a.get("importancia") == "alta")
-    medias = sum(1 for a in artigos if a.get("importancia") == "media")
-    data_extenso = formatar_data_extenso(data_edicao)
-    conexoes = (edicao_data.get("pauta", {}).get("atual", {}) or {}).get("conexoes_transversais", [])
+    """Gera o roteiro contínuo em voz única calibrado para ~25-28 min (3.400 a 3.850 palavras)."""
+    todos_artigos = extrair_artigos_dict(edicao_data)
+    ids_narrados = carregar_ids_ja_narrados(data_edicao)
 
-    candidatos = [
-        a for a in artigos
-        if not eh_artigo_fora_de_escopo(a)
-        and a.get("importancia") in ("alta", "media")
-    ]
-    candidatos.sort(
+    try:
+        limite_resgate = (dt.date.fromisoformat(data_edicao) - dt.timedelta(days=3)).isoformat()
+    except Exception:
+        limite_resgate = data_edicao
+
+    artigos_hoje = [a for a in todos_artigos if str(a.get("visto_em") or "") == data_edicao and a.get("estagio") != "vault"]
+    if not artigos_hoje:
+        artigos_hoje = [a for a in todos_artigos if a.get("estagio") != "vault"]
+
+    radar_dia = edicao_data.get("radar_edicao_dia") or {}
+    total_artigos_dia = radar_dia.get("total") or len(artigos_hoje)
+
+    # Pool elegível: todos de hoje + resgate de inéditos das últimas 72h (caso ontem não tenha tido áudio)
+    elegiveis = []
+    for a in todos_artigos:
+        if eh_artigo_fora_de_escopo(a):
+            continue
+        if a.get("importancia") not in ("alta", "media"):
+            continue
+        aid = str(a.get("_id") or a.get("pmid") or "")
+        visto = str(a.get("visto_em") or "")
+        eh_hoje = visto == data_edicao
+        eh_resgate_inedito = (visto >= limite_resgate) and (aid not in ids_narrados)
+        if eh_hoje or eh_resgate_inedito:
+            elegiveis.append(a)
+
+    # Priorizar: (1) inéditos em episódios anteriores, (2) fichas PT densas, (3) alta > media, (4) data recente, (5) score
+    elegiveis.sort(
         key=lambda x: (
-            0 if _tem_blocos_pt(x) else 1,
+            1 if str(x.get("_id") or x.get("pmid") or "") in ids_narrados else 0,
+            0 if _tem_blocos_pt_densos(x) else 1,
             0 if x.get("importancia") == "alta" else 1,
+            0 if str(x.get("visto_em") or "") == data_edicao else 1,
             -(x.get("score") or 0),
         )
     )
+
+    altas_pauta = sum(1 for a in elegiveis if a.get("importancia") == "alta")
+    medias_pauta = sum(1 for a in elegiveis if a.get("importancia") == "media")
+    data_extenso = formatar_data_extenso(data_edicao)
+    conexoes = (edicao_data.get("pauta", {}).get("atual", {}) or {}).get("conexoes_transversais", [])
 
     usados = set()
     grupo_plasmodium = []
     grupo_vetores = []
     grupo_fronteira_metodos = []
 
-    for a in candidatos:
+    for a in elegiveis:
         aid = str(a.get("_id") or a.get("pmid") or "")
         tema = (a.get("tema") or "").lower()
         prog = (a.get("programa") or "").lower()
         blob = f"{a.get('titulo', '')} {prog}".lower()
 
-        if tema in ("ciclo", "hospedeiro") or any(
-            k in blob for k in ["plasmodium", "malaria", "pantothenate", "cholesterol", "gametocyte", "pfht1", "rodent malaria"]
+        if tema in ("ciclo", "cerebro", "hospedeiro") and any(
+            k in blob for k in ["plasmodium", "malaria", "malária", "pantothenate", "ookinete", "sporozoite", "gametocyte", "coagulation"]
         ):
             if len(grupo_plasmodium) < 4:
                 grupo_plasmodium.append(a)
                 usados.add(aid)
-        elif tema == "vetor":
+        elif tema == "vetor" or any(k in blob for k in ["vetor", "pragas", "aedes", "anopheles", "bt resistance", "chikungunya"]):
             if len(grupo_vetores) < 4:
                 grupo_vetores.append(a)
                 usados.add(aid)
 
-    for a in candidatos:
+    for a in elegiveis:
         aid = str(a.get("_id") or a.get("pmid") or "")
         if aid in usados:
             continue
-        if len(grupo_fronteira_metodos) < 3:
+        if len(grupo_fronteira_metodos) < 4:
             grupo_fronteira_metodos.append(a)
             usados.add(aid)
 
     while len(grupo_plasmodium) < 2 and grupo_fronteira_metodos:
-        grupo_plasmodium.append(grupo_fronteira_metodos.pop())
+        grupo_plasmodium.append(grupo_fronteira_metodos.pop(0))
     while len(grupo_vetores) < 2 and grupo_fronteira_metodos:
-        grupo_vetores.append(grupo_fronteira_metodos.pop())
+        grupo_vetores.append(grupo_fronteira_metodos.pop(0))
 
     con_titulos = [re.sub(r"^\d+\.\s*", "", str(c.get("titulo") or "")).strip() for c in conexoes[:4] if c.get("titulo")]
     destaques_rev = formatar_lista_pt(
-        list(dict.fromkeys(re.sub(r"^The\s+", "", (a.get("revista") or "").split(":")[0].strip()) for a in candidatos[:6] if a.get("revista"))),
+        list(dict.fromkeys(
+            re.sub(r"^The\s+", "", (a.get("revista") or "").split(":")[0].replace("(preprint)", "").strip())
+            for a in elegiveis[:8] if a.get("revista")
+        )),
         limite=4,
     )
 
-    # Abertura direta (< 25 segundos) com data por extenso
     abertura = [
         f"Bancada Comentada do LUCHM. Edição de {data_extenso}.",
         (
-            f"Na análise de hoje triamos {total_artigos} publicações recentes e identificamos {altas} estudos prioritários "
-            f"e {medias} de acompanhamento em {destaques_rev or 'periódicos indexados'}, articulados em "
+            f"Na varredura mais recente triamos {total_artigos_dia} publicações e reunimos neste boletim {altas_pauta} estudos essenciais "
+            f"e {medias_pauta} trabalhos complementares em {destaques_rev or 'periódicos indexados'}, articulados em "
             f"{formatar_lista_pt(con_titulos, 4) or 'biologia de Plasmodium, vetores e métodos de bancada'}. "
             f"Vamos direto ao primeiro artigo."
         ),
     ]
 
-    # Bloco Horizonte Lateral (dinâmico de data/radar_cultural.json)
     ensaio = cultural_data.get("ensaio", {})
     titulo_ensaio = ensaio.get("titulo", "Física Oculta da Transmissão")
     ponto_cego = ensaio.get("subtitulo") or ensaio.get("ponto_cego") or ""
@@ -350,7 +408,6 @@ def construir_roteiro_narrado(edicao_data, cultural_data, data_edicao):
             f"{_min_ini(_garantir_ponto(tc1.get('aplicacao_luchm') or ''))}"
         )
 
-    # Fechamento com 3 diretrizes acionáveis
     def _montar_fechamento(top3):
         out = ["Encerramos o boletim com três diretrizes objetivas para a bancada do LUCHM."]
         for idx_f, art in enumerate(top3, start=1):
@@ -366,38 +423,39 @@ def construir_roteiro_narrado(edicao_data, cultural_data, data_edicao):
 
     def _montar_corpo(gp, gv, gm, incl_faisca=True):
         parags = list(abertura)
-
         if gp:
-            parags.append("Iniciamos pelo bloco de biologia celular de Plasmodium e bloqueio de transmissão.")
+            parags.append("Iniciamos pelo bloco de malária cerebral, biologia celular de Plasmodium e bloqueio de transmissão.")
             for art in gp:
                 parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
-
         if gv:
-            parags.append("Passamos agora ao bloco de vetores, fisiologia do repasto sanguíneo e arboviroses.")
+            parags.append("Passamos agora ao bloco de vetores, fisiologia do repasto sanguíneo, bioinseticidas e arboviroses.")
             for art in gv:
                 parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
-
         if gm:
-            parags.append("Avançamos para o bloco de barreira endotelial, ultraestrutura e métodos de fronteira.")
+            parags.append("Avançamos para o bloco de eixo intestino-cérebro, imunometabolismo, ultraestrutura e métodos de fronteira.")
             for art in gm:
                 parags.extend(_formatar_materia_audio_first(art, inclui_faisca=incl_faisca))
-
         parags.extend(bloco_hl)
-        top3 = (gp + gm + gv)[:3]
+        top3 = (gp + gv + gm)[:3]
         parags.extend(_montar_fechamento(top3))
         return parags
 
-    # Orçamento adaptativo: mira 3.100 a 3.750 palavras (~21 a 26 min em +3%)
+    # Orçamento adaptativo calibrado para 25–28 min (~3.450 a 3.850 palavras em +3%)
     opcoes_cota = [
+        (4, 4, 4, True),
         (4, 4, 3, True),
-        (4, 3, 2, True),
+        (4, 3, 3, True),
+        (3, 4, 3, True),
+        (3, 3, 3, True),
         (3, 3, 2, True),
         (3, 3, 2, False),
         (3, 2, 2, True),
-        (3, 2, 2, False),
         (2, 2, 2, True),
     ]
-    paragrafos = _montar_corpo(grupo_plasmodium[:3], grupo_vetores[:3], grupo_fronteira_metodos[:2], True)
+    melhor_cand = None
+    melhor_dist = 10**9
+    ALVO_PALAVRAS = 3320  # Empírico pt-BR-AntonioNeural (+3%): ~123 palavras/min -> ~27.0 min
+
     for cp, cv, cm, inc_f in opcoes_cota:
         cand = _montar_corpo(
             grupo_plasmodium[:cp],
@@ -406,17 +464,18 @@ def construir_roteiro_narrado(edicao_data, cultural_data, data_edicao):
             incl_faisca=inc_f,
         )
         n_words = sum(len(p.split()) for p in cand)
-        if n_words <= 3750:
-            paragrafos = cand
+        if 3100 <= n_words <= 3500:
+            melhor_cand = cand
             break
-    else:
-        paragrafos = cand
+        dist = abs(n_words - ALVO_PALAVRAS) + (600 if n_words > 3650 else 0)
+        if dist < melhor_dist:
+            melhor_dist = dist
+            melhor_cand = cand
 
-    return "\n\n".join(p.strip() for p in paragrafos if p and p.strip())
+    return "\n\n".join(p.strip() for p in (melhor_cand or []) if p and p.strip())
 
 
 def chunking_por_paragrafos(roteiro_texto: str, limite_chars: int = LIMITE_CHUNK_CHARS):
-    """Fatia o texto em blocos de até limite_chars cortando estritamente em quebras duplas de linha (\\n\\n)."""
     blocos = []
     atual = []
     tamanho_atual = 0
@@ -440,69 +499,67 @@ def chunking_por_paragrafos(roteiro_texto: str, limite_chars: int = LIMITE_CHUNK
 async def gerar_audio_jornalistico(
     roteiro_texto: str,
     arquivo_saida_mp3: str,
+    data_edicao: str,
     voz: str = VOZ_PRINCIPAL,
     taxa: str = TAXA_PRINCIPAL,
     limite_chars: int = LIMITE_CHUNK_CHARS,
 ) -> bool:
-    """Nível 1: edge-tts com pt-BR-AntonioNeural (+3%), chunking <= 3.500 chars e concatenação binária direta.
-    Nível 2 (Fallback local offline): macOS `say -v Luciana` convertido via ffmpeg se o edge-tts falhar.
-    """
+    """Síntese concorrente controlada via edge-tts com cache particionado em /tmp/luchm_podcast_{data_edicao}."""
     import edge_tts
 
     os.makedirs(os.path.dirname(os.path.abspath(arquivo_saida_mp3)), exist_ok=True)
+    tmp_dir = f"/tmp/luchm_podcast_{data_edicao}"
+    os.makedirs(tmp_dir, exist_ok=True)
+
     blocos = chunking_por_paragrafos(roteiro_texto, limite_chars=limite_chars)
-    print(f"🎙️ Síntese Neural Contínua ({voz}, rate={taxa}): {len(blocos)} blocos (≤ {limite_chars} chars cada)...")
+    print(f"🎙️ Síntese Neural Contínua ({voz}, rate={taxa}): {len(blocos)} blocos isolados em {tmp_dir}...")
 
-    partes_mp3 = []
-    sucesso = True
+    sem = asyncio.Semaphore(3)
+    partes_mp3 = [None] * len(blocos)
 
-    for i, bloco in enumerate(blocos):
-        mp3_part = f"{arquivo_saida_mp3}.part{i:02d}.mp3"
+    async def sintetizar_bloco(idx: int, texto_bloco: str) -> bool:
+        digest = hashlib.sha256(f"{voz}|{taxa}|{texto_bloco}".encode("utf-8")).hexdigest()[:10]
+        mp3_part = os.path.join(tmp_dir, f"part_{idx:02d}_{digest}.mp3")
         if os.path.exists(mp3_part) and os.path.getsize(mp3_part) > 10000:
-            partes_mp3.append(mp3_part)
-            print(f"   ⚡ Bloco [{i + 1:02d}/{len(blocos):02d}]: reutilizado do cache parcial ({os.path.getsize(mp3_part):,} bytes)")
-            continue
-        t0 = time.time()
-        ok_part = False
-        for tentativa in range(4):
-            try:
-                com = edge_tts.Communicate(bloco, voz, rate=taxa, pitch="+0Hz")
-                await asyncio.wait_for(com.save(mp3_part), timeout=90)
-                if os.path.exists(mp3_part) and os.path.getsize(mp3_part) > 1000:
-                    ok_part = True
-                    break
-            except Exception as e:
-                if os.path.exists(mp3_part):
-                    os.remove(mp3_part)
-                print(f"   ⚠️ Tentativa {tentativa + 1} falhou no bloco {i + 1}/{len(blocos)}: {type(e).__name__}: {e}")
-                await asyncio.sleep(1.5 * (tentativa + 1))
+            partes_mp3[idx] = mp3_part
+            print(f"   ⚡ Bloco [{idx + 1:02d}/{len(blocos):02d}]: reutilizado de {tmp_dir} ({os.path.getsize(mp3_part):,} bytes)")
+            return True
 
-        if not ok_part:
-            sucesso = False
-            break
+        async with sem:
+            t0 = time.time()
+            for tentativa in range(4):
+                try:
+                    com = edge_tts.Communicate(texto_bloco, voz, rate=taxa, pitch="+0Hz")
+                    await asyncio.wait_for(com.save(mp3_part), timeout=90)
+                    if os.path.exists(mp3_part) and os.path.getsize(mp3_part) > 1000:
+                        dt_s = time.time() - t0
+                        partes_mp3[idx] = mp3_part
+                        print(f"   ✓ Bloco [{idx + 1:02d}/{len(blocos):02d}]: {len(texto_bloco)} chars ({len(texto_bloco.split())} palavras) em {dt_s:.1f}s")
+                        return True
+                except Exception as e:
+                    if os.path.exists(mp3_part):
+                        os.remove(mp3_part)
+                    print(f"   ⚠️ Tentativa {tentativa + 1} falhou no bloco {idx + 1}/{len(blocos)}: {type(e).__name__}: {e}")
+                    await asyncio.sleep(1.5 * (tentativa + 1))
+            return False
 
-        dt = time.time() - t0
-        partes_mp3.append(mp3_part)
-        print(f"   ✓ Bloco [{i + 1:02d}/{len(blocos):02d}]: {len(bloco)} chars ({len(bloco.split())} palavras) em {dt:.1f}s")
+    t_inicio = time.time()
+    resultados = await asyncio.gather(*(sintetizar_bloco(i, b) for i, b in enumerate(blocos)))
 
-    if sucesso and partes_mp3:
-        with open(arquivo_saida_mp3, "wb") as fout:
+    if all(resultados) and all(partes_mp3):
+        tmp_master = arquivo_saida_mp3 + ".tmp"
+        with open(tmp_master, "wb") as fout:
             for p in partes_mp3:
                 with open(p, "rb") as fin:
                     fout.write(fin.read())
-                os.remove(p)
-        print(f"   ✅ Concatenação binária direta concluída ({os.path.getsize(arquivo_saida_mp3):,} bytes).")
+        os.replace(tmp_master, arquivo_saida_mp3)
+        print(f"   ✅ Concatenação binária direta concluída em {time.time() - t_inicio:.1f}s ({os.path.getsize(arquivo_saida_mp3):,} bytes).")
         return True
-
-    # Limpeza de parciais em caso de falha no Nível 1
-    for p in partes_mp3:
-        if os.path.exists(p):
-            os.remove(p)
 
     # Nível 2: Fallback local offline (macOS say -v Luciana -> MP3 mono)
     if shutil.which("say") and shutil.which("ffmpeg"):
         print("   🔄 Recorrendo ao Nível 2 (Fallback local offline: say -v Luciana + ffmpeg)...")
-        aiff_path = f"{arquivo_saida_mp3}.fallback.aiff"
+        aiff_path = os.path.join(tmp_dir, "fallback.aiff")
         try:
             subprocess.run(["say", "-v", "Luciana", "-r", "195", "-o", aiff_path, roteiro_texto], check=True)
             subprocess.run(
@@ -517,10 +574,48 @@ async def gerar_audio_jornalistico(
     return False
 
 
+def podar_mp3_antigos(manter: int = MANTER_ULTIMOS_MP3):
+    """Faz backup de todos os MP3 históricos no Google Drive (se montado) e mantém apenas os `manter` mais recentes em `audio/`."""
+    # Remover eventuais parciais legados deixados dentro de audio/
+    for legado_part in glob.glob(os.path.join(AUDIO_DIR, "*.part*.mp3")):
+        try:
+            os.remove(legado_part)
+        except OSError:
+            pass
+
+    mp3_datados = sorted(glob.glob(os.path.join(AUDIO_DIR, "podcast_comutacao_28min_*.mp3")))
+    if len(mp3_datados) <= manter:
+        return
+
+    drive_dir = obter_drive_episodes_dir()
+    para_remover = mp3_datados[:-manter]
+    removidos = 0
+
+    for arq in para_remover:
+        m = re.search(r"podcast_comutacao_28min_(\d{4}-\d{2}-\d{2})\.mp3$", arq)
+        if drive_dir and m:
+            destino_drive = os.path.join(drive_dir, f"stork-cast-{m.group(1)}-profundo-28min.mp3")
+            if not os.path.exists(destino_drive):
+                try:
+                    shutil.copyfile(arq, destino_drive)
+                    print(f"   ☁️ Backup histórico preservado no Google Drive: {os.path.basename(destino_drive)}")
+                except Exception as e:
+                    print(f"   ⚠️ Não foi possível arquivar {os.path.basename(arq)} no Drive ({e}); mantendo local.")
+                    continue
+        try:
+            os.remove(arq)
+            removidos += 1
+        except OSError:
+            pass
+
+    if removidos:
+        print(f"   🧹 Retenção Git aplicada: {removidos} MP3 antigos arquivados no Drive e removidos de audio/ (mantidos os {manter} últimos + todas as transcrições .txt).")
+
+
 async def main():
-    parser = argparse.ArgumentParser(description="Motor de Áudio Neural Jornalístico LUCHM v3 (Voz Única)")
+    parser = argparse.ArgumentParser(description="Motor de Áudio Neural Jornalístico LUCHM v4 (Voz Única)")
     parser.add_argument("--somente-texto", action="store_true", help="Gera apenas as transcrições TXT sem sintetizar MP3.")
-    parser.add_argument("--data", type=str, default="", help="Sobrescreve a data ISO da edição (ex.: 2026-11-19).")
+    parser.add_argument("--data", type=str, default="", help="Sobrescreve a data ISO da edição (ex.: 2026-11-24).")
     args, _ = parser.parse_known_args()
 
     fuso_br = timezone(timedelta(hours=-3))
@@ -536,13 +631,13 @@ async def main():
     )
 
     print("=" * 80)
-    print(f"🎙️ MOTOR DE ÁUDIO JORNALÍSTICO LUCHM v3 (VOZ ÚNICA · +3%) — {data_edicao}")
+    print(f"🎙️ MOTOR DE ÁUDIO JORNALÍSTICO LUCHM v4 (VOZ ÚNICA · +3%) — {data_edicao}")
     print("=" * 80)
 
     roteiro_limpo = construir_roteiro_narrado(edicao_data, cultural_data, data_edicao)
     total_palavras = len(roteiro_limpo.split())
     total_chars = len(roteiro_limpo)
-    est_min = total_palavras / 150.0  # pt-BR-AntonioNeural em +3%
+    est_min = total_palavras / 145.0
     blocos = chunking_por_paragrafos(roteiro_limpo)
 
     print(f"   • Parágrafos: {len(roteiro_limpo.split(chr(10) + chr(10)))}")
@@ -577,17 +672,16 @@ async def main():
             print(f"   ⚠️ Aviso ao salvar TXT em Downloads: {e}")
 
     if args.somente_texto:
+        podar_mp3_antigos(MANTER_ULTIMOS_MP3)
         print("\n🏁 Modo --somente-texto concluído.")
         return
 
     master_mp3 = os.path.join(AUDIO_DIR, "briefing_atual.mp3")
     dated_mp3 = os.path.join(AUDIO_DIR, f"podcast_comutacao_28min_{data_edicao}.mp3")
     downloads_mp3 = os.path.expanduser(f"~/Downloads/LUCHM_Podcast_Comutacao_{data_edicao}.mp3")
-    drive_dir = os.path.expanduser(
-        "~/Library/CloudStorage/GoogleDrive-fabiomg@biof.ufrj.br/Meu Drive/Laboratório/LUCHM/Claude Code/stork-podcast/episodes"
-    )
+    drive_dir = obter_drive_episodes_dir()
 
-    ok = await gerar_audio_jornalistico(roteiro_limpo, master_mp3)
+    ok = await gerar_audio_jornalistico(roteiro_limpo, master_mp3, data_edicao=data_edicao)
     if not ok:
         print("❌ Falha ao gerar áudio MP3.")
         sys.exit(1)
@@ -599,7 +693,7 @@ async def main():
     except Exception as e:
         print(f"   ⚠️ Aviso ao salvar em Downloads: {e}")
 
-    if os.path.exists(drive_dir):
+    if drive_dir:
         try:
             drive_out = os.path.join(drive_dir, f"stork-cast-{data_edicao}-profundo-28min.mp3")
             shutil.copyfile(master_mp3, drive_out)
@@ -607,8 +701,10 @@ async def main():
         except Exception as e:
             print(f"   ⚠️ Aviso ao salvar no Drive: {e}")
 
+    podar_mp3_antigos(MANTER_ULTIMOS_MP3)
+
     print("\n" + "=" * 80)
-    print("🏁 ÁUDIO JORNALÍSTICO v3 CONCLUÍDO COM SUCESSO!")
+    print("🏁 ÁUDIO JORNALÍSTICO v4 CONCLUÍDO COM SUCESSO!")
     print("=" * 80)
 
 
