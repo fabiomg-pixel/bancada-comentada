@@ -1,6 +1,6 @@
 # Boletim Científico Narrado LUCHM (Stork Cast) — Edição de 26 de novembro de 2026
 # Voz oficial: pt-BR-AntonioNeural (rate=+3%) | Chunking: 8 blocos (≤ 3500 chars)
-# Duração estimada: 23.6 minutos (3426 palavras)
+# Duração estimada: 24.1 minutos (3494 palavras)
 
 Bancada Comentada do LUCHM. Edição de 26 de novembro de 2026.
 
@@ -38,15 +38,15 @@ O complexo radiou rapidamente no Pleistoceno tardio concomitantemente ao povoame
 
 Por que importa na bancada: Desafia o paradigma de que elevada variação genética e conectividade sejam pré-requisitos para o sucesso ecológico de vetores de malária, oferecendo marco genômico inédito sobre Gste2 e genes quimiossensoriais em Anopheles. Próximo passo no LUCHM: Investigar como a perda de diversidade genética e a seleção em repertórios quimiossensoriais afetam a preferência de hospedeiro e a competência vetorial de isolados de Anopheles frente a diferentes cepas de Plasmodium.
 
-Malária Cerebral & Neuroinflamação. Microorganisms, PMID 43092394. Diabetes Mellitus and Infection Susceptibility: An Immunometabolic Interface.
+Biologia Celular de Plasmodium & Bloqueio de Transmissão. Parasit Vectors, PMID 43074085. Assessment of natural filariae infections in the mosquitoes of Karen state, Myanmar: a cross-sectional PCR survey in six villages.
 
-Diabetes mellitus e suscetibilidade à infecção como interface imunometabólica. (resumo a partir do título; abstract não lido).
+Em seis vilas de Karen (Mianmar), 5,2% (40/772) dos mosquitos tiveram PCR positivo para filárias; W. bancrofti em metade, incluindo Anopheles barbirostris e Aedes albopictus/pseudoalbopictus; estimativa de taxa de inoculação entomológica de 0,094 picada infectante por pessoa-dia.
 
-Na bancada e no desenho experimental, delineamento experimental detalhado no artigo original, articulado aos modelos analíticos acompanhados pelo programa de Malária Cerebral & Neuroinflamação.
+Na bancada e no desenho experimental, delineamento experimental detalhado no artigo original, articulado aos modelos analíticos acompanhados pelo programa de Biologia Celular de Plasmodium & Bloqueio de Transmissão.
 
-Síntese da curadoria v6: Diabetes mellitus e suscetibilidade à infecção como interface imunometabólica. (resumo a partir do título; abstract não lido).
+Síntese da curadoria v6: Em seis vilas de Karen (Mianmar), 5,2% (40/772) dos mosquitos tiveram PCR positivo para filárias; W. bancrofti em metade, incluindo Anopheles barbirostris e Aedes albopictus/pseudoalbopictus; estimativa de taxa de inoculação entomológica de 0,094 picada infectante por pessoa-dia.
 
-Por que importa na bancada: Trabalho monitorado na frente de Malária Cerebral & Neuroinflamação do LUCHM para cruzamento metodológico e conceitual. Próximo passo no LUCHM: Avaliar na reunião de grupo se os parâmetros experimentais deste estudo se aplicam aos protocolos ativos de Malária Cerebral & Neuroinflamação.
+Por que importa na bancada: Trabalho monitorado na frente de Biologia Celular de Plasmodium & Bloqueio de Transmissão do LUCHM para cruzamento metodológico e conceitual. Próximo passo no LUCHM: Avaliar na reunião de grupo se os parâmetros experimentais deste estudo se aplicam aos protocolos ativos de Biologia Celular de Plasmodium & Bloqueio de Transmissão.
 
 Passamos agora ao bloco de vetores, fisiologia do repasto sanguíneo, bioinseticidas e arboviroses.
 
