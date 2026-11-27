@@ -1,0 +1,135 @@
+# Boletim Científico Narrado LUCHM (Stork Cast) — Edição de 26 de novembro de 2026
+# Voz oficial: pt-BR-AntonioNeural (rate=+3%) | Chunking: 8 blocos (≤ 3500 chars)
+# Duração estimada: 23.6 minutos (3426 palavras)
+
+Bancada Comentada do LUCHM. Edição de 26 de novembro de 2026.
+
+Na varredura mais recente triamos 112 publicações e reunimos neste boletim 11 estudos essenciais e 60 trabalhos complementares em Nature, Npj Viruses, Nat Microbiol e Nat Commun, articulados em Malária Cerebral, Coagulação & Imunometabolismo, Fisiologia do Vetor, Repasto Sanguíneo & Eixo Intestino-Cérebro, Biologia Celular de Plasmodium & Bloqueio de Transmissão e Bioinseticidas Bt, Bioimagem 3D & Horizonte Lateral. Vamos direto ao primeiro artigo.
+
+Iniciamos pelo bloco de malária cerebral, biologia celular de Plasmodium e bloqueio de transmissão.
+
+Biologia Celular de Plasmodium & Bloqueio de Transmissão. Nat Microbiol, PMID 43086403. Temperature-sensitive N^6^-methyladenosine interactions prime the malaria parasite for transmission.
+
+Para infectar o mosquito vetor, os parasitas da malária diferenciam-se em gametócitos masculinos e femininos semiquiescentes que precisam reativar o programa de desenvolvimento em segundos após a ingestão no repasto sanguíneo. Embora diversos estímulos ambientais disparem essa transição de gametócito para gameta, os mecanismos pós-transcricionais que preparam e executam essa mudança instantânea permaneciam obscuros.
+
+Na bancada e no desenho experimental, os autores aplicaram perfilamento de RNA de alta resolução e perfilamento ribossômico (ribosome profiling) em Plasmodium falciparum durante a transição de gametócitos para gametas, combinados à caracterização funcional da modificação N6-metiladenosina (m6A) e de sua proteína leitora YTH.2 sob variação térmica.
+
+A modificação epitranscriptômica m6A em mRNAs revelou-se essencial para reestruturar a síntese proteica durante a transmissão de P. falciparum. Em parasitas masculinos, a proteína leitora YTH.2 liga-se a transcritos metilados em m6A logo após a entrada no mosquito e promove rápida repressão traducional. Essa interação repressiva mediada por YTH.2 é termossensível e exige a queda de temperatura característica da passagem do hospedeiro humano para o mosquito, mostrando que a marcação m6A pré-condiciona o transcriptoma na fase semiquiescente para resposta imediata ao choque térmico.
+
+Por que importa na bancada: Revela um interruptor epitranscriptômico termossensível (m6A–YTH.2) que governa a gametogênese masculina de Plasmodium falciparum na entrada do vetor, abrindo alvos inéditos para estratégias de bloqueio de transmissão. Próximo passo no LUCHM: Avaliar se a temperatura corporal alterada por dieta HFHS ou estresse metabólico do hospedeiro interfere na cinética de ligação de YTH.2 e na exflagelação de gametócitos masculinos após a queda térmica no intestino médio do mosquito.
+
+Biologia Celular de Plasmodium & Bloqueio de Transmissão. Microb Genom, PMID 43084354. Large deletion variants in a Plasmodium falciparum ookinete protein gene and associations with different endemic populations and mosquito vectors.
+
+O gene PIMMS43 de Plasmodium falciparum codifica uma proteína de oocineto essencial para o estabelecimento bem-sucedido da infecção no mosquito vetor. A extensão da variação estrutural codificante em populações naturais de parasitas humanos e em oocistos no interior de diferentes espécies vetoras de Anopheles permanecia desconhecida.
+
+Na bancada e no desenho experimental, comparação de genomas por sequenciamento de leituras longas em cepas de P. falciparum (incluindo a referência 3D7) e espécies relacionadas, mapeamento de dados de sequenciamento de leituras curtas de 524 infecções provenientes de 9 países contra a sequência integral de PIMMS43 e genotipagem direcionada por PCR aninhada (nested PCR) de 30 oocistos coletados de mosquitos naturalmente infectados na Tanzânia.
+
+A análise por leituras longas revelou uma deleção de 150 pb na porção central de PIMMS43 em diversas linhagens, incluindo a cepa padrão 3D7. Nas 524 infecções humanas analisadas, tanto a deleção de 150 pb quanto uma deleção alternativa de 90 pb mostraram-se variantes estruturais comuns, atingindo frequências alélicas médias de 32% (150 pb) e 12% (90 pb) em populações africanas, com variação geográfica significativa. Nos 30 oocistos analisados na Tanzânia, as frequências globais acompanharam as observadas em humanos do mesmo país, mas diferenças entre oocistos recuperados de Anopheles gambiae e Anopheles funestus sugeriram possível seleção espécie-específica pelo vetor.
+
+Por que importa na bancada: Alerta que a cepa de referência 3D7 carrega uma deleção de 150 pb em um determinante crítico de oocineto (PIMMS43), reforçando a necessidade de monitorar polimorfismos estruturais ao testar antígenos de bloqueio de transmissão e competência de oocinetos em diferentes espécies de Anopheles. Próximo passo no LUCHM: Checar se isolados com deleção de 150 pb ou 90 pb em PIMMS43 apresentam diferenças na eficiência de travessia da matriz peritrófica ou evasão da resposta de tioéster TEP1 entre vetores distintos.
+
+Biologia Celular de Plasmodium & Bloqueio de Transmissão. bioRxiv, DOI 10.64898/2026.11.24.767905. Population genomics of the Anopheles farauti complex reveals a distinct regime of malaria vector evolution in the southwest Pacific.
+
+Embora o Pacífico Sudoeste concentre algumas das maiores taxas per capita de malária fora da África, seus vetores do complexo Anopheles farauti exibiram pouca ou nenhuma resistência bioquímica após décadas de controle químico, em forte contraste com vetores africanos altamente polimórficos.
+
+Na bancada e no desenho experimental, análise populacional genômica de 495 genomas abrangendo seis táxons do complexo Anopheles farauti, reconstruindo radiação biogeográfica, gargalos demográficos insulares, níveis de endogamia, purga de alelos deletérios e varreduras seletivas após cinco décadas de pressão por inseticidas.
+
+O complexo radiou rapidamente no Pleistoceno tardio concomitantemente ao povoamento da Oceania Próxima, sofrendo fragmentação insular pela elevação pós-glacial do nível do mar. Gargalos sucessivos geraram endogamia extraordinária no especialista costeiro An. farauti s.s. — permitindo purga eficaz de alelos deletérios sob baixo tamanho populacional efetivo — enquanto os generalistas continentais An. hinesorum e An. oreios retiveram maior diversidade. Após cinco décadas de controle químico, emergiu apenas uma varredura de resistência em Gste2, ao lado de seleção recente em repertórios gênicos quimiossensoriais espécie-específicos.
+
+Por que importa na bancada: Desafia o paradigma de que elevada variação genética e conectividade sejam pré-requisitos para o sucesso ecológico de vetores de malária, oferecendo marco genômico inédito sobre Gste2 e genes quimiossensoriais em Anopheles. Próximo passo no LUCHM: Investigar como a perda de diversidade genética e a seleção em repertórios quimiossensoriais afetam a preferência de hospedeiro e a competência vetorial de isolados de Anopheles frente a diferentes cepas de Plasmodium.
+
+Malária Cerebral & Neuroinflamação. Microorganisms, PMID 43092394. Diabetes Mellitus and Infection Susceptibility: An Immunometabolic Interface.
+
+Diabetes mellitus e suscetibilidade à infecção como interface imunometabólica. (resumo a partir do título; abstract não lido).
+
+Na bancada e no desenho experimental, delineamento experimental detalhado no artigo original, articulado aos modelos analíticos acompanhados pelo programa de Malária Cerebral & Neuroinflamação.
+
+Síntese da curadoria v6: Diabetes mellitus e suscetibilidade à infecção como interface imunometabólica. (resumo a partir do título; abstract não lido).
+
+Por que importa na bancada: Trabalho monitorado na frente de Malária Cerebral & Neuroinflamação do LUCHM para cruzamento metodológico e conceitual. Próximo passo no LUCHM: Avaliar na reunião de grupo se os parâmetros experimentais deste estudo se aplicam aos protocolos ativos de Malária Cerebral & Neuroinflamação.
+
+Passamos agora ao bloco de vetores, fisiologia do repasto sanguíneo, bioinseticidas e arboviroses.
+
+Repasto Sanguíneo HFHS & Metabolismo do Vetor. Nature, PMID 43086442. A gut-brain sensory-motor circuit regulates sugar ingestion in Drosophila.
+
+A comunicação bidirecional entre o trato digestório e o sistema nervoso central é essencial para ajustar a preferência nutricional e o volume ingerido durante a alimentação. Contudo, os circuitos neurais que acoplam diretamente a detecção química de nutrientes no lúmen intestinal ao controle motor da deglutição e do armazenamento alimentar permaneciam pouco compreendidos.
+
+Na bancada e no desenho experimental, os autores empregaram imageamento funcional, análises do conectoma e manipulação neural em Drosophila melanogaster para mapear a conexão sináptica entre neurônios sensoriais entéricos que penetram o epitélio do intestino anterior, interneurônios cerebrais reguladores da ingestão (IN1s1/IN1s) e neurônios motores entéricos que inervam a musculatura de entrada do papo (crop).
+
+Neurônios sensoriais entéricos que atravessam o epitélio do intestino anterior detectam açúcares no lúmen durante a ingestão e enviam sinais excitatórios aos neurônios cerebrais IN1s, os quais integram múltiplas aferências gustativas. Por sua vez, os IN1s fornecem projeções inibitórias sobre neurônios motores entéricos responsáveis pela contração muscular na entrada do ducto do papo. Durante a alimentação com açúcar, a ativação de IN1 suprime esses neurônios motores, relaxa o ducto do papo e acelera a transferência do alimento para o interior desse órgão semelhante a um estômago, sustentando a ingestão contínua.
+
+Por que importa na bancada: Mapeia em resolução de circuito e conectoma um eixo sensório-motor intestino-cérebro que controla mecanicamente o esvaziamento para o papo em dípteros, oferecendo paralelo direto para o desvio de sacarose versus repasto sanguíneo e a regulação neuropeptidérgica pós-prandial investigados no LUCHM em Aedes aegypti. Próximo passo no LUCHM: Testar em Aedes aegypti se o desvio entre papo (néctar/sacarose) e intestino médio (sangue) depende de circuitos inibitórios homólogos ao eixo IN1–ducto do papo e se sangue hiperlipídico (HFHS) altera a sensibilidade luminal entérica.
+
+Imunidade de Vetores & RNAi. Npj Viruses, PMID 43086285. Mitochondrial dynamics in orthoflavivirus infection: insights from human and mosquito hosts.
+
+Ortoflavivírus transmitidos por mosquitos alternam entre hospedeiros vertebrados e vetores invertebrados produzindo desfechos biológicos opostos: infecção aguda com ativação imune e dano celular em humanos, versus persistência viral por toda a vida sem patologia aparente em mosquitos. A compreensão de como a mesma arquitetura viral sustenta fenotipicamente esses dois regimes continua sendo uma questão central na biologia de arbovírus.
+
+Na bancada e no desenho experimental, análise conceitual e síntese mecanística da literatura comparando a dinâmica mitocondrial — fissão, fusão e comunicação interorganelar — durante a replicação de ortoflavivírus em células humanas e células de mosquitos vetores.
+
+O trabalho sintetiza evidências de que as mitocôndrias atuam como nós integradores de metabolismo energético, sinalização antiviral e resposta ao estresse celular durante a infecção por ortoflavivírus. Em hospedeiros humanos, a perturbação da dinâmica mitocondrial e dos sítios de contato com outras organelas associa-se à amplificação de vias inflamatórias e lesão celular, enquanto em células de mosquito a modulação coordenada da bioenergética mitocondrial e da homeostase interorganelar contribui para acomodar a replicação viral persistente sem citotoxicidade letal.
+
+Por que importa na bancada: Articula diretamente bioenergética mitocondrial, sítios de contato entre organelas (MCS) e competência vetorial para arbovírus, convergindo com as frentes de microscopia eletrônica de volume (FIB-SEM) e imunidade de vetores do LUCHM. Próximo passo no LUCHM: Quantificar por FIB-SEM e microscopia de fluorescência em células de Aedes aegypti infectadas por Dengue ou Zika se ocorre remodelamento dos contatos retículo–mitocôndria e variação no comprimento de cristas mitocondriais em comparação com células de mamífero.
+
+Imunidade de Vetores & RNAi. Nat Commun, PMID 43086222. Coevolutionary constraints of Zika virus nonstructural protein 5 replication and interferon antagonism activities.
+
+A proteína não estrutural 5 (NS5) dos flavivírus acumula na mesma cadeia polipeptídica a atividade enzimática de replicação do RNA viral e o antagonismo à sinalização de interferon tipo I (IFN-I). Embora diferentes flavivírus inibam a via de IFN por mecanismos distintos, não se conheciam as restrições evolutivas que limitam a separação funcional entre replicação e evasão imune dentro da NS5 do vírus Zika (ZIKV).
+
+Na bancada e no desenho experimental, mapeamento dos determinantes de antagonismo a STAT2 na NS5 de ZIKV integrado ao mapeamento de restrições replicativas por varredura mutacional profunda (deep mutational scanning), seguido de validação in vivo de variantes combinatórias em camundongos knock-in para STAT2 humano.
+
+Os determinantes moleculares de replicação viral e de antagonismo a STAT2 na NS5 de ZIKV sobrepõem-se extensivamente, de modo que nenhuma substituição isolada de aminoácido elimina a evasão imune sem comprometer a replicação. Ao resolver ambos os mapas de aptidão em paralelo, os autores identificaram combinações específicas de substituições parcialmente funcionais que preservam a capacidade replicativa enquanto reduzem acentuadamente o antagonismo a STAT2. Vírus recombinantes portadores dessas combinações mostraram-se profundamente atenuados em camundongos knock-in para STAT2 humano, confirmando a essencialidade desse eixo para a patogênese do ZIKV.
+
+Por que importa na bancada: Estabelece um limite coevolutivo rígido na NS5 de flavivírus e fornece variantes de ZIKV competentes em replicação porém desprovidas de bloqueio de STAT2, úteis tanto para vacinas atenuadas quanto para ensaios comparativos em células de mosquito desprovidas da via STAT2 de mamíferos. Próximo passo no LUCHM: Comparar a cinética de replicação dessas variantes de NS5 deficientes em antagonismo de STAT2 em células C6/36 ou mosquitos Aedes aegypti para dissociar custos replicativos intrínsecos da pressão seletiva exercida pela imunidade inata de vertebrados.
+
+Avançamos para o bloco de eixo intestino-cérebro, imunometabolismo, ultraestrutura e métodos de fronteira.
+
+Controle de Pragas & Bioinseticidas. Microorganisms, PMID 43092384. Infection with the Entomopathogenic Fungus Metarhizium robertsii Suppresses Cellular Immunity and Activates Humoral Antibacterial Responses in Spodoptera frugiperda.
+
+A lagarta-do-cartucho Spodoptera frugiperda é uma praga agrícola de distribuição global e o fungo entomopatogênico Metarhizium robertsii apresenta elevado potencial para seu controle biológico. Contudo, os mecanismos pelos quais M. robertsii interage com os braços celular e humoral do sistema imune de S. frugiperda ainda não haviam sido descritos.
+
+Na bancada e no desenho experimental, ensaios de patogenicidade e virulência de M. robertsii em lagartas de S. frugiperda associados à quantificação da abundância e viabilidade de hemócitos (apoptose e necrose), capacidade de espraiamento de plasmatócitos, ensaios funcionais de fagocitose, nodulação e encapsulamento, expressão gênica de profenoloxidases e peptídeos antimicrobianos (AMPs) no corpo gorduroso e atividade fenoloxidase e antibacteriana da hemolinfa.
+
+A infecção por M. robertsii exibiu alta virulência contra S. frugiperda e induziu apoptose e necrose em hemócitos, reduzindo significativamente a população de hemócitos circulantes e prejudicando o espraiamento de plasmatócitos. Como consequência, o fungo suprimiu intensamente as defesas celulares do hospedeiro, incluindo fagocitose, nodulação e encapsulamento. Paradoxalmente, o desafio fúngico aumentou a expressão de genes de profenoloxidase em hemócitos (elevando a atividade de fenoloxidase na hemolinfa) e induziu a transcrição de peptídeos antimicrobianos no corpo gorduroso, amplificando a atividade antibacteriana humoral da hemolinfa.
+
+Por que importa na bancada: Desvenda uma dissociação imune crítica em Spodoptera frugiperda — colapso da imunidade celular hemocítica acompanhado de hiperativação antibacteriana humoral — diretamente relevante para a interação com bioinseticidas microbianos e microbiota intestinal no LUCHM. Próximo passo no LUCHM: Investigar se a coaplicação subletal de M. robertsii com toxinas Cry/Vip3 de Bacillus thuringiensis potencializa a mortalidade de S. frugiperda ao bloquear o reparo celular mediado por hemócitos ou alterar a competição bacteriana intestinal.
+
+Imunidade de Vetores & RNAi. Viruses, PMID 43093894. Spatiotemporal Modeling of Aedes aegypti in La Guajira: An Approach Based on Environmental Suitability (MaxEnt) and Temporal Dependence (ARIMA).
+
+A região de La Guajira, no noroeste da Colômbia, reúne condições climáticas e socioeconômicas favoráveis à transmissão do vírus da dengue (DENV), mas carecia de modelos integrados de adequação ambiental e dependência temporal da dinâmica populacional do vetor primário Aedes aegypti.
+
+Na bancada e no desenho experimental, modelagem de distribuição potencial por máxima entropia (MaxEnt) utilizando registros históricos (literatura, coleção nacional, GBIF e coletas de campo) e 19 variáveis bioclimáticas WorldClim v2.1 avaliadas por curva ROC (AUC), combinada a séries temporais ARIMA a partir de coletas intradomiciliares semanais com aspiradores Prokopack durante um ano em dois bairros de Manaure com incidências contrastantes de DENV (La Cruzada e Altos de Salinas).
+
+Os modelos MaxEnt apresentaram bom desempenho preditivo (AUC > 0,8), identificando a amplitude térmica anual (BIO7) como o preditor ambiental mais influente na adequação de habitat. Nas coletas longitudinais com Prokopack foram capturados 2.313 mosquitos (53% fêmeas), revelando maior dependência temporal autorregressiva no bairro La Cruzada (φ1 = 0,679; p < 0,001), de alta incidência, em comparação a Altos de Salinas (φ1 = 0,309; p = 0,02). Em ambos os bairros, a precipitação ocorrida uma a duas semanas antes associou-se positivamente ao aumento da abundância de fêmeas.
+
+Por que importa na bancada: Integra modelagem espacial de nicho (MaxEnt) e séries autorregressivas (ARIMA) com coleta de adultos por Prokopack, estabelecendo referência quantitativa de defasagem pluviométrica (1–2 semanas) e amplitude térmica (BIO7) para vigilância de Aedes aegypti. Próximo passo no LUCHM: Incorporar a janela de amplitude térmica (BIO7) em protocolos de laboratório de Ae. aegypti para mimetizar oscilações diurnas naturais de campo sobre o metabolismo do repasto sanguíneo e a competência para DENV.
+
+Repasto Sanguíneo HFHS & Metabolismo do Vetor. eLife, PMID 43062890. Blood-derived dietary protein promotes sleep in the mosquito Aedes aegypti.
+
+Embora o sono seja profundamente moldado pelo contexto ecológico e nutricional, a relação entre hematofagia e regulação do sono em Aedes aegypti permanecia indefinida. Os autores investigaram se o repasto sanguíneo e especificamente seu componente proteico induzem estados prolongados de sono pós-prandial no vetor.
+
+Na bancada e no desenho experimental, combinando análise postural, videografia, ensaios de limiar de despertar (arousal-threshold) e monitoramento infravermelho contínuo de atividade locomotora em fêmeas de Aedes aegypti (incluindo mutantes do gene de relógio circadiano cycle), os autores validaram episódios de imobilidade ≥ 10 minutos como critério operacional de sono. Para isolar o gatilho nutricional e molecular, compararam sangue total a uma dieta artificial purificada de albumina sérica bovina (BSA) e realizaram silenciamento por RNAi do receptor de leucocinina (Lkr).
+
+Mutantes de cycle mantiveram ritmos diários de sono, porém com menor duração total e hiperatividade basal. Em fêmeas selvagens, o repasto sanguíneo disparou aumento acentuado do sono e queda locomotora imediatamente após a alimentação, persistindo por vários dias — muito além da janela clássica de supressão de busca por hospedeiro. A ingestão isolada de BSA reproduziu integralmente o aumento sustentado de sono induzido pelo sangue, demonstrando que a proteína dietética é o regulador nutricional primário, enquanto o knockdown por RNAi de Lkr elevou o sono e reduziu a locomoção, implicando a via da leucocinina na modulação pós-prandial.
+
+Por que importa na bancada: Conecta diretamente nutrição pós-repasto, sinalização do receptor de leucocinina (Lkr) via RNAi e conservação energética em Aedes aegypti, abrindo uma variável comportamental inédita para os estudos de dieta HFHS (rica em lipídios/glicose versus proteína) conduzidos no LUCHM. Próximo passo no LUCHM: Monitorar em actímetros infravermelhos se fêmeas de Aedes aegypti alimentadas com sangue de camundongos obesos (HFHS) exibem alteração na duração da quiescência pós-prandial de ≥ 10 min e na expressão de Lkr em relação ao repasto controle.
+
+Passamos agora ao bloco Horizonte Lateral. Pontos cegos conceituais e técnicas fora da linha direta da parasitologia.
+
+Ensaio da edição mensal. A Física Oculta da Transmissão: Separação de Fases, Bioeletricidade e a Mecânica Invisível entre o Vetor e o Patógeno. Por que olhar apenas para receptores clássicos e transcrição gênica nos cegou para os gradientes bioelétricos e as forças físicas que decidem a infecção.
+
+Dois pesquisadores de referência lateral ancoram esta edição. Prof. Maya Schuldiner, PhD, de Department of Molecular Genetics, Weizmann Institute of Science, Rehovot, Israel, destaca contactoma Celular & Comunicação Não-Vesicular de Organelas. No LUCHM, nossos estudos ultraestruturais com FIB-SEM e acidocalcisomos revelam constantemente sítios de estreita aposição entre vacúolos contendo polifosfato e a membrana plasmática ou mitocôndrias. Compreender os tethers moleculares elucidados por Schuldiner permite mapear como o parasito mobiliza cálcio e fosfato sob choque osmótico.
+
+Em complemento, Prof. Michael Levin, PhD, de Allen Discovery Center, Tufts University & Wyss Institute at Harvard University, USA, demonstra bioeletricidade Morfogenética & Software Biológico de Tecidos. Ao investigarmos as barreiras biológicas (hematoencefálica e peritrófica), a abordagem bioelétrica oferece uma perspectiva não-genética fundamental: moduladores de canais iônicos e restauradores de potencial de membrana podem ser usados para blindar endotélios contra dano endotelial na malária cerebral e repelir a adesão de patógenos.
+
+Nos temas em expansão lateral, destacamos Contactoma de Organelas & Homeostase de Hemo no Inseto. Como os sítios de contato membrana-membrana desviam a toxicidade do hemo livre no intestino de mosquitos hematófagos durante o repasto sanguíneo. Ao lado de Bioeletricidade de Epitélios & Permissividade de Barreira. Como os gradientes elétricos trans-epiteliais e potenciais de membrana mantêm a ancoragem das junções oclusivas antes de danos estruturais.
+
+Por que importa na bancada: as técnicas emergentes da edição — Espectroscopia AFM-IR em Nanoescala (Photo-Thermal Induced Resonance) e Optogenética Não-Invasiva em Insetos Vivos (Canais CsChrimson) — no LUCHM, podemos levar seções criogênicas ou cortes secos de intestino de Aedes/Anopheles ou de esporozoítos e mapear diretamente os anéis de polifosfato de cadeia longa e as espécies lipídicas nos acidocalcisomos e grânulos secretores, com resolução de 15 nm e sem qualquer artefato de fixação com ósmio ou glutaraldeído!
+
+Encerramos o boletim com três diretrizes objetivas para a bancada do LUCHM.
+
+Diretriz número 1, baseada em Nat Microbiol, PMID 43086403. Avaliar se a temperatura corporal alterada por dieta HFHS ou estresse metabólico do hospedeiro interfere na cinética de ligação de YTH.2 e na exflagelação de gametócitos masculinos após a queda térmica no intestino médio do mosquito.
+
+Diretriz número 2, baseada em Microb Genom, PMID 43084354. Checar se isolados com deleção de 150 pb ou 90 pb em PIMMS43 apresentam diferenças na eficiência de travessia da matriz peritrófica ou evasão da resposta de tioéster TEP1 entre vetores distintos.
+
+Diretriz número 3, baseada em bioRxiv, DOI 10.64898/2026.11.24.767905. Investigar como a perda de diversidade genética e a seleção em repertórios quimiossensoriais afetam a preferência de hospedeiro e a competência vetorial de isolados de Anopheles frente a diferentes cepas de Plasmodium.
+
+Todas as fichas detalhadas em cinco blocos, PMIDs clicáveis e os quatro eixos transversais desta edição de 26 de novembro de 2026 estão disponíveis na aba Pauta da Bancada Comentada. Boa jornada experimental no LUCHM.
